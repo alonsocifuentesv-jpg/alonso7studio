@@ -668,16 +668,49 @@
       .cursor, .cursor-ring { display: none !important; }
     }
 
-    /* RESPONSIVE */
+    /* RESPONSIVE MÓVIL */
     @media (max-width: 768px) {
       nav { padding: 20px 24px; }
       nav.scrolled { padding: 14px 24px; }
       .nav-links { display: none; }
-      #stats, #servicios, #porqueyo, #proceso, #contacto { padding: 80px 24px; }
-      .why-grid { grid-template-columns: 1fr; gap: 40px; }
+
+      #hero { padding: 140px 28px 100px; }
+      .hero-tag { font-size: 0.65rem; letter-spacing: 3px; }
+      .hero-buttons { flex-direction: column; align-items: center; gap: 14px; }
+      .btn-primary, .btn-outline { width: 100%; max-width: 300px; text-align: center; padding: 16px 24px; }
+
+      #stats { padding: 60px 28px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+
+      #servicios { padding: 80px 28px; }
+      .services-grid { grid-template-columns: 1fr; gap: 2px; }
+      .service-card { padding: 36px 28px; }
+
+      #porqueyo { padding: 80px 28px; }
+      .why-grid { grid-template-columns: 1fr; gap: 48px; }
+      .why-left .big-text { font-size: 2.2rem; }
+      .why-left .btn-primary { width: 100%; text-align: center; }
+
+      #proceso { padding: 80px 28px; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
       .process-steps::before { display: none; }
+      .step { padding: 0 8px; }
+
+      #contacto { padding: 80px 28px; }
       .form-row { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 16px; text-align: center; }
+      .contact-wrapper { padding: 0; }
+
+      footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 40px 28px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .process-steps { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
     }
   </style>
 </head>
@@ -704,7 +737,7 @@
 
 <!-- HERO -->
 <section id="hero">
-  <p class="hero-tag">Diseño Web &amp; Digital — Padre Hurtado, Chile</p>
+  <p class="hero-tag">Diseño Web &amp; Digital — Santiago de Chile</p>
   <h1 class="hero-title">Tu negocio<br/><span>merece más</span></h1>
   <p class="hero-subtitle">Sitios web que trabajan mientras tú descansas</p>
   <p class="hero-desc">Creo experiencias digitales que convierten visitantes en clientes con agenda automática 24/7 para que tu negocio nunca pare</p>
