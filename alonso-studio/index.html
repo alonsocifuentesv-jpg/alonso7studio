@@ -662,6 +662,12 @@
       transform: translateY(0);
     }
 
+    /* OCULTAR CURSOR EN MÓVIL */
+    @media (hover: none), (max-width: 768px) {
+      body { cursor: auto; }
+      .cursor, .cursor-ring { display: none !important; }
+    }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
       nav { padding: 20px 24px; }
