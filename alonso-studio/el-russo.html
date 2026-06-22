@@ -391,6 +391,7 @@
         <textarea id="mensaje" rows="3" placeholder="Algo que quieras agregar..."></textarea>
       </div>
       <button type="submit" class="btn-submit">Enviar reserva por WhatsApp →</button>
+      <p style="text-align:center;margin-top:14px;font-size:0.78rem;color:rgba(201,168,76,0.7);letter-spacing:1px;">⚠️ Se requiere abono anticipado de <strong style="color:var(--gold)">$5.000</strong> para confirmar tu hora — el resto se paga en el local</p>
     </form>
     <a href="https://wa.me/56939665163" target="_blank" class="wa-direct reveal">
       <span>💬</span>
@@ -458,7 +459,7 @@
     const s=document.getElementById('servicio').value;
     const h=document.getElementById('horario').value;
     const m=document.getElementById('mensaje').value;
-    const txt=`Hola El Russo! Quiero reservar una hora 💈\n\n*Nombre:* ${n}\n*Teléfono:* ${t}\n*Servicio:* ${s}\n*Horario preferido:* ${h||'A coordinar'}${m?'\n*Mensaje:* '+m:''}`;
+    const txt=`Hola El Russo! Quiero reservar una hora 💈\n\n*Nombre:* ${n}\n*Teléfono:* ${t}\n*Servicio:* ${s}\n*Horario preferido:* ${h||'A coordinar'}${m?'\n*Mensaje:* '+m:''}\n\n💰 *Abono anticipado:* $5.000 (el resto se paga en el local)`;
     window.open(`https://wa.me/56939665163?text=${encodeURIComponent(txt)}`,'_blank');
   });
 
