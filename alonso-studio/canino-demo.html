@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pelaje Studio | Peluquería Canina Premium · Santiago de Chile</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --amber: #c8843a;
+  --amber-light: #e8a85a;
+  --amber-pale: #f5c878;
+  --dark: #0d0b08;
+  --dark2: #1a1510;
+  --dark3: #241e16;
+  --warm: #2e2318;
+  --text: #f0ebe3;
+  --text-muted: rgba(240,235,227,0.55);
+  --border: rgba(200,132,58,0.18);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'DM Sans',sans-serif;
+  background:var(--dark);
+  color:var(--text);
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* CURSOR */
+.cursor { position:fixed; width:10px; height:10px; background:var(--amber); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:transform .1s; }
+.cursor-ring { position:fixed; width:34px; height:34px; border:1.5px solid rgba(200,132,58,0.5); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:left .12s ease,top .12s ease; }
+@media(hover:none),(max-width:768px){ .cursor,.cursor-ring{display:none;} }
+
+/* CANVAS */
+canvas#particles { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; opacity:.35; }
+
+/* NAV */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:20px 48px;
+  background:rgba(13,11,8,0.85);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem; font-weight:700; letter-spacing:3px;
+  color:var(--text);
+}
+.nav-logo span { color:var(--amber); }
+.nav-links { display:flex; gap:36px; list-style:none; }
+.nav-links a { color:var(--text-muted); text-decoration:none; font-size:.85rem; letter-spacing:1px; text-transform:uppercase; transition:color .3s; }
+.nav-links a:hover { color:var(--amber-light); }
+.nav-cta {
+  background:transparent; border:1px solid var(--amber);
+  color:var(--amber); padding:10px 24px; font-family:'DM Sans',sans-serif;
+  font-size:.82rem; letter-spacing:2px; text-transform:uppercase;
+  cursor:none; transition:all .3s; text-decoration:none;
+  position:relative; overflow:hidden;
+}
+.nav-cta::after {
+  content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+  background:linear-gradient(90deg,transparent,rgba(200,132,58,0.15),transparent);
+  animation:shine 4s ease infinite;
+}
+@keyframes shine { 0%{left:-100%} 20%{left:100%} 100%{left:100%} }
+.nav-cta:hover { background:var(--amber); color:var(--dark); }
+@media(max-width:768px){
+  nav { padding:16px 20px; }
+  .nav-links { display:none; }
+}
+
+/* HERO */
+.hero {
+  min-height:100vh; position:relative; z-index:1;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:120px 24px 80px;
+  overflow:hidden;
+}
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 40%, rgba(200,132,58,0.08) 0%, transparent 70%);
+}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  border:1px solid var(--border); padding:8px 20px;
+  font-size:.75rem; letter-spacing:3px; text-transform:uppercase;
+  color:var(--amber); margin-bottom:36px;
+  background:rgba(200,132,58,0.06);
+}
+.hero-badge svg { width:14px; height:14px; }
+.hero h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.2rem,8vw,7rem);
+  font-weight:700; line-height:1.0;
+  letter-spacing:2px; margin-bottom:12px;
+}
+.hero h1 em { font-style:italic; color:var(--amber-light); }
+.hero-sub {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.1rem,2.5vw,1.5rem);
+  font-style:italic; color:var(--text-muted);
+  margin-bottom:48px; letter-spacing:1px;
+}
+.hero-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.btn-primary {
+  background:var(--amber); color:var(--dark);
+  padding:16px 40px; font-size:.88rem; letter-spacing:2px;
+  text-transform:uppercase; font-weight:600; text-decoration:none;
+  cursor:none; transition:all .3s; position:relative; overflow:hidden;
+  border:none;
+}
+.btn-primary::after {
+  content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);
+  animation:shine 4.5s ease infinite;
+}
+.btn-primary:hover { background:var(--amber-light); transform:translateY(-2px); }
+.btn-outline {
+  background:transparent; border:1px solid rgba(240,235,227,0.25);
+  color:var(--text); padding:16px 40px; font-size:.88rem;
+  letter-spacing:2px; text-transform:uppercase; text-decoration:none;
+  cursor:none; transition:all .3s;
+}
+.btn-outline:hover { border-color:var(--amber); color:var(--amber); }
+.hero-scroll { margin-top:80px; display:flex; flex-direction:column; align-items:center; gap:8px; opacity:.4; }
+.hero-scroll span { font-size:.7rem; letter-spacing:3px; text-transform:uppercase; }
+.scroll-line { width:1px; height:50px; background:linear-gradient(to bottom,var(--amber),transparent); animation:scrollPulse 2s ease-in-out infinite; }
+@keyframes scrollPulse { 0%,100%{opacity:.4;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.2)} }
+
+/* STATS */
+.stats-bar {
+  position:relative; z-index:1;
+  display:flex; justify-content:center; gap:0;
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  background:var(--dark2);
+}
+.stat-item {
+  flex:1; max-width:220px; padding:40px 24px; text-align:center;
+  border-right:1px solid var(--border);
+}
+.stat-item:last-child { border-right:none; }
+.stat-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.8rem; font-weight:700; color:var(--amber-light);
+  line-height:1;
+}
+.stat-label { font-size:.75rem; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-top:6px; }
+@media(max-width:600px){
+  .stats-bar { flex-wrap:wrap; }
+  .stat-item { min-width:50%; border-right:none; border-bottom:1px solid var(--border); }
+}
+
+/* SECTION BASE */
+section { position:relative; z-index:1; }
+.section-label {
+  font-size:.72rem; letter-spacing:4px; text-transform:uppercase;
+  color:var(--amber); margin-bottom:16px;
+  display:flex; align-items:center; gap:12px;
+}
+.section-label::before { content:''; width:30px; height:1px; background:var(--amber); }
+.section-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:700; line-height:1.15; margin-bottom:20px;
+}
+.section-title em { font-style:italic; color:var(--amber-light); }
+
+/* REVEAL */
+.reveal { opacity:0; transform:translateY(40px); transition:opacity .8s ease, transform .8s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-left { opacity:0; transform:translateX(-40px); transition:opacity .8s ease, transform .8s ease; }
+.reveal-left.visible { opacity:1; transform:translateX(0); }
+.reveal-right { opacity:0; transform:translateX(40px); transition:opacity .8s ease, transform .8s ease; }
+.reveal-right.visible { opacity:1; transform:translateX(0); }
+
+/* SERVICES */
+.services { padding:100px 48px; }
+.services-inner { max-width:1100px; margin:0 auto; }
+.services-header { margin-bottom:64px; }
+.services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+.srv-card {
+  background:var(--dark2); padding:48px 36px;
+  border:1px solid var(--border); position:relative; overflow:hidden;
+  transition:all .4s;
+}
+.srv-card::before {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,transparent,var(--amber),transparent);
+  transform:scaleX(0); transition:transform .4s;
+}
+.srv-card:hover { background:var(--dark3); transform:translateY(-4px); }
+.srv-card:hover::before { transform:scaleX(1); }
+.srv-icon { width:48px; height:48px; margin-bottom:24px; color:var(--amber); }
+.srv-name {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem; font-weight:600; margin-bottom:12px;
+}
+.srv-desc { font-size:.88rem; color:var(--text-muted); line-height:1.7; margin-bottom:24px; }
+.srv-price { font-size:1.4rem; font-weight:600; color:var(--amber-light); }
+.srv-price span { font-size:.8rem; color:var(--text-muted); font-weight:400; }
+@media(max-width:900px){ .services-grid { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:600px){ .services-grid { grid-template-columns:1fr; } .services { padding:70px 20px; } }
+
+/* ABOUT / WHY */
+.why { padding:100px 48px; background:var(--dark2); }
+.why-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.why-visual {
+  position:relative; aspect-ratio:4/5;
+  background:var(--warm); overflow:hidden;
+}
+.why-visual::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(200,132,58,0.12) 0%, transparent 60%);
+}
+.why-visual-inner {
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:16px;
+}
+.why-big-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:8rem; font-weight:700; line-height:1;
+  color:var(--amber); opacity:.15;
+  position:absolute; bottom:24px; right:24px;
+}
+.why-icon-big { width:120px; height:120px; color:var(--amber); opacity:.3; }
+.why-tag {
+  position:absolute; top:28px; left:28px;
+  background:var(--amber); color:var(--dark);
+  padding:8px 16px; font-size:.72rem; letter-spacing:2px; text-transform:uppercase; font-weight:600;
+}
+.why-list { list-style:none; margin-top:36px; display:flex; flex-direction:column; gap:24px; }
+.why-list li { display:flex; align-items:flex-start; gap:16px; }
+.why-check { width:20px; height:20px; min-width:20px; color:var(--amber); margin-top:2px; }
+.why-list-text strong { display:block; font-size:.95rem; margin-bottom:4px; }
+.why-list-text span { font-size:.85rem; color:var(--text-muted); line-height:1.6; }
+@media(max-width:768px){
+  .why-inner { grid-template-columns:1fr; gap:40px; }
+  .why-visual { aspect-ratio:16/9; }
+  .why { padding:70px 20px; }
+}
+
+/* GALLERY */
+.gallery { padding:100px 48px; }
+.gallery-inner { max-width:1200px; margin:0 auto; }
+.gallery-header { margin-bottom:52px; }
+.gallery-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:repeat(2,220px);
+  gap:3px;
+}
+.gal { background:var(--dark3); overflow:hidden; position:relative; cursor:none; }
+.gal::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(200,132,58,0.1) 0%, transparent 50%);
+  opacity:0; transition:opacity .4s;
+}
+.gal:hover::after { opacity:1; }
+.gal.big { grid-row:span 2; }
+.gal.wide { grid-column:span 2; }
+.gal-inner {
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:8px;
+}
+.gal-emoji { font-size:2.5rem; opacity:.3; }
+.gal-label { font-size:.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); opacity:.5; }
+.gal-1 { background:linear-gradient(135deg,#1a1208,#2a1e0e); }
+.gal-2 { background:linear-gradient(135deg,#0e1218,#182030); }
+.gal-3 { background:linear-gradient(135deg,#120c18,#1e1228); }
+.gal-4 { background:linear-gradient(135deg,#081410,#102018); }
+.gal-5 { background:linear-gradient(135deg,#181008,#281a0a); }
+.gal-6 { background:linear-gradient(135deg,#0c1008,#181a0e); }
+@media(max-width:768px){
+  .gallery-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; }
+  .gal.big, .gal.wide { grid-row:span 1; grid-column:span 1; }
+  .gal { height:160px; }
+  .gallery { padding:70px 20px; }
+}
+
+/* TESTIMONIALS */
+.testimonials { padding:100px 48px; background:var(--dark2); }
+.testi-inner { max-width:1100px; margin:0 auto; }
+.testi-header { margin-bottom:64px; }
+.testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.testi-card {
+  background:var(--dark); padding:40px 32px;
+  border:1px solid var(--border); position:relative;
+}
+.testi-quote {
+  font-family:'Cormorant Garamond',serif;
+  font-size:3rem; color:var(--amber); opacity:.2;
+  line-height:.8; margin-bottom:16px;
+}
+.testi-text {
+  font-size:.92rem; line-height:1.8; color:var(--text-muted);
+  font-style:italic; margin-bottom:28px;
+}
+.testi-stars { color:var(--amber-light); font-size:1rem; margin-bottom:16px; }
+.testi-author { display:flex; align-items:center; gap:12px; }
+.testi-avatar {
+  width:42px; height:42px; border-radius:50%;
+  background:linear-gradient(135deg,var(--amber),var(--amber-pale));
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:700;
+  color:var(--dark);
+}
+.testi-name { font-size:.88rem; font-weight:600; }
+.testi-dog { font-size:.78rem; color:var(--amber); }
+@media(max-width:900px){ .testi-grid { grid-template-columns:1fr; } }
+@media(max-width:600px){ .testimonials { padding:70px 20px; } }
+
+/* HORARIOS */
+.horarios { padding:100px 48px; }
+.horarios-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+.horario-card {
+  background:var(--warm); padding:48px 40px;
+  border:1px solid var(--border);
+}
+.horario-row { display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-bottom:1px solid var(--border); }
+.horario-row:last-child { border-bottom:none; }
+.horario-day { font-size:.88rem; color:var(--text-muted); letter-spacing:1px; }
+.horario-time { font-size:.88rem; font-weight:600; color:var(--amber-light); }
+.horario-closed { color:rgba(240,235,227,0.25); }
+.agenda-badge {
+  margin-top:24px; padding:16px 20px;
+  background:rgba(200,132,58,0.08); border:1px solid var(--border);
+  display:flex; align-items:center; gap:12px; font-size:.82rem;
+}
+.agenda-dot { width:8px; height:8px; border-radius:50%; background:var(--amber-light); animation:pulse 2s ease infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+.why-col { }
+.why-col .section-title { font-size:clamp(1.6rem,3vw,2.4rem); }
+@media(max-width:768px){ .horarios-inner { grid-template-columns:1fr; } .horarios { padding:70px 20px; } }
+
+/* CONTACT */
+.contact { padding:100px 48px; background:var(--dark2); }
+.contact-inner { max-width:800px; margin:0 auto; text-align:center; }
+.contact-inner .section-title { margin-bottom:12px; }
+.contact-sub { color:var(--text-muted); margin-bottom:52px; font-size:.95rem; }
+.contact-form { display:flex; flex-direction:column; gap:16px; text-align:left; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.form-field { display:flex; flex-direction:column; gap:8px; }
+.form-field label { font-size:.75rem; letter-spacing:2px; text-transform:uppercase; color:var(--amber); }
+.form-field input, .form-field select, .form-field textarea {
+  background:var(--dark); border:1px solid var(--border);
+  color:var(--text); padding:16px 20px; font-family:'DM Sans',sans-serif;
+  font-size:.9rem; outline:none; transition:border-color .3s;
+  -webkit-appearance:none;
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color:var(--amber); }
+.form-field textarea { resize:none; height:120px; }
+.form-field select option { background:var(--dark2); }
+.btn-submit {
+  background:var(--amber); color:var(--dark); border:none;
+  padding:18px; font-family:'DM Sans',sans-serif;
+  font-size:.88rem; letter-spacing:2px; text-transform:uppercase; font-weight:600;
+  cursor:none; transition:all .3s; position:relative; overflow:hidden;
+}
+.btn-submit::after {
+  content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);
+  animation:shine 4s ease infinite;
+}
+.btn-submit:hover { background:var(--amber-light); transform:translateY(-2px); }
+@media(max-width:600px){ .form-row { grid-template-columns:1fr; } .contact { padding:70px 20px; } }
+
+/* FOOTER */
+footer {
+  background:var(--dark); border-top:1px solid var(--border);
+  padding:60px 48px 32px; position:relative; z-index:1;
+}
+.footer-inner { max-width:1100px; margin:0 auto; }
+.footer-top { display:flex; justify-content:space-between; align-items:flex-start; gap:40px; margin-bottom:48px; flex-wrap:wrap; }
+.footer-brand { }
+.footer-logo {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem; font-weight:700; letter-spacing:3px; margin-bottom:12px;
+}
+.footer-logo span { color:var(--amber); }
+.footer-tagline { font-size:.82rem; color:var(--text-muted); letter-spacing:1px; }
+.footer-links { display:flex; flex-direction:column; gap:10px; }
+.footer-links a { color:var(--text-muted); text-decoration:none; font-size:.85rem; transition:color .3s; }
+.footer-links a:hover { color:var(--amber); }
+.footer-contact { display:flex; flex-direction:column; gap:10px; }
+.footer-contact a { color:var(--text-muted); text-decoration:none; font-size:.85rem; display:flex; align-items:center; gap:8px; transition:color .3s; }
+.footer-contact a:hover { color:var(--amber); }
+.footer-contact svg { width:16px; height:16px; color:var(--amber); }
+.footer-socials { display:flex; gap:12px; margin-top:8px; }
+.social-icon { width:38px; height:38px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--text-muted); transition:all .3s; text-decoration:none; }
+.social-icon:hover { border-color:var(--amber); color:var(--amber); }
+.social-icon svg { width:16px; height:16px; }
+.footer-bottom { border-top:1px solid var(--border); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.footer-copy { font-size:.78rem; color:var(--text-muted); }
+.footer-credit { font-size:.78rem; color:var(--text-muted); }
+.footer-credit a { color:var(--amber); text-decoration:none; }
+@media(max-width:600px){ footer { padding:48px 20px 24px; } .footer-bottom { flex-direction:column; text-align:center; } }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">PELAJE<span>·</span>STUDIO</div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Reservar hora</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+    Peluquería Canina · Santiago de Chile
+  </div>
+  <h1>Tu mascota<br>merece lo <em>mejor</em></h1>
+  <p class="hero-sub">Grooming profesional con amor y dedicación</p>
+  <div class="hero-btns">
+    <a href="#contacto" class="btn-primary">Reservar hora</a>
+    <a href="#servicios" class="btn-outline">Ver servicios</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar" id="statsBar">
+  <div class="stat-item reveal">
+    <div class="stat-num" data-target="650" data-suffix="+">0</div>
+    <div class="stat-label">Mascotas atendidas</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num" data-target="5" data-suffix=" años">0</div>
+    <div class="stat-label">De experiencia</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num" data-target="6" data-suffix="">0</div>
+    <div class="stat-label">Servicios disponibles</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-num" data-target="100" data-suffix="%">0</div>
+    <div class="stat-label">Clientes satisfechos</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="services-inner">
+    <div class="services-header reveal">
+      <div class="section-label">Nuestros servicios</div>
+      <h2 class="section-title">Cuidado completo<br>para tu <em>mejor amigo</em></h2>
+    </div>
+    <div class="services-grid">
+      <div class="srv-card reveal">
+        <svg class="srv-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 16.5C5.5 15 4 13 4 10.5A8 8 0 0 1 20 10.5c0 2.5-1.5 4.5-3 6L12 21l-5-4.5z"/><circle cx="9" cy="9" r="1" fill="currentColor"/><circle cx="15" cy="9" r="1" fill="currentColor"/></svg>
+        <div class="srv-name">Baño y Secado</div>
+        <div class="srv-desc">Baño con shampoo premium, acondicionador y secado profesional. Deja a tu mascota limpia y perfumada.</div>
+        <div class="srv-price">$9.000 <span>/ sesión</span></div>
+      </div>
+      <div class="srv-card reveal">
+        <svg class="srv-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7s2-2 5-2 5 2 5 2M3 17s2 2 5 2 5-2 5-2M21 12H3M15 5l3 7-3 7"/></svg>
+        <div class="srv-name">Corte y Estilismo</div>
+        <div class="srv-desc">Corte personalizado según raza y estilo. Tu mascota lucirá elegante y cómoda todo el mes.</div>
+        <div class="srv-price">$16.000 <span>/ sesión</span></div>
+      </div>
+      <div class="srv-card reveal">
+        <svg class="srv-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        <div class="srv-name">Corte de Uñas</div>
+        <div class="srv-desc">Corte seguro y preciso. Evita lesiones y mantiene las patas de tu mascota en perfectas condiciones.</div>
+        <div class="srv-price">$3.500 <span>/ sesión</span></div>
+      </div>
+      <div class="srv-card reveal">
+        <svg class="srv-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        <div class="srv-name">Limpieza de Oídos</div>
+        <div class="srv-desc">Limpieza suave y profunda para prevenir infecciones. Incluye revisión y recomendaciones de cuidado.</div>
+        <div class="srv-price">$3.500 <span>/ sesión</span></div>
+      </div>
+      <div class="srv-card reveal">
+        <svg class="srv-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <div class="srv-name">Paquete Completo</div>
+        <div class="srv-desc">Baño, corte, uñas, oídos y perfumado. Todo en una sola visita. El spa completo para tu mascota.</div>
+        <div class="srv-price">$24.000 <span>/ sesión</span></div>
+      </div>
+      <div class="srv-card reveal">
+        <svg class="srv-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <div class="srv-name">Spa Canino</div>
+        <div class="srv-desc">Experiencia premium: masaje relajante, hidratación profunda y aromaterapia. Tu mascota merece lo mejor.</div>
+        <div class="srv-price">$20.000 <span>/ sesión</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="nosotros">
+  <div class="why-inner">
+    <div class="why-visual reveal-left">
+      <div class="why-visual-inner">
+        <svg class="why-icon-big" viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 11a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm15 0a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zM12 22a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zM4 14c-2.2.5-4 2.4-4 4.5V22h8v-3.5C8 16.4 6.2 14.5 4 14zm16 0c-2.2.5-4 2.4-4 4.5V22h8v-3.5c0-2.1-1.8-4-4-4.5z"/></svg>
+      </div>
+      <div class="why-big-num">5★</div>
+      <div class="why-tag">Con amor desde 2019</div>
+    </div>
+    <div class="reveal-right">
+      <div class="section-label">¿Por qué elegirnos?</div>
+      <h2 class="section-title">Más que una<br>estética, somos <em>familia</em></h2>
+      <ul class="why-list">
+        <li>
+          <svg class="why-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <div class="why-list-text">
+            <strong>Groomers certificados</strong>
+            <span>Nuestro equipo tiene formación profesional en estética canina y manejo de razas.</span>
+          </div>
+        </li>
+        <li>
+          <svg class="why-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <div class="why-list-text">
+            <strong>Productos de primera calidad</strong>
+            <span>Solo usamos shampoos hipoalergénicos y productos seguros para la piel de tu mascota.</span>
+          </div>
+        </li>
+        <li>
+          <svg class="why-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <div class="why-list-text">
+            <strong>Ambiente sin estrés</strong>
+            <span>Atención personalizada y espacio tranquilo para que tu mascota se sienta segura y cómoda.</span>
+          </div>
+        </li>
+        <li>
+          <svg class="why-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <div class="why-list-text">
+            <strong>Agenda online 24/7</strong>
+            <span>Reserva tu hora desde el celular a cualquier hora, sin llamadas ni esperas.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galeria">
+  <div class="gallery-inner">
+    <div class="gallery-header reveal">
+      <div class="section-label">Galería</div>
+      <h2 class="section-title">Nuestros <em>trabajos</em></h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gal big gal-1">
+        <div class="gal-inner">
+          <div class="gal-emoji">🐕</div>
+          <div class="gal-label">Golden Retriever</div>
+        </div>
+      </div>
+      <div class="gal gal-2">
+        <div class="gal-inner">
+          <div class="gal-emoji">🐩</div>
+          <div class="gal-label">Poodle</div>
+        </div>
+      </div>
+      <div class="gal gal-3">
+        <div class="gal-inner">
+          <div class="gal-emoji">🐾</div>
+          <div class="gal-label">Schnauzer</div>
+        </div>
+      </div>
+      <div class="gal wide gal-4">
+        <div class="gal-inner">
+          <div class="gal-emoji">✂️</div>
+          <div class="gal-label">Corte estilo</div>
+        </div>
+      </div>
+      <div class="gal gal-5">
+        <div class="gal-inner">
+          <div class="gal-emoji">🛁</div>
+          <div class="gal-label">Baño premium</div>
+        </div>
+      </div>
+      <div class="gal gal-6">
+        <div class="gal-inner">
+          <div class="gal-emoji">🐶</div>
+          <div class="gal-label">Maltés</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testi-inner">
+    <div class="testi-header reveal">
+      <div class="section-label">Opiniones</div>
+      <h2 class="section-title">Lo que dicen<br>nuestros <em>clientes</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Mi Golden nunca había quedado tan bien. El equipo es súper cariñoso con los perros y eso se nota. Volvemos siempre.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">C</div>
+          <div>
+            <div class="testi-name">Carla M.</div>
+            <div class="testi-dog">Golden Retriever · Max</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Reservé online a las 11 de la noche y al día siguiente me confirmaron. Facilísimo. Y mi Schnauzer quedó impecable.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">D</div>
+          <div>
+            <div class="testi-name">Diego F.</div>
+            <div class="testi-dog">Schnauzer · Bruno</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Me dio miedo al principio llevar a mi Bichón porque es muy nervioso. Acá lo trataron con una paciencia increíble.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">V</div>
+          <div>
+            <div class="testi-name">Valentina R.</div>
+            <div class="testi-dog">Bichón Frisé · Nube</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIOS -->
+<section class="horarios" id="horarios">
+  <div class="horarios-inner">
+    <div class="reveal-left">
+      <div class="section-label">Horarios</div>
+      <h2 class="section-title">Estamos<br><em>cuando nos necesitas</em></h2>
+      <div class="horario-card" style="margin-top:32px;">
+        <div class="horario-row"><span class="horario-day">Lunes — Viernes</span><span class="horario-time">09:00 — 19:00</span></div>
+        <div class="horario-row"><span class="horario-day">Sábado</span><span class="horario-time">09:00 — 17:00</span></div>
+        <div class="horario-row"><span class="horario-day">Domingo</span><span class="horario-time horario-closed">Cerrado</span></div>
+        <div class="agenda-badge">
+          <div class="agenda-dot"></div>
+          <span>Reserva online disponible <strong>24/7</strong> — agenda cuando quieras</span>
+        </div>
+      </div>
+    </div>
+    <div class="why-col reveal-right" style="padding-top:80px;">
+      <div class="section-label">Ubicación</div>
+      <h3 class="section-title" style="font-size:clamp(1.4rem,2.5vw,2rem);">Encuéntranos en<br><em>Padre Hurtado</em></h3>
+      <ul class="why-list" style="margin-top:24px;">
+        <li>
+          <svg class="why-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="why-list-text">
+            <strong>Padre Hurtado, Santiago</strong>
+            <span>Región Metropolitana, Chile</span>
+          </div>
+        </li>
+        <li>
+          <svg class="why-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div class="why-list-text">
+            <strong>+56 9 3966 5163</strong>
+            <span>WhatsApp disponible</span>
+          </div>
+        </li>
+        <li>
+          <svg class="why-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div class="why-list-text">
+            <strong>contacto@pelajestudio.cl</strong>
+            <span>Respondemos en menos de 2 horas</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="section-label" style="justify-content:center;">Reservar hora</div>
+      <h2 class="section-title">Agenda la cita<br>de tu <em>mascota</em></h2>
+      <p class="contact-sub">Completa el formulario y te confirmamos por WhatsApp en menos de 2 horas.</p>
+    </div>
+    <form class="contact-form reveal" onsubmit="enviarWA(event)">
+      <div class="form-row">
+        <div class="form-field">
+          <label>Tu nombre</label>
+          <input type="text" id="f-nombre" placeholder="María González" required>
+        </div>
+        <div class="form-field">
+          <label>Teléfono</label>
+          <input type="tel" id="f-tel" placeholder="+56 9 1234 5678">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Nombre de tu mascota</label>
+          <input type="text" id="f-mascota" placeholder="Max" required>
+        </div>
+        <div class="form-field">
+          <label>Raza</label>
+          <input type="text" id="f-raza" placeholder="Golden Retriever">
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Servicio que necesitas</label>
+        <select id="f-servicio">
+          <option value="">Selecciona un servicio</option>
+          <option>Baño y Secado — $9.000</option>
+          <option>Corte y Estilismo — $16.000</option>
+          <option>Corte de Uñas — $3.500</option>
+          <option>Limpieza de Oídos — $3.500</option>
+          <option>Paquete Completo — $24.000</option>
+          <option>Spa Canino — $20.000</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Mensaje adicional</label>
+        <textarea id="f-msg" placeholder="Cuéntanos algo especial de tu mascota, alergias, temperamento..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Reservar por WhatsApp →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">PELAJE<span>·</span>STUDIO</div>
+        <div class="footer-tagline">Peluquería Canina Premium · Santiago de Chile</div>
+        <div class="footer-socials" style="margin-top:20px;">
+          <a href="#" class="social-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://wa.me/56939665163" class="social-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:16px;">Servicios</div>
+        <div class="footer-links">
+          <a href="#servicios">Baño y Secado</a>
+          <a href="#servicios">Corte y Estilismo</a>
+          <a href="#servicios">Paquete Completo</a>
+          <a href="#servicios">Spa Canino</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:16px;">Contacto</div>
+        <div class="footer-contact">
+          <a href="tel:+56939665163">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +56 9 3966 5163
+          </a>
+          <a href="mailto:contacto@pelajestudio.cl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            contacto@pelajestudio.cl
+          </a>
+          <a href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Padre Hurtado, Santiago
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Pelaje Studio · Todos los derechos reservados</div>
+      <div class="footer-credit">Web por <a href="https://alonsostudiodigital.com">Alonso Studio</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// CURSOR
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
+  ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
+});
+
+// PARTICLES (warm amber sparks)
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+resize(); window.addEventListener('resize', resize);
+function Particle(){
+  this.x = Math.random()*W; this.y = Math.random()*H;
+  this.vx = (Math.random()-.5)*.4; this.vy = (Math.random()-.5)*.4;
+  this.r = Math.random()*1.5+.3;
+  this.life = Math.random();
+  this.colors = ['rgba(200,132,58,','rgba(232,168,90,','rgba(245,200,120,'];
+  this.c = this.colors[Math.floor(Math.random()*this.colors.length)];
+}
+for(let i=0;i<80;i++) particles.push(new Particle());
+function animate(){
+  ctx.clearRect(0,0,W,H);
+  particles.forEach(p=>{
+    p.life += .003; if(p.life>1){ p.life=0; p.x=Math.random()*W; p.y=Math.random()*H; }
+    const a = Math.sin(p.life*Math.PI)*.8;
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = p.c+a+')'; ctx.fill();
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0||p.x>W) p.vx*=-1;
+    if(p.y<0||p.y>H) p.vy*=-1;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+
+// SCROLL REVEAL
+const reveals = document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:.15});
+reveals.forEach(r=>obs.observe(r));
+
+// COUNTERS
+const counters = document.querySelectorAll('[data-target]');
+const countObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting && !e.target.counted){
+      e.target.counted = true;
+      const target = +e.target.dataset.target;
+      const suffix = e.target.dataset.suffix || '';
+      let current = 0;
+      const step = target / 60;
+      const timer = setInterval(()=>{
+        current += step;
+        if(current >= target){ current = target; clearInterval(timer); }
+        e.target.textContent = Math.floor(current) + suffix;
+      }, 25);
+    }
+  });
+},{threshold:.5});
+counters.forEach(c=>countObs.observe(c));
+
+// WHATSAPP FORM
+function enviarWA(e){
+  e.preventDefault();
+  const nombre = document.getElementById('f-nombre').value;
+  const tel = document.getElementById('f-tel').value;
+  const mascota = document.getElementById('f-mascota').value;
+  const raza = document.getElementById('f-raza').value;
+  const srv = document.getElementById('f-servicio').value;
+  const msg = document.getElementById('f-msg').value;
+  const texto = `Hola Pelaje Studio! Me llamo ${nombre} y quiero reservar una hora.\n\nMascota: ${mascota}${raza ? ' ('+raza+')' : ''}\nServicio: ${srv || 'Por consultar'}\n${tel ? 'Tel: '+tel : ''}${msg ? '\n\nNotas: '+msg : ''}`;
+  window.open('https://wa.me/56939665163?text='+encodeURIComponent(texto),'_blank');
+}
+</script>
+</body>
+</html>
