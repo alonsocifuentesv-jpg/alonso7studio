@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrusel Instagram · Alonso Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Outfit',sans-serif;background:#111;display:flex;flex-direction:column;align-items:center;gap:24px;padding:24px;}
+.slide{
+  width:400px;height:400px;
+  position:relative;overflow:hidden;
+  border-radius:4px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:40px 36px;
+  flex-shrink:0;
+}
+.slide-num{position:absolute;top:16px;right:20px;font-size:.7rem;font-weight:600;letter-spacing:2px;opacity:.35;}
+.logo{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-size:.7rem;font-weight:700;letter-spacing:2px;opacity:.45;white-space:nowrap;}
+
+/* SLIDE 1 */
+.s1{background:linear-gradient(135deg,#0a0a0a 0%,#1a1200 100%);}
+.s1 .tag{font-size:.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#c9a84c;margin-bottom:20px;}
+.s1 h1{font-size:2rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:16px;}
+.s1 h1 span{color:#c9a84c;}
+.s1 p{font-size:.88rem;color:rgba(255,255,255,0.45);letter-spacing:.5px;}
+.s1 .line{width:40px;height:2px;background:#c9a84c;margin:0 auto 20px;}
+
+/* SLIDE 2 */
+.s2{background:linear-gradient(135deg,#0a0a0a 0%,#1a1200 100%);}
+.s2 .big{font-size:5rem;font-weight:800;color:#c9a84c;line-height:1;}
+.s2 .big-sub{font-size:.8rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:24px;}
+.s2 p{font-size:1.05rem;color:#fff;line-height:1.7;font-weight:500;}
+.s2 p span{color:#c9a84c;font-weight:700;}
+
+/* SLIDE 3 */
+.s3{background:linear-gradient(135deg,#0a0a0a 0%,#1a1200 100%);align-items:flex-start;text-align:left;}
+.s3 h2{font-size:1.1rem;font-weight:700;color:#c9a84c;margin-bottom:28px;letter-spacing:1px;}
+.s3-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px;}
+.s3-check{width:28px;height:28px;min-width:28px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.85rem;}
+.s3-text strong{display:block;font-size:.92rem;color:#fff;font-weight:700;}
+.s3-text span{font-size:.78rem;color:rgba(255,255,255,0.4);}
+
+/* SLIDE 4 */
+.s4{background:linear-gradient(135deg,#0a0a0a 0%,#1a1200 100%);}
+.s4 .label{font-size:.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:20px;}
+.s4 h2{font-size:1.5rem;font-weight:800;color:#fff;line-height:1.3;margin-bottom:28px;}
+.s4 h2 span{color:#c9a84c;}
+.s4-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;}
+.s4-pill{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:100px;padding:8px 14px;font-size:.78rem;color:rgba(255,255,255,0.7);font-weight:500;}
+
+/* SLIDE 5 */
+.s5{background:linear-gradient(135deg,#c9a84c 0%,#a06820 100%);}
+.s5 h2{font-size:1.6rem;font-weight:800;color:#0a0a0a;line-height:1.2;margin-bottom:12px;}
+.s5 p{font-size:.88rem;color:rgba(0,0,0,0.6);margin-bottom:28px;line-height:1.6;}
+.s5 .handle{background:rgba(0,0,0,0.15);padding:10px 24px;border-radius:100px;font-size:.9rem;font-weight:700;color:#0a0a0a;letter-spacing:1px;margin-bottom:12px;}
+.s5 .cta{font-size:.78rem;color:rgba(0,0,0,0.5);letter-spacing:1px;}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 -->
+<div class="slide s1">
+  <div class="slide-num">1 / 5</div>
+  <div class="tag">Alonso Studio</div>
+  <div class="line"></div>
+  <h1>Tu negocio existe.<br>Pero en Google...<br><span>¿aparece?</span></h1>
+  <p style="margin-top:16px;">Sigue leyendo 👉</p>
+  <div class="logo">@alonsostudio_web</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide s2">
+  <div class="slide-num">2 / 5</div>
+  <div class="big">70%</div>
+  <div class="big-sub">de las personas</div>
+  <p>busca un negocio en internet<br><span>antes de ir en persona.</span><br><br>Si no tienes web,<br>ese cliente se fue a la competencia.</p>
+  <div class="logo">@alonsostudio_web</div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide s3">
+  <div class="slide-num">3 / 5</div>
+  <h2>Una web te da:</h2>
+  <div class="s3-item">
+    <div class="s3-check">✓</div>
+    <div class="s3-text"><strong>Presencia profesional</strong><span>Te ven serio desde el primer clic</span></div>
+  </div>
+  <div class="s3-item">
+    <div class="s3-check">✓</div>
+    <div class="s3-text"><strong>Clientes 24/7</strong><span>Te encuentran aunque estés cerrado</span></div>
+  </div>
+  <div class="s3-item">
+    <div class="s3-check">✓</div>
+    <div class="s3-text"><strong>Agenda automática</strong><span>Reservas sin contestar llamadas</span></div>
+  </div>
+  <div class="s3-item">
+    <div class="s3-check">✓</div>
+    <div class="s3-text"><strong>Reseñas visibles</strong><span>Tu reputación trabajando por ti</span></div>
+  </div>
+  <div class="logo">@alonsostudio_web</div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide s4">
+  <div class="slide-num">4 / 5</div>
+  <div class="label">Sirve para cualquier negocio</div>
+  <h2>No necesitas ser<br>una <span>empresa grande</span></h2>
+  <div class="s4-grid">
+    <div class="s4-pill">🐾 Veterinarias</div>
+    <div class="s4-pill">✂️ Peluquerías</div>
+    <div class="s4-pill">🦷 Dentistas</div>
+    <div class="s4-pill">💪 Gimnasios</div>
+    <div class="s4-pill">💅 Estéticas</div>
+    <div class="s4-pill">🍕 Restaurantes</div>
+  </div>
+  <div class="logo">@alonsostudio_web</div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide s5">
+  <div class="slide-num" style="color:rgba(0,0,0,0.3);">5 / 5</div>
+  <h2>¿Quieres ver cómo quedaría la tuya?</h2>
+  <p>Soy Alonso, creo páginas web para negocios locales en Padre Hurtado. Te muestro un ejemplo gratis, sin compromiso.</p>
+  <div class="handle">@alonsostudio_web</div>
+  <div class="cta">📩 Escríbeme por DM o WhatsApp</div>
+</div>
+
+</body>
+</html>
