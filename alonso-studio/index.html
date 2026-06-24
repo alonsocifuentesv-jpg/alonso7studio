@@ -83,7 +83,8 @@
     .service-checks { list-style:none; display:flex; flex-direction:column; gap:9px; margin-bottom:28px; flex:1; }
     .service-checks li { display:flex; align-items:flex-start; gap:10px; font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.4; }
     .service-checks li::before { content:'✓'; color:var(--gold); font-weight:700; font-size:0.85rem; min-width:14px; margin-top:1px; }
-    .service-price { font-family:'Cinzel',serif; font-size:1.7rem; font-weight:900; color:var(--gold); margin-top:auto; }
+    .service-price-old { font-size:0.95rem; color:rgba(255,255,255,0.28); text-decoration:line-through; margin-top:auto; margin-bottom:4px; letter-spacing:1px; }
+    .service-price { font-family:'Cinzel',serif; font-size:1.7rem; font-weight:900; color:var(--gold); }
     .service-price small { font-family:'Inter',sans-serif; font-size:0.7rem; color:var(--gray); font-weight:400; letter-spacing:2px; }
 
     /* PORTAFOLIO */
@@ -312,6 +313,7 @@
         <li>Web 100% tuya desde el primer día</li>
         <li>Entrega en 3 a 7 días hábiles</li>
       </ul>
+      <div class="service-price-old">$450.000</div>
       <div class="service-price">$150.000 <small>CLP</small></div>
     </div>
 
@@ -333,6 +335,7 @@
         <li>Hasta 3 correos corporativos para tu equipo</li>
         <li>Cero mensajes que responder</li>
       </ul>
+      <div class="service-price-old">$900.000</div>
       <div class="service-price">$200.000 <small>CLP</small></div>
     </div>
 
