@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison Barber | Padre Hurtado</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --gold:#b8962e;
+  --gold2:#d4af57;
+  --dark:#0c0c0c;
+  --white:#ffffff;
+  --off:#f8f6f1;
+  --gray:#888;
+  --border:#e8e2d4;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--white);color:var(--dark);font-family:'Inter',sans-serif;cursor:none;overflow-x:hidden;}
+
+/* CURSOR */
+.cursor{width:8px;height:8px;background:var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s;}
+.cursor-ring{width:32px;height:32px;border:1px solid var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease;opacity:.6;}
+@media(hover:none),(max-width:768px){.cursor,.cursor-ring{display:none;}body{cursor:auto;}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
+nav.solid{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);box-shadow:0 2px 20px rgba(0,0,0,.06);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.4rem;letter-spacing:2px;color:var(--dark);}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{color:var(--dark);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:color .3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--dark);color:var(--white);padding:11px 28px;font-size:.72rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;cursor:none;transition:all .3s;position:relative;overflow:hidden;}
+.nav-cta::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(184,150,46,.3),transparent);animation:shine 3s ease infinite;}
+@keyframes shine{0%{left:-100%}50%,100%{left:100%}}
+.nav-cta:hover{background:var(--gold);}
+@media(max-width:768px){nav{padding:0 20px;}.nav-links,.nav-cta{display:none;}}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.hero-left{background:var(--dark);display:flex;flex-direction:column;justify-content:center;padding:140px 64px 80px;position:relative;overflow:hidden;}
+.hero-left::before{content:'';position:absolute;top:0;right:0;width:1px;height:100%;background:linear-gradient(180deg,transparent,var(--gold),transparent);}
+.hero-pattern{position:absolute;inset:0;opacity:.04;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,.3) 40px,rgba(255,255,255,.3) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,.3) 40px,rgba(255,255,255,.3) 41px);}
+.hero-tag{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:28px;display:flex;align-items:center;gap:12px;}
+.hero-tag::before{content:'';width:32px;height:1px;background:var(--gold);}
+.hero-left h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,5vw,5.5rem);font-weight:400;line-height:1.05;color:var(--white);margin-bottom:28px;}
+.hero-left h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{font-size:.92rem;color:rgba(255,255,255,.55);line-height:1.9;max-width:380px;margin-bottom:48px;}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+.btn-gold{background:var(--gold);color:var(--dark);padding:14px 32px;font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;cursor:none;transition:all .3s;position:relative;overflow:hidden;}
+.btn-gold::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);animation:shine 3s ease infinite;}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);}
+.btn-outline{border:1px solid rgba(255,255,255,.25);color:var(--white);padding:14px 32px;font-size:.75rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;text-decoration:none;cursor:none;transition:all .3s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+.hero-trust{display:flex;gap:40px;margin-top:64px;padding-top:40px;border-top:1px solid rgba(255,255,255,.1);}
+.trust-item{text-align:center;}
+.trust-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);line-height:1;}
+.trust-label{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:4px;}
+
+.hero-right{background:var(--off);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:140px 64px 80px;position:relative;gap:24px;}
+.hero-card{background:var(--white);border:1px solid var(--border);padding:32px;width:100%;max-width:340px;position:relative;}
+.hero-card-tag{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.hero-card-title{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:8px;}
+.hero-card-sub{font-size:.82rem;color:var(--gray);line-height:1.6;}
+.hero-card-price{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--gold);margin-top:16px;}
+.hero-card-price small{font-family:'Inter',sans-serif;font-size:.7rem;color:var(--gray);}
+.hero-scissors{position:absolute;top:-16px;right:24px;font-size:2rem;background:var(--gold);width:48px;height:48px;display:flex;align-items:center;justify-content:center;color:var(--dark);}
+
+.hero-badge{background:var(--dark);color:var(--white);padding:20px 24px;width:100%;max-width:340px;display:flex;align-items:center;gap:16px;}
+.hero-badge-stars{color:var(--gold);font-size:1rem;letter-spacing:2px;}
+.hero-badge-text{font-size:.8rem;}
+.hero-badge-text strong{display:block;font-size:1rem;font-family:'Playfair Display',serif;}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;}
+  .hero-left{padding:120px 24px 60px;}
+  .hero-right{padding:40px 24px 60px;}
+  .hero-trust{gap:24px;}
+}
+
+/* MARQUEE */
+.marquee-wrap{background:var(--gold);padding:14px 0;overflow:hidden;}
+.marquee-track{display:flex;gap:0;animation:marquee 20s linear infinite;white-space:nowrap;}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.marquee-item{font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--dark);padding:0 32px;}
+.marquee-item span{color:rgba(12,12,12,.4);margin-left:32px;}
+
+/* SERVICES */
+.services{padding:100px 64px;background:var(--white);}
+.services-inner{max-width:1100px;margin:0 auto;}
+.section-tag{font-size:.65rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.section-tag::before{content:'';width:28px;height:1px;background:var(--gold);}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:400;margin-bottom:16px;line-height:1.1;}
+.section-title em{font-style:italic;color:var(--gold);}
+.section-sub{font-size:.9rem;color:var(--gray);line-height:1.8;max-width:480px;margin-bottom:60px;}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.service-card{background:var(--white);padding:36px 32px;transition:all .3s;cursor:none;position:relative;overflow:hidden;}
+.service-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .4s;}
+.service-card:hover::after{width:100%;}
+.service-card:hover{background:var(--off);}
+.service-icon{width:44px;height:44px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--gold);}
+.service-icon svg{width:20px;height:20px;}
+.service-name{font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:8px;}
+.service-desc{font-size:.82rem;color:var(--gray);line-height:1.7;margin-bottom:20px;}
+.service-price{font-size:1.1rem;font-weight:700;color:var(--gold);font-family:'Playfair Display',serif;}
+.service-duration{font-size:.72rem;color:var(--gray);letter-spacing:1px;margin-top:2px;}
+@media(max-width:768px){
+  .services{padding:60px 20px;}
+  .services-grid{grid-template-columns:1fr;}
+}
+
+/* WHY */
+.why{padding:100px 64px;background:var(--dark);position:relative;overflow:hidden;}
+.why::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.why-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.why h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:24px;}
+.why h2 em{font-style:italic;color:var(--gold);}
+.why-sub{font-size:.9rem;color:rgba(255,255,255,.45);line-height:1.9;margin-bottom:40px;}
+.why-rating{display:flex;align-items:center;gap:16px;margin-bottom:12px;}
+.why-stars{color:var(--gold);font-size:1.2rem;letter-spacing:3px;}
+.why-score{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--white);}
+.why-reviews{font-size:.75rem;color:rgba(255,255,255,.4);letter-spacing:1px;text-transform:uppercase;}
+
+.why-list{display:flex;flex-direction:column;gap:24px;}
+.why-item{display:flex;gap:20px;align-items:flex-start;}
+.why-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);opacity:.4;line-height:1;min-width:36px;}
+.why-text strong{display:block;color:var(--white);font-size:.9rem;font-weight:600;margin-bottom:4px;}
+.why-text span{color:rgba(255,255,255,.45);font-size:.82rem;line-height:1.6;}
+@media(max-width:768px){
+  .why{padding:60px 20px;}
+  .why-inner{grid-template-columns:1fr;gap:40px;}
+}
+
+/* GALLERY */
+.gallery{padding:100px 64px;background:var(--off);}
+.gallery-inner{max-width:1100px;margin:0 auto;}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto;gap:12px;margin-top:48px;}
+.g-item{background:var(--border);overflow:hidden;position:relative;}
+.g-item:nth-child(1){grid-column:span 2;grid-row:span 2;aspect-ratio:1;}
+.g-item:nth-child(4){grid-column:span 2;}
+.g-item-inner{width:100%;height:100%;background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);display:flex;align-items:center;justify-content:center;min-height:180px;transition:transform .5s;}
+.g-item:hover .g-item-inner{transform:scale(1.05);}
+.g-label{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(0,0,0,.7));color:var(--white);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:0;transition:opacity .3s;}
+.g-item:hover .g-label{opacity:1;}
+.g-scissors{font-size:2rem;opacity:.15;color:var(--gold);}
+@media(max-width:768px){
+  .gallery{padding:60px 20px;}
+  .gallery-grid{grid-template-columns:1fr 1fr;}
+  .g-item:nth-child(1){grid-column:span 2;aspect-ratio:.8;}
+  .g-item:nth-child(4){grid-column:span 1;}
+}
+
+/* TESTIMONIALS */
+.testimonials{padding:100px 64px;background:var(--white);}
+.testimonials-inner{max-width:1100px;margin:0 auto;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
+.testi-card{border:1px solid var(--border);padding:32px;position:relative;transition:all .3s;}
+.testi-card:hover{border-color:var(--gold);box-shadow:0 8px 40px rgba(184,150,46,.1);}
+.testi-quote{font-size:3rem;font-family:'Playfair Display',serif;color:var(--gold);line-height:.5;margin-bottom:20px;opacity:.3;}
+.testi-text{font-size:.9rem;color:#444;line-height:1.8;margin-bottom:24px;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.testi-avatar{width:40px;height:40px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1rem;color:var(--dark);font-weight:700;}
+.testi-name{font-weight:600;font-size:.85rem;}
+.testi-stars{color:var(--gold);font-size:.75rem;letter-spacing:2px;}
+@media(max-width:768px){
+  .testimonials{padding:60px 20px;}
+  .testi-grid{grid-template-columns:1fr;}
+}
+
+/* HORARIOS */
+.horarios{padding:80px 64px;background:var(--off);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.horarios-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.horarios-list{display:flex;flex-direction:column;gap:0;}
+.horario-row{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--border);font-size:.88rem;}
+.horario-row:last-child{border-bottom:none;}
+.horario-dia{font-weight:500;color:var(--dark);}
+.horario-hora{color:var(--gold);font-weight:600;font-family:'Playfair Display',serif;}
+.horario-cerrado{color:var(--gray);}
+@media(max-width:768px){
+  .horarios{padding:60px 20px;}
+  .horarios-inner{grid-template-columns:1fr;gap:40px;}
+}
+
+/* MAP */
+.map-wrap{width:100%;height:280px;overflow:hidden;border:1px solid var(--border);}
+.map-wrap iframe{width:100%;height:100%;border:none;filter:grayscale(20%) contrast(95%);}
+
+/* CONTACT */
+.contact{padding:100px 64px;background:var(--dark);}
+.contact::before{content:'';display:block;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin-bottom:100px;margin-top:-100px;}
+.contact-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.contact h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:16px;}
+.contact h2 em{font-style:italic;color:var(--gold);}
+.contact-sub{font-size:.9rem;color:rgba(255,255,255,.4);line-height:1.8;margin-bottom:40px;}
+.contact-info{display:flex;flex-direction:column;gap:20px;}
+.cinfo-item{display:flex;align-items:center;gap:16px;font-size:.88rem;color:rgba(255,255,255,.6);}
+.cinfo-item svg{width:18px;height:18px;color:var(--gold);flex-shrink:0;}
+
+.contact-form{display:flex;flex-direction:column;gap:16px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-group label{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:14px 16px;font-family:'Inter',sans-serif;font-size:.88rem;outline:none;transition:border .3s;cursor:none;}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.2);}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);}
+.form-group select option{background:var(--dark);}
+.form-group textarea{resize:none;height:100px;}
+.btn-submit{background:var(--gold);color:var(--dark);border:none;padding:16px 40px;font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:none;transition:all .3s;align-self:flex-start;position:relative;overflow:hidden;}
+.btn-submit::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);animation:shine 3s ease infinite;}
+.btn-submit:hover{background:var(--gold2);transform:translateY(-2px);}
+@media(max-width:768px){
+  .contact{padding:60px 20px;}
+  .contact-inner{grid-template-columns:1fr;gap:40px;}
+  .form-row{grid-template-columns:1fr;}
+}
+
+/* FOOTER */
+footer{background:#080808;padding:32px 64px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.06);}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);}
+.footer-logo span{color:var(--gold);}
+.footer-copy{font-size:.72rem;color:rgba(255,255,255,.25);letter-spacing:1px;}
+@media(max-width:768px){footer{padding:24px 20px;flex-direction:column;gap:12px;text-align:center;}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.visible{opacity:1;transform:none;}
+.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .8s ease,transform .8s ease;}
+.reveal-left.visible{opacity:1;transform:none;}
+.reveal-right{opacity:0;transform:translateX(32px);transition:opacity .8s ease,transform .8s ease;}
+.reveal-right.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">MAISON<span> ·</span> BARBER</div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#contacto">Reservar</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Reservar hora</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-pattern"></div>
+    <div class="hero-tag">Barbería de lujo · Padre Hurtado</div>
+    <h1>El arte<br>del <em>corte</em><br>perfecto.</h1>
+    <p class="hero-sub">Barberos profesionales con años de experiencia. Técnicas clásicas y modernas para el hombre que cuida cada detalle.</p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-gold">Reservar hora →</a>
+      <a href="#servicios" class="btn-outline">Ver servicios</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-num" data-target="500" data-suffix="+">0</div>
+        <div class="trust-label">Clientes</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num" data-target="5" data-suffix=" años">0</div>
+        <div class="trust-label">Experiencia</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">5.0★</div>
+        <div class="trust-label">Google</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card reveal-right">
+      <div class="hero-scissors">✂</div>
+      <div class="hero-card-tag">Servicio destacado</div>
+      <div class="hero-card-title">Corte + Barba Premium</div>
+      <div class="hero-card-sub">El combo perfecto. Corte a medida más arreglo completo de barba con navaja y productos premium.</div>
+      <div class="hero-card-price">$14.000 <small>CLP</small></div>
+    </div>
+    <div class="hero-badge reveal-right">
+      <div class="hero-badge-stars">★★★★★</div>
+      <div class="hero-badge-text">
+        <strong>5.0 en Google</strong>
+        46 reseñas verificadas
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item">Corte Clásico <span>✦</span></div>
+    <div class="marquee-item">Fade Degradé <span>✦</span></div>
+    <div class="marquee-item">Arreglo de Barba <span>✦</span></div>
+    <div class="marquee-item">Corte + Barba <span>✦</span></div>
+    <div class="marquee-item">Diseño de Líneas <span>✦</span></div>
+    <div class="marquee-item">Corte Infantil <span>✦</span></div>
+    <div class="marquee-item">Corte Clásico <span>✦</span></div>
+    <div class="marquee-item">Fade Degradé <span>✦</span></div>
+    <div class="marquee-item">Arreglo de Barba <span>✦</span></div>
+    <div class="marquee-item">Corte + Barba <span>✦</span></div>
+    <div class="marquee-item">Diseño de Líneas <span>✦</span></div>
+    <div class="marquee-item">Corte Infantil <span>✦</span></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="services-inner">
+    <div class="reveal">
+      <div class="section-tag">Servicios</div>
+      <h2 class="section-title">Lo que hacemos,<br><em>lo hacemos bien.</em></h2>
+      <p class="section-sub">Cada servicio es ejecutado con precisión, productos premium y la dedicación que tu imagen merece.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3L6 21M6 12L18 12M18 3L18 21"/></svg></div>
+        <div class="service-name">Corte Clásico</div>
+        <div class="service-desc">Corte tradicional con tijera y máquina. Adaptado a tu tipo de cabello y forma de cara.</div>
+        <div class="service-price">$8.000</div>
+        <div class="service-duration">45 min aprox.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <div class="service-name">Fade Degradé</div>
+        <div class="service-desc">Degradé perfectamente ejecutado, desde skin fade hasta high fade. La técnica que más pedimos.</div>
+        <div class="service-price">$10.000</div>
+        <div class="service-duration">50 min aprox.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div class="service-name">Arreglo de Barba</div>
+        <div class="service-desc">Perfilado, degradé y acabado con navaja para una barba impecable que enmarca tu rostro.</div>
+        <div class="service-price">$6.000</div>
+        <div class="service-duration">30 min aprox.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="service-name">Corte + Barba</div>
+        <div class="service-desc">El combo completo. Corte a medida más arreglo de barba con navaja. El más solicitado.</div>
+        <div class="service-price">$14.000</div>
+        <div class="service-duration">75 min aprox.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg></div>
+        <div class="service-name">Corte Infantil</div>
+        <div class="service-desc">Para los más chicos de la casa. Corte cómodo y rápido con mucha paciencia y dedicación.</div>
+        <div class="service-price">$6.000</div>
+        <div class="service-duration">30 min aprox.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3l18 18M7 7l-.01-.01M12 12l-.01-.01"/><path d="M21 9c0 4.97-4.03 9-9 9-2.12 0-4.07-.73-5.61-1.95"/></svg></div>
+        <div class="service-name">Diseño de Líneas</div>
+        <div class="service-desc">Detalle adicional para complementar cualquier corte. Líneas precisas con máquina de perfilar.</div>
+        <div class="service-price">+$3.000</div>
+        <div class="service-duration">Adicional</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="nosotros">
+  <div class="why-inner">
+    <div class="reveal-left">
+      <div class="section-tag" style="color:var(--gold);">¿Por qué nosotros?</div>
+      <h2>Más de 500<br>hombres<br><em>confían</em> en<br>nosotros.</h2>
+      <p class="why-sub">No somos una barbería más. Somos el lugar donde el detalle importa y cada cliente sale sintiéndose mejor de lo que entró.</p>
+      <div class="why-rating">
+        <div class="why-score">5.0</div>
+        <div>
+          <div class="why-stars">★★★★★</div>
+          <div class="why-reviews">46 reseñas en Google</div>
+        </div>
+      </div>
+    </div>
+    <div class="why-list">
+      <div class="why-item reveal-right">
+        <div class="why-num">01</div>
+        <div class="why-text">
+          <strong>Barberos certificados</strong>
+          <span>Con formación y años de práctica. No aprendemos contigo — ya sabemos lo que hacemos.</span>
+        </div>
+      </div>
+      <div class="why-item reveal-right">
+        <div class="why-num">02</div>
+        <div class="why-text">
+          <strong>Productos premium</strong>
+          <span>Usamos solo marcas de calidad para el cuidado de tu cabello y barba. Sin atajos.</span>
+        </div>
+      </div>
+      <div class="why-item reveal-right">
+        <div class="why-num">03</div>
+        <div class="why-text">
+          <strong>Ambiente exclusivo</strong>
+          <span>Un espacio pensado para que te relajes. Música, buena vibra y atención personalizada.</span>
+        </div>
+      </div>
+      <div class="why-item reveal-right">
+        <div class="why-num">04</div>
+        <div class="why-text">
+          <strong>Precios justos</strong>
+          <span>Calidad premium sin precios de agencia. Creemos que verse bien no tiene que costar una fortuna.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galeria">
+  <div class="gallery-inner">
+    <div class="reveal">
+      <div class="section-tag">Galería</div>
+      <h2 class="section-title">El trabajo<br><em>habla solo.</em></h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-item">
+        <div class="g-item-inner"><div class="g-scissors">✂</div></div>
+        <div class="g-label">Fade + Diseño</div>
+      </div>
+      <div class="g-item">
+        <div class="g-item-inner" style="background:linear-gradient(135deg,#1e1a10,#2a2210);"><div class="g-scissors">✂</div></div>
+        <div class="g-label">Corte Clásico</div>
+      </div>
+      <div class="g-item">
+        <div class="g-item-inner" style="background:linear-gradient(135deg,#111,#222);"><div class="g-scissors">✂</div></div>
+        <div class="g-label">Barba Premium</div>
+      </div>
+      <div class="g-item">
+        <div class="g-item-inner" style="background:linear-gradient(135deg,#1a1510,#2d2015);"><div class="g-scissors">✂</div></div>
+        <div class="g-label">Skin Fade</div>
+      </div>
+      <div class="g-item">
+        <div class="g-item-inner" style="background:linear-gradient(135deg,#0f0f0f,#1a1a1a);"><div class="g-scissors">✂</div></div>
+        <div class="g-label">Corte + Barba</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="reveal">
+      <div class="section-tag">Testimonios</div>
+      <h2 class="section-title">Lo que dicen<br><em>nuestros clientes.</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">El mejor corte que me han hecho en mi vida. Vine a probar y ahora no voy a ningún otro lado. El ambiente es increíble y los barberos saben lo que hacen.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">C</div>
+          <div>
+            <div class="testi-name">Carlos M.</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">Atención de primera. Me escucharon, me asesoraron y el resultado superó lo que pedí. Precios muy justos para la calidad que entregan.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">F</div>
+          <div>
+            <div class="testi-name">Felipe R.</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">Llevo más de un año viniendo y nunca me han fallado. Mi hijo también viene, lo atienden con mucha paciencia. Los recomiendo a ojos cerrados.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">R</div>
+          <div>
+            <div class="testi-name">Rodrigo P.</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIOS -->
+<section class="horarios">
+  <div class="horarios-inner">
+    <div class="reveal-left">
+      <div class="section-tag">Horarios</div>
+      <h2 class="section-title" style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:400;">Estamos<br><em style="color:var(--gold);font-style:italic;">cuando</em><br>nos necesitas.</h2>
+      <p style="font-size:.88rem;color:var(--gray);line-height:1.8;margin-top:16px;">Sin cita previa — ven cuando quieras. Si quieres asegurar tu hora, escríbenos al WhatsApp.</p>
+    </div>
+    <div>
+      <div class="horarios-list reveal-right">
+        <div class="horario-row"><span class="horario-dia">Lunes</span><span class="horario-hora">10:00 — 20:00</span></div>
+        <div class="horario-row"><span class="horario-dia">Martes</span><span class="horario-hora">10:00 — 20:00</span></div>
+        <div class="horario-row"><span class="horario-dia">Miércoles</span><span class="horario-hora">10:00 — 20:00</span></div>
+        <div class="horario-row"><span class="horario-dia">Jueves</span><span class="horario-hora">10:00 — 20:00</span></div>
+        <div class="horario-row"><span class="horario-dia">Viernes</span><span class="horario-hora">10:00 — 21:00</span></div>
+        <div class="horario-row"><span class="horario-dia">Sábado</span><span class="horario-hora">09:00 — 20:00</span></div>
+        <div class="horario-row"><span class="horario-dia">Domingo</span><span class="horario-cerrado">Cerrado</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<div class="map-wrap">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3325.5!2d-70.8!3d-33.57!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c1234567890%3A0x123456789abcdef!2sPadre%20Hurtado%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1234567890" allowfullscreen loading="lazy"></iframe>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div>
+      <div class="section-tag" style="color:var(--gold);">Contacto</div>
+      <h2>Reserva<br>tu hora <em>hoy.</em></h2>
+      <p class="contact-sub">Completa el formulario y te confirmamos por WhatsApp. Sin esperas, sin complicaciones.</p>
+      <div class="contact-info">
+        <div class="cinfo-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          <span>+56 9 XXXX XXXX</span>
+        </div>
+        <div class="cinfo-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Padre Hurtado, Santiago</span>
+        </div>
+        <div class="cinfo-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          <span>@maisonbarber</span>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="enviarWA(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" id="nombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" id="telefono" placeholder="+56 9 XXXX XXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Servicio</label>
+        <select id="servicio">
+          <option value="">Selecciona un servicio</option>
+          <option>Corte Clásico — $8.000</option>
+          <option>Fade Degradé — $10.000</option>
+          <option>Arreglo de Barba — $6.000</option>
+          <option>Corte + Barba — $14.000</option>
+          <option>Corte Infantil — $6.000</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Mensaje (opcional)</label>
+        <textarea id="mensaje" placeholder="¿Algún detalle especial para tu corte?"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Reservar por WhatsApp →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">MAISON<span> · </span>BARBER</div>
+  <div class="footer-copy">© 2025 Maison Barber · Padre Hurtado</div>
+</footer>
+
+<script>
+// CURSOR
+const cursor=document.getElementById('cursor');
+const ring=document.getElementById('cursorRing');
+document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';});
+
+// NAV
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('solid',window.scrollY>60);
+});
+
+// REVEAL
+const revealObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:.12});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>revealObs.observe(el));
+
+// COUNTERS
+const cObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&!e.target.counted){
+      e.target.counted=true;
+      const target=+e.target.dataset.target;
+      const suffix=e.target.dataset.suffix||'';
+      let current=0;
+      const step=target/60;
+      const timer=setInterval(()=>{
+        current+=step;
+        if(current>=target){current=target;clearInterval(timer);}
+        e.target.textContent=Math.floor(current)+suffix;
+      },16);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('[data-target]').forEach(c=>cObs.observe(c));
+
+// WHATSAPP
+function enviarWA(e){
+  e.preventDefault();
+  const nombre=document.getElementById('nombre').value;
+  const tel=document.getElementById('telefono').value;
+  const servicio=document.getElementById('servicio').value;
+  const mensaje=document.getElementById('mensaje').value;
+  const texto=`Hola, quiero reservar una hora en Maison Barber.\n\n👤 Nombre: ${nombre}\n📞 Teléfono: ${tel||'no indicado'}\n✂️ Servicio: ${servicio||'por definir'}\n💬 Mensaje: ${mensaje||'ninguno'}`;
+  window.open('https://wa.me/56939665163?text='+encodeURIComponent(texto),'_blank');
+}
+</script>
+</body>
+</html>
