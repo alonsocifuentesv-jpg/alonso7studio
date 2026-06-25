@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clínica Dental Lumière | Padre Hurtado · Santiago</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#0a1628;
+  --blue2:#0f2040;
+  --blue3:#162d58;
+  --accent:#4a9eff;
+  --accent2:#7ab8ff;
+  --accent-glow:rgba(74,158,255,0.15);
+  --white:#ffffff;
+  --off:#f0f4fa;
+  --text:#0a1628;
+  --muted:#6b8ab0;
+  --border:rgba(74,158,255,0.12);
+  --border-dark:rgba(255,255,255,0.08);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;cursor:none;}
+
+/* CURSOR */
+.cursor{position:fixed;width:8px;height:8px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(74,158,255,0.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .1s,top .1s;}
+body:has(a:hover) .cursor,.cursor.hover{width:16px;height:16px;}
+@media(hover:none),(max-width:768px){.cursor,.cursor-ring{display:none;}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;transition:background .4s,backdrop-filter .4s;}
+nav.scrolled{background:rgba(10,22,40,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-dark);}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-logo-mark{width:36px;height:36px;border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.nav-logo-mark svg{width:18px;height:18px;color:var(--accent);}
+.nav-brand{font-size:1rem;font-weight:700;color:#fff;letter-spacing:.5px;}
+.nav-brand span{color:var(--accent);}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:.84rem;font-weight:500;transition:color .3s;}
+.nav-links a:hover{color:#fff;}
+.nav-btn{background:var(--accent);color:var(--blue);padding:10px 24px;border-radius:100px;font-size:.84rem;font-weight:700;text-decoration:none;cursor:none;transition:all .3s;position:relative;overflow:hidden;}
+.nav-btn::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);animation:shine 4s ease infinite;}
+@keyframes shine{0%{left:-100%}20%{left:100%}100%{left:100%}}
+.nav-btn:hover{background:var(--accent2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(74,158,255,0.35);}
+@media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--blue);position:relative;display:flex;align-items:center;overflow:hidden;padding-top:70px;}
+.hero-noise{position:absolute;inset:0;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;}
+.hero-glow{position:absolute;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(74,158,255,0.12) 0%,transparent 70%);top:50%;left:60%;transform:translate(-50%,-50%);pointer-events:none;}
+.hero-glow2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(74,158,255,0.08) 0%,transparent 70%);top:20%;left:10%;pointer-events:none;}
+.hero-lines{position:absolute;inset:0;overflow:hidden;opacity:.06;}
+.hero-lines::before{content:'';position:absolute;top:0;left:50%;width:1px;height:100%;background:linear-gradient(to bottom,transparent,var(--accent),transparent);}
+.hero-lines::after{content:'';position:absolute;top:40%;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--accent),transparent);}
+.hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:80px 56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;width:100%;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(74,158,255,0.2);background:rgba(74,158,255,0.06);padding:7px 18px;border-radius:100px;font-size:.72rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:32px;}
+.hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s ease infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.8rem,5vw,4.5rem);font-weight:900;color:#fff;line-height:1.05;letter-spacing:-1px;margin-bottom:24px;}
+.hero h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;color:var(--accent);font-size:1.1em;}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.5);line-height:1.8;margin-bottom:44px;max-width:460px;}
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:var(--blue);padding:16px 36px;border-radius:100px;font-size:.92rem;font-weight:700;text-decoration:none;cursor:none;transition:all .3s;position:relative;overflow:hidden;border:none;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);animation:shine 4.5s ease infinite;}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(74,158,255,0.4);}
+.btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.8);padding:14px 32px;border-radius:100px;font-size:.92rem;font-weight:600;text-decoration:none;cursor:none;transition:all .3s;}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.6);color:#fff;}
+.hero-trust{margin-top:52px;display:flex;align-items:center;gap:20px;}
+.hero-trust-avatars{display:flex;}
+.hero-trust-avatar{width:36px;height:36px;border-radius:50%;border:2px solid var(--blue);background:linear-gradient(135deg,var(--blue3),var(--accent));display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff;margin-left:-10px;}
+.hero-trust-avatar:first-child{margin-left:0;}
+.hero-trust-text{font-size:.82rem;color:rgba(255,255,255,0.45);}
+.hero-trust-text strong{display:block;color:rgba(255,255,255,0.8);font-weight:600;}
+
+/* HERO VISUAL */
+.hero-visual{position:relative;}
+.hero-card-main{background:rgba(255,255,255,0.04);border:1px solid var(--border-dark);border-radius:20px;padding:32px;backdrop-filter:blur(10px);}
+.hero-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
+.hero-card-title{font-size:.9rem;font-weight:600;color:rgba(255,255,255,0.7);}
+.hero-card-status{display:flex;align-items:center;gap:6px;font-size:.72rem;color:rgba(74,158,255,0.8);font-weight:600;}
+.status-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s ease infinite;}
+.hero-big-stat{margin-bottom:28px;}
+.hero-stat-num{font-size:3.5rem;font-weight:900;color:#fff;line-height:1;}
+.hero-stat-num span{color:var(--accent);}
+.hero-stat-label{font-size:.78rem;color:rgba(255,255,255,0.35);margin-top:4px;}
+.hero-mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
+.mini-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:16px;}
+.mini-card-num{font-size:1.5rem;font-weight:800;color:#fff;}
+.mini-card-num em{color:var(--accent);font-style:normal;}
+.mini-card-label{font-size:.7rem;color:rgba(255,255,255,0.3);margin-top:2px;}
+.hero-bar{height:4px;background:rgba(255,255,255,0.06);border-radius:100px;overflow:hidden;}
+.hero-bar-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:100px;width:90%;animation:barFill 2s ease forwards;}
+@keyframes barFill{from{width:0}to{width:90%}}
+.hero-bar-label{display:flex;justify-content:space-between;margin-top:8px;font-size:.7rem;color:rgba(255,255,255,0.3);}
+.float-badge{position:absolute;top:-20px;right:-20px;background:var(--accent);color:var(--blue);padding:10px 18px;border-radius:100px;font-size:.78rem;font-weight:800;box-shadow:0 8px 28px rgba(74,158,255,0.5);white-space:nowrap;}
+.float-badge2{position:absolute;bottom:-16px;left:-16px;background:var(--blue2);border:1px solid var(--border-dark);color:#fff;padding:10px 16px;border-radius:12px;font-size:.75rem;font-weight:600;box-shadow:0 8px 28px rgba(0,0,0,0.3);}
+.float-badge2 span{color:var(--accent);}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;padding:60px 20px;gap:48px;}.hero-visual{display:none;}}
+
+/* MARQUEE */
+.marquee-wrap{background:var(--accent);padding:14px 0;overflow:hidden;position:relative;z-index:1;}
+.marquee-track{display:flex;gap:48px;animation:marquee 20s linear infinite;white-space:nowrap;}
+.marquee-item{font-size:.8rem;font-weight:700;color:var(--blue);letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:12px;}
+.marquee-item::before{content:'✦';font-size:.6rem;}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* STATS */
+.stats{background:var(--off);border-bottom:1px solid rgba(10,22,40,0.08);}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+.stat-item{padding:48px 32px;text-align:center;border-right:1px solid rgba(10,22,40,0.08);position:relative;overflow:hidden;}
+.stat-item:last-child{border-right:none;}
+.stat-item::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--accent);transition:width .6s ease;}
+.stat-item.visible::before{width:60%;}
+.stat-num{font-size:2.8rem;font-weight:900;color:var(--blue);line-height:1;}
+.stat-num em{color:var(--accent);font-style:normal;}
+.stat-label{font-size:.78rem;color:var(--muted);margin-top:8px;font-weight:500;}
+@media(max-width:700px){.stats-inner{grid-template-columns:1fr 1fr;}.stat-item{border-right:none;border-bottom:1px solid rgba(10,22,40,0.08);}}
+
+/* SERVICES */
+.services{padding:110px 56px;background:#fff;}
+.services-inner{max-width:1200px;margin:0 auto;}
+.section-label{font-size:.7rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.section-label::before{content:'';width:28px;height:2px;background:var(--accent);}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--blue);line-height:1.15;margin-bottom:16px;}
+.section-title em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--accent);}
+.section-sub{font-size:.98rem;color:var(--muted);line-height:1.8;max-width:540px;}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px;gap:24px;flex-wrap:wrap;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.srv{background:var(--off);border:1px solid rgba(10,22,40,0.07);border-radius:18px;padding:36px 28px;position:relative;overflow:hidden;transition:all .4s;cursor:none;}
+.srv::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,158,255,0.04),transparent);opacity:0;transition:opacity .4s;}
+.srv:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(10,22,40,0.1);border-color:rgba(74,158,255,0.2);background:#fff;}
+.srv:hover::after{opacity:1;}
+.srv-num{font-size:.7rem;font-weight:700;color:var(--accent);letter-spacing:2px;margin-bottom:20px;opacity:.6;}
+.srv-icon{width:52px;height:52px;background:rgba(74,158,255,0.08);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:background .4s;}
+.srv:hover .srv-icon{background:rgba(74,158,255,0.15);}
+.srv-icon svg{width:26px;height:26px;color:var(--accent);}
+.srv-name{font-size:1.05rem;font-weight:700;color:var(--blue);margin-bottom:10px;}
+.srv-desc{font-size:.86rem;color:var(--muted);line-height:1.7;}
+.srv-arrow{position:absolute;bottom:28px;right:28px;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(10,22,40,0.1);display:flex;align-items:center;justify-content:center;transition:all .4s;}
+.srv:hover .srv-arrow{background:var(--accent);border-color:var(--accent);}
+.srv-arrow svg{width:14px;height:14px;color:var(--muted);transition:color .4s;}
+.srv:hover .srv-arrow svg{color:var(--blue);}
+@media(max-width:900px){.services-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:580px){.services-grid{grid-template-columns:1fr;}.services{padding:70px 20px;}}
+
+/* FEATURE SECTION */
+.feature{padding:110px 56px;background:var(--blue);position:relative;overflow:hidden;}
+.feature-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(74,158,255,0.1) 0%,transparent 70%);right:-100px;top:50%;transform:translateY(-50%);pointer-events:none;}
+.feature-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1;}
+.feature-label{color:rgba(74,158,255,0.7);}
+.feature-label::before{background:rgba(74,158,255,0.5);}
+.feature-title{color:#fff;}
+.feature-title em{color:var(--accent);}
+.feature-sub{color:rgba(255,255,255,0.45);}
+.feature-list{margin-top:40px;display:flex;flex-direction:column;gap:16px;}
+.feature-item{display:flex;align-items:flex-start;gap:16px;padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:14px;transition:all .3s;}
+.feature-item:hover{background:rgba(74,158,255,0.06);border-color:rgba(74,158,255,0.15);}
+.feature-icon{width:40px;height:40px;min-width:40px;background:rgba(74,158,255,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;}
+.feature-icon svg{width:20px;height:20px;color:var(--accent);}
+.feature-text strong{display:block;font-size:.92rem;color:#fff;font-weight:600;margin-bottom:3px;}
+.feature-text span{font-size:.82rem;color:rgba(255,255,255,0.4);line-height:1.6;}
+.feature-visual{position:relative;}
+.feature-phone{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:28px;padding:28px;max-width:320px;margin:0 auto;}
+.feature-phone-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.fpt-title{font-size:.82rem;font-weight:600;color:#fff;}
+.fpt-badge{background:rgba(74,158,255,0.15);color:var(--accent);font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:100px;}
+.agenda-slot{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;}
+.agenda-slot:hover{background:rgba(74,158,255,0.08);border-color:rgba(74,158,255,0.2);}
+.slot-time{font-size:.82rem;font-weight:600;color:#fff;}
+.slot-type{font-size:.72rem;color:rgba(255,255,255,0.4);}
+.slot-btn{background:var(--accent);color:var(--blue);font-size:.68rem;font-weight:700;padding:5px 12px;border-radius:100px;cursor:none;}
+.slot-taken{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.25);font-size:.68rem;font-weight:600;padding:5px 12px;border-radius:100px;}
+.feature-float{position:absolute;top:-16px;right:-16px;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 12px 40px rgba(0,0,0,0.3);}
+.feature-float-inner{display:flex;align-items:center;gap:8px;}
+.feature-float-icon{width:32px;height:32px;background:rgba(74,158,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.feature-float-icon svg{width:16px;height:16px;color:var(--accent);}
+.feature-float-text{font-size:.75rem;font-weight:700;color:var(--blue);}
+.feature-float-sub{font-size:.65rem;color:var(--muted);}
+@media(max-width:900px){.feature-inner{grid-template-columns:1fr;gap:48px;}.feature{padding:70px 20px;}}
+
+/* TESTIMONIALS */
+.testimonials{padding:110px 56px;background:var(--off);}
+.testi-inner{max-width:1200px;margin:0 auto;}
+.testi-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:24px;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.testi{background:#fff;border:1px solid rgba(10,22,40,0.07);border-radius:18px;padding:36px 28px;transition:all .35s;position:relative;overflow:hidden;}
+.testi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.testi:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(10,22,40,0.08);}
+.testi:hover::before{transform:scaleX(1);}
+.testi-stars{display:flex;gap:3px;margin-bottom:16px;}
+.testi-stars svg{width:16px;height:16px;fill:#f5a623;}
+.testi-text{font-size:.9rem;line-height:1.85;color:var(--muted);font-style:italic;margin-bottom:24px;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.testi-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue3));display:flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:800;color:#fff;}
+.testi-name{font-size:.9rem;font-weight:700;color:var(--blue);}
+.testi-detail{font-size:.75rem;color:var(--accent);font-weight:600;}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr;}}
+@media(max-width:600px){.testimonials{padding:70px 20px;}}
+
+/* HORARIOS */
+.horarios{padding:110px 56px;background:#fff;}
+.horarios-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.horario-card{border:1px solid rgba(10,22,40,0.08);border-radius:18px;overflow:hidden;}
+.horario-head{background:var(--blue);padding:24px 32px;display:flex;align-items:center;gap:12px;}
+.horario-head svg{width:18px;height:18px;color:var(--accent);}
+.horario-head span{font-size:.85rem;font-weight:600;color:#fff;}
+.horario-body{padding:8px 0;}
+.hrow{display:flex;justify-content:space-between;padding:16px 32px;border-bottom:1px solid rgba(10,22,40,0.06);}
+.hrow:last-child{border-bottom:none;}
+.hday{font-size:.88rem;color:var(--muted);}
+.htime{font-size:.88rem;font-weight:700;color:var(--blue);}
+.hclosed{color:rgba(10,22,40,0.2);}
+.online-pill{margin:20px 24px 28px;background:rgba(74,158,255,0.06);border:1px solid rgba(74,158,255,0.15);border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:12px;}
+.online-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:blink 2s ease infinite;}
+.online-text{font-size:.82rem;color:var(--blue);font-weight:500;}
+.online-text strong{color:var(--accent);}
+.contact-card{border:1px solid rgba(10,22,40,0.08);border-radius:18px;padding:36px 32px;}
+.contact-card-title{font-size:1.05rem;font-weight:700;color:var(--blue);margin-bottom:28px;}
+.cinfo{list-style:none;display:flex;flex-direction:column;gap:18px;}
+.cinfo li{display:flex;align-items:flex-start;gap:14px;}
+.cinfo-icon{width:38px;height:38px;min-width:38px;background:rgba(74,158,255,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;}
+.cinfo-icon svg{width:18px;height:18px;color:var(--accent);}
+.cinfo-text strong{display:block;font-size:.9rem;font-weight:700;color:var(--blue);}
+.cinfo-text span{font-size:.8rem;color:var(--muted);}
+@media(max-width:768px){.horarios-inner{grid-template-columns:1fr;}.horarios{padding:70px 20px;}}
+
+/* CONTACT */
+.contact{padding:110px 56px;background:var(--blue);position:relative;overflow:hidden;}
+.contact-glow{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(74,158,255,0.1) 0%,transparent 70%);left:-100px;bottom:-100px;pointer-events:none;}
+.contact-inner{max-width:760px;margin:0 auto;position:relative;z-index:1;}
+.contact-header{text-align:center;margin-bottom:52px;}
+.contact-header .section-label{justify-content:center;color:rgba(74,158,255,0.6);}
+.contact-header .section-label::before{background:rgba(74,158,255,0.4);}
+.contact-header .section-title{color:#fff;}
+.contact-header .section-sub{color:rgba(255,255,255,0.4);margin:0 auto;}
+.form{display:flex;flex-direction:column;gap:14px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.ff{display:flex;flex-direction:column;gap:8px;}
+.ff label{font-size:.72rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+.ff input,.ff select,.ff textarea{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:#fff;padding:15px 18px;border-radius:12px;font-family:'Outfit',sans-serif;font-size:.9rem;outline:none;transition:border-color .3s;-webkit-appearance:none;}
+.ff input::placeholder,.ff textarea::placeholder{color:rgba(255,255,255,0.2);}
+.ff input:focus,.ff select:focus,.ff textarea:focus{border-color:var(--accent);background:rgba(74,158,255,0.05);}
+.ff textarea{resize:none;height:110px;}
+.ff select option{background:var(--blue2);}
+.btn-submit{background:var(--accent);color:var(--blue);border:none;padding:18px;border-radius:100px;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:800;cursor:none;transition:all .3s;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:8px;letter-spacing:.5px;}
+.btn-submit::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);animation:shine 4s ease infinite;}
+.btn-submit:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 12px 36px rgba(74,158,255,0.4);}
+@media(max-width:600px){.form-row{grid-template-columns:1fr;}.contact{padding:70px 20px;}}
+
+/* FOOTER */
+footer{background:#060d1a;padding:64px 56px 28px;border-top:1px solid rgba(255,255,255,0.04);}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:64px;margin-bottom:52px;}
+.footer-logo-wrap{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.footer-logo-mark{width:34px;height:34px;border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.footer-logo-mark svg{width:17px;height:17px;color:var(--accent);}
+.footer-brand{font-size:.95rem;font-weight:700;color:#fff;}
+.footer-brand span{color:var(--accent);}
+.footer-tagline{font-size:.82rem;color:rgba(255,255,255,0.25);line-height:1.7;margin-bottom:24px;max-width:300px;}
+.footer-socials{display:flex;gap:10px;}
+.fsoc{width:36px;height:36px;border:1px solid rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);transition:all .3s;text-decoration:none;}
+.fsoc:hover{border-color:var(--accent);color:var(--accent);}
+.fsoc svg{width:15px;height:15px;}
+.footer-col-title{font-size:.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:20px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-links a{color:rgba(255,255,255,0.4);text-decoration:none;font-size:.84rem;transition:color .3s;}
+.footer-links a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.05);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-copy{font-size:.76rem;color:rgba(255,255,255,0.18);}
+.footer-credit{font-size:.76rem;color:rgba(255,255,255,0.18);}
+.footer-credit a{color:rgba(74,158,255,0.6);text-decoration:none;transition:color .3s;}
+.footer-credit a:hover{color:var(--accent);}
+@media(max-width:768px){.footer-top{grid-template-columns:1fr;gap:36px;}footer{padding:48px 20px 24px;}.footer-bottom{flex-direction:column;text-align:center;}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s ease,transform .8s ease;}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s ease,transform .8s ease;}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+    </div>
+    <div class="nav-brand">Lumière<span>Dental</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#agenda">Agenda online</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="#contacto" class="nav-btn">Reservar hora →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag"><div class="hero-tag-dot"></div>Clínica Dental · Padre Hurtado</div>
+      <h1>Tu sonrisa<br>merece lo<br><em>mejor</em></h1>
+      <p class="hero-sub">Atención dental de excelencia con tecnología de punta. Desde blanqueamiento hasta ortodoncia — todo en un solo lugar, cerca de ti.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Agendar hora
+        </a>
+        <a href="#servicios" class="btn-ghost">Ver tratamientos</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-avatars">
+          <div class="hero-trust-avatar">M</div>
+          <div class="hero-trust-avatar">R</div>
+          <div class="hero-trust-avatar">C</div>
+          <div class="hero-trust-avatar">+</div>
+        </div>
+        <div class="hero-trust-text">
+          <strong>+300 pacientes satisfechos</strong>
+          calificación 4.8 en Google
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="float-badge">⭐ 4.8 Google</div>
+      <div class="hero-card-main">
+        <div class="hero-card-header">
+          <div class="hero-card-title">Panel de citas</div>
+          <div class="hero-card-status"><div class="status-dot"></div>En línea 24/7</div>
+        </div>
+        <div class="hero-big-stat">
+          <div class="hero-stat-num"><span>98</span>%</div>
+          <div class="hero-stat-label">Pacientes que vuelven</div>
+        </div>
+        <div class="hero-mini-grid">
+          <div class="mini-card">
+            <div class="mini-card-num">5<em>+</em></div>
+            <div class="mini-card-label">Años de experiencia</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">8<em></em></div>
+            <div class="mini-card-label">Tratamientos</div>
+          </div>
+        </div>
+        <div class="hero-bar"></div>
+        <div class="hero-bar-label"><span>Satisfacción</span><span>98%</span></div>
+      </div>
+      <div class="float-badge2">📅 Agenda <span>online</span> disponible</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item">Blanqueamiento dental</div>
+    <div class="marquee-item">Ortodoncia</div>
+    <div class="marquee-item">Implantes</div>
+    <div class="marquee-item">Limpieza profesional</div>
+    <div class="marquee-item">Carillas</div>
+    <div class="marquee-item">Extracción</div>
+    <div class="marquee-item">Urgencias</div>
+    <div class="marquee-item">Blanqueamiento dental</div>
+    <div class="marquee-item">Ortodoncia</div>
+    <div class="marquee-item">Implantes</div>
+    <div class="marquee-item">Limpieza profesional</div>
+    <div class="marquee-item">Carillas</div>
+    <div class="marquee-item">Extracción</div>
+    <div class="marquee-item">Urgencias</div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats" id="statsBar">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="300" data-suffix="+">0</div>
+      <div class="stat-label">Pacientes atendidos</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num"><em>4.8</em> ★</div>
+      <div class="stat-label">Calificación Google</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="5" data-suffix=" años">0</div>
+      <div class="stat-label">De experiencia</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="8" data-suffix="">0</div>
+      <div class="stat-label">Tratamientos disponibles</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="services-inner">
+    <div class="services-header reveal">
+      <div>
+        <div class="section-label">Tratamientos</div>
+        <h2 class="section-title">Todo lo que necesitas<br>para tu <em>sonrisa perfecta</em></h2>
+        <p class="section-sub">Desde una limpieza preventiva hasta ortodoncia completa. Atendemos con tecnología moderna y trato humano.</p>
+      </div>
+      <a href="#contacto" class="btn-primary" style="white-space:nowrap;flex-shrink:0;">Agendar →</a>
+    </div>
+    <div class="services-grid">
+      <div class="srv reveal">
+        <div class="srv-num">01</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <div class="srv-name">Limpieza Dental</div>
+        <div class="srv-desc">Limpieza ultrasónica profesional, eliminación de sarro y pulido. Previene caries y enfermedad periodontal.</div>
+        <div class="srv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="srv reveal">
+        <div class="srv-num">02</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+        <div class="srv-name">Blanqueamiento</div>
+        <div class="srv-desc">Blanqueamiento dental profesional en una sola sesión. Resultados visibles desde el primer tratamiento.</div>
+        <div class="srv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="srv reveal">
+        <div class="srv-num">03</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="srv-name">Ortodoncia</div>
+        <div class="srv-desc">Brackets tradicionales y alineadores invisibles. Corrección de maloclusiones y mejora estética completa.</div>
+        <div class="srv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="srv reveal">
+        <div class="srv-num">04</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg></div>
+        <div class="srv-name">Implantes Dentales</div>
+        <div class="srv-desc">Implantes de titanio de alta durabilidad. Reemplaza dientes perdidos con resultados naturales y permanentes.</div>
+        <div class="srv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="srv reveal">
+        <div class="srv-num">05</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <div class="srv-name">Carillas</div>
+        <div class="srv-desc">Carillas de porcelana o composite para una sonrisa perfecta. Corrección de color, forma y tamaño dental.</div>
+        <div class="srv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="srv reveal">
+        <div class="srv-num">06</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="srv-name">Urgencias Dentales</div>
+        <div class="srv-desc">Atención prioritaria para dolores agudos, fracturas o infecciones. Te atendemos el mismo día que llamas.</div>
+        <div class="srv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE - AGENDA -->
+<section class="feature" id="agenda">
+  <div class="feature-glow"></div>
+  <div class="feature-inner">
+    <div class="reveal-left">
+      <div class="section-label feature-label">Agenda online</div>
+      <h2 class="section-title feature-title">Reserva tu hora<br>cuando <em>quieras</em></h2>
+      <p class="section-sub feature-sub">Sin llamadas, sin esperas. Elige el día y hora que más te acomoda directamente desde tu celular, las 24 horas.</p>
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <div class="feature-text"><strong>Elige tu horario</strong><span>Disponibilidad en tiempo real. Ve exactamente qué horas están libres.</span></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div class="feature-text"><strong>Confirmación por WhatsApp</strong><span>Recibes confirmación inmediata y recordatorio el día anterior.</span></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div class="feature-text"><strong>Sin filas ni esperas</strong><span>Tu hora está reservada. Llegas y te atendemos de inmediato.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <div class="feature-visual">
+        <div class="feature-float">
+          <div class="feature-float-inner">
+            <div class="feature-float-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <div><div class="feature-float-text">Hora confirmada</div><div class="feature-float-sub">Recibirás un mensaje de WhatsApp</div></div>
+          </div>
+        </div>
+        <div class="feature-phone">
+          <div class="feature-phone-top">
+            <div class="fpt-title">Horas disponibles — Hoy</div>
+            <div class="fpt-badge">En vivo</div>
+          </div>
+          <div class="agenda-slot"><div><div class="slot-time">09:00 AM</div><div class="slot-type">Limpieza dental</div></div><div class="slot-taken">Ocupado</div></div>
+          <div class="agenda-slot"><div><div class="slot-time">10:30 AM</div><div class="slot-type">Consulta general</div></div><div class="slot-btn">Reservar</div></div>
+          <div class="agenda-slot"><div><div class="slot-time">12:00 PM</div><div class="slot-type">Blanqueamiento</div></div><div class="slot-btn">Reservar</div></div>
+          <div class="agenda-slot"><div><div class="slot-time">15:00 PM</div><div class="slot-type">Ortodoncia</div></div><div class="slot-taken">Ocupado</div></div>
+          <div class="agenda-slot"><div><div class="slot-time">16:30 PM</div><div class="slot-type">Urgencia</div></div><div class="slot-btn">Reservar</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testi-inner">
+    <div class="testi-header reveal">
+      <div>
+        <div class="section-label">Testimonios</div>
+        <h2 class="section-title">Lo que dicen<br>nuestros <em>pacientes</em></h2>
+      </div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi reveal">
+        <div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testi-text">"Me hice el blanqueamiento y quedé impresionada con el resultado. En una sola sesión mis dientes cambiaron completamente. El doctor es muy profesional y explica todo."</p>
+        <div class="testi-author"><div class="testi-av">C</div><div><div class="testi-name">Camila R.</div><div class="testi-detail">Blanqueamiento dental</div></div></div>
+      </div>
+      <div class="testi reveal">
+        <div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testi-text">"Reservé online a la medianoche y al día siguiente me confirmaron por WhatsApp. El tratamiento de ortodoncia va excelente. Nunca pensé que fuera tan fácil agendar."</p>
+        <div class="testi-author"><div class="testi-av">M</div><div><div class="testi-name">Martín V.</div><div class="testi-detail">Ortodoncia invisible</div></div></div>
+      </div>
+      <div class="testi reveal">
+        <div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testi-text">"Tuve una urgencia un viernes en la tarde y me atendieron el mismo día. Dolor horrible y en una hora ya estaba bien. Son los mejores dentistas de Padre Hurtado sin duda."</p>
+        <div class="testi-author"><div class="testi-av">P</div><div><div class="testi-name">Patricia L.</div><div class="testi-detail">Urgencia dental</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIOS -->
+<section class="horarios" id="nosotros">
+  <div class="horarios-inner">
+    <div class="reveal-left">
+      <div class="section-label">Horarios</div>
+      <h2 class="section-title">Siempre<br><em>disponibles</em></h2>
+      <div class="horario-card" style="margin-top:32px;">
+        <div class="horario-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Horarios de atención</span>
+        </div>
+        <div class="horario-body">
+          <div class="hrow"><span class="hday">Lunes — Viernes</span><span class="htime">09:00 — 20:00</span></div>
+          <div class="hrow"><span class="hday">Sábado</span><span class="htime">09:00 — 14:00</span></div>
+          <div class="hrow"><span class="hday">Domingo</span><span class="htime hclosed">Cerrado</span></div>
+        </div>
+        <div class="online-pill">
+          <div class="online-dot"></div>
+          <div class="online-text">Agenda online disponible <strong>24/7</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <div class="section-label">Ubicación</div>
+      <h2 class="section-title">Encuéntranos en<br><em>Padre Hurtado</em></h2>
+      <div class="contact-card" style="margin-top:32px;">
+        <div class="contact-card-title">Información de contacto</div>
+        <ul class="cinfo">
+          <li>
+            <div class="cinfo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="cinfo-text"><strong>Padre Hurtado, Santiago</strong><span>Región Metropolitana, Chile</span></div>
+          </li>
+          <li>
+            <div class="cinfo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div class="cinfo-text"><strong>+56 9 3966 5163</strong><span>WhatsApp disponible</span></div>
+          </li>
+          <li>
+            <div class="cinfo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="cinfo-text"><strong>contacto@lumiereditental.cl</strong><span>Respondemos en menos de 2 horas</span></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="contact-glow"></div>
+  <div class="contact-inner">
+    <div class="contact-header reveal">
+      <div class="section-label">Reservar hora</div>
+      <h2 class="section-title">Agenda tu consulta<br><em>hoy mismo</em></h2>
+      <p class="section-sub">Completa el formulario y te confirmamos por WhatsApp en menos de 2 horas.</p>
+    </div>
+    <form class="form reveal" onsubmit="enviarWA(event)">
+      <div class="form-row">
+        <div class="ff"><label>Tu nombre</label><input type="text" id="f-nombre" placeholder="María González" required></div>
+        <div class="ff"><label>Teléfono</label><input type="tel" id="f-tel" placeholder="+56 9 1234 5678"></div>
+      </div>
+      <div class="ff">
+        <label>Tratamiento de interés</label>
+        <select id="f-servicio">
+          <option value="">Selecciona un tratamiento</option>
+          <option>Limpieza dental</option>
+          <option>Blanqueamiento</option>
+          <option>Ortodoncia</option>
+          <option>Implantes dentales</option>
+          <option>Carillas</option>
+          <option>Urgencia dental</option>
+          <option>Consulta general</option>
+        </select>
+      </div>
+      <div class="ff"><label>Cuéntanos más</label><textarea id="f-msg" placeholder="¿Tienes alguna consulta o síntoma específico que quieras contarnos?"></textarea></div>
+      <button type="submit" class="btn-submit">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        Agendar por WhatsApp →
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo-wrap">
+          <div class="footer-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></div>
+          <div class="footer-brand">Lumière<span>Dental</span></div>
+        </div>
+        <p class="footer-tagline">Clínica Dental de confianza en Padre Hurtado, Santiago de Chile. Cuidando tu sonrisa con tecnología y cariño.</p>
+        <div class="footer-socials">
+          <a href="#" class="fsoc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="https://wa.me/56939665163" class="fsoc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Tratamientos</div>
+        <ul class="footer-links">
+          <li><a href="#servicios">Limpieza dental</a></li>
+          <li><a href="#servicios">Blanqueamiento</a></li>
+          <li><a href="#servicios">Ortodoncia</a></li>
+          <li><a href="#servicios">Implantes</a></li>
+          <li><a href="#servicios">Urgencias</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <ul class="footer-links">
+          <li><a href="#">Padre Hurtado, Santiago</a></li>
+          <li><a href="tel:+56939665163">+56 9 3966 5163</a></li>
+          <li><a href="mailto:contacto@lumiereditental.cl">contacto@lumiereditental.cl</a></li>
+          <li><a href="#agenda">Agenda online 24/7</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Lumière Dental · Todos los derechos reservados</div>
+      <div class="footer-credit">Web por <a href="https://alonsostudiodigital.com">Alonso Studio</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// CURSOR
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX+'px'; cur.style.top = e.clientY+'px';
+  ring.style.left = e.clientX+'px'; ring.style.top = e.clientY+'px';
+});
+
+// NAV SCROLL
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// REVEAL
+const reveals = document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:.12});
+reveals.forEach(r => obs.observe(r));
+
+// STATS underline trigger
+document.querySelectorAll('.stat-item').forEach(el => {
+  new IntersectionObserver(([e]) => { if(e.isIntersecting) el.classList.add('visible'); },{threshold:.5}).observe(el);
+});
+
+// COUNTERS
+const counters = document.querySelectorAll('[data-target]');
+const cObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting && !e.target.counted){
+      e.target.counted = true;
+      const target = +e.target.dataset.target;
+      const suffix = e.target.dataset.suffix || '';
+      let current = 0; const step = target/60;
+      const t = setInterval(() => {
+        current += step;
+        if(current >= target){ current = target; clearInterval(t); }
+        e.target.textContent = Math.floor(current) + suffix;
+      }, 25);
+    }
+  });
+},{threshold:.5});
+counters.forEach(c => cObs.observe(c));
+
+// WHATSAPP
+function enviarWA(e){
+  e.preventDefault();
+  const nombre = document.getElementById('f-nombre').value;
+  const tel = document.getElementById('f-tel').value;
+  const srv = document.getElementById('f-servicio').value;
+  const msg = document.getElementById('f-msg').value;
+  const texto = `Hola Lumière Dental! Me llamo ${nombre} y quiero agendar una hora.\n\nTratamiento: ${srv||'Por consultar'}\n${tel?'Tel: '+tel:''}${msg?'\n\nDetalle: '+msg:''}`;
+  window.open('https://wa.me/56939665163?text='+encodeURIComponent(texto),'_blank');
+}
+</script>
+</body>
+</html>
