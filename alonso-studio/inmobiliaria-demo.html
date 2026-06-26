@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Altos del Valle | Inmobiliaria de Lujo · Santiago</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --gold:#c9a84c;
+  --gold2:#e8c96a;
+  --dark:#080808;
+  --dark2:#0f0f0f;
+  --dark3:#161616;
+  --white:#ffffff;
+  --muted:rgba(255,255,255,.45);
+  --border:rgba(255,255,255,.08);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--dark);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:none;}
+
+/* CURSOR */
+.cursor{width:8px;height:8px;background:var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s;}
+.cursor-ring{width:36px;height:36px;border:1px solid var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .18s ease;opacity:.5;}
+@media(hover:none),(max-width:768px){.cursor,.cursor-ring{display:none;}body{cursor:auto;}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 60px;height:76px;display:flex;align-items:center;justify-content:space-between;transition:all .5s;}
+nav.solid{background:rgba(8,8,8,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:3px;color:var(--white);}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:40px;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;transition:color .3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:11px 28px;font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;cursor:none;transition:all .3s;}
+.nav-cta:hover{background:var(--gold);color:var(--dark);}
+@media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}.nav-cta{display:none;}}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
+.hero-video{position:absolute;inset:0;z-index:0;}
+.hero-video::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#0a0a0a 0%,#111108 40%,#0d0d05 100%);}
+.hero-particles{position:absolute;inset:0;overflow:hidden;}
+.hero-particles::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(201,168,76,.08) 0%,transparent 70%);top:-100px;right:-100px;animation:float1 8s ease-in-out infinite;}
+.hero-particles::after{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(201,168,76,.05) 0%,transparent 70%);bottom:-50px;left:-50px;animation:float2 10s ease-in-out infinite;}
+@keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,40px)}}
+@keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-40px)}}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.03) 1px,transparent 1px);background-size:80px 80px;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(8,8,8,.85) 0%,rgba(8,8,8,.4) 60%,transparent 100%);}
+.hero-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:140px 60px 80px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;width:100%;}
+
+.hero-tag{font-size:.65rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:14px;}
+.hero-tag::before{content:'';width:36px;height:1px;background:var(--gold);}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,6vw,6.5rem);font-weight:300;line-height:1;margin-bottom:12px;letter-spacing:-1px;}
+.hero h1 em{font-style:italic;color:var(--gold);display:block;}
+.hero-sub{font-size:.9rem;color:var(--muted);line-height:2;max-width:400px;margin-bottom:48px;font-weight:300;}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:64px;}
+.btn-gold{background:var(--gold);color:var(--dark);padding:16px 40px;font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;cursor:none;transition:all .3s;position:relative;overflow:hidden;}
+.btn-gold::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);animation:shine 3s ease infinite;}
+@keyframes shine{0%{left:-100%}50%,100%{left:100%}}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);}
+.btn-outline{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);padding:16px 40px;font-size:.72rem;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;cursor:none;transition:all .3s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+.hero-counters{display:flex;gap:48px;}
+.hc-item{text-align:center;}
+.hc-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--white);line-height:1;}
+.hc-num span{color:var(--gold);}
+.hc-label{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:6px;}
+.hc-line{width:1px;background:var(--border);align-self:stretch;}
+
+/* HERO RIGHT */
+.hero-right{display:flex;flex-direction:column;gap:20px;}
+.hero-prop-card{background:rgba(255,255,255,.04);border:1px solid var(--border);padding:28px;backdrop-filter:blur(10px);transition:all .3s;cursor:none;}
+.hero-prop-card:hover{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.04);}
+.hero-prop-tag{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.hero-prop-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:6px;}
+.hero-prop-price{font-size:1.1rem;font-weight:600;color:var(--gold);margin-bottom:14px;}
+.hero-prop-specs{display:flex;gap:20px;}
+.hps{font-size:.72rem;color:var(--muted);display:flex;align-items:center;gap:5px;}
+.hero-badge{background:var(--gold);color:var(--dark);padding:14px 24px;display:flex;align-items:center;gap:16px;}
+.hero-badge-text{font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.hero-badge-sub{font-size:.65rem;color:rgba(8,8,8,.6);margin-top:1px;}
+.hero-badge-icon{font-size:1.4rem;}
+
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr;padding:100px 20px 60px;gap:40px;}
+  .hero-right{display:none;}
+  .hero-counters{gap:24px;}
+}
+
+/* MARQUEE */
+.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 0;overflow:hidden;background:var(--dark2);}
+.marquee-track{display:flex;animation:marquee 25s linear infinite;white-space:nowrap;}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.marquee-item{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:300;letter-spacing:3px;text-transform:uppercase;color:var(--muted);padding:0 36px;display:flex;align-items:center;gap:36px;}
+.marquee-item span{color:var(--gold);font-size:.7rem;}
+
+/* PROPERTIES */
+.properties{padding:120px 60px;background:var(--dark);}
+.properties-inner{max-width:1200px;margin:0 auto;}
+.section-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px;}
+.section-tag{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.section-tag::before{content:'';width:28px;height:1px;background:var(--gold);}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4.5vw,4.5rem);font-weight:300;line-height:1.05;}
+.section-title em{font-style:italic;color:var(--gold);}
+.section-link{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:8px;white-space:nowrap;transition:gap .3s;}
+.section-link:hover{gap:16px;}
+
+.props-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.prop-card{background:var(--dark);transition:all .4s;cursor:none;position:relative;overflow:hidden;}
+.prop-card:hover .prop-img-inner{transform:scale(1.04);}
+.prop-img{height:260px;overflow:hidden;position:relative;}
+.prop-img-inner{width:100%;height:100%;transition:transform .6s ease;display:flex;align-items:center;justify-content:center;}
+.prop-img-inner.p1{background:linear-gradient(135deg,#1a1506 0%,#2a2010 50%,#1a1506 100%);}
+.prop-img-inner.p2{background:linear-gradient(135deg,#060d1a 0%,#0a1628 50%,#060d1a 100%);}
+.prop-img-inner.p3{background:linear-gradient(135deg,#0f0a00 0%,#1e1500 50%,#0f0a00 100%);}
+.prop-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.8) 0%,transparent 60%);}
+.prop-type{position:absolute;top:20px;left:20px;background:var(--gold);color:var(--dark);font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;}
+.prop-featured{position:absolute;top:20px;right:20px;background:rgba(8,8,8,.8);border:1px solid var(--border);color:var(--white);font-size:.6rem;letter-spacing:1px;padding:5px 10px;backdrop-filter:blur(8px);}
+.prop-icon{font-size:3rem;opacity:.12;color:var(--gold);}
+.prop-body{padding:28px;}
+.prop-location{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.prop-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:6px;line-height:1.2;}
+.prop-desc{font-size:.8rem;color:var(--muted);line-height:1.7;margin-bottom:20px;}
+.prop-price{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--gold);margin-bottom:16px;}
+.prop-price small{font-family:'Inter',sans-serif;font-size:.7rem;color:var(--muted);}
+.prop-specs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-top:16px;border-top:1px solid var(--border);}
+.ps-item{text-align:center;}
+.ps-val{font-size:.95rem;font-weight:600;color:var(--white);}
+.ps-key{font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:2px;}
+@media(max-width:768px){.properties{padding:60px 20px;}.props-grid{grid-template-columns:1fr;}.section-header{flex-direction:column;align-items:flex-start;gap:20px;}}
+
+/* WHY */
+.why{padding:120px 60px;background:var(--dark2);}
+.why-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;}
+.why-visual{position:relative;}
+.why-big-num{font-family:'Cormorant Garamond',serif;font-size:clamp(8rem,14vw,14rem);font-weight:300;color:rgba(201,168,76,.07);line-height:1;position:absolute;top:-40px;left:-20px;pointer-events:none;}
+.why-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);position:relative;z-index:1;}
+.why-stat{background:var(--dark2);padding:40px 32px;}
+.why-stat-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:var(--white);line-height:1;margin-bottom:8px;}
+.why-stat-num span{color:var(--gold);}
+.why-stat-label{font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);line-height:1.6;}
+.why-content .section-tag{margin-bottom:14px;}
+.why-sub{font-size:.9rem;color:var(--muted);line-height:2;margin-bottom:48px;font-weight:300;}
+.why-list{display:flex;flex-direction:column;gap:0;}
+.why-item{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--border);}
+.why-item:last-child{border-bottom:none;}
+.why-num{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold);opacity:.5;min-width:32px;line-height:1.2;}
+.why-text strong{display:block;font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:4px;}
+.why-text span{font-size:.82rem;color:var(--muted);line-height:1.7;}
+@media(max-width:768px){.why{padding:60px 20px;}.why-inner{grid-template-columns:1fr;gap:48px;}.why-big-num{display:none;}}
+
+/* PROCESS */
+.process{padding:120px 60px;background:var(--dark);}
+.process-inner{max-width:1200px;margin:0 auto;}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:64px;}
+.process-step{background:var(--dark);padding:48px 32px;position:relative;overflow:hidden;transition:background .3s;}
+.process-step:hover{background:var(--dark3);}
+.process-step::before{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--gold);transition:width .5s;}
+.process-step:hover::before{width:100%;}
+.process-num{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:rgba(201,168,76,.1);line-height:1;margin-bottom:24px;}
+.process-icon{width:48px;height:48px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--gold);}
+.process-icon svg{width:22px;height:22px;}
+.process-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;margin-bottom:12px;}
+.process-desc{font-size:.8rem;color:var(--muted);line-height:1.8;}
+@media(max-width:768px){.process{padding:60px 20px;}.process-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.process-grid{grid-template-columns:1fr;}}
+
+/* TESTIMONIALS */
+.testimonials{padding:120px 60px;background:var(--dark2);}
+.testimonials-inner{max-width:1200px;margin:0 auto;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:64px;}
+.testi-card{border:1px solid var(--border);padding:40px;transition:all .4s;cursor:none;position:relative;overflow:hidden;}
+.testi-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .5s;}
+.testi-card:hover{border-color:rgba(201,168,76,.2);}
+.testi-card:hover::after{width:100%;}
+.testi-quote{font-family:'Cormorant Garamond',serif;font-size:4rem;color:var(--gold);line-height:.4;opacity:.25;margin-bottom:24px;}
+.testi-text{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;font-style:italic;line-height:1.8;color:rgba(255,255,255,.75);margin-bottom:28px;}
+.testi-author{display:flex;align-items:center;gap:14px;}
+.testi-avatar{width:44px;height:44px;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--dark);font-weight:700;}
+.testi-name{font-weight:600;font-size:.88rem;}
+.testi-role{font-size:.7rem;color:var(--muted);margin-top:2px;}
+.testi-stars{color:var(--gold);font-size:.75rem;letter-spacing:2px;margin-top:3px;}
+@media(max-width:768px){.testimonials{padding:60px 20px;}.testi-grid{grid-template-columns:1fr;}}
+
+/* CONTACT */
+.contact{padding:120px 60px;background:var(--dark);position:relative;overflow:hidden;}
+.contact::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;}
+.contact h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4.5vw,4.5rem);font-weight:300;line-height:1.05;margin-bottom:16px;}
+.contact h2 em{font-style:italic;color:var(--gold);}
+.contact-sub{font-size:.88rem;color:var(--muted);line-height:2;margin-bottom:40px;font-weight:300;}
+.cinfo{display:flex;flex-direction:column;gap:20px;}
+.cinfo-item{display:flex;align-items:center;gap:16px;font-size:.85rem;color:var(--muted);}
+.cinfo-item svg{width:18px;height:18px;color:var(--gold);flex-shrink:0;}
+.cinfo-item strong{color:var(--white);}
+
+.contact-form{display:flex;flex-direction:column;gap:16px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.fg{display:flex;flex-direction:column;gap:6px;}
+.fg label{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);}
+.fg input,.fg select,.fg textarea{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--white);padding:15px 18px;font-family:'Inter',sans-serif;font-size:.88rem;outline:none;transition:border .3s;cursor:none;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.2);}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);}
+.fg select option{background:var(--dark);}
+.fg textarea{resize:none;height:110px;}
+.btn-submit{background:var(--gold);color:var(--dark);border:none;padding:18px 44px;font-size:.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:none;transition:all .3s;align-self:flex-start;position:relative;overflow:hidden;}
+.btn-submit::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);animation:shine 3s ease infinite;}
+.btn-submit:hover{background:var(--gold2);transform:translateY(-2px);}
+@media(max-width:768px){.contact{padding:60px 20px;}.contact-inner{grid-template-columns:1fr;gap:48px;}.form-row{grid-template-columns:1fr;}}
+
+/* FOOTER */
+footer{background:#050505;padding:40px 60px;border-top:1px solid var(--border);}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;letter-spacing:3px;}
+.footer-logo span{color:var(--gold);}
+.footer-tagline{font-size:.68rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:4px;}
+.footer-links{display:flex;gap:32px;}
+.footer-links a{font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-copy{font-size:.68rem;color:rgba(255,255,255,.2);}
+@media(max-width:768px){footer{padding:32px 20px;}.footer-inner{flex-direction:column;gap:24px;text-align:center;}.footer-links{display:none;}}
+
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:32px;right:32px;z-index:200;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(37,211,102,.35);transition:all .3s;cursor:none;text-decoration:none;}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 12px 40px rgba(37,211,102,.5);}
+.wa-float svg{width:28px;height:28px;fill:#fff;}
+@media(max-width:768px){.wa-float{bottom:20px;right:20px;width:50px;height:50px;}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .9s ease,transform .9s ease;}
+.reveal.visible{opacity:1;transform:none;}
+.reveal-l{opacity:0;transform:translateX(-32px);transition:opacity .9s ease,transform .9s ease;}
+.reveal-l.visible{opacity:1;transform:none;}
+.reveal-r{opacity:0;transform:translateX(32px);transition:opacity .9s ease,transform .9s ease;}
+.reveal-r.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/56939665163" class="wa-float" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">ALTOS<span> DEL VALLE</span></div>
+  <ul class="nav-links">
+    <li><a href="#propiedades">Propiedades</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Agendar visita</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-video">
+    <div class="hero-video"></div>
+  </div>
+  <div class="hero-particles"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Inmobiliaria de Lujo · Santiago de Chile</div>
+      <h1>Vive donde<br><em>siempre soñaste.</em></h1>
+      <p class="hero-sub">Propiedades exclusivas en las mejores ubicaciones de Santiago. Asesoría personalizada y total transparencia en cada operación.</p>
+      <div class="hero-btns">
+        <a href="#propiedades" class="btn-gold">Ver propiedades →</a>
+        <a href="#contacto" class="btn-outline">Agendar visita</a>
+      </div>
+      <div class="hero-counters">
+        <div class="hc-item">
+          <div class="hc-num" data-target="320" data-suffix="+">0</div>
+          <div class="hc-label">Propiedades vendidas</div>
+        </div>
+        <div class="hc-line"></div>
+        <div class="hc-item">
+          <div class="hc-num" data-target="15" data-suffix=" años">0</div>
+          <div class="hc-label">De experiencia</div>
+        </div>
+        <div class="hc-line"></div>
+        <div class="hc-item">
+          <div class="hc-num"><span>98</span>%</div>
+          <div class="hc-label">Clientes satisfechos</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right reveal-r">
+      <div class="hero-prop-card">
+        <div class="hero-prop-tag">Destacada · Las Condes</div>
+        <div class="hero-prop-name">Penthouse Av. El Bosque</div>
+        <div class="hero-prop-price">18.500 UF</div>
+        <div class="hero-prop-specs">
+          <div class="hps">🛏 4 dorm.</div>
+          <div class="hps">🚿 3 baños</div>
+          <div class="hps">📐 220 m²</div>
+        </div>
+      </div>
+      <div class="hero-prop-card">
+        <div class="hero-prop-tag">Nueva · Vitacura</div>
+        <div class="hero-prop-name">Departamento Vista Cordillera</div>
+        <div class="hero-prop-price">9.200 UF</div>
+        <div class="hero-prop-specs">
+          <div class="hps">🛏 3 dorm.</div>
+          <div class="hps">🚿 2 baños</div>
+          <div class="hps">📐 115 m²</div>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <div class="hero-badge-icon">🏆</div>
+        <div>
+          <div class="hero-badge-text">Mejor inmobiliaria 2024</div>
+          <div class="hero-badge-sub">Premio Excelencia Inmobiliaria Chile</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item">Las Condes <span>✦</span></div>
+    <div class="marquee-item">Vitacura <span>✦</span></div>
+    <div class="marquee-item">Providencia <span>✦</span></div>
+    <div class="marquee-item">Lo Barnechea <span>✦</span></div>
+    <div class="marquee-item">Ñuñoa <span>✦</span></div>
+    <div class="marquee-item">Santiago Centro <span>✦</span></div>
+    <div class="marquee-item">La Reina <span>✦</span></div>
+    <div class="marquee-item">Peñalolén <span>✦</span></div>
+    <div class="marquee-item">Las Condes <span>✦</span></div>
+    <div class="marquee-item">Vitacura <span>✦</span></div>
+    <div class="marquee-item">Providencia <span>✦</span></div>
+    <div class="marquee-item">Lo Barnechea <span>✦</span></div>
+    <div class="marquee-item">Ñuñoa <span>✦</span></div>
+    <div class="marquee-item">Santiago Centro <span>✦</span></div>
+    <div class="marquee-item">La Reina <span>✦</span></div>
+    <div class="marquee-item">Peñalolén <span>✦</span></div>
+  </div>
+</div>
+
+<!-- PROPERTIES -->
+<section class="properties" id="propiedades">
+  <div class="properties-inner">
+    <div class="section-header">
+      <div class="reveal-l">
+        <div class="section-tag">Propiedades</div>
+        <h2 class="section-title">Nuestras<br><em>propiedades destacadas.</em></h2>
+      </div>
+      <a href="#contacto" class="section-link reveal-r">Ver todas las propiedades →</a>
+    </div>
+    <div class="props-grid">
+      <div class="prop-card reveal">
+        <div class="prop-img">
+          <div class="prop-img-inner p1"><div class="prop-icon">🏢</div></div>
+          <div class="prop-overlay"></div>
+          <div class="prop-type">Venta</div>
+          <div class="prop-featured">⭐ Destacada</div>
+        </div>
+        <div class="prop-body">
+          <div class="prop-location">Las Condes · Santiago</div>
+          <div class="prop-name">Penthouse Av. El Bosque Norte</div>
+          <div class="prop-desc">Penthouse de lujo con terraza privada de 80m², vista panorámica a la cordillera y la ciudad. Terminaciones de primer nivel.</div>
+          <div class="prop-price">18.500 UF <small>≈ $780M CLP</small></div>
+          <div class="prop-specs">
+            <div class="ps-item"><div class="ps-val">4</div><div class="ps-key">Dormitorios</div></div>
+            <div class="ps-item"><div class="ps-val">3</div><div class="ps-key">Baños</div></div>
+            <div class="ps-item"><div class="ps-val">220</div><div class="ps-key">m²</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="prop-card reveal">
+        <div class="prop-img">
+          <div class="prop-img-inner p2"><div class="prop-icon">🏠</div></div>
+          <div class="prop-overlay"></div>
+          <div class="prop-type">Venta</div>
+          <div class="prop-featured">🆕 Nueva</div>
+        </div>
+        <div class="prop-body">
+          <div class="prop-location">Vitacura · Santiago</div>
+          <div class="prop-name">Casa en Condominio El Arrayán</div>
+          <div class="prop-desc">Casa en exclusivo condominio con piscina, quincho y jardín privado. Seguridad 24/7, rodeada de naturaleza.</div>
+          <div class="prop-price">32.000 UF <small>≈ $1.350M CLP</small></div>
+          <div class="prop-specs">
+            <div class="ps-item"><div class="ps-val">5</div><div class="ps-key">Dormitorios</div></div>
+            <div class="ps-item"><div class="ps-val">4</div><div class="ps-key">Baños</div></div>
+            <div class="ps-item"><div class="ps-val">380</div><div class="ps-key">m²</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="prop-card reveal">
+        <div class="prop-img">
+          <div class="prop-img-inner p3"><div class="prop-icon">🏙</div></div>
+          <div class="prop-overlay"></div>
+          <div class="prop-type">Arriendo</div>
+        </div>
+        <div class="prop-body">
+          <div class="prop-location">Providencia · Santiago</div>
+          <div class="prop-name">Departamento Vista Cordillera</div>
+          <div class="prop-desc">Moderno departamento en piso 18 con vista despejada a la cordillera. A pasos del metro y centros comerciales.</div>
+          <div class="prop-price">9.200 UF <small>≈ $388M CLP</small></div>
+          <div class="prop-specs">
+            <div class="ps-item"><div class="ps-val">3</div><div class="ps-key">Dormitorios</div></div>
+            <div class="ps-item"><div class="ps-val">2</div><div class="ps-key">Baños</div></div>
+            <div class="ps-item"><div class="ps-val">115</div><div class="ps-key">m²</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="nosotros">
+  <div class="why-inner">
+    <div class="why-visual reveal-l">
+      <div class="why-big-num">15</div>
+      <div class="why-stats">
+        <div class="why-stat">
+          <div class="why-stat-num" data-target="320" data-suffix="+">0</div>
+          <div class="why-stat-label">Propiedades<br>vendidas</div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-num" data-target="15" data-suffix="">0</div>
+          <div class="why-stat-label">Años en el<br>mercado</div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-num"><span>98</span>%</div>
+          <div class="why-stat-label">Clientes<br>satisfechos</div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-num" data-target="12" data-suffix="">0</div>
+          <div class="why-stat-label">Comunas<br>en Santiago</div>
+        </div>
+      </div>
+    </div>
+    <div class="why-content reveal-r">
+      <div class="section-tag">¿Por qué elegirnos?</div>
+      <h2 class="section-title" style="font-size:clamp(2rem,3.5vw,3.5rem);margin-bottom:20px;">La inmobiliaria que<br><em>trabaja para ti.</em></h2>
+      <p class="why-sub">En Altos del Valle no vendemos propiedades — encontramos el hogar perfecto para cada familia. 15 años de experiencia nos respaldan.</p>
+      <div class="why-list">
+        <div class="why-item">
+          <div class="why-num">01</div>
+          <div class="why-text">
+            <strong>Asesoría personalizada sin costo</strong>
+            <span>Un ejecutivo dedicado exclusivamente a ti desde la búsqueda hasta la firma de escritura.</span>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">02</div>
+          <div class="why-text">
+            <strong>Transparencia total</strong>
+            <span>Sin letra chica ni sorpresas. Conoces todos los costos desde el primer día.</span>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">03</div>
+          <div class="why-text">
+            <strong>Las mejores ubicaciones de Santiago</strong>
+            <span>Acceso exclusivo a propiedades en Las Condes, Vitacura, Providencia y más.</span>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">04</div>
+          <div class="why-text">
+            <strong>Gestión completa del proceso</strong>
+            <span>Nos encargamos de trámites, notaría, estudio de títulos y coordinación bancaria.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="proceso">
+  <div class="process-inner">
+    <div class="reveal">
+      <div class="section-tag">Proceso</div>
+      <h2 class="section-title">Comprar tu propiedad<br><em>en 4 simples pasos.</em></h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="process-num">01</div>
+        <div class="process-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="process-name">Consulta inicial</div>
+        <div class="process-desc">Nos cuentas qué buscas, tu presupuesto y tus necesidades. Sin compromiso y completamente gratuito.</div>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">02</div>
+        <div class="process-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="process-name">Visita las propiedades</div>
+        <div class="process-desc">Te mostramos una selección exclusiva que se ajusta a tus criterios. Coordinamos todo.</div>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">03</div>
+        <div class="process-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <div class="process-name">Negociación y oferta</div>
+        <div class="process-desc">Nuestros expertos negocian el mejor precio por ti. Presentamos la oferta y gestionamos las condiciones.</div>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">04</div>
+        <div class="process-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="process-name">Firma y entrega de llaves</div>
+        <div class="process-desc">Coordinamos notaría, estudio de títulos y trámites bancarios. Tú solo llega a firmar y recibir las llaves.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="reveal">
+      <div class="section-tag">Testimonios</div>
+      <h2 class="section-title">Lo que dicen<br><em>nuestros clientes.</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">Llevábamos meses buscando sin resultado. Altos del Valle encontró nuestra casa ideal en dos semanas y gestionaron todo el proceso. Una experiencia increíble.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">M</div>
+          <div>
+            <div class="testi-name">Marcela Fuentes</div>
+            <div class="testi-role">Compradora · Las Condes</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">El nivel de profesionalismo es incomparable. Nos guiaron en cada paso de la compra de nuestro departamento en Vitacura. Transparencia total y cero sorpresas.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">R</div>
+          <div>
+            <div class="testi-name">Roberto Andrade</div>
+            <div class="testi-role">Comprador · Vitacura</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">Vendí mi propiedad en menos de un mes al precio que pedí. Su red de contactos y su estrategia de marketing son simplemente excepcionales.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">C</div>
+          <div>
+            <div class="testi-name">Claudia Morales</div>
+            <div class="testi-role">Vendedora · Providencia</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="contact-inner">
+    <div>
+      <div class="section-tag">Contacto</div>
+      <h2>Encuentra tu<br>propiedad <em>ideal hoy.</em></h2>
+      <p class="contact-sub">Un ejecutivo dedicado te contactará en menos de 24 horas con una selección personalizada de propiedades que se ajustan a lo que buscas.</p>
+      <div class="cinfo">
+        <div class="cinfo-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          <span><strong>+56 2 XXXX XXXX</strong> · Lunes a viernes 9–19hrs</span>
+        </div>
+        <div class="cinfo-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span><strong>contacto@altosdelvalle.cl</strong></span>
+        </div>
+        <div class="cinfo-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><strong>Av. El Bosque Norte 500</strong> · Las Condes, Santiago</span>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="enviarWA(event)">
+      <div class="form-row">
+        <div class="fg">
+          <label>Nombre completo</label>
+          <input type="text" id="nombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="fg">
+          <label>Teléfono</label>
+          <input type="tel" id="telefono" placeholder="+56 9 XXXX XXXX">
+        </div>
+      </div>
+      <div class="fg">
+        <label>¿Qué buscas?</label>
+        <select id="tipo">
+          <option value="">Selecciona una opción</option>
+          <option>Comprar departamento</option>
+          <option>Comprar casa</option>
+          <option>Arrendar departamento</option>
+          <option>Arrendar casa</option>
+          <option>Vender mi propiedad</option>
+          <option>Inversión inmobiliaria</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="fg">
+          <label>Presupuesto (UF)</label>
+          <select id="presupuesto">
+            <option value="">Selecciona rango</option>
+            <option>Hasta 3.000 UF</option>
+            <option>3.000 – 6.000 UF</option>
+            <option>6.000 – 12.000 UF</option>
+            <option>12.000 – 20.000 UF</option>
+            <option>Más de 20.000 UF</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Comuna de interés</label>
+          <input type="text" id="comuna" placeholder="Las Condes, Vitacura...">
+        </div>
+      </div>
+      <div class="fg">
+        <label>Mensaje (opcional)</label>
+        <textarea id="mensaje" placeholder="Cuéntanos más sobre lo que buscas — dormitorios, características especiales, urgencia..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Enviar consulta →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">ALTOS<span> DEL VALLE</span></div>
+      <div class="footer-tagline">Inmobiliaria de Lujo · Santiago de Chile</div>
+    </div>
+    <div class="footer-links">
+      <a href="#propiedades">Propiedades</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div class="footer-copy">© 2025 Altos del Valle · Todos los derechos reservados</div>
+  </div>
+</footer>
+
+<script>
+const cursor=document.getElementById('cursor');
+const ring=document.getElementById('cursorRing');
+document.addEventListener('mousemove',e=>{
+  cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';
+  ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';
+});
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('solid',window.scrollY>60);
+});
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:.1});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>obs.observe(el));
+
+const cObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&!e.target.counted){
+      e.target.counted=true;
+      const target=+e.target.dataset.target;
+      const suffix=e.target.dataset.suffix||'';
+      let current=0;
+      const step=target/80;
+      const timer=setInterval(()=>{
+        current+=step;
+        if(current>=target){current=target;clearInterval(timer);}
+        e.target.textContent=Math.floor(current)+suffix;
+      },16);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('[data-target]').forEach(c=>cObs.observe(c));
+
+function enviarWA(e){
+  e.preventDefault();
+  const nombre=document.getElementById('nombre').value;
+  const tel=document.getElementById('telefono').value;
+  const tipo=document.getElementById('tipo').value;
+  const presupuesto=document.getElementById('presupuesto').value;
+  const comuna=document.getElementById('comuna').value;
+  const mensaje=document.getElementById('mensaje').value;
+  const texto=`Hola, me contacto desde la web de Altos del Valle.\n\n👤 Nombre: ${nombre}\n📞 Teléfono: ${tel||'no indicado'}\n🏠 Busco: ${tipo||'por definir'}\n💰 Presupuesto: ${presupuesto||'no indicado'}\n📍 Comuna: ${comuna||'no indicada'}\n💬 Mensaje: ${mensaje||'ninguno'}`;
+  window.open('https://wa.me/56939665163?text='+encodeURIComponent(texto),'_blank');
+}
+</script>
+</body>
+</html>
