@@ -134,9 +134,11 @@
     @media(max-width:768px){
       #hero { grid-template-columns:1fr; padding:100px 24px 60px; }
       #hero::before { display:none; }
-      .hero-left { padding-right:0; }
+      .hero-left { padding-right:0; text-align:left; }
       .hero-right { padding-left:0; margin-top:40px; }
-      .hero-title { font-size:2.8rem; }
+      .hero-title { font-size:2.4rem; text-align:left; }
+      .hero-desc { text-align:left; }
+      .hero-btns { justify-content:flex-start; }
     }
 
     /* ── STATS BAR ── */
