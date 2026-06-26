@@ -860,7 +860,7 @@
       <div class="plan-item">Estadísticas de tu negocio</div>
       <div class="plan-item">Optimizado para celular y computador</div>
       <div class="plan-item">Web 100% tuya desde el primer día</div>
-      <a href="https://wa.me/56939665163?text=Hola%20Alonso%2C%20me%20interesa%20el%20Plan%20Básico%20%24150.000" class="plan-btn" target="_blank">Quiero este plan</a>
+      <a href="#contacto" class="plan-btn" onclick="seleccionarPlan('Plan Básico — $150.000')">Quiero este plan</a>
     </div>
 
     <!-- PREMIUM -->
@@ -881,7 +881,7 @@
       <div class="plan-item">Pasarela de pagos: abono o pago completo online</div>
       <div class="plan-item">Hasta 3 correos corporativos para tu equipo</div>
       <div class="plan-item">Cero mensajes manuales que responder</div>
-      <a href="https://wa.me/56939665163?text=Hola%20Alonso%2C%20me%20interesa%20el%20Plan%20Premium%20%24250.000" class="plan-btn" target="_blank">Quiero este plan</a>
+      <a href="#contacto" class="plan-btn" onclick="seleccionarPlan('Plan Premium — $250.000')">Quiero este plan</a>
     </div>
 
     <!-- AVANZADO -->
@@ -902,7 +902,7 @@
       <div class="plan-item">Panel de estadísticas y visitas</div>
       <div class="plan-item">Dominio + Hosting primer año incluido</div>
       <div class="plan-item">Soporte técnico prioritario 60 días</div>
-      <a href="https://wa.me/56939665163?text=Hola%20Alonso%2C%20me%20interesa%20el%20Plan%20Avanzado%20%24400.000" class="plan-btn" target="_blank">Quiero este plan</a>
+      <a href="#contacto" class="plan-btn" onclick="seleccionarPlan('Plan Avanzado — $400.000')">Quiero este plan</a>
     </div>
 
     <!-- ANUAL -->
@@ -917,7 +917,7 @@
       <div class="plan-item">2 actualizaciones de contenido incluidas</div>
       <div class="plan-item">5 cambios pequeños incluidos al año</div>
       <div class="plan-item">Cambios adicionales a $15.000 c/u</div>
-      <a href="https://wa.me/56939665163?text=Hola%20Alonso%2C%20me%20interesa%20el%20Plan%20de%20Soporte%20Anual%20%2470.000" class="plan-btn" target="_blank">Contratar soporte</a>
+      <a href="#contacto" class="plan-btn" onclick="seleccionarPlan('Plan Soporte Anual — $70.000')">Contratar soporte</a>
     </div>
 
   </div>
@@ -1152,6 +1152,17 @@
     entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
   },{threshold:0.1});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // Preseleccionar plan desde botón
+  function seleccionarPlan(plan){
+    setTimeout(()=>{
+      const sel=document.getElementById('f-plan');
+      if(!sel) return;
+      for(let i=0;i<sel.options.length;i++){
+        if(sel.options[i].value===plan){ sel.selectedIndex=i; break; }
+      }
+    },400);
+  }
 
   // FAQ
   function toggleFaq(el){
