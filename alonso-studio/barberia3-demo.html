@@ -231,6 +231,62 @@ footer{background:#050505;padding:48px 60px;border-top:1px solid var(--border);}
 </head>
 <body>
 
+<!-- MODAL PAGO DEMO -->
+<div id="modal-pago" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#111;border:1px solid rgba(201,168,76,.3);max-width:420px;width:100%;padding:36px 32px;position:relative;">
+    <button onclick="cerrarModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;color:rgba(255,255,255,.4);font-size:1.4rem;cursor:pointer;">✕</button>
+
+    <!-- PASO 1: PAGO -->
+    <div id="modal-paso1">
+      <div style="font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Resumen de reserva</div>
+      <div style="font-size:1rem;font-weight:700;color:var(--white);margin-bottom:20px;">Le Barber — Providencia</div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:16px;margin-bottom:24px;font-size:.82rem;color:rgba(255,255,255,.7);display:flex;flex-direction:column;gap:8px;">
+        <div>📅 <span id="modal-dia"></span></div>
+        <div>⏰ <span id="modal-hora"></span></div>
+        <div>✂️ <span id="modal-svc"></span></div>
+        <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:8px;margin-top:4px;color:var(--gold);font-weight:700;">Abono de reserva: $3.000</div>
+        <div style="font-size:.7rem;color:rgba(255,255,255,.35);">El resto lo pagas en el local</div>
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <label style="font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-bottom:6px;">Número de tarjeta</label>
+        <input id="card-num" type="text" maxlength="19" placeholder="1234 5678 9012 3456" oninput="fmtCard(this)"
+          style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--white);padding:12px 14px;font-size:.88rem;font-family:'Inter',sans-serif;outline:none;">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;">
+        <div>
+          <label style="font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-bottom:6px;">Vencimiento</label>
+          <input type="text" placeholder="MM/AA" maxlength="5"
+            style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--white);padding:12px 14px;font-size:.88rem;font-family:'Inter',sans-serif;outline:none;">
+        </div>
+        <div>
+          <label style="font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-bottom:6px;">CVV</label>
+          <input type="text" placeholder="123" maxlength="3"
+            style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--white);padding:12px 14px;font-size:.88rem;font-family:'Inter',sans-serif;outline:none;">
+        </div>
+      </div>
+      <button onclick="pagarDemo()" style="width:100%;background:var(--gold);color:var(--dark);border:none;padding:15px;font-size:.76rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;">Pagar $3.000 y confirmar →</button>
+      <p style="font-size:.65rem;color:rgba(255,255,255,.2);text-align:center;margin-top:10px;">🔒 Pago seguro · Ejemplo demostrativo</p>
+    </div>
+
+    <!-- PASO 2: CONFIRMADO -->
+    <div id="modal-paso2" style="display:none;text-align:center;padding:20px 0;">
+      <div style="font-size:3rem;margin-bottom:16px;">✅</div>
+      <div style="font-family:'Inter',sans-serif;font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:8px;">¡Reserva confirmada!</div>
+      <div style="font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.6;margin-bottom:24px;">
+        Tu hora quedó agendada para el <strong style="color:var(--gold)" id="modal-dia2"></strong><br>
+        Te llegará una confirmación automática al WhatsApp.<br>
+        El dueño ya recibió el aviso — sin que tuviera que responder nada.
+      </div>
+      <div style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);padding:14px;font-size:.75rem;color:var(--gold);margin-bottom:20px;">
+        Abono de $3.000 procesado · Resto se paga en el local
+      </div>
+      <button onclick="cerrarModal()" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);padding:10px 24px;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;">Cerrar</button>
+      <p style="font-size:.62rem;color:rgba(255,255,255,.18);margin-top:12px;">Esto es un ejemplo de cómo funciona el Plan Premium</p>
+    </div>
+  </div>
+</div>
+
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
@@ -718,8 +774,25 @@ function selHora(btn){
 }
 function confirmarAgenda(){
   if(!horaSeleccionada){alert('Selecciona una hora disponible primero.');return;}
-  const txt='Hola Le Barber! Quiero reservar una hora.\n\n📅 Día: '+diaSeleccionado+' de julio\n⏰ Hora: '+horaSeleccionada+' hrs\n\nQuedo atento/a a la confirmación. ¡Gracias!';
-  window.open('https://wa.me/56939665163?text='+encodeURIComponent(txt),'_blank');
+  document.getElementById('modal-dia').textContent=diaSeleccionado+' de julio';
+  document.getElementById('modal-hora').textContent=horaSeleccionada+' hrs';
+  const svc=document.getElementById('servicio').value||'Corte Clásico — $12.000';
+  document.getElementById('modal-svc').textContent=svc;
+  document.getElementById('modal-pago').style.display='flex';
+  document.getElementById('modal-paso1').style.display='block';
+  document.getElementById('modal-paso2').style.display='none';
+}
+function cerrarModal(){document.getElementById('modal-pago').style.display='none';}
+function pagarDemo(){
+  const num=document.getElementById('card-num').value.replace(/\s/g,'');
+  if(num.length<12){alert('Ingresa un número de tarjeta válido.');return;}
+  document.getElementById('modal-paso1').style.display='none';
+  document.getElementById('modal-paso2').style.display='block';
+  document.getElementById('modal-dia2').textContent=diaSeleccionado+' de julio · '+horaSeleccionada+' hrs';
+}
+function fmtCard(el){
+  let v=el.value.replace(/\D/g,'').substring(0,16);
+  el.value=v.replace(/(.{4})/g,'$1 ').trim();
 }
 function enviarWA(e){
   e.preventDefault();
