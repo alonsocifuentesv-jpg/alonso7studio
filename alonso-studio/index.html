@@ -266,14 +266,15 @@
     /* ── PRECIOS ── */
     #precios { padding:100px 80px; background:var(--off); }
     .plans-row {
-      display:grid; grid-template-columns:repeat(3,1fr);
-      gap:24px; max-width:1100px; margin:0 auto;
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:16px; max-width:1200px; margin:0 auto;
     }
     .plan-card {
-      background:var(--white); padding:40px 32px;
+      background:var(--white); padding:36px 28px;
       border:1px solid rgba(0,0,0,0.08);
       position:relative; overflow:hidden;
       transition:transform 0.3s, box-shadow 0.3s;
+      display:flex; flex-direction:column;
     }
     .plan-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(0,0,0,0.1); }
     .plan-card.featured {
@@ -282,49 +283,115 @@
     }
     .plan-card.featured .plan-price,
     .plan-card.featured .plan-name { color:var(--white); }
-    .plan-card.featured .plan-item { border-color:rgba(255,255,255,0.1); color:rgba(255,255,255,0.75); }
+    .plan-card.featured .plan-item { border-color:rgba(255,255,255,0.08); color:rgba(255,255,255,0.75); }
+    .plan-card.anual { border:2px dashed rgba(201,168,76,0.4); background:var(--white); }
     .plan-badge {
       position:absolute; top:0; right:0;
       background:var(--gold); color:var(--dark);
-      font-size:0.6rem; letter-spacing:2px; text-transform:uppercase;
-      font-weight:800; padding:6px 14px;
+      font-size:0.58rem; letter-spacing:2px; text-transform:uppercase;
+      font-weight:800; padding:5px 12px;
+    }
+    .plan-agency {
+      font-size:0.7rem; color:var(--gray); margin-bottom:4px;
+      text-decoration:line-through;
+    }
+    .plan-agency-label {
+      font-size:0.62rem; letter-spacing:2px; text-transform:uppercase;
+      color:var(--gray); display:block; margin-bottom:10px;
     }
     .plan-name {
       font-family:'Cormorant Garamond',serif;
-      font-size:1.5rem; font-weight:700; margin-bottom:8px; color:var(--dark);
+      font-size:1.5rem; font-weight:700; margin-bottom:6px; color:var(--dark);
     }
     .plan-price {
       font-family:'Cormorant Garamond',serif;
-      font-size:2.8rem; font-weight:700; color:var(--dark);
-      line-height:1; margin-bottom:6px;
+      font-size:2.6rem; font-weight:700; color:var(--dark);
+      line-height:1; margin-bottom:4px;
     }
-    .plan-price span { font-size:1rem; font-weight:400; color:var(--gray); }
-    .plan-sub { font-size:0.78rem; color:var(--gray); margin-bottom:28px; }
-    .plan-divider { height:1px; background:rgba(0,0,0,0.08); margin:24px 0; }
+    .plan-price span { font-size:0.9rem; font-weight:400; color:var(--gray); }
+    .plan-sub { font-size:0.75rem; color:var(--gray); margin-bottom:20px; }
+    .plan-divider { height:1px; background:rgba(0,0,0,0.08); margin:18px 0; }
     .plan-card.featured .plan-divider { background:rgba(255,255,255,0.1); }
     .plan-item {
-      font-size:0.82rem; color:#444; padding:10px 0;
-      border-bottom:1px solid rgba(0,0,0,0.06);
-      display:flex; align-items:center; gap:10px;
+      font-size:0.79rem; color:#444; padding:8px 0;
+      border-bottom:1px solid rgba(0,0,0,0.05);
+      display:flex; align-items:flex-start; gap:8px; line-height:1.4;
     }
-    .plan-item::before { content:'✓'; color:var(--gold); font-weight:700; flex-shrink:0; }
+    .plan-item::before { content:'✓'; color:var(--gold); font-weight:700; flex-shrink:0; margin-top:1px; }
     .plan-btn {
-      display:block; text-align:center; margin-top:28px;
-      padding:14px; font-size:0.74rem; letter-spacing:2px;
+      display:block; text-align:center; margin-top:auto; padding-top:24px;
+      padding:14px; font-size:0.72rem; letter-spacing:2px;
       text-transform:uppercase; font-weight:700;
-      text-decoration:none; transition:all 0.3s;
+      text-decoration:none; transition:all 0.3s; margin-top:auto;
     }
-    .plan-card:not(.featured) .plan-btn {
-      background:var(--dark); color:var(--white);
-    }
+    .plan-card:not(.featured) .plan-btn { background:var(--dark); color:var(--white); }
     .plan-card:not(.featured) .plan-btn:hover { background:var(--gold); color:var(--dark); }
-    .plan-card.featured .plan-btn {
-      background:var(--gold); color:var(--dark);
+    .plan-card.featured .plan-btn { background:var(--gold); color:var(--dark); }
+    .plan-card.featured .plan-btn:hover { background:var(--white); color:var(--dark); }
+    .plan-card.anual .plan-btn { background:transparent; border:1.5px solid var(--dark); color:var(--dark); }
+    .plan-card.anual .plan-btn:hover { background:var(--dark); color:var(--white); }
+    .plan-savings {
+      display:inline-block; background:rgba(201,168,76,0.12);
+      color:var(--gold); font-size:0.65rem; letter-spacing:1px;
+      font-weight:700; padding:3px 10px; margin-bottom:16px;
     }
-    .plan-card.featured .plan-btn:hover { background:var(--white); }
+
+    /* ── TRANQUILIDAD ── */
+    #tranquilidad { padding:80px 80px; background:var(--dark); }
+    .tran-grid {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:60px; max-width:1000px; margin:0 auto; align-items:center;
+    }
+    .tran-left .sec-title { color:var(--white); text-align:left; }
+    .tran-left .sec-tag { text-align:left; }
+    .tran-desc { color:rgba(255,255,255,0.55); font-size:0.9rem; line-height:1.7; margin-top:14px; }
+    .tran-steps { margin-top:36px; display:flex; flex-direction:column; gap:20px; }
+    .tran-step { display:flex; gap:16px; align-items:flex-start; }
+    .tran-num {
+      width:36px; height:36px; background:var(--gold); color:var(--dark);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800; font-size:0.85rem; flex-shrink:0;
+    }
+    .tran-step strong { display:block; color:var(--white); font-size:0.88rem; margin-bottom:4px; }
+    .tran-step p { color:rgba(255,255,255,0.45); font-size:0.8rem; line-height:1.5; }
+    .tran-right {
+      background:rgba(255,255,255,0.04); border:1px solid rgba(201,168,76,0.2);
+      padding:40px 36px;
+    }
+    .tran-quote {
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.25rem; color:var(--white); line-height:1.6;
+      font-style:italic; margin-bottom:20px;
+    }
+    .tran-note { font-size:0.78rem; color:rgba(255,255,255,0.4); line-height:1.6; }
+    .tran-note strong { color:var(--gold); }
+
+    /* ── FAQ ── */
+    #faq { padding:80px 80px; background:var(--off); }
+    .faq-list { max-width:800px; margin:0 auto; display:flex; flex-direction:column; gap:2px; }
+    .faq-item { background:var(--white); border:1px solid rgba(0,0,0,0.07); overflow:hidden; }
+    .faq-q {
+      padding:20px 24px; font-size:0.88rem; font-weight:600;
+      cursor:pointer; display:flex; justify-content:space-between; align-items:center;
+      transition:color 0.3s; user-select:none;
+    }
+    .faq-q:hover { color:var(--gold); }
+    .faq-q .faq-icon { font-size:1.2rem; transition:transform 0.3s; flex-shrink:0; }
+    .faq-a {
+      max-height:0; overflow:hidden;
+      transition:max-height 0.4s ease, padding 0.3s;
+      font-size:0.85rem; color:var(--gray); line-height:1.7;
+      padding:0 24px;
+    }
+    .faq-item.open .faq-a { max-height:200px; padding:0 24px 20px; }
+    .faq-item.open .faq-icon { transform:rotate(45deg); color:var(--gold); }
+
     @media(max-width:768px){
       #precios { padding:80px 20px; }
-      .plans-row { grid-template-columns:1fr; max-width:380px; }
+      .plans-row { grid-template-columns:1fr; max-width:380px; margin:0 auto; }
+      #tranquilidad { padding:60px 20px; }
+      .tran-grid { grid-template-columns:1fr; gap:40px; }
+      #faq { padding:60px 20px; }
     }
 
     /* ── POR QUÉ ── */
@@ -723,53 +790,158 @@
   <div class="section-head reveal">
     <span class="sec-tag">Inversión</span>
     <h2 class="sec-title">Elige tu <em>plan</em></h2>
-    <p class="sec-sub">Precios transparentes, sin sorpresas. Pago único.</p>
+    <p class="sec-sub">Precios transparentes, sin sorpresas. Estoy en etapa de crecimiento — estos precios no duran para siempre.</p>
   </div>
   <div class="plans-row">
 
+    <!-- BÁSICO -->
     <div class="plan-card reveal">
+      <span class="plan-agency-label">Agencia cobra</span>
+      <div class="plan-agency">$320.000</div>
+      <span class="plan-savings">Ahorras $170.000</span>
       <div class="plan-name">Básico</div>
       <div class="plan-price">$150k <span>CLP</span></div>
-      <p class="plan-sub">Pago único · Sin mensualidades</p>
+      <p class="plan-sub">Pago único · Entrega 3–7 días hábiles</p>
       <div class="plan-divider"></div>
-      <div class="plan-item">Diseño personalizado</div>
-      <div class="plan-item">Hasta 5 secciones</div>
-      <div class="plan-item">Catálogo de servicios</div>
-      <div class="plan-item">Botón WhatsApp</div>
-      <div class="plan-item">Google Maps + Horarios</div>
-      <div class="plan-item">100% móvil</div>
-      <a href="https://wa.me/56939665163?text=Hola%2C%20me%20interesa%20el%20Plan%20Básico%20de%20%24150.000" class="plan-btn" target="_blank">Quiero este plan</a>
+      <div class="plan-item">Diseño exclusivo con tus colores y logo</div>
+      <div class="plan-item">Secciones: Inicio, Servicios y Contacto</div>
+      <div class="plan-item">Catálogo con servicios y precios</div>
+      <div class="plan-item">Horario de atención visible</div>
+      <div class="plan-item">Formulario directo a tu WhatsApp</div>
+      <div class="plan-item">Mapa de Google integrado</div>
+      <div class="plan-item">Botones a tus redes sociales</div>
+      <div class="plan-item">Sección de reseñas y testimonios</div>
+      <div class="plan-item">Estadísticas de tu negocio</div>
+      <div class="plan-item">Optimizado para celular y computador</div>
+      <div class="plan-item">Web 100% tuya desde el primer día</div>
+      <a href="https://wa.me/56939665163?text=Hola%20Alonso%2C%20me%20interesa%20el%20Plan%20Básico%20%24150.000" class="plan-btn" target="_blank">Quiero este plan</a>
     </div>
 
+    <!-- PREMIUM -->
     <div class="plan-card featured reveal">
       <div class="plan-badge">Más popular</div>
+      <span class="plan-agency-label" style="color:rgba(255,255,255,.35)">Agencia cobra</span>
+      <div class="plan-agency" style="color:rgba(255,255,255,.35)">$580.000</div>
+      <span class="plan-savings">Ahorras $330.000</span>
       <div class="plan-name">Premium</div>
       <div class="plan-price">$250k <span>CLP</span></div>
-      <p class="plan-sub" style="color:rgba(255,255,255,.4)">Pago único · Sin mensualidades</p>
+      <p class="plan-sub" style="color:rgba(255,255,255,.4)">Pago único · Entrega 5–10 días hábiles</p>
       <div class="plan-divider"></div>
-      <div class="plan-item">Todo del plan Básico</div>
-      <div class="plan-item">Hasta 8 secciones</div>
-      <div class="plan-item">Galería de fotos</div>
-      <div class="plan-item">Formulario de contacto</div>
-      <div class="plan-item">Contador de clientes/stats</div>
-      <div class="plan-item">Animaciones premium</div>
-      <a href="https://wa.me/56939665163?text=Hola%2C%20me%20interesa%20el%20Plan%20Premium%20de%20%24250.000" class="plan-btn" target="_blank">Quiero este plan</a>
+      <div class="plan-item">Todo lo del Plan Básico incluido</div>
+      <div class="plan-item">Agenda automática — clientes reservan solos 24/7</div>
+      <div class="plan-item">Tus horarios disponibles en tiempo real</div>
+      <div class="plan-item">Bloqueo de turnos y descansos desde tu celular</div>
+      <div class="plan-item">Recordatorios automáticos al cliente</div>
+      <div class="plan-item">Pasarela de pagos: abono o pago completo online</div>
+      <div class="plan-item">Hasta 3 correos corporativos para tu equipo</div>
+      <div class="plan-item">Cero mensajes manuales que responder</div>
+      <a href="https://wa.me/56939665163?text=Hola%20Alonso%2C%20me%20interesa%20el%20Plan%20Premium%20%24250.000" class="plan-btn" target="_blank">Quiero este plan</a>
     </div>
 
+    <!-- AVANZADO -->
     <div class="plan-card reveal">
+      <span class="plan-agency-label">Agencia cobra</span>
+      <div class="plan-agency">$800.000 – $1.000.000</div>
+      <span class="plan-savings">Ahorras hasta $600.000</span>
       <div class="plan-name">Avanzado</div>
       <div class="plan-price">$400k <span>CLP</span></div>
-      <p class="plan-sub">Pago único · Sin mensualidades</p>
+      <p class="plan-sub">Pago único · Entrega 7–12 días hábiles</p>
       <div class="plan-divider"></div>
-      <div class="plan-item">Todo del plan Premium</div>
-      <div class="plan-item">Catálogo con filtros</div>
-      <div class="plan-item">Sistema de cotización</div>
-      <div class="plan-item">Blog o noticias</div>
-      <div class="plan-item">Dominio + Hosting incluido</div>
-      <div class="plan-item">Soporte 30 días</div>
-      <a href="https://wa.me/56939665163?text=Hola%2C%20me%20interesa%20el%20Plan%20Avanzado%20de%20%24400.000" class="plan-btn" target="_blank">Quiero este plan</a>
+      <div class="plan-item">Todo lo del Plan Premium incluido</div>
+      <div class="plan-item">Catálogo de productos con filtros por categoría</div>
+      <div class="plan-item">Sistema de cotización online automático</div>
+      <div class="plan-item">Blog o sección de noticias actualizable</div>
+      <div class="plan-item">Galería profesional con lightbox</div>
+      <div class="plan-item">Optimización SEO para aparecer en Google</div>
+      <div class="plan-item">Panel de estadísticas y visitas</div>
+      <div class="plan-item">Dominio + Hosting primer año incluido</div>
+      <div class="plan-item">Soporte técnico prioritario 60 días</div>
+      <a href="https://wa.me/56939665163?text=Hola%20Alonso%2C%20me%20interesa%20el%20Plan%20Avanzado%20%24400.000" class="plan-btn" target="_blank">Quiero este plan</a>
     </div>
 
+    <!-- ANUAL -->
+    <div class="plan-card anual reveal">
+      <div class="plan-name">Soporte Anual</div>
+      <div class="plan-price">$70k <span>/ año</span></div>
+      <p class="plan-sub">Renovación anual · Para webs ya creadas</p>
+      <div class="plan-divider"></div>
+      <div class="plan-item">Hosting y servidor activo 365 días</div>
+      <div class="plan-item">Soporte técnico directo por WhatsApp</div>
+      <div class="plan-item">Copias de seguridad de tu sitio</div>
+      <div class="plan-item">2 actualizaciones de contenido incluidas</div>
+      <div class="plan-item">5 cambios pequeños incluidos al año</div>
+      <div class="plan-item">Cambios adicionales a $15.000 c/u</div>
+      <a href="https://wa.me/56939665163?text=Hola%20Alonso%2C%20me%20interesa%20el%20Plan%20de%20Soporte%20Anual%20%2470.000" class="plan-btn" target="_blank">Contratar soporte</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRANQUILIDAD -->
+<section id="tranquilidad">
+  <div class="tran-grid">
+    <div class="tran-left reveal">
+      <span class="sec-tag">Sin sorpresas</span>
+      <h2 class="sec-title" style="color:var(--white)">Tu <em>tranquilidad</em><br>es lo primero</h2>
+      <p class="tran-desc">Antes de publicar nada en Internet, tú revisas y apruebas cada detalle. No aparece nada sin tu visto bueno.</p>
+      <div class="tran-steps">
+        <div class="tran-step">
+          <div class="tran-num">1</div>
+          <div>
+            <strong>50% para empezar</strong>
+            <p>El pago inicial confirma que arrancamos. Te muestro avances durante el proceso.</p>
+          </div>
+        </div>
+        <div class="tran-step">
+          <div class="tran-num">2</div>
+          <div>
+            <strong>Tú apruebas todo</strong>
+            <p>Revisas el resultado. Si algo no te gusta, lo ajustamos sin costo extra.</p>
+          </div>
+        </div>
+        <div class="tran-step">
+          <div class="tran-num">3</div>
+          <div>
+            <strong>50% al terminar</strong>
+            <p>El 50% restante lo pagas solo cuando ves tu web terminada y te gusta. Sin sorpresas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tran-right reveal">
+      <p class="tran-quote">"Estoy en etapa de crecimiento, y creo que más negocios locales deben tener acceso al mismo resultado que ofrecen las grandes agencias."</p>
+      <p class="tran-note">Por eso mis precios son distintos por ahora. Cuando el estudio crezca, los valores subirán.<br><br><strong>Si contratas hoy, te aseguras este precio para siempre en tus renovaciones.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-head reveal">
+    <span class="sec-tag">Preguntas frecuentes</span>
+    <h2 class="sec-title">Dudas <em>comunes</em></h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Tengo que pagar el dominio y el hosting aparte? <span class="faq-icon">+</span></div>
+      <div class="faq-a">En el Plan Básico y Premium el hosting no está incluido — se paga aparte (aprox. $30.000–$50.000 al año según el proveedor). En el Plan Avanzado el dominio y hosting del primer año están incluidos. El Plan de Soporte Anual cubre el hosting de los años siguientes por solo $70.000.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Cómo se paga? <span class="faq-icon">+</span></div>
+      <div class="faq-a">50% al inicio para arrancar el proyecto y 50% al terminar, cuando veas tu web finalizada y te guste. Aceptamos transferencia bancaria. Sin sorpresas ni cobros ocultos.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Puedo cambiar textos o precios en el futuro? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Sí. Los cambios pequeños (textos, precios, horarios) cuestan $15.000 c/u. Si tienes el Plan de Soporte Anual, incluye 5 cambios pequeños y 2 actualizaciones completas de contenido al año.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">¿Cuánto tiempo tarda en estar lista mi web? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Plan Básico: 3 a 7 días hábiles. Plan Premium: 5 a 10 días hábiles. Plan Avanzado: 7 a 12 días hábiles. Los plazos parten desde que me envías toda la información de tu negocio.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">¿La web es 100% mía? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Sí, desde el primer día. El código, el diseño y el dominio son completamente tuyos. No dependes de mí para nada una vez entregada.</div>
+    </div>
   </div>
 </section>
 
@@ -934,6 +1106,14 @@
     entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
   },{threshold:0.1});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // FAQ
+  function toggleFaq(el){
+    const item=el.parentElement;
+    const isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  }
 
   // Formulario WhatsApp
   function enviarFormulario(){
