@@ -154,22 +154,22 @@
     #stats {
       background:var(--dark); padding:40px 80px;
       display:grid; grid-template-columns:repeat(4,1fr);
-      text-align:center; gap:0;
+      text-align:center; gap:20px;
     }
     .stat-item {
-      padding:20px; border-right:1px solid rgba(255,255,255,0.08);
+      padding:24px 16px;
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius:12px;
+      background:rgba(255,255,255,0.03);
     }
-    .stat-item:last-child { border-right:none; }
     .stat-num {
       font-family:'Inter',sans-serif;
       font-size:2.5rem; font-weight:700; color:var(--gold); display:block;
     }
     .stat-lbl { font-size:0.68rem; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-top:4px; }
     @media(max-width:768px){
-      #stats { grid-template-columns:1fr 1fr; padding:24px 20px; }
-      .stat-item { padding:14px 8px; border-right:none; border-bottom:1px solid rgba(255,255,255,0.06); }
-      .stat-item:nth-child(odd){ border-right:1px solid rgba(255,255,255,0.06); }
-      .stat-item:nth-child(3),.stat-item:nth-child(4){ border-bottom:none; }
+      #stats { grid-template-columns:1fr 1fr; padding:24px 20px; gap:12px; }
+      .stat-item { padding:16px 10px; }
       .stat-num { font-size:1.9rem; }
       .stat-lbl { font-size:0.6rem; letter-spacing:2px; }
     }
@@ -718,7 +718,7 @@
     <span class="stat-lbl">Días hábiles de entrega</span>
   </div>
   <div class="stat-item">
-    <span class="stat-num">$150k</span>
+    <span class="stat-num">$150.000</span>
     <span class="stat-lbl">Desde este precio</span>
   </div>
 </div>
@@ -867,7 +867,7 @@
       <div class="plan-agency">$320.000</div>
       <span class="plan-savings">Ahorras $170.000</span>
       <div class="plan-name">Básico</div>
-      <div class="plan-price">$150k <span>CLP</span></div>
+      <div class="plan-price">$150.000 <span>CLP</span></div>
       <p class="plan-sub">Pago único · Entrega 5–7 días hábiles</p>
       <div class="plan-divider"></div>
       <div class="plan-item">Diseño exclusivo con tus colores y logo</div>
@@ -892,7 +892,7 @@
       <div class="plan-agency" style="color:rgba(255,255,255,.35)">$580.000</div>
       <span class="plan-savings">Ahorras $330.000</span>
       <div class="plan-name">Premium</div>
-      <div class="plan-price">$250k <span>CLP</span></div>
+      <div class="plan-price">$250.000 <span>CLP</span></div>
       <p class="plan-sub" style="color:rgba(255,255,255,.4)">Pago único · Entrega 7–10 días hábiles</p>
       <div class="plan-divider"></div>
       <div class="plan-item">Todo lo del Plan Básico incluido</div>
@@ -913,7 +913,7 @@
       <div class="plan-agency">$800.000 – $1.000.000</div>
       <span class="plan-savings">Ahorras hasta $600.000</span>
       <div class="plan-name">Avanzado</div>
-      <div class="plan-price">$400k <span>CLP</span></div>
+      <div class="plan-price">$400.000 <span>CLP</span></div>
       <p class="plan-sub">Pago único · Entrega 14–21 días hábiles</p>
       <div class="plan-divider"></div>
       <div class="plan-item">Todo lo del Plan Premium incluido</div>
@@ -931,7 +931,7 @@
     <!-- ANUAL -->
     <div class="plan-card anual reveal">
       <div class="plan-name">Soporte Anual</div>
-      <div class="plan-price">$70k <span>/ año</span></div>
+      <div class="plan-price">$70.000 <span>/ año</span></div>
       <p class="plan-sub">Renovación anual · Para webs ya creadas</p>
       <div class="plan-divider"></div>
       <div class="plan-item">Hosting y servidor activo 365 días</div>
