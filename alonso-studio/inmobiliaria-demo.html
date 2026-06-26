@@ -40,7 +40,7 @@ nav.solid{background:rgba(8,8,8,.96);backdrop-filter:blur(16px);border-bottom:1p
 /* HERO */
 .hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
 .hero-video{position:absolute;inset:0;z-index:0;}
-.hero-video::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#0a0a0a 0%,#111108 40%,#0d0d05 100%);}
+.hero-video::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1800&q=80') center/cover no-repeat;filter:brightness(.35);}
 .hero-particles{position:absolute;inset:0;overflow:hidden;}
 .hero-particles::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(201,168,76,.08) 0%,transparent 70%);top:-100px;right:-100px;animation:float1 8s ease-in-out infinite;}
 .hero-particles::after{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(201,168,76,.05) 0%,transparent 70%);bottom:-50px;left:-50px;animation:float2 10s ease-in-out infinite;}
@@ -113,9 +113,9 @@ nav.solid{background:rgba(8,8,8,.96);backdrop-filter:blur(16px);border-bottom:1p
 .prop-card:hover .prop-img-inner{transform:scale(1.04);}
 .prop-img{height:260px;overflow:hidden;position:relative;}
 .prop-img-inner{width:100%;height:100%;transition:transform .6s ease;display:flex;align-items:center;justify-content:center;}
-.prop-img-inner.p1{background:linear-gradient(135deg,#1a1506 0%,#2a2010 50%,#1a1506 100%);}
-.prop-img-inner.p2{background:linear-gradient(135deg,#060d1a 0%,#0a1628 50%,#060d1a 100%);}
-.prop-img-inner.p3{background:linear-gradient(135deg,#0f0a00 0%,#1e1500 50%,#0f0a00 100%);}
+.prop-img-inner.p1{background:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80') center/cover no-repeat;}
+.prop-img-inner.p2{background:url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80') center/cover no-repeat;}
+.prop-img-inner.p3{background:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80') center/cover no-repeat;}
 .prop-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.8) 0%,transparent 60%);}
 .prop-type{position:absolute;top:20px;left:20px;background:var(--gold);color:var(--dark);font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;}
 .prop-featured{position:absolute;top:20px;right:20px;background:rgba(8,8,8,.8);border:1px solid var(--border);color:var(--white);font-size:.6rem;letter-spacing:1px;padding:5px 10px;backdrop-filter:blur(8px);}
@@ -361,7 +361,7 @@ footer{background:#050505;padding:40px 60px;border-top:1px solid var(--border);}
     <div class="props-grid">
       <div class="prop-card reveal">
         <div class="prop-img">
-          <div class="prop-img-inner p1"><div class="prop-icon">🏢</div></div>
+          <div class="prop-img-inner p1"></div>
           <div class="prop-overlay"></div>
           <div class="prop-type">Venta</div>
           <div class="prop-featured">⭐ Destacada</div>
@@ -380,7 +380,7 @@ footer{background:#050505;padding:40px 60px;border-top:1px solid var(--border);}
       </div>
       <div class="prop-card reveal">
         <div class="prop-img">
-          <div class="prop-img-inner p2"><div class="prop-icon">🏠</div></div>
+          <div class="prop-img-inner p2"></div>
           <div class="prop-overlay"></div>
           <div class="prop-type">Venta</div>
           <div class="prop-featured">🆕 Nueva</div>
@@ -399,7 +399,7 @@ footer{background:#050505;padding:40px 60px;border-top:1px solid var(--border);}
       </div>
       <div class="prop-card reveal">
         <div class="prop-img">
-          <div class="prop-img-inner p3"><div class="prop-icon">🏙</div></div>
+          <div class="prop-img-inner p3"></div>
           <div class="prop-overlay"></div>
           <div class="prop-type">Arriendo</div>
         </div>
