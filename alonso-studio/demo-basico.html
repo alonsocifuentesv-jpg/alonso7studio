@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dental Pacífico | Clínica Dental Santiago de Chile</title>
+<meta name="description" content="Dental Pacífico — Clínica dental de confianza en Providencia, Santiago. Atención de calidad para toda la familia.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --blue:#1a4fa0;
+  --blue2:#2563c4;
+  --blue3:#dbeafe;
+  --blue4:#eff6ff;
+  --dark:#0f172a;
+  --text:#1e293b;
+  --muted:#64748b;
+  --white:#ffffff;
+  --border:#e2e8f0;
+  --gold:#f59e0b;
+}
+html{scroll-behavior:smooth;}
+body{background:#fff;color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 80px;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:box-shadow .3s;}
+nav.scrolled{box-shadow:0 2px 20px rgba(26,79,160,.1);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo-icon{width:38px;height:38px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.nav-logo-icon svg{width:22px;height:22px;fill:#fff;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--dark);}
+.nav-logo-text span{color:var(--blue);}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--blue);}
+.nav-cta{background:var(--blue);color:#fff;padding:10px 24px;border-radius:6px;font-size:.8rem;font-weight:600;text-decoration:none;transition:background .2s,transform .2s;}
+.nav-cta:hover{background:var(--blue2);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{width:24px;height:2px;background:var(--dark);transition:all .3s;display:block;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mobile-menu{display:none;position:fixed;inset:0;background:#fff;z-index:190;flex-direction:column;align-items:center;justify-content:center;gap:36px;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:'Playfair Display',serif;font-size:2rem;color:var(--dark);text-decoration:none;}
+.mobile-menu a:hover{color:var(--blue);}
+@media(max-width:900px){nav{padding:0 20px;}.nav-links,.nav-cta{display:none;}.hamburger{display:flex;}}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 80px 60px;background:linear-gradient(135deg,#f0f7ff 0%,#ffffff 50%,#f0f7ff 100%);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(37,99,196,.08) 0%,transparent 70%);border-radius:50%;}
+.hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(26,79,160,.06) 0%,transparent 70%);border-radius:50%;}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1;max-width:1200px;margin:0 auto;width:100%;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--blue3);color:var(--blue);padding:6px 16px;border-radius:100px;font-size:.72rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px;}
+.hero-tag::before{content:'●';font-size:.5rem;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.8rem);font-weight:700;line-height:1.15;color:var(--dark);margin-bottom:20px;}
+.hero-title em{font-style:italic;color:var(--blue);}
+.hero-sub{font-size:.95rem;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:460px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-primary{background:var(--blue);color:#fff;padding:14px 32px;border-radius:6px;font-size:.82rem;font-weight:600;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary:hover{background:var(--blue2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,79,160,.25);}
+.btn-secondary{border:1.5px solid var(--blue);color:var(--blue);padding:14px 32px;border-radius:6px;font-size:.82rem;font-weight:600;text-decoration:none;transition:all .2s;}
+.btn-secondary:hover{background:var(--blue4);}
+.hero-img-wrap{position:relative;}
+.hero-img{width:100%;border-radius:20px;aspect-ratio:4/3;object-fit:cover;box-shadow:0 32px 80px rgba(26,79,160,.18);}
+.hero-badge{position:absolute;bottom:-20px;left:-20px;background:#fff;border-radius:12px;padding:16px 20px;box-shadow:0 12px 40px rgba(0,0,0,.12);display:flex;align-items:center;gap:12px;}
+.hero-badge-icon{width:42px;height:42px;background:var(--blue3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
+.hero-badge-text strong{display:block;font-size:.9rem;color:var(--dark);font-weight:700;}
+.hero-badge-text span{font-size:.72rem;color:var(--muted);}
+@media(max-width:900px){.hero{padding:90px 20px 60px;}.hero-inner{grid-template-columns:1fr;gap:40px;}.hero-img{aspect-ratio:16/9;}.hero-badge{bottom:-10px;left:10px;}}
+
+/* STATS */
+.stats{background:var(--blue);padding:60px 80px;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1200px;margin:0 auto;}
+.stat-box{text-align:center;padding:20px;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:#fff;display:block;line-height:1;}
+.stat-suffix{font-size:1.8rem;}
+.stat-lbl{font-size:.75rem;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:2px;margin-top:8px;display:block;}
+@media(max-width:768px){.stats{padding:40px 20px;}.stats-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* SECCIONES GENÉRICAS */
+.sec{padding:100px 80px;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 64px;}
+.sec-tag2{font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--blue);font-weight:600;margin-bottom:12px;display:block;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;color:var(--dark);line-height:1.2;margin-bottom:16px;}
+.sec-title em{font-style:italic;color:var(--blue);}
+.sec-sub{color:var(--muted);font-size:.9rem;line-height:1.8;}
+@media(max-width:900px){.sec{padding:70px 20px;}}
+
+/* SERVICIOS */
+#servicios{background:#fff;}
+.servicios-grid{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:8px;}
+.servicios-grid::-webkit-scrollbar{display:none;}
+.serv-card{flex:0 0 280px;scroll-snap-align:start;background:var(--blue4);border:1.5px solid var(--blue3);border-radius:16px;padding:32px 28px;transition:all .3s;}
+.serv-card:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:0 16px 48px rgba(26,79,160,.12);}
+.serv-icon{width:52px;height:52px;background:var(--blue);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:20px;}
+.serv-name{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--dark);margin-bottom:8px;}
+.serv-desc{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:20px;}
+.serv-price{font-size:1.5rem;font-weight:700;color:var(--blue);font-family:'Playfair Display',serif;}
+.serv-price span{font-size:.75rem;font-weight:400;color:var(--muted);font-family:'Inter',sans-serif;}
+.carousel-hint{text-align:center;font-size:.68rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-top:20px;}
+
+/* POR QUÉ */
+#porque{background:var(--blue4);}
+.porq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;}
+.porq-item{display:flex;gap:20px;align-items:flex-start;}
+.porq-icon{width:48px;height:48px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.porq-title{font-weight:700;color:var(--dark);margin-bottom:6px;font-size:.95rem;}
+.porq-text{font-size:.82rem;color:var(--muted);line-height:1.7;}
+@media(max-width:768px){.porq-grid{grid-template-columns:1fr;}}
+
+/* CATÁLOGO */
+#catalogo{background:#fff;}
+.catalogo-grid{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:8px;}
+.catalogo-grid::-webkit-scrollbar{display:none;}
+.cat-card{flex:0 0 240px;scroll-snap-align:start;border:1.5px solid var(--border);border-radius:12px;overflow:hidden;transition:all .3s;}
+.cat-card:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:0 12px 32px rgba(26,79,160,.1);}
+.cat-img{width:100%;aspect-ratio:1;object-fit:cover;}
+.cat-body{padding:18px;}
+.cat-name{font-weight:700;color:var(--dark);margin-bottom:4px;font-size:.9rem;}
+.cat-desc{font-size:.75rem;color:var(--muted);margin-bottom:12px;line-height:1.5;}
+.cat-price{font-size:1.2rem;font-weight:700;color:var(--blue);font-family:'Playfair Display',serif;}
+
+/* PROCESO */
+#proceso{background:var(--blue);}
+#proceso .sec-title{color:#fff;}
+#proceso .sec-sub{color:rgba(255,255,255,.65);}
+#proceso .sec-tag2{color:rgba(255,255,255,.6);}
+.pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.paso{text-align:center;padding:32px 20px;}
+.paso-num{width:56px;height:56px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#fff;margin:0 auto 20px;}
+.paso-title{font-weight:700;color:#fff;margin-bottom:8px;}
+.paso-text{font-size:.78rem;color:rgba(255,255,255,.65);line-height:1.7;}
+@media(max-width:768px){.pasos{grid-template-columns:repeat(2,1fr);}}
+
+/* HORARIO */
+#horario{background:var(--blue4);}
+.horario-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.horario-table{width:100%;}
+.horario-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border);}
+.horario-row:last-child{border-bottom:none;}
+.horario-dia{font-weight:600;color:var(--dark);font-size:.88rem;}
+.horario-hrs{font-size:.85rem;color:var(--blue);font-weight:600;}
+.horario-hrs.closed{color:var(--muted);}
+.horario-info{background:var(--blue);border-radius:16px;padding:40px;}
+.horario-info h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;margin-bottom:16px;}
+.horario-info p{color:rgba(255,255,255,.7);font-size:.85rem;line-height:1.8;margin-bottom:24px;}
+.horario-contact{display:flex;flex-direction:column;gap:12px;}
+.horario-contact a{color:rgba(255,255,255,.85);font-size:.85rem;text-decoration:none;display:flex;align-items:center;gap:8px;}
+.horario-contact a:hover{color:#fff;}
+@media(max-width:900px){.horario-inner{grid-template-columns:1fr;}}
+
+/* TESTIMONIOS */
+#testimonios{background:#fff;}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.test-card{background:var(--blue4);border:1.5px solid var(--blue3);border-radius:16px;padding:32px;}
+.stars{color:var(--gold);font-size:1rem;margin-bottom:16px;letter-spacing:2px;}
+.test-text{font-size:.88rem;color:var(--text);line-height:1.8;margin-bottom:20px;font-style:italic;}
+.test-author{display:flex;align-items:center;gap:12px;}
+.test-avatar{width:42px;height:42px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;}
+.test-name{font-weight:700;font-size:.85rem;color:var(--dark);}
+.test-lugar{font-size:.72rem;color:var(--muted);}
+@media(max-width:768px){.test-grid{grid-template-columns:1fr;}}
+
+/* FAQ */
+#faq{background:var(--blue4);}
+.faq-list{max-width:760px;margin:0 auto;}
+.faq-item{border-bottom:1.5px solid var(--border);overflow:hidden;}
+.faq-q{width:100%;background:none;border:none;padding:22px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;text-align:left;font-size:.92rem;font-weight:600;color:var(--dark);gap:16px;}
+.faq-q:hover{color:var(--blue);}
+.faq-icon{width:28px;height:28px;border:1.5px solid var(--blue3);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:1rem;flex-shrink:0;transition:all .3s;}
+.faq-item.open .faq-icon{background:var(--blue);color:#fff;transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease;}
+.faq-a p{font-size:.85rem;color:var(--muted);line-height:1.8;padding-bottom:20px;}
+.faq-item.open .faq-a{max-height:200px;}
+
+/* MAPA */
+#mapa{background:#fff;padding:0;}
+.mapa-inner{display:grid;grid-template-columns:1fr 1fr;}
+.mapa-info{padding:80px;}
+.mapa-info h2{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--dark);margin-bottom:16px;}
+.mapa-info p{color:var(--muted);font-size:.88rem;line-height:1.8;margin-bottom:32px;}
+.mapa-dato{display:flex;align-items:flex-start;gap:12px;margin-bottom:20px;}
+.mapa-dato-icon{width:36px;height:36px;background:var(--blue3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.mapa-dato-text strong{display:block;font-size:.85rem;font-weight:700;color:var(--dark);margin-bottom:2px;}
+.mapa-dato-text span{font-size:.8rem;color:var(--muted);}
+.mapa-frame{height:100%;min-height:450px;}
+.mapa-frame iframe{width:100%;height:100%;border:none;display:block;}
+@media(max-width:900px){.mapa-inner{grid-template-columns:1fr;}.mapa-frame{min-height:300px;}.mapa-info{padding:60px 20px 40px;}}
+
+/* REDES */
+#redes{background:var(--blue4);padding:60px 80px;}
+.redes-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;}
+.redes-text h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--dark);margin-bottom:8px;}
+.redes-text p{color:var(--muted);font-size:.85rem;}
+.redes-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.red-btn{display:flex;align-items:center;gap:8px;padding:12px 22px;border-radius:8px;font-size:.8rem;font-weight:600;text-decoration:none;transition:all .2s;}
+.red-ig{background:#e1306c;color:#fff;}
+.red-ig:hover{background:#c1185c;transform:translateY(-2px);}
+.red-tk{background:#010101;color:#fff;}
+.red-tk:hover{background:#333;transform:translateY(-2px);}
+.red-fb{background:#1877f2;color:#fff;}
+.red-fb:hover{background:#1259c3;transform:translateY(-2px);}
+@media(max-width:900px){#redes{padding:40px 20px;}.redes-inner{flex-direction:column;align-items:flex-start;}}
+
+/* CONTACTO */
+#contacto{background:var(--blue);padding:100px 80px;}
+.contacto-inner{max-width:640px;margin:0 auto;text-align:center;}
+.contacto-inner h2{font-family:'Playfair Display',serif;font-size:2.2rem;color:#fff;margin-bottom:16px;}
+.contacto-inner p{color:rgba(255,255,255,.7);font-size:.9rem;margin-bottom:48px;line-height:1.8;}
+.form-group{margin-bottom:16px;text-align:left;}
+.form-label{font-size:.75rem;font-weight:600;color:rgba(255,255,255,.8);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;display:block;}
+.form-input,.form-select,.form-textarea{width:100%;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:8px;padding:13px 16px;color:#fff;font-size:.88rem;font-family:'Inter',sans-serif;transition:border .2s;}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(255,255,255,.4);}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:rgba(255,255,255,.6);}
+.form-select{appearance:none;cursor:pointer;}
+.form-select option{background:var(--blue);color:#fff;}
+.form-textarea{resize:none;height:110px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.btn-wa{width:100%;background:#25d366;color:#fff;border:none;padding:16px;border-radius:8px;font-size:.9rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:8px;transition:all .2s;font-family:'Inter',sans-serif;}
+.btn-wa:hover{background:#1ebe5a;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.3);}
+@media(max-width:768px){.form-row{grid-template-columns:1fr;}.contacto-inner{padding:0;}}
+
+/* FOOTER */
+footer{background:var(--dark);padding:60px 80px 32px;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.footer-brand p{color:rgba(255,255,255,.45);font-size:.8rem;line-height:1.8;margin-top:16px;max-width:260px;}
+.footer-col h4{color:#fff;font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:10px;}
+.footer-col ul li a{color:rgba(255,255,255,.45);font-size:.8rem;text-decoration:none;transition:color .2s;}
+.footer-col ul li a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-bottom span{color:rgba(255,255,255,.3);font-size:.72rem;}
+.footer-bottom a{color:rgba(255,255,255,.3);font-size:.72rem;text-decoration:none;}
+.footer-bottom a:hover{color:rgba(255,255,255,.6);}
+@media(max-width:900px){footer{padding:40px 20px 24px;}.footer-top{grid-template-columns:1fr 1fr;}.footer-bottom{flex-direction:column;text-align:center;}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr;}}
+
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:999;background:#25d366;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,.4);text-decoration:none;transition:all .3s;animation:waPulse 2.5s ease-in-out infinite;}
+.wa-float:hover{transform:scale(1.1);}
+.wa-float svg{width:30px;height:30px;fill:#fff;}
+@keyframes waPulse{0%,100%{box-shadow:0 8px 24px rgba(37,211,102,.4)}50%{box-shadow:0 8px 32px rgba(37,211,102,.7)}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/56939665163" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+    </div>
+    <span class="nav-logo-text">Dental <span>Pacífico</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#catalogo">Tratamientos</a></li>
+    <li><a href="#horario">Horario</a></li>
+    <li><a href="#testimonios">Reseñas</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Reservar hora →</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#catalogo" onclick="closeMobile()">Tratamientos</a>
+  <a href="#horario" onclick="closeMobile()">Horario</a>
+  <a href="#testimonios" onclick="closeMobile()">Reseñas</a>
+  <a href="#contacto" onclick="closeMobile()">Reservar hora</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">Providencia, Santiago</div>
+      <h1 class="hero-title">Tu sonrisa en<br><em>las mejores manos</em></h1>
+      <p class="hero-sub">Clínica dental moderna con atención personalizada para toda la familia. Tecnología de punta, precios justos y un equipo que te cuida desde el primer día.</p>
+      <div class="hero-btns">
+        <a href="#contacto" class="btn-primary">📅 Reservar hora</a>
+        <a href="#servicios" class="btn-secondary">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-img-wrap reveal">
+      <img class="hero-img" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80" alt="Clínica Dental Pacífico"/>
+      <div class="hero-badge">
+        <div class="hero-badge-icon">⭐</div>
+        <div class="hero-badge-text">
+          <strong>4.9 / 5 estrellas</strong>
+          <span>+320 reseñas Google</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-box reveal">
+      <span class="stat-num"><span class="count" data-target="14">0</span><span class="stat-suffix">+</span></span>
+      <span class="stat-lbl">Años de experiencia</span>
+    </div>
+    <div class="stat-box reveal">
+      <span class="stat-num"><span class="count" data-target="4800">0</span><span class="stat-suffix">+</span></span>
+      <span class="stat-lbl">Pacientes atendidos</span>
+    </div>
+    <div class="stat-box reveal">
+      <span class="stat-num"><span class="count" data-target="98">0</span><span class="stat-suffix">%</span></span>
+      <span class="stat-lbl">Pacientes satisfechos</span>
+    </div>
+    <div class="stat-box reveal">
+      <span class="stat-num"><span class="count" data-target="6">0</span></span>
+      <span class="stat-lbl">Especialistas en equipo</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="sec" id="servicios">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="sec-tag2">Lo que hacemos</span>
+      <h2 class="sec-title">Servicios para <em>toda la familia</em></h2>
+      <p class="sec-sub">Desde una limpieza de rutina hasta tratamientos estéticos avanzados, cubrimos todas tus necesidades dentales.</p>
+    </div>
+    <div class="servicios-grid">
+      <div class="serv-card reveal">
+        <div class="serv-icon">🦷</div>
+        <div class="serv-name">Limpieza dental</div>
+        <p class="serv-desc">Limpieza profunda con ultrasonido y pulido dental. Ideal cada 6 meses para mantener tu salud bucal.</p>
+        <div class="serv-price">$25.000 <span>por sesión</span></div>
+      </div>
+      <div class="serv-card reveal">
+        <div class="serv-icon">✨</div>
+        <div class="serv-name">Blanqueamiento</div>
+        <p class="serv-desc">Blanqueamiento laser LED en una sola sesión. Hasta 8 tonos más blanco garantizados.</p>
+        <div class="serv-price">$149.000 <span>por sesión</span></div>
+      </div>
+      <div class="serv-card reveal">
+        <div class="serv-icon">🔧</div>
+        <div class="serv-name">Ortodoncia</div>
+        <p class="serv-desc">Brackets metálicos, cerámicos o alineadores invisibles. Plan de pago sin interés disponible.</p>
+        <div class="serv-price">$890.000 <span>desde</span></div>
+      </div>
+      <div class="serv-card reveal">
+        <div class="serv-icon">🦴</div>
+        <div class="serv-name">Implantes</div>
+        <p class="serv-desc">Implantes de titanio de alta calidad con garantía de por vida. Incluye corona de porcelana.</p>
+        <div class="serv-price">$650.000 <span>por implante</span></div>
+      </div>
+      <div class="serv-card reveal">
+        <div class="serv-icon">🧒</div>
+        <div class="serv-name">Odontopediatría</div>
+        <p class="serv-desc">Atención especializada para niños en un ambiente amigable. Primera visita sin costo.</p>
+        <div class="serv-price">$18.000 <span>consulta</span></div>
+      </div>
+      <div class="serv-card reveal">
+        <div class="serv-icon">🏥</div>
+        <div class="serv-name">Urgencias dentales</div>
+        <p class="serv-desc">Atención de urgencias el mismo día. Dolor de muela, fractura dental o absceso.</p>
+        <div class="serv-price">$35.000 <span>evaluación</span></div>
+      </div>
+    </div>
+    <p class="carousel-hint">← Desliza para ver más →</p>
+  </div>
+</section>
+
+<!-- POR QUÉ -->
+<section class="sec" id="porque">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="sec-tag2">Nuestras ventajas</span>
+      <h2 class="sec-title">¿Por qué elegirnos <em>a nosotros?</em></h2>
+      <p class="sec-sub">Más de 14 años cuidando sonrisas en Santiago. Estas son algunas razones por las que nuestros pacientes vuelven.</p>
+    </div>
+    <div class="porq-grid">
+      <div class="porq-item reveal">
+        <div class="porq-icon">🏅</div>
+        <div>
+          <div class="porq-title">Especialistas certificados</div>
+          <p class="porq-text">Todo nuestro equipo está titulado en universidades chilenas y con posgrados en el extranjero. Tu salud en manos de los mejores.</p>
+        </div>
+      </div>
+      <div class="porq-item reveal">
+        <div class="porq-icon">💰</div>
+        <div>
+          <div class="porq-title">Precios transparentes</div>
+          <p class="porq-text">Sin cobros ocultos ni sorpresas. Te entregamos el presupuesto completo antes de comenzar cualquier tratamiento.</p>
+        </div>
+      </div>
+      <div class="porq-item reveal">
+        <div class="porq-icon">⚡</div>
+        <div>
+          <div class="porq-title">Tecnología de punta</div>
+          <p class="porq-text">Radiografías digitales, láser dental y equipamiento de última generación para diagnósticos precisos y tratamientos más rápidos.</p>
+        </div>
+      </div>
+      <div class="porq-item reveal">
+        <div class="porq-icon">📋</div>
+        <div>
+          <div class="porq-title">Convenio con Isapres y Fonasa</div>
+          <p class="porq-text">Trabajamos con la mayoría de seguros de salud del país. Consulta con nosotros si tu plan aplica para descuentos especiales.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATÁLOGO -->
+<section class="sec" id="catalogo">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="sec-tag2">Tratamientos</span>
+      <h2 class="sec-title">Nuestros <em>tratamientos</em> más populares</h2>
+      <p class="sec-sub">Escoge el tratamiento que necesitas y cotiza directamente por WhatsApp.</p>
+    </div>
+    <div class="catalogo-grid">
+      <div class="cat-card reveal">
+        <img class="cat-img" src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=400&q=80" alt="Limpieza dental"/>
+        <div class="cat-body">
+          <div class="cat-name">Limpieza profesional</div>
+          <p class="cat-desc">Ultrasonido + pulido + flúor</p>
+          <div class="cat-price">$25.000</div>
+        </div>
+      </div>
+      <div class="cat-card reveal">
+        <img class="cat-img" src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=400&q=80" alt="Blanqueamiento"/>
+        <div class="cat-body">
+          <div class="cat-name">Blanqueamiento LED</div>
+          <p class="cat-desc">Hasta 8 tonos en 1 sesión</p>
+          <div class="cat-price">$149.000</div>
+        </div>
+      </div>
+      <div class="cat-card reveal">
+        <img class="cat-img" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&q=80" alt="Ortodoncia"/>
+        <div class="cat-body">
+          <div class="cat-name">Alineadores invisibles</div>
+          <p class="cat-desc">Sin brackets, sin molestias</p>
+          <div class="cat-price">$1.200.000</div>
+        </div>
+      </div>
+      <div class="cat-card reveal">
+        <img class="cat-img" src="https://images.unsplash.com/photo-1571772996211-2f02c9727629?w=400&q=80" alt="Implante"/>
+        <div class="cat-body">
+          <div class="cat-name">Implante titanio</div>
+          <p class="cat-desc">Incluye corona de porcelana</p>
+          <div class="cat-price">$650.000</div>
+        </div>
+      </div>
+      <div class="cat-card reveal">
+        <img class="cat-img" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&q=80" alt="Carilla"/>
+        <div class="cat-body">
+          <div class="cat-name">Carillas de porcelana</div>
+          <p class="cat-desc">Sonrisa perfecta y duradera</p>
+          <div class="cat-price">$280.000 <small>c/u</small></div>
+        </div>
+      </div>
+    </div>
+    <p class="carousel-hint">← Desliza para ver más →</p>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="sec" id="proceso">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="sec-tag2">¿Cómo funciona?</span>
+      <h2 class="sec-title">Reservar es <em>muy fácil</em></h2>
+      <p class="sec-sub">En 4 pasos simples estás en la silla dental con nosotros.</p>
+    </div>
+    <div class="pasos">
+      <div class="paso reveal">
+        <div class="paso-num">1</div>
+        <div class="paso-title">Escríbenos</div>
+        <p class="paso-text">Contáctanos por WhatsApp o completa el formulario. Te respondemos en menos de 1 hora hábil.</p>
+      </div>
+      <div class="paso reveal">
+        <div class="paso-num">2</div>
+        <div class="paso-title">Elige tu hora</div>
+        <p class="paso-text">Te ofrecemos horarios disponibles que se adapten a tu agenda. Mañana, tarde o en tu hora de almuerzo.</p>
+      </div>
+      <div class="paso reveal">
+        <div class="paso-num">3</div>
+        <div class="paso-title">Evaluación gratis</div>
+        <p class="paso-text">En tu primera visita hacemos una evaluación completa sin costo y te entregamos el presupuesto.</p>
+      </div>
+      <div class="paso reveal">
+        <div class="paso-num">4</div>
+        <div class="paso-title">¡Listo!</div>
+        <p class="paso-text">Iniciamos tu tratamiento. Seguimiento personalizado y recordatorio de tu próxima cita automático.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIO -->
+<section class="sec" id="horario">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="sec-tag2">Atención</span>
+      <h2 class="sec-title">Nuestro <em>horario</em></h2>
+      <p class="sec-sub">Abiertos en horarios convenientes para que nunca pierdas tu jornada laboral.</p>
+    </div>
+    <div class="horario-inner">
+      <div class="horario-table reveal">
+        <div class="horario-row"><span class="horario-dia">Lunes</span><span class="horario-hrs">09:00 – 20:00</span></div>
+        <div class="horario-row"><span class="horario-dia">Martes</span><span class="horario-hrs">09:00 – 20:00</span></div>
+        <div class="horario-row"><span class="horario-dia">Miércoles</span><span class="horario-hrs">09:00 – 20:00</span></div>
+        <div class="horario-row"><span class="horario-dia">Jueves</span><span class="horario-hrs">09:00 – 20:00</span></div>
+        <div class="horario-row"><span class="horario-dia">Viernes</span><span class="horario-hrs">09:00 – 18:00</span></div>
+        <div class="horario-row"><span class="horario-dia">Sábado</span><span class="horario-hrs">09:30 – 14:00</span></div>
+        <div class="horario-row"><span class="horario-dia">Domingo</span><span class="horario-hrs closed">Cerrado</span></div>
+      </div>
+      <div class="horario-info reveal">
+        <h3>¿Necesitas una urgencia?</h3>
+        <p>Atendemos urgencias dentales el mismo día, en el horario de apertura. Llámanos o escríbenos por WhatsApp y te damos prioridad.</p>
+        <div class="horario-contact">
+          <a href="tel:+56223456789">📞 +56 2 2345 6789</a>
+          <a href="https://wa.me/56939665163" target="_blank">💬 WhatsApp: +56 9 3966 5163</a>
+          <a href="mailto:hola@dentalpacífico.cl">✉️ hola@dentalpacífico.cl</a>
+          <a href="#">📍 Av. Providencia 1234, of. 502, Providencia</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="sec" id="testimonios">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="sec-tag2">Lo que dicen</span>
+      <h2 class="sec-title">Reseñas de nuestros <em>pacientes</em></h2>
+      <p class="sec-sub">Más de 320 reseñas de 5 estrellas en Google. Esto dicen quienes ya confían en nosotros.</p>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">"Llevaba años con miedo al dentista y acá me hicieron sentir completamente cómoda. El tratamiento de ortodoncia fue súper profesional y el resultado es increíble."</p>
+        <div class="test-author">
+          <div class="test-avatar">CP</div>
+          <div>
+            <div class="test-name">Catalina Paredes</div>
+            <div class="test-lugar">Providencia · Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">"El blanqueamiento quedó espectacular, noté el cambio desde la primera sesión. El equipo es muy atento y te explica todo antes de empezar. 100% recomendable."</p>
+        <div class="test-author">
+          <div class="test-avatar">MV</div>
+          <div>
+            <div class="test-name">Martín Valenzuela</div>
+            <div class="test-lugar">Las Condes · Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">"Traje a mis tres hijos y los atendieron excelente. La doctora de niños tiene un don especial para tranquilizarlos. El ambiente es moderno y muy limpio."</p>
+        <div class="test-author">
+          <div class="test-avatar">LR</div>
+          <div>
+            <div class="test-name">Lorena Rojas</div>
+            <div class="test-lugar">Ñuñoa · Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="sec-tag2">Preguntas frecuentes</span>
+      <h2 class="sec-title">¿Tienes <em>dudas?</em></h2>
+      <p class="sec-sub">Estas son las preguntas que más nos hacen. Si la tuya no está acá, escríbenos.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Atienden con Fonasa o Isapre? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Sí, trabajamos con la mayoría de las Isapres y con Fonasa libre elección. Algunos tratamientos estéticos no tienen cobertura, pero te lo informamos antes. Consulta con nosotros según tu plan.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Cuánto demora una limpieza? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Una limpieza estándar demora entre 45 y 60 minutos. Si incluyes radiografía y evaluación completa puede ser un poco más. Lo puedes hacer en tu hora de almuerzo sin problema.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Tienen financiamiento para tratamientos caros? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Sí. Para implantes, ortodoncia y carillas ofrecemos planes de pago en cuotas sin interés con tarjeta de crédito, o convenio con bancos para montos mayores. Te explicamos las opciones en la consulta.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Puedo ir sin haber ido antes al dentista? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>¡Por supuesto! La primera consulta es de evaluación y es gratis. No importa cuánto tiempo llevas sin ir. Nuestro equipo está preparado para atender cualquier situación sin juicios.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Dónde están ubicados? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Estamos en Av. Providencia 1234, oficina 502, a 2 cuadras del metro Manuel Montt (línea 5). Tenemos estacionamiento disponible en el edificio.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAPA -->
+<section id="mapa">
+  <div class="mapa-inner">
+    <div class="mapa-info reveal">
+      <h2>¿Cómo <em style="font-style:italic;color:var(--blue)">llegamos?</em></h2>
+      <p>Estamos en el corazón de Providencia, fácil acceso en metro, micro o auto desde cualquier punto de Santiago.</p>
+      <div class="mapa-dato">
+        <div class="mapa-dato-icon">📍</div>
+        <div class="mapa-dato-text">
+          <strong>Dirección</strong>
+          <span>Av. Providencia 1234, of. 502, Providencia, Santiago</span>
+        </div>
+      </div>
+      <div class="mapa-dato">
+        <div class="mapa-dato-icon">🚇</div>
+        <div class="mapa-dato-text">
+          <strong>Metro</strong>
+          <span>Manuel Montt (Línea 5) — 2 cuadras caminando</span>
+        </div>
+      </div>
+      <div class="mapa-dato">
+        <div class="mapa-dato-icon">🚗</div>
+        <div class="mapa-dato-text">
+          <strong>Estacionamiento</strong>
+          <span>Disponible en el edificio. $1.000 la hora.</span>
+        </div>
+      </div>
+      <div class="mapa-dato">
+        <div class="mapa-dato-icon">📞</div>
+        <div class="mapa-dato-text">
+          <strong>Teléfono</strong>
+          <span>+56 2 2345 6789</span>
+        </div>
+      </div>
+    </div>
+    <div class="mapa-frame">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.0!2d-70.6083!3d-33.4266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf5b3d5bcfd1%3A0xbb56cfdb7faa4284!2sProvidencia%2C%20Santiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- REDES SOCIALES -->
+<section id="redes">
+  <div class="redes-inner">
+    <div class="redes-text reveal">
+      <h3>Síguenos en redes sociales</h3>
+      <p>Consejos de salud bucal, antes y después de tratamientos, y promociones exclusivas.</p>
+    </div>
+    <div class="redes-btns reveal">
+      <a href="https://instagram.com/dentalpacífico" target="_blank" class="red-btn red-ig">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+      <a href="https://tiktok.com/@dentalpacífico" target="_blank" class="red-btn red-tk">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.16 8.16 0 004.77 1.52V6.76a4.85 4.85 0 01-1-.07z"/></svg>
+        TikTok
+      </a>
+      <a href="https://facebook.com/dentalpacífico" target="_blank" class="red-btn red-fb">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contacto-inner">
+    <span class="sec-tag2" style="color:rgba(255,255,255,.5);">Escríbenos</span>
+    <h2>Reserva tu hora <em style="font-style:italic;color:rgba(255,255,255,.7)">hoy mismo</em></h2>
+    <p>Completa el formulario y te contactamos en menos de 1 hora hábil. O si prefieres, escríbenos directo por WhatsApp.</p>
+    <form onsubmit="enviarWA(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Nombre</label>
+          <input class="form-input" type="text" id="f-nombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Teléfono</label>
+          <input class="form-input" type="tel" id="f-tel" placeholder="+56 9 XXXX XXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">¿Qué necesitas?</label>
+        <select class="form-select form-input" id="f-serv">
+          <option value="">— Selecciona un servicio —</option>
+          <option>Limpieza dental</option>
+          <option>Blanqueamiento</option>
+          <option>Ortodoncia / Alineadores</option>
+          <option>Implante dental</option>
+          <option>Urgencia dental</option>
+          <option>Odontopediatría (niños)</option>
+          <option>Carillas de porcelana</option>
+          <option>Otro / Evaluación general</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Mensaje (opcional)</label>
+        <textarea class="form-textarea form-input" id="f-msg" placeholder="Cuéntanos más sobre lo que necesitas..."></textarea>
+      </div>
+      <button type="submit" class="btn-wa">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Enviar por WhatsApp
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="margin-bottom:4px;">
+        <div class="nav-logo-icon"><svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:#fff"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
+        <span class="nav-logo-text" style="color:#fff;">Dental <span>Pacífico</span></span>
+      </a>
+      <p>Clínica dental de confianza en Providencia desde 2010. Cuidamos tu sonrisa con tecnología, calidez y compromiso.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#servicios">Limpieza dental</a></li>
+        <li><a href="#servicios">Blanqueamiento</a></li>
+        <li><a href="#servicios">Ortodoncia</a></li>
+        <li><a href="#servicios">Implantes</a></li>
+        <li><a href="#servicios">Urgencias</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Clínica</h4>
+      <ul>
+        <li><a href="#porque">¿Por qué nosotros?</a></li>
+        <li><a href="#proceso">Cómo funciona</a></li>
+        <li><a href="#testimonios">Reseñas</a></li>
+        <li><a href="#faq">Preguntas frecuentes</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="tel:+56223456789">+56 2 2345 6789</a></li>
+        <li><a href="https://wa.me/56939665163">WhatsApp</a></li>
+        <li><a href="mailto:hola@dentalpacífico.cl">hola@dentalpacífico.cl</a></li>
+        <li><a href="#mapa">Av. Providencia 1234</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Dental Pacífico · Todos los derechos reservados</span>
+    <a href="https://alonsostudiodigital.com" target="_blank">Diseño web: Alonso Studio</a>
+  </div>
+</footer>
+
+<script>
+// NAV scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);
+});
+
+// HAMBURGER
+function toggleMenu(){
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMobile(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// CURSOR PERSONALIZADO (desktop)
+document.addEventListener('mousemove',e=>{
+  const c=document.querySelector('.cursor');
+  if(c){c.style.left=e.clientX+'px';c.style.top=e.clientY+'px';}
+});
+
+// REVEAL
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// COUNTERS
+const co=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.count').forEach(c=>{
+        const target=+c.dataset.target;
+        let cur=0;
+        const step=target/60;
+        const t=setInterval(()=>{
+          cur=Math.min(cur+step,target);
+          c.textContent=Math.floor(cur).toLocaleString('es-CL');
+          if(cur>=target)clearInterval(t);
+        },25);
+      });
+      co.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+document.querySelectorAll('.stats').forEach(el=>co.observe(el));
+
+// FAQ
+function toggleFaq(btn){
+  const item=btn.parentElement;
+  item.classList.toggle('open');
+}
+
+// FORMULARIO → WHATSAPP
+function enviarWA(e){
+  e.preventDefault();
+  const nombre=document.getElementById('f-nombre').value;
+  const tel=document.getElementById('f-tel').value;
+  const serv=document.getElementById('f-serv').value||'No especificado';
+  const msg=document.getElementById('f-msg').value;
+  const txt=`Hola Dental Pacífico 👋\n\n*Nombre:* ${nombre}\n*Teléfono:* ${tel||'No indicado'}\n*Servicio:* ${serv}\n*Mensaje:* ${msg||'Sin mensaje adicional'}\n\n¡Quisiera reservar una hora!`;
+  window.open('https://wa.me/56939665163?text='+encodeURIComponent(txt),'_blank');
+}
+</script>
+</body>
+</html>
