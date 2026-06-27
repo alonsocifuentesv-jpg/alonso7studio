@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dental Pacífico · Clínica Dental en Providencia</title>
+  <meta name="description" content="Clínica dental moderna en Providencia. Limpieza, blanqueamiento, ortodoncia e implantes. Atención con Fonasa e Isapre.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a href="https://wa.me/56939665163" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
+    <span class="nav-logo-text">Dental <span>Pacífico</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#atencion">Horario</a></li>
+    <li><a href="#testimonios">Reseñas</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Reservar hora →</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#atencion" onclick="closeMobile()">Horario</a>
+  <a href="#testimonios" onclick="closeMobile()">Reseñas</a>
+  <a href="#contacto" onclick="closeMobile()">Reservar hora</a>
+</div>
+
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-tag">Providencia, Santiago</div>
+    <h1 class="hero-title">Tu sonrisa en<br><em>las mejores manos</em></h1>
+    <p class="hero-sub">Clínica dental moderna con atención personalizada para toda la familia. Tecnología de punta, precios transparentes y un equipo que te cuida desde el primer día.</p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-primary">📅 Reservar hora</a>
+      <a href="#servicios" class="btn-secondary">Ver servicios</a>
+    </div>
+  </div>
+  <div class="hero-img-wrap reveal">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80" alt="Clínica Dental Pacífico"/>
+    <div class="hero-badge">
+      <div class="hero-badge-icon">⭐</div>
+      <div class="hero-badge-text"><strong>4.9 / 5 estrellas</strong><span>+320 reseñas Google</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-box reveal"><span class="stat-num"><span class="count" data-target="14">0</span>+</span><span class="stat-lbl">Años de experiencia</span></div>
+    <div class="stat-box reveal"><span class="stat-num"><span class="count" data-target="4800">0</span>+</span><span class="stat-lbl">Pacientes atendidos</span></div>
+    <div class="stat-box reveal"><span class="stat-num"><span class="count" data-target="98">0</span>%</span><span class="stat-lbl">Satisfacción</span></div>
+    <div class="stat-box reveal"><span class="stat-num"><span class="count" data-target="6">0</span></span><span class="stat-lbl">Especialistas</span></div>
+  </div>
+</section>
+
+<section class="sec" id="servicios">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="sec-tag2">Lo que hacemos</span>
+      <h2 class="sec-title">Servicios para <em>toda la familia</em></h2>
+    </div>
+    <div class="carousel">
+      <div class="serv-card reveal"><span class="serv-icon">🦷</span><div class="serv-name">Limpieza dental</div><p class="serv-desc">Limpieza profunda con ultrasonido y pulido. Ideal cada 6 meses.</p><div class="serv-price">$25.000 <small>/ sesión</small></div></div>
+      <div class="serv-card reveal"><span class="serv-icon">✨</span><div class="serv-name">Blanqueamiento</div><p class="serv-desc">Blanqueamiento LED en una sola sesión. Hasta 8 tonos más blanco.</p><div class="serv-price">$149.000 <small>/ sesión</small></div></div>
+      <div class="serv-card reveal"><span class="serv-icon">🔧</span><div class="serv-name">Ortodoncia</div><p class="serv-desc">Brackets o alineadores invisibles. Plan de pago sin interés disponible.</p><div class="serv-price">$890.000 <small>desde</small></div></div>
+      <div class="serv-card reveal"><span class="serv-icon">🦴</span><div class="serv-name">Implantes</div><p class="serv-desc">Titanio con garantía de por vida. Incluye corona de porcelana.</p><div class="serv-price">$650.000 <small>/ implante</small></div></div>
+      <div class="serv-card reveal"><span class="serv-icon">🧒</span><div class="serv-name">Niños</div><p class="serv-desc">Odontopediatría en ambiente amigable. Primera visita sin costo.</p><div class="serv-price">$18.000 <small>consulta</small></div></div>
+      <div class="serv-card reveal"><span class="serv-icon">🚨</span><div class="serv-name">Urgencias</div><p class="serv-desc">Atendemos urgencias el mismo día. Sin espera.</p><div class="serv-price">$35.000 <small>evaluación</small></div></div>
+    </div>
+    <p class="carousel-hint">← Desliza para ver más →</p>
+  </div>
+</section>
+
+<section class="sec" id="porque">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="sec-tag2">Nuestras ventajas</span>
+      <h2 class="sec-title">¿Por qué <em>elegirnos?</em></h2>
+    </div>
+    <div class="porq-grid">
+      <div class="porq-item reveal"><span class="porq-icon">🏅</span><div><div class="porq-title">Especialistas certificados</div><p class="porq-text">Equipo titulado en Chile con posgrados en el extranjero.</p></div></div>
+      <div class="porq-item reveal"><span class="porq-icon">💰</span><div><div class="porq-title">Precios transparentes</div><p class="porq-text">Presupuesto completo antes de iniciar cualquier tratamiento.</p></div></div>
+      <div class="porq-item reveal"><span class="porq-icon">⚡</span><div><div class="porq-title">Tecnología de punta</div><p class="porq-text">Radiografías digitales, láser dental y equipamiento moderno.</p></div></div>
+      <div class="porq-item reveal"><span class="porq-icon">📋</span><div><div class="porq-title">Isapre y Fonasa</div><p class="porq-text">Convenio con la mayoría de seguros de salud del país.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="catalogo" style="background:#fff;">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="sec-tag2">Tratamientos</span>
+      <h2 class="sec-title">Los más <em>solicitados</em></h2>
+    </div>
+    <div class="carousel">
+      <div class="cat-card reveal"><img class="cat-img" src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=400&q=80" alt="Limpieza"/><div class="cat-body"><div class="cat-name">Limpieza profesional</div><p class="cat-desc">Ultrasonido + pulido + flúor</p><div class="cat-price">$25.000</div></div></div>
+      <div class="cat-card reveal"><img class="cat-img" src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=400&q=80" alt="Blanqueamiento"/><div class="cat-body"><div class="cat-name">Blanqueamiento LED</div><p class="cat-desc">Hasta 8 tonos en 1 sesión</p><div class="cat-price">$149.000</div></div></div>
+      <div class="cat-card reveal"><img class="cat-img" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&q=80" alt="Alineadores"/><div class="cat-body"><div class="cat-name">Alineadores invisibles</div><p class="cat-desc">Sin brackets, sin molestias</p><div class="cat-price">$1.200.000</div></div></div>
+      <div class="cat-card reveal"><img class="cat-img" src="https://images.unsplash.com/photo-1571772996211-2f02c9727629?w=400&q=80" alt="Implante"/><div class="cat-body"><div class="cat-name">Implante titanio</div><p class="cat-desc">Con corona de porcelana</p><div class="cat-price">$650.000</div></div></div>
+      <div class="cat-card reveal"><img class="cat-img" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&q=80" alt="Carilla"/><div class="cat-body"><div class="cat-name">Carillas de porcelana</div><p class="cat-desc">Sonrisa perfecta y duradera</p><div class="cat-price">$280.000 <small>c/u</small></div></div></div>
+    </div>
+    <p class="carousel-hint">← Desliza para ver más →</p>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="sec-inner" style="max-width:1100px;margin:0 auto;padding:48px;">
+    <div class="sec-head reveal" style="margin-bottom:32px;">
+      <span class="sec-tag2" style="color:rgba(255,255,255,.5);">¿Cómo funciona?</span>
+      <h2 class="sec-title" style="color:#fff;">Reservar es <em style="color:rgba(255,255,255,.7)">muy fácil</em></h2>
+    </div>
+    <div class="pasos">
+      <div class="paso reveal"><div class="paso-num">1</div><div class="paso-title">Escríbenos</div><p class="paso-text">WhatsApp o formulario. Respondemos en menos de 1 hora hábil.</p></div>
+      <div class="paso reveal"><div class="paso-num">2</div><div class="paso-title">Elige tu hora</div><p class="paso-text">Horarios que se adaptan a tu agenda. Mañana, tarde o almuerzo.</p></div>
+      <div class="paso reveal"><div class="paso-num">3</div><div class="paso-title">Evaluación gratis</div><p class="paso-text">Primera visita sin costo. Te entregamos el presupuesto completo.</p></div>
+      <div class="paso reveal"><div class="paso-num">4</div><div class="paso-title">¡Listo!</div><p class="paso-text">Iniciamos tu tratamiento con seguimiento personalizado.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="atencion">
+  <div class="sec-inner">
+    <div class="atencion-grid">
+      <div class="reveal">
+        <div class="atencion-title">🕐 Horario de atención</div>
+        <div class="horario-row"><span class="horario-dia">Lunes a Jueves</span><span class="horario-hrs">09:00 – 20:00</span></div>
+        <div class="horario-row"><span class="horario-dia">Viernes</span><span class="horario-hrs">09:00 – 18:00</span></div>
+        <div class="horario-row"><span class="horario-dia">Sábado</span><span class="horario-hrs">09:30 – 14:00</span></div>
+        <div class="horario-row"><span class="horario-dia">Domingo</span><span class="horario-hrs closed">Cerrado</span></div>
+      </div>
+      <div class="reveal">
+        <div class="atencion-title">📍 Dónde encontrarnos</div>
+        <div class="contact-items">
+          <div class="contact-item"><div class="contact-icon">📍</div><a href="#mapa">Av. Providencia 1234, of. 502 · Metro Manuel Montt</a></div>
+          <div class="contact-item"><div class="contact-icon">📞</div><a href="tel:+56223456789">+56 2 2345 6789</a></div>
+          <div class="contact-item"><div class="contact-icon">💬</div><a href="https://wa.me/56939665163" target="_blank">WhatsApp: +56 9 3966 5163</a></div>
+          <div class="contact-item"><div class="contact-icon">✉️</div><a href="mailto:hola@dentalpacífico.cl">hola@dentalpacífico.cl</a></div>
+          <div class="contact-item"><div class="contact-icon">🚇</div><span>Metro Línea 5 · Estacionamiento disponible</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="testimonios">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="sec-tag2">Lo que dicen</span>
+      <h2 class="sec-title">Reseñas de nuestros <em>pacientes</em></h2>
+    </div>
+    <div class="carousel">
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"Llevaba años con miedo al dentista y acá me hicieron sentir completamente cómoda. El resultado de la ortodoncia es increíble."</p><div class="test-author"><div class="test-avatar">CP</div><div><div class="test-name">Catalina Paredes</div><div class="test-lugar">Providencia · Google</div></div></div></div>
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"El blanqueamiento quedó espectacular desde la primera sesión. El equipo es muy atento y te explica todo antes de empezar."</p><div class="test-author"><div class="test-avatar">MV</div><div><div class="test-name">Martín Valenzuela</div><div class="test-lugar">Las Condes · Google</div></div></div></div>
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"Traje a mis tres hijos y los atendieron excelente. La doctora de niños tiene un don especial. El ambiente es moderno y muy limpio."</p><div class="test-author"><div class="test-avatar">LR</div><div><div class="test-name">Lorena Rojas</div><div class="test-lugar">Ñuñoa · Google</div></div></div></div>
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"Me hicieron el implante y quedé feliz. Sin dolor durante el procedimiento y la recuperación fue muy rápida. 100% recomendable."</p><div class="test-author"><div class="test-avatar">JM</div><div><div class="test-name">Jorge Muñoz</div><div class="test-lugar">Maipú · Google</div></div></div></div>
+    </div>
+    <p class="carousel-hint">← Desliza para ver más →</p>
+  </div>
+</section>
+
+<section class="sec" id="faq" style="background:var(--blue4);">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="sec-tag2">Preguntas frecuentes</span>
+      <h2 class="sec-title">¿Tienes <em>dudas?</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">¿Atienden con Fonasa o Isapre? <span class="faq-icon">+</span></button><div class="faq-a"><p>Sí, trabajamos con la mayoría de las Isapres y con Fonasa libre elección. Algunos tratamientos estéticos no tienen cobertura, pero te lo informamos antes.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">¿Tienen financiamiento para tratamientos caros? <span class="faq-icon">+</span></button><div class="faq-a"><p>Sí. Para implantes, ortodoncia y carillas ofrecemos cuotas sin interés con tarjeta de crédito. Te explicamos las opciones en la consulta.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">¿Puedo ir aunque lleve mucho tiempo sin ir al dentista? <span class="faq-icon">+</span></button><div class="faq-a"><p>¡Por supuesto! La primera consulta es de evaluación y es gratis. Nuestro equipo está preparado para cualquier situación, sin juicios.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">¿Cuánto demora una limpieza? <span class="faq-icon">+</span></button><div class="faq-a"><p>Entre 45 y 60 minutos. Puedes hacerlo perfectamente en tu hora de almuerzo sin problema.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="mapa">
+  <div class="mapa-inner">
+    <div class="mapa-info reveal">
+      <h2>¿Cómo <em style="font-style:italic;color:var(--blue)">llegar?</em></h2>
+      <div class="mapa-dato"><div class="mapa-icon">📍</div><span>Av. Providencia 1234, of. 502, Providencia</span></div>
+      <div class="mapa-dato"><div class="mapa-icon">🚇</div><span>Metro Manuel Montt (L5) — 2 cuadras</span></div>
+      <div class="mapa-dato"><div class="mapa-icon">🚗</div><span>Estacionamiento en edificio · $1.000/hr</span></div>
+    </div>
+    <div class="mapa-frame">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.0!2d-70.6083!3d-33.4266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf5b3d5bcfd1%3A0xbb56cfdb7faa4284!2sProvidencia%2C%20Santiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="redes">
+  <div class="redes-inner">
+    <div class="redes-text reveal"><h3>Síguenos en redes</h3><p>Consejos, antes y después, y promociones exclusivas.</p></div>
+    <div class="redes-btns reveal">
+      <a href="https://instagram.com" target="_blank" class="red-btn red-ig"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Instagram</a>
+      <a href="https://tiktok.com" target="_blank" class="red-btn red-tk"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.16 8.16 0 004.77 1.52V6.76a4.85 4.85 0 01-1-.07z"/></svg> TikTok</a>
+      <a href="https://facebook.com" target="_blank" class="red-btn red-fb"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook</a>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="contacto-inner">
+    <span class="sec-tag2" style="color:rgba(255,255,255,.45);">Escríbenos</span>
+    <h2>Reserva tu hora <em style="font-style:italic;color:rgba(255,255,255,.65)">hoy mismo</em></h2>
+    <p>Completa el formulario y te respondemos en menos de 1 hora hábil.</p>
+    <form onsubmit="enviarWA(event)">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Nombre</label><input class="form-input" type="text" id="f-nombre" placeholder="Tu nombre" required></div>
+        <div class="form-group"><label class="form-label">Teléfono</label><input class="form-input" type="tel" id="f-tel" placeholder="+56 9 XXXX XXXX"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">¿Qué necesitas?</label>
+        <select class="form-select form-input" id="f-serv">
+          <option value="">— Selecciona un servicio —</option>
+          <option>Limpieza dental</option>
+          <option>Blanqueamiento</option>
+          <option>Ortodoncia / Alineadores</option>
+          <option>Implante dental</option>
+          <option>Urgencia dental</option>
+          <option>Odontopediatría (niños)</option>
+          <option>Carillas de porcelana</option>
+          <option>Evaluación general</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Mensaje</label><textarea class="form-textarea form-input" id="f-msg" placeholder="Cuéntanos más..."></textarea></div>
+      <button type="submit" class="btn-wa">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Enviar por WhatsApp
+      </button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo"><div class="nav-logo-icon"><svg viewBox="0 0 24 24" style="width:19px;height:19px;fill:#fff"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div><span class="nav-logo-text" style="color:#fff;">Dental <span>Pacífico</span></span></a>
+      <p>Clínica dental en Providencia desde 2010. Cuidamos tu sonrisa con tecnología y calidez.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#servicios">Limpieza dental</a></li>
+        <li><a href="#servicios">Blanqueamiento</a></li>
+        <li><a href="#servicios">Ortodoncia</a></li>
+        <li><a href="#servicios">Implantes</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="tel:+56223456789">+56 2 2345 6789</a></li>
+        <li><a href="https://wa.me/56939665163">WhatsApp</a></li>
+        <li><a href="#mapa">Providencia 1234</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Dental Pacífico · Todos los derechos reservados</span>
+    <a href="https://alonsostudiodigital.com" target="_blank">Diseño: Alonso Studio</a>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
