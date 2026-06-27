@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbería Alonso | Av. Pajaritos, Santiago</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a href="https://wa.me/56939665163?text=Hola%2C%20tengo%20una%20consulta%20sobre%20Barber%C3%ADa%20Alonso" target="_blank" class="wa-float" aria-label="WhatsApp consultas">
+  <div class="wa-tooltip">Solo consultas</div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">Barbería <span>Alonso</span></a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#agenda">Reservar</a></li>
+    <li><a href="#testimonios">Reseñas</a></li>
+  </ul>
+  <a href="#agenda" class="nav-cta">✂ Reservar hora</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#agenda" onclick="closeMobile()">Reservar</a>
+  <a href="#testimonios" onclick="closeMobile()">Reseñas</a>
+  <a href="#agenda" onclick="closeMobile()" style="color:var(--red);font-weight:700;">✂ Reservar hora</a>
+</div>
+
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-tag">Av. Pajaritos · Santiago</div>
+    <h1 class="hero-title">El corte que<br><em>te define.</em></h1>
+    <p class="hero-sub">Barbería premium en Santiago. Reserva online en segundos, elige tu barbero y llega directo a la silla — sin esperas, sin llamadas.</p>
+    <div class="hero-btns">
+      <a href="#agenda" class="btn-red">✂ Reservar ahora</a>
+      <a href="#servicios" class="btn-outline">Ver servicios</a>
+    </div>
+    <div class="hero-badges">
+      <div class="hbadge">✂ Barberos con experiencia</div>
+      <div class="hbadge">📍 Av. Pajaritos, Santiago</div>
+      <div class="hbadge">⚡ Reserva en segundos</div>
+    </div>
+  </div>
+  <div class="reveal">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80" alt="Barbería Alonso">
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="sec-tag2">Servicios</span>
+      <h2 class="sec-title">Lo que <em>hacemos</em></h2>
+    </div>
+    <div class="carousel">
+      <div class="serv-card reveal">
+        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&q=80" alt="Corte Clásico">
+        <div class="serv-body">
+          <div class="serv-name">Corte Clásico</div>
+          <div class="serv-dur">⏱ 30 minutos</div>
+          <div class="serv-price">$10.000</div>
+        </div>
+      </div>
+      <div class="serv-card reveal">
+        <span class="serv-badge">Popular</span>
+        <img src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=400&q=80" alt="Degradado">
+        <div class="serv-body">
+          <div class="serv-name">Degradado</div>
+          <div class="serv-dur">⏱ 45 minutos</div>
+          <div class="serv-price">$12.000</div>
+        </div>
+      </div>
+      <div class="serv-card reveal">
+        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&q=80" alt="Afeitado al ras">
+        <div class="serv-body">
+          <div class="serv-name">Afeitado al ras</div>
+          <div class="serv-dur">⏱ 30 minutos</div>
+          <div class="serv-price">$6.000</div>
+        </div>
+      </div>
+      <div class="serv-card reveal">
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=80" alt="Limpieza Facial">
+        <div class="serv-body">
+          <div class="serv-name">Limpieza Facial</div>
+          <div class="serv-dur">⏱ 45 minutos</div>
+          <div class="serv-price">$10.000</div>
+        </div>
+      </div>
+      <div class="serv-card reveal">
+        <span class="serv-badge">Promo</span>
+        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&q=80" alt="Combo Completo">
+        <div class="serv-body">
+          <div class="serv-name">Combo Completo</div>
+          <div class="serv-dur">⏱ 1 hora</div>
+          <div class="serv-price">$20.000</div>
+        </div>
+      </div>
+    </div>
+    <p class="carousel-hint">← Desliza para ver más →</p>
+  </div>
+</section>
+
+<section id="agenda">
+  <div class="sec-inner">
+    <div class="sec-head reveal" style="margin-bottom:28px;">
+      <span class="sec-tag2">Reservas online</span>
+      <h2 class="sec-title">Agenda tu hora <em>ahora mismo</em></h2>
+    </div>
+    <div class="agenda-box reveal">
+      <div class="agenda-header">
+        <h3>Sistema de reservas 24/7</h3>
+        <span class="agenda-badge">⚡ Confirmación inmediata</span>
+      </div>
+      <div class="steps-bar" id="stepsBar">
+        <div class="step-item active" id="si1"><div class="step-num">1</div><span class="step-label">Barbero y servicio</span></div>
+        <div class="step-line"></div>
+        <div class="step-item" id="si2"><div class="step-num">2</div><span class="step-label">Día y hora</span></div>
+        <div class="step-line"></div>
+        <div class="step-item" id="si3"><div class="step-num">3</div><span class="step-label">Pago</span></div>
+        <div class="step-line"></div>
+        <div class="step-item" id="si4"><div class="step-num">✓</div><span class="step-label">Confirmación</span></div>
+      </div>
+
+      <div class="agenda-body" id="step1">
+        <div class="section-label">Elige tu barbero</div>
+        <div class="barber-grid">
+          <button class="barber-btn" onclick="selectBarber(0,this)">
+            <img class="barber-avatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" alt="Alonso Cifuentes">
+            <div><div class="barber-name">Alonso Cifuentes</div><div class="barber-spec">Cortes clásicos & degradados</div></div>
+          </button>
+          <button class="barber-btn" onclick="selectBarber(1,this)">
+            <img class="barber-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Studio">
+            <div><div class="barber-name">Studio</div><div class="barber-spec">Afeitado & tratamientos</div></div>
+          </button>
+        </div>
+        <div class="section-label" style="margin-top:20px;">Elige el servicio</div>
+        <div class="serv-select-grid">
+          <button class="serv-opt" onclick="selectService(0,this)">
+            <div class="serv-opt-name">Corte Clásico</div>
+            <div class="serv-opt-info">⏱ 30 min</div>
+            <div class="serv-opt-price">$10.000</div>
+          </button>
+          <button class="serv-opt" onclick="selectService(1,this)">
+            <div class="serv-opt-name">Degradado</div>
+            <div class="serv-opt-info">⏱ 45 min</div>
+            <div class="serv-opt-price">$12.000</div>
+          </button>
+          <button class="serv-opt" onclick="selectService(2,this)">
+            <div class="serv-opt-name">Afeitado al ras</div>
+            <div class="serv-opt-info">⏱ 30 min</div>
+            <div class="serv-opt-price">$6.000</div>
+          </button>
+          <button class="serv-opt" onclick="selectService(3,this)">
+            <div class="serv-opt-name">Limpieza Facial</div>
+            <div class="serv-opt-info">⏱ 45 min</div>
+            <div class="serv-opt-price">$10.000</div>
+          </button>
+          <button class="serv-opt" onclick="selectService(4,this)">
+            <div class="serv-opt-name">Combo Completo</div>
+            <div class="serv-opt-info">⏱ 60 min</div>
+            <div class="serv-opt-price">$20.000</div>
+          </button>
+        </div>
+        <div class="agenda-nav">
+          <span></span>
+          <button class="btn-next" id="btn1" onclick="goStep(2)" disabled>Siguiente →</button>
+        </div>
+      </div>
+
+      <div class="agenda-body" id="step2" style="display:none;">
+        <div class="section-label">Elige el día</div>
+        <div class="calendar-days" id="calDays"></div>
+        <div class="slots-title" id="slotsTitle" style="display:none;">Horarios disponibles</div>
+        <div class="slots-grid" id="slotsGrid"></div>
+        <div class="agenda-nav">
+          <button class="btn-back" onclick="goStep(1)">← Volver</button>
+          <button class="btn-next" id="btn2" onclick="goStep(3)" disabled>Siguiente →</button>
+        </div>
+      </div>
+
+      <div class="agenda-body" id="step3" style="display:none;">
+        <div class="section-label">Resumen de tu reserva</div>
+        <div class="resumen-box" id="resumenBox"></div>
+        <div class="section-label" style="margin-bottom:12px;">Elige cómo pagar</div>
+        <div class="pago-opts">
+          <div class="pago-opt" onclick="selectPago(0,this)" id="pago0">
+            <div class="pago-opt-title">💳 Abono 50%</div>
+            <div class="pago-opt-amount" id="pagoAbono">$0</div>
+            <div class="pago-opt-note">El resto lo pagas al llegar</div>
+          </div>
+          <div class="pago-opt" onclick="selectPago(1,this)" id="pago1">
+            <div class="pago-opt-title">✅ Pago completo</div>
+            <div class="pago-opt-amount" id="pagoTotal">$0</div>
+            <div class="pago-opt-note">Descuento del 5% incluido</div>
+          </div>
+        </div>
+        <div id="pago-sim">
+          <div class="pago-sim-title">Datos de pago simulados</div>
+          <input id="cardNum" class="card-input" placeholder="4242 4242 4242 4242" maxlength="19" oninput="fmtCard(this)">
+          <div class="card-row">
+            <input placeholder="MM/AA" maxlength="5">
+            <input placeholder="CVV" maxlength="3">
+          </div>
+        </div>
+        <div class="agenda-nav">
+          <button class="btn-back" onclick="goStep(2)">← Volver</button>
+          <button class="btn-next" id="btn3" onclick="confirmar()" disabled>Confirmar y pagar →</button>
+        </div>
+      </div>
+
+      <div class="agenda-body" id="step4" style="display:none;">
+        <div class="confirm-box">
+          <div class="confirm-icon">🎉</div>
+          <div class="confirm-title">¡Reserva confirmada!</div>
+          <p class="confirm-sub">Te esperamos en Barbería Alonso. Recibirás un recordatorio automático 24 hrs y 1 hr antes de tu turno.</p>
+          <div class="confirm-code" id="confirmCode">BA-000000</div>
+          <div class="confirm-details" id="confirmDetails"></div>
+          <button class="btn-red" onclick="resetAgenda()" style="border:none;cursor:pointer;font-family:'Inter',sans-serif;">Hacer otra reserva</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="porque">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="sec-tag2">Por qué elegirnos</span>
+      <h2 class="sec-title">Lo que nos <em>distingue</em></h2>
+    </div>
+    <div class="porq-grid">
+      <div class="porq-card reveal">
+        <span class="porq-icon">✂</span>
+        <div class="porq-title">Técnica profesional</div>
+        <p class="porq-text">Cada corte se trabaja con precisión. Sin apuro, sin descuidos — el resultado habla solo.</p>
+      </div>
+      <div class="porq-card reveal">
+        <span class="porq-icon">📅</span>
+        <div class="porq-title">Sin esperas innecesarias</div>
+        <p class="porq-text">Agendas la hora que te acomoda y llegas directo a la silla. Tu tiempo vale.</p>
+      </div>
+      <div class="porq-card reveal">
+        <span class="porq-icon">🪒</span>
+        <div class="porq-title">Productos de calidad</div>
+        <p class="porq-text">Usamos insumos profesionales en cada servicio — desde el primer trazo hasta el toque final.</p>
+      </div>
+      <div class="porq-card reveal">
+        <span class="porq-icon">🤝</span>
+        <div class="porq-title">Ambiente de confianza</div>
+        <p class="porq-text">Un espacio donde te sentís cómodo, te escuchan y siempre salís como querías.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonios">
+  <div class="sec-inner">
+    <div class="sec-head reveal">
+      <span class="sec-tag2">Reseñas</span>
+      <h2 class="sec-title">Lo que dicen <em>nuestros clientes</em></h2>
+    </div>
+    <div class="carousel">
+      <div class="test-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">"Reservé en dos minutos desde el celular, llegué directo a la silla sin esperar nada. El corte quedó increíble."</p>
+        <div class="test-author"><div class="test-avatar">FM</div><div><div class="test-name">Felipe Morales</div><div class="test-lugar">Pudahuel · Google</div></div></div>
+      </div>
+      <div class="test-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">"Me llegó el recordatorio una hora antes, llegué justo. El degradado perfectísimo, de los mejores cortes que me han hecho."</p>
+        <div class="test-author"><div class="test-avatar">RV</div><div><div class="test-name">Rodrigo Vega</div><div class="test-lugar">Maipú · Google</div></div></div>
+      </div>
+      <div class="test-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">"El combo completo vale cada peso. El sistema de reserva online es lo mejor, no tuve que llamar ni mandar mensajes."</p>
+        <div class="test-author"><div class="test-avatar">JT</div><div><div class="test-name">Jorge Torres</div><div class="test-lugar">Santiago Centro · Google</div></div></div>
+      </div>
+      <div class="test-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="test-text">"Siempre vengo con Alonso. El sistema de turnos es una maravilla, puedo reservar a las 2 de la mañana si quiero."</p>
+        <div class="test-author"><div class="test-avatar">CR</div><div><div class="test-name">Cristóbal Rojas</div><div class="test-lugar">Padre Hurtado · Google</div></div></div>
+      </div>
+    </div>
+    <p class="carousel-hint" style="margin-top:14px;">← Desliza para ver más →</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">Barbería <span>Alonso</span></div>
+      <p class="footer-desc">Cortes de calidad en Av. Pajaritos, Santiago. Agenda online 24/7 — sin esperas, sin llamadas.</p>
+      <div class="redes">
+        <a href="https://instagram.com/barber_alonso_shop" target="_blank" class="red-btn red-ig">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @barber_alonso_shop
+        </a>
+        <a href="https://tiktok.com/@barber_alonso_shop" target="_blank" class="red-btn red-tk">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.16 8.16 0 004.77 1.52V6.76a4.85 4.85 0 01-1-.07z"/></svg>
+          TikTok
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#servicios">Corte Clásico — $10.000</a></li>
+        <li><a href="#servicios">Degradado — $12.000</a></li>
+        <li><a href="#servicios">Afeitado al ras — $6.000</a></li>
+        <li><a href="#servicios">Limpieza Facial — $10.000</a></li>
+        <li><a href="#servicios">Combo Completo — $20.000</a></li>
+      </ul>
+      <div style="margin-top:16px;">
+        <h4>Horario</h4>
+        <ul>
+          <li><a href="#">Lun – Vie: 11:00 – 20:00</a></li>
+          <li><a href="#">Sáb: 10:00 – 18:00</a></li>
+          <li><a href="#">Dom: Cerrado</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Ubicación</h4>
+      <div class="mapa-embed">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.0!2d-70.7283!3d-33.4566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c3f5c8dedc35%3A0x1234!2sAv.%20Pajaritos%2C%20Maip%C3%BA%2C%20Santiago!5e0!3m2!1ses!2scl!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <ul style="margin-top:12px;">
+        <li><a href="#">📍 Av. Pajaritos, Santiago</a></li>
+        <li><a href="https://wa.me/56939665163">💬 Solo consultas por WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Barbería Alonso · Todos los derechos reservados</span>
+    <a href="https://alonsostudiodigital.com" target="_blank">Diseño: Alonso Studio</a>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
