@@ -3,1112 +3,1516 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maison Noir | Perfumes de Lujo · Santiago de Chile</title>
-<meta name="description" content="Maison Noir — Perfumes de lujo exclusivos en Santiago de Chile. Fragancias únicas importadas desde los mejores ateliers del mundo.">
-<meta property="og:title" content="Maison Noir | Perfumes de Lujo"/>
-<meta property="og:description" content="Fragancias de lujo exclusivas en Santiago de Chile. Descubre tu aroma perfecto."/>
-<meta property="og:image" content="https://images.unsplash.com/photo-1541643600914-78b084683702?w=1200&q=80"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Perfumería Alonso | Fragancias exclusivas – Santiago de Chile</title>
+<meta name="description" content="Perfumería Alonso — Fragancias exclusivas para hombre, mujer y niños en Av. Pajaritos, Santiago. Compra online, retira en tienda o con delivery.">
+<meta name="keywords" content="perfumería Santiago, perfumes hombre, perfumes mujer, fragancias Chile, perfumería Pajaritos">
+<meta property="og:title" content="Perfumería Alonso | Santiago de Chile"/>
+<meta property="og:description" content="Fragancias exclusivas para toda la familia. Agenda, catálogo y cotizador online."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --gold:#c9a84c;
+  --gold:#b8924a;
   --gold2:#e8d5a3;
-  --rose:#e8a0c0;
-  --purple:#8b5cf6;
-  --dark:#080808;
-  --dark2:#0d0d0d;
-  --dark3:#141414;
-  --white:#ffffff;
-  --muted:rgba(255,255,255,.45);
-  --border:rgba(255,255,255,.07);
+  --gold3:#f5ecd5;
+  --dark:#110c07;
+  --dark2:#1e1509;
+  --dark3:#2c1f0e;
+  --cream:#faf7f2;
+  --text:#2d2416;
+  --muted:#7a6a54;
+  --border:#e8ddd0;
+  --red:#c0392b;
+  --shadow-sm:0 2px 10px rgba(17,12,7,.06);
+  --shadow-md:0 8px 32px rgba(17,12,7,.1);
+  --shadow-lg:0 24px 64px rgba(17,12,7,.16);
+  --radius:14px;
+  /* aliases que unifican la identidad dorada */
+  --sky:#b8924a;
+  --sky2:#e8d5a3;
+  --gray:#f5ecd5;
 }
-html{scroll-behavior:smooth;}
-body{background:var(--dark);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:none;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{background:var(--cream);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
-/* ── CURSOR ── */
-.cursor{width:6px;height:6px;background:var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;}
-.cursor-ring{width:32px;height:32px;border:1px solid rgba(201,168,76,.6);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease;opacity:.7;}
-body:has(a:hover) .cursor{width:14px;height:14px;background:var(--rose);}
-body:has(a:hover) .cursor-ring{width:44px;height:44px;border-color:var(--rose);opacity:.4;}
-@media(hover:none),(max-width:768px){.cursor,.cursor-ring{display:none;}body{cursor:auto;}}
+/* CURSOR */
+.cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,width .25s,height .25s,opacity .25s;mix-blend-mode:multiply;}
+.cursor-ring{position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(184,146,74,.45);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .18s ease;}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 80px;height:80px;display:flex;align-items:center;justify-content:space-between;transition:all .6s;}
-nav.solid{background:rgba(8,8,8,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;letter-spacing:4px;color:var(--white);text-decoration:none;}
-.nav-logo span{color:var(--gold);}
-.nav-links{display:flex;gap:44px;list-style:none;}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:.68rem;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;transition:color .3s;}
-.nav-links a:hover{color:var(--gold);}
-.nav-cta{border:1px solid var(--gold);color:var(--gold);padding:12px 30px;font-size:.68rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .3s;cursor:none;}
-.nav-cta:hover{background:var(--gold);color:var(--dark);}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
-.hamburger span{width:24px;height:1px;background:var(--white);transition:all .4s;}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px);}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;background:rgba(255,255,255,.98);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow .3s;}
+nav.scrolled{box-shadow:var(--shadow-md);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--dark);text-decoration:none;letter-spacing:3px;text-transform:uppercase;display:flex;align-items:center;gap:9px;}
+.nav-logo-icon{width:26px;height:26px;flex-shrink:0;}
+.nav-logo-word{color:var(--dark);}
+.nav-logo-word em{font-style:normal;color:var(--gold);}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.5px;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .25s;}
+.nav-links a:hover{color:var(--dark);}
+.nav-links a:hover::after{width:100%;}
+.nav-right{display:flex;align-items:center;gap:14px;}
+.nav-cta{background:var(--dark);color:var(--gold2);padding:10px 22px;border-radius:8px;font-size:.75rem;font-weight:700;text-decoration:none;transition:all .2s;letter-spacing:.5px;border:1.5px solid transparent;}
+.nav-cta:hover{background:transparent;border-color:var(--gold);color:var(--gold);transform:translateY(-1px);}
+.cart-btn{position:relative;background:none;border:1.5px solid var(--border);width:42px;height:42px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.15rem;transition:all .2s;}
+.cart-btn:hover{border-color:var(--gold);background:rgba(184,146,74,.06);}
+.cart-count{position:absolute;top:-7px;right:-7px;background:var(--red);color:#fff;font-size:.52rem;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{width:22px;height:2px;background:var(--dark);transition:all .3s;display:block;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
 .hamburger.open span:nth-child(2){opacity:0;}
-.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px);}
-.mobile-menu{display:none;position:fixed;inset:0;background:rgba(8,8,8,.98);z-index:190;flex-direction:column;align-items:center;justify-content:center;gap:40px;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(10,14,26,.98);z-index:290;flex-direction:column;align-items:center;justify-content:center;gap:36px;}
 .mobile-menu.open{display:flex;}
-.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--white);text-decoration:none;letter-spacing:3px;transition:color .3s;}
+.mobile-menu a{font-family:'Playfair Display',serif;font-size:2.2rem;color:#fff;text-decoration:none;letter-spacing:3px;}
 .mobile-menu a:hover{color:var(--gold);}
-@media(max-width:900px){nav{padding:0 24px;}.nav-links{display:none;}.nav-cta{display:none;}.hamburger{display:flex;}}
+@media(max-width:860px){nav{padding:0 20px;height:60px;}.nav-links{display:none;}.hamburger{display:flex;}}
 
-/* ── HERO ── */
-.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;padding:0 80px;}
-.hero-bg{position:absolute;inset:0;background:#080808;}
-.smoke{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;}
-.smoke-1{width:700px;height:700px;background:radial-gradient(circle,rgba(232,160,192,.18) 0%,transparent 70%);top:-200px;right:-100px;animation:drift1 12s ease-in-out infinite;}
-.smoke-2{width:600px;height:600px;background:radial-gradient(circle,rgba(139,92,246,.15) 0%,transparent 70%);bottom:-150px;left:-100px;animation:drift2 15s ease-in-out infinite;}
-.smoke-3{width:400px;height:400px;background:radial-gradient(circle,rgba(201,168,76,.1) 0%,transparent 70%);top:30%;left:30%;animation:drift3 10s ease-in-out infinite;}
-.smoke-4{width:300px;height:300px;background:radial-gradient(circle,rgba(232,160,192,.1) 0%,transparent 70%);bottom:20%;right:20%;animation:drift4 18s ease-in-out infinite;}
-@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-60px,40px) scale(1.1)}66%{transform:translate(40px,-30px) scale(.95)}}
-@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(80px,-60px) scale(1.15)}}
-@keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,50px)}}
-@keyframes drift4{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-40px)}}
+/* HERO */
+.hero{position:relative;height:100vh;min-height:680px;display:flex;align-items:center;justify-content:flex-start;padding:0 80px;overflow:hidden;background:url('https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=1920&q=90') center 30%/cover no-repeat;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(17,12,7,.92) 0%,rgba(17,12,7,.65) 55%,rgba(17,12,7,.18) 100%);}
+.hero-overlay::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(184,146,74,.08) 0%,transparent 60%);}
+.hero-content{position:relative;z-index:2;max-width:640px;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(184,146,74,.15);border:1px solid rgba(184,146,74,.4);color:var(--gold2);padding:6px 16px;border-radius:100px;font-size:.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:24px;backdrop-filter:blur(10px);}
+.hero-eyebrow{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:12px;display:block;font-family:'Inter',sans-serif;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5.5vw,4.8rem);font-weight:300;line-height:1.05;color:#fff;margin-bottom:10px;letter-spacing:-.5px;}
+.hero-title strong{font-weight:700;color:var(--gold2);font-style:italic;display:block;}
+.hero-divider{width:52px;height:1.5px;background:linear-gradient(90deg,var(--gold),transparent);margin:22px 0;}
+.hero-sub{font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:40px;max-width:440px;font-weight:300;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-sky{background:var(--gold);color:#fff;padding:15px 32px;border-radius:8px;font-size:.82rem;font-weight:700;text-decoration:none;transition:all .25s;letter-spacing:.5px;border:1.5px solid var(--gold);}
+.btn-sky:hover{background:transparent;color:var(--gold2);border-color:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,146,74,.3);}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.25);color:rgba(255,255,255,.8);padding:15px 32px;border-radius:8px;font-size:.82rem;font-weight:500;text-decoration:none;transition:all .25s;backdrop-filter:blur(8px);}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.45);}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.3);font-size:.6rem;letter-spacing:3px;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;}
+.hero-scroll::after{content:'';width:1px;height:36px;background:linear-gradient(0deg,rgba(184,146,74,.6),transparent);animation:scrollLine 1.8s ease-in-out infinite;}
+@keyframes scrollLine{0%,100%{opacity:0;transform:scaleY(0);transform-origin:top;}50%{opacity:1;transform:scaleY(1);}}
 
-.hero-grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.025) 1px,transparent 1px);background-size:100px 100px;}
+/* MARQUEE TICKER */
+.marquee-bar{background:var(--dark2);border-top:1px solid rgba(184,146,74,.15);border-bottom:1px solid rgba(184,146,74,.15);padding:12px 0;overflow:hidden;}
+.marquee-track{display:flex;gap:0;width:max-content;animation:marqueeTicker 28s linear infinite;}
+.marquee-track:hover{animation-play-state:paused;}
+.marquee-item{display:inline-flex;align-items:center;gap:10px;padding:0 32px;font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);white-space:nowrap;}
+.marquee-item span{color:var(--gold);font-size:.7rem;}
+@keyframes marqueeTicker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+@media(max-width:860px){.hero{padding:0 24px;}.hero-title{font-size:2.6rem;}}
 
-/* Particles */
-.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
-.particle{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--gold);opacity:0;animation:floatUp var(--dur,8s) var(--delay,0s) infinite;}
-@keyframes floatUp{0%{transform:translateY(100vh) translateX(0);opacity:0;}10%{opacity:.8;}90%{opacity:.3;}100%{transform:translateY(-100px) translateX(var(--drift,20px));opacity:0;}}
+/* STATS */
+.stats{background:var(--dark);padding:36px 56px;}
+.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;max-width:1200px;margin:0 auto;}
+.stat-box{text-align:center;padding:14px 12px;border-right:1px solid rgba(255,255,255,.08);}
+.stat-box:last-child{border-right:none;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--gold2);display:block;line-height:1;letter-spacing:-1px;}
+.stat-lbl{font-size:.62rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:2px;margin-top:6px;display:block;font-weight:500;}
+@media(max-width:700px){.stats{padding:22px 18px;}.stats-grid{grid-template-columns:repeat(3,1fr);}.stat-box{border-right:none;border-bottom:1px solid rgba(255,255,255,.06);padding:14px 4px;}.stat-num{font-size:1.7rem;}}
 
-.hero-content{position:relative;z-index:10;max-width:650px;}
-.hero-tag{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:28px;}
-.hero-tag::before{content:'';width:40px;height:1px;background:var(--gold);}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,7vw,6.5rem);font-weight:300;line-height:1.05;letter-spacing:2px;margin-bottom:24px;}
-.hero-title em{font-style:italic;color:var(--gold);}
-.hero-title strong{font-weight:600;}
-.hero-sub{font-size:.88rem;color:var(--muted);line-height:1.8;max-width:480px;margin-bottom:48px;font-weight:300;}
-.hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
-.btn-gold{background:var(--gold);color:var(--dark);padding:16px 40px;font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;transition:all .3s;cursor:none;}
-.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);}
-.btn-outline{border:1px solid rgba(255,255,255,.25);color:var(--white);padding:16px 40px;font-size:.72rem;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;transition:all .3s;cursor:none;}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+/* GENÉRICO */
+.sec{padding:88px 60px;}
+.si{max-width:1200px;margin:0 auto;}
+.sh{text-align:center;margin-bottom:56px;}
+.st{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--sky);font-weight:700;margin-bottom:12px;display:block;}
+.stitle{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,2.8vw,2.8rem);font-weight:700;color:var(--dark);line-height:1.15;letter-spacing:-.5px;}
+.stitle em{font-style:italic;color:var(--sky);}
+.sh-line{width:48px;height:2px;background:var(--sky);margin:16px auto 0;border-radius:2px;}
+.ssub{color:var(--muted);font-size:.9rem;line-height:1.8;margin-top:14px;max-width:560px;margin-left:auto;margin-right:auto;}
+@media(max-width:860px){.sec{padding:56px 20px;}.stitle{font-size:1.9rem;}}
 
-.hero-counter{position:absolute;bottom:60px;right:80px;z-index:10;text-align:right;}
-.hero-counter-num{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;color:var(--gold);line-height:1;display:block;}
-.hero-counter-lbl{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);}
+/* CARRITO FLOTANTE */
+.cart-drawer{position:fixed;top:0;right:-360px;width:340px;height:100vh;background:#fff;z-index:400;box-shadow:-8px 0 32px rgba(0,0,0,.12);transition:right .35s ease;display:flex;flex-direction:column;}
+.cart-drawer.open{right:0;}
+.cart-drawer-head{padding:20px 20px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.cart-drawer-head h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;}
+.cart-close{background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--muted);}
+.cart-items{flex:1;overflow-y:auto;padding:16px 20px;}
+.cart-item{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);}
+.cart-item img{width:44px;height:44px;border-radius:6px;object-fit:cover;flex-shrink:0;}
+.cart-item-name{font-size:.78rem;font-weight:700;color:var(--dark);margin-bottom:2px;}
+.cart-item-price{font-size:.72rem;color:var(--gold);}
+.cart-item-remove{margin-left:auto;background:none;border:none;color:#ef4444;cursor:pointer;font-size:.8rem;flex-shrink:0;}
+.cart-empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:.82rem;}
+.cart-footer{padding:16px 20px;border-top:1px solid var(--border);}
+.cart-total{display:flex;justify-content:space-between;font-weight:700;font-size:.95rem;margin-bottom:14px;}
+.btn-checkout{width:100%;background:var(--gold);color:#fff;border:none;padding:13px;border-radius:6px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-checkout:hover{background:#a07a3a;}
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:399;display:none;}
+.cart-overlay.open{display:block;}
 
-/* ── 3D BOTTLE ── */
-.bottle-wrap{position:absolute;right:7%;top:50%;transform:translateY(-50%);z-index:10;display:flex;align-items:center;justify-content:center;}
-.bottle-glow{position:absolute;width:320px;height:320px;background:radial-gradient(circle,rgba(139,92,246,.3) 0%,rgba(232,160,192,.15) 40%,transparent 70%);border-radius:50%;animation:glowPulse 3s ease-in-out infinite;pointer-events:none;}
-@keyframes glowPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
-.bottle-scene{perspective:700px;width:140px;height:320px;}
-.bottle-group{width:140px;height:320px;position:relative;transform-style:preserve-3d;animation:spin360 9s linear infinite;}
-@keyframes spin360{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
-/* CAP */
-.b3-cap{position:absolute;width:64px;height:26px;top:0;left:38px;transform-style:preserve-3d;}
-.b3-cap .f{position:absolute;}
-.b3-cap .front{width:64px;height:26px;background:linear-gradient(135deg,#f0d878,#a07828,#e8c050,#a07828,#f0d878);transform:translateZ(22px);}
-.b3-cap .back{width:64px;height:26px;background:#7a5818;transform:rotateY(180deg) translateZ(22px);}
-.b3-cap .right{width:44px;height:26px;background:linear-gradient(90deg,#c9a84c,#8a6520);left:64px;transform-origin:left center;transform:rotateY(90deg);}
-.b3-cap .left{width:44px;height:26px;background:linear-gradient(90deg,#8a6520,#c9a84c);left:0;transform-origin:left center;transform:rotateY(-90deg);}
-.b3-cap .top{width:64px;height:44px;background:linear-gradient(135deg,#f0d878,#c9a84c);top:0;transform-origin:top center;transform:rotateX(-90deg);}
-/* NECK */
-.b3-neck{position:absolute;width:38px;height:54px;top:26px;left:51px;transform-style:preserve-3d;}
-.b3-neck .f{position:absolute;}
-.b3-neck .front{width:38px;height:54px;background:linear-gradient(90deg,rgba(201,168,76,.12),rgba(220,200,255,.18),rgba(201,168,76,.12));border:1px solid rgba(201,168,76,.28);transform:translateZ(16px);}
-.b3-neck .back{width:38px;height:54px;background:rgba(15,5,30,.95);transform:rotateY(180deg) translateZ(16px);}
-.b3-neck .right{width:32px;height:54px;background:rgba(80,30,130,.6);left:38px;transform-origin:left center;transform:rotateY(90deg);}
-.b3-neck .left{width:32px;height:54px;background:rgba(50,15,90,.7);left:0;transform-origin:left center;transform:rotateY(-90deg);}
-/* BODY */
-.b3-body{position:absolute;width:140px;height:230px;top:80px;left:0;transform-style:preserve-3d;}
-.b3-body .f{position:absolute;}
-.b3-body .front{width:140px;height:230px;background:linear-gradient(150deg,rgba(12,4,24,.98) 0%,rgba(70,25,120,.88) 22%,rgba(139,92,246,.62) 42%,rgba(232,160,192,.38) 58%,rgba(70,25,120,.88) 78%,rgba(8,2,16,.98) 100%);border:1px solid rgba(201,168,76,.32);border-radius:10px 10px 6px 6px;overflow:hidden;transform:translateZ(34px);}
-.b3-body .shine1{position:absolute;top:6%;left:6%;width:18%;height:52%;background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(255,255,255,.04),transparent);border-radius:50%;animation:sh 4s ease-in-out infinite;}
-@keyframes sh{0%,100%{opacity:.6}50%{opacity:1}}
-.b3-body .shine2{position:absolute;top:12%;right:10%;width:7%;height:32%;background:linear-gradient(180deg,rgba(255,255,255,.14),transparent);border-radius:50%;}
-.b3-body .label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;border:1px solid rgba(201,168,76,.45);padding:10px 14px;width:106px;}
-.b3-body .label::before{content:'';position:absolute;inset:3px;border:1px solid rgba(201,168,76,.14);}
-.b3-body .lbrand{font-family:'Cormorant Garamond',serif;font-size:.82rem;letter-spacing:4px;color:rgba(201,168,76,.96);font-weight:600;display:block;}
-.b3-body .lsub{font-family:'Cormorant Garamond',serif;font-size:.54rem;letter-spacing:6px;color:rgba(201,168,76,.55);font-weight:300;display:block;margin-top:3px;}
-.b3-body .deco{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);width:56px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.5),transparent);}
-.b3-body .back{width:140px;height:230px;background:rgba(6,2,12,.99);transform:rotateY(180deg) translateZ(34px);}
-.b3-body .right{width:68px;height:230px;background:linear-gradient(90deg,rgba(55,18,95,.95),rgba(90,35,155,.72));left:140px;transform-origin:left center;transform:rotateY(90deg);}
-.b3-body .left{width:68px;height:230px;background:linear-gradient(90deg,rgba(35,10,65,.85),rgba(70,25,120,.65));left:0;transform-origin:left center;transform:rotateY(-90deg);}
-.b3-body .bottom{width:140px;height:68px;background:rgba(10,3,20,.95);top:230px;transform-origin:top center;transform:rotateX(90deg);}
-/* BASE */
-.b3-base{position:absolute;width:140px;height:10px;bottom:0;left:0;transform-style:preserve-3d;}
-.b3-base .f{position:absolute;}
-.b3-base .front{width:140px;height:10px;background:linear-gradient(135deg,#d4b050,#8a6520,#d4b050);transform:translateZ(34px);}
-.b3-base .back{width:140px;height:10px;background:#6a4e18;transform:rotateY(180deg) translateZ(34px);}
-.b3-base .right{width:68px;height:10px;background:#a07828;left:140px;transform-origin:left center;transform:rotateY(90deg);}
-.b3-base .left{width:68px;height:10px;background:#7a5818;left:0;transform-origin:left center;transform:rotateY(-90deg);}
+/* CHECKOUT MODAL */
+.ck-modal{position:fixed;inset:0;z-index:600;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s;}
+.ck-modal.open{opacity:1;pointer-events:all;}
+.ck-backdrop{position:absolute;inset:0;background:rgba(5,10,28,.85);backdrop-filter:blur(6px);}
+.ck-box{position:relative;background:#fff;border-radius:16px;width:100%;max-width:760px;max-height:90vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,.4);}
+.ck-head{padding:22px 28px 18px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#fff;z-index:1;}
+.ck-head h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--dark);}
+.ck-close{background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--muted);line-height:1;}
+.ck-body{padding:24px 28px;}
+.ck-steps{display:flex;gap:0;margin-bottom:24px;border:1.5px solid var(--border);border-radius:8px;overflow:hidden;}
+.ck-step{flex:1;padding:10px 8px;text-align:center;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);background:#fff;transition:all .25s;cursor:default;}
+.ck-step.active{background:var(--gold);color:#fff;}
+.ck-step.done{background:var(--dark);color:#fff;}
+.ck-panel{display:none;}
+.ck-panel.show{display:block;}
+.ck-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.ck-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--dark);margin-bottom:5px;display:block;}
+.ck-inp{width:100%;border:1.5px solid var(--border);border-radius:7px;padding:10px 13px;font-size:.82rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;background:#fff;}
+.ck-inp:focus{border-color:var(--gold);}
+.ck-field{margin-bottom:14px;}
+.ck-summary{background:var(--gold3);border-radius:10px;padding:16px;margin-bottom:18px;}
+.ck-sum-row{display:flex;justify-content:space-between;font-size:.78rem;padding:5px 0;border-bottom:1px solid var(--border);}
+.ck-sum-row:last-child{border-bottom:none;font-weight:700;font-size:.88rem;color:var(--gold);}
+.ck-nav{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:1px solid var(--border);}
+.ck-btn-back{background:none;border:1.5px solid var(--border);color:var(--muted);padding:10px 20px;border-radius:6px;font-size:.76rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;}
+.ck-btn-back:hover{border-color:var(--gold);color:var(--gold);}
+.ck-btn-next{background:var(--gold);color:#fff;padding:10px 24px;border-radius:6px;font-size:.76rem;font-weight:700;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:background .2s;}
+.ck-btn-next:hover{background:#a07a3a;}
+.ck-btn-pay{background:var(--dark);color:#fff;padding:12px 28px;border-radius:6px;font-size:.82rem;font-weight:700;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:background .2s;}
+.ck-btn-pay:hover{background:var(--dark2);}
+.ck-success{text-align:center;padding:32px 20px;}
+.ck-success-icon{font-size:3.5rem;margin-bottom:16px;}
+.ck-success-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--dark);margin-bottom:8px;}
+.ck-success-sub{color:var(--muted);font-size:.82rem;line-height:1.75;margin-bottom:20px;}
+.ck-order-code{display:inline-block;background:rgba(184,146,74,.1);border:2px solid rgba(184,146,74,.3);border-radius:8px;padding:10px 24px;font-size:1rem;font-weight:700;color:var(--gold);letter-spacing:3px;margin-bottom:20px;}
+.ck-delivery-box{background:var(--gray);border-radius:10px;padding:14px 18px;text-align:left;font-size:.76rem;color:var(--text);line-height:2;margin-bottom:18px;}
+.card-brand{display:flex;gap:8px;margin-bottom:14px;}
+.card-brand-ic{height:28px;border:1.5px solid var(--border);border-radius:5px;padding:2px 8px;font-size:.62rem;font-weight:700;display:flex;align-items:center;color:var(--muted);}
+.secure-badge{display:flex;align-items:center;gap:6px;font-size:.65rem;color:var(--muted);margin-bottom:14px;}
 
-@media(max-width:900px){
-  .hero{padding:120px 20px 80px;flex-direction:column;align-items:center;text-align:center;}
-  .hero-content{max-width:100%;}
-  .hero-tag{justify-content:center;}
-  .hero-btns{justify-content:center;}
-  .hero-sub{margin-left:auto;margin-right:auto;}
-  .bottle-wrap{position:relative;right:auto;top:auto;transform:none;margin-bottom:48px;order:-1;}
-  .bottle-scene{transform:scale(.8);transform-origin:center top;}
-  .hero-counter{position:relative;bottom:auto;right:auto;text-align:center;margin-top:40px;}
-  .hero-counter-num{font-size:3.5rem;}
+/* BANNER CONSULTAS */
+.banner-wa{background:var(--dark);padding:22px 48px;}
+.banner-wa-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.banner-wa-txt{color:rgba(255,255,255,.7);font-size:.8rem;line-height:1.6;}
+.banner-wa-txt strong{color:#fff;font-size:.88rem;display:block;margin-bottom:3px;}
+.banner-wa-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.bwa-link{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:7px;font-size:.76rem;font-weight:700;text-decoration:none;transition:all .2s;}
+.bwa-green{background:#25d366;color:#fff;}.bwa-green:hover{background:#1db954;}
+.bwa-sky{background:var(--gold);color:#fff;}.bwa-sky:hover{background:#a07a3a;}
+@media(max-width:860px){.banner-wa{padding:20px 18px;}.ck-2col{grid-template-columns:1fr;}.ck-body{padding:18px;}.ck-head{padding:16px 18px;}}
+
+
+/* CATÁLOGO */
+#catalogo{background:var(--gray);}
+.filtros-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;align-items:center;}
+.filtro-btn{padding:9px 20px;border:1.5px solid var(--border);border-radius:100px;font-size:.73rem;font-weight:600;cursor:pointer;background:#fff;transition:all .22s;color:var(--muted);letter-spacing:.3px;}
+.filtro-btn:hover,.filtro-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,146,74,.07);box-shadow:0 2px 8px rgba(184,146,74,.15);}
+.search-input{margin-left:auto;border:1.5px solid var(--border);border-radius:10px;padding:9px 16px;font-size:.8rem;font-family:'Inter',sans-serif;outline:none;width:220px;transition:border-color .2s;background:#fff;}
+.search-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,146,74,.1);}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.cat-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .3s;position:relative;box-shadow:var(--shadow-sm);}
+.cat-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:rgba(184,146,74,.35);}
+.cat-card.hidden{display:none;}
+.cat-badge{position:absolute;top:12px;left:12px;background:var(--red);color:#fff;font-size:.6rem;font-weight:800;padding:4px 10px;border-radius:6px;letter-spacing:.5px;z-index:1;text-transform:uppercase;box-shadow:0 2px 8px rgba(220,38,38,.3);}
+.cat-online{position:absolute;top:12px;right:12px;background:rgba(10,14,26,.75);color:#fff;font-size:.56rem;font-weight:700;padding:3px 8px;border-radius:5px;z-index:1;letter-spacing:.4px;backdrop-filter:blur(4px);}
+.cat-img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;transition:transform .5s;}
+.cat-card:hover .cat-img{transform:scale(1.04);}
+.cat-body{padding:15px 15px 16px;}
+.cat-cat{font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:5px;}
+.cat-name{font-weight:800;color:#0a0e1a;font-size:.95rem;margin-bottom:6px;line-height:1.2;letter-spacing:-.2px;}
+.cat-stars{display:flex;align-items:center;gap:5px;margin-bottom:4px;}
+.cat-star{color:#f59e0b;font-size:.82rem;letter-spacing:.5px;}
+.cat-reviews{font-size:.65rem;color:var(--muted);font-weight:600;}
+.cat-vol{font-size:.67rem;color:var(--muted);margin-bottom:10px;font-weight:400;}
+.cat-prices{margin-bottom:13px;}
+.cat-price-old{font-size:.74rem;color:#94a3b8;text-decoration:line-through;font-weight:400;margin-bottom:1px;}
+.cat-price{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:800;color:#0a0e1a;line-height:1;letter-spacing:-.5px;}
+.btn-add{width:100%;background:var(--red);color:#fff;border:none;padding:11px 12px;border-radius:9px;font-size:.76rem;font-weight:800;cursor:pointer;transition:all .22s;font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px;letter-spacing:.4px;}
+.btn-add:hover{background:#b91c1c;transform:translateY(-1px);box-shadow:0 8px 22px rgba(220,38,38,.38);}
+.btn-add.added{background:#16a34a;box-shadow:0 6px 18px rgba(22,163,74,.3);}
+@media(max-width:1024px){.cat-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:860px){.cat-grid{grid-template-columns:repeat(2,1fr);gap:14px;}.search-input{width:100%;margin-left:0;}}
+@media(max-width:480px){.cat-grid{grid-template-columns:repeat(2,1fr);gap:10px;}}
+
+/* COTIZADOR */
+#cotizador{background:#fff;}
+.cot-box{max-width:700px;margin:0 auto;background:var(--gray);border-radius:16px;padding:32px;}
+.cot-row{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);}
+.cot-row:last-of-type{border-bottom:none;}
+.cot-name{font-size:.82rem;font-weight:700;color:var(--dark);}
+.cot-cat{font-size:.65rem;color:var(--muted);}
+.cot-qty{width:52px;padding:6px;border:1.5px solid var(--border);border-radius:6px;text-align:center;font-size:.82rem;font-family:'Inter',sans-serif;background:#fff;}
+.cot-sub{font-size:.82rem;font-weight:700;color:var(--gold);min-width:80px;text-align:right;}
+.cot-total-bar{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:20px;border-top:2px solid var(--border);}
+.cot-total-label{font-size:.82rem;font-weight:700;color:var(--dark);}
+.cot-total-price{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--dark);}
+.btn-cot{background:var(--dark);color:#fff;border:none;padding:12px 24px;border-radius:6px;font-size:.78rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;}
+.btn-cot:hover{background:var(--dark2);}
+
+/* AGENDA */
+#agenda{background:var(--gray);}
+.agenda-box{background:#fff;border-radius:16px;border:1.5px solid var(--border);overflow:hidden;max-width:860px;margin:0 auto;}
+.agenda-head{background:var(--dark);padding:20px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.agenda-head h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:#fff;}
+.agenda-badge{background:var(--gold);color:#fff;font-size:.62rem;font-weight:700;padding:4px 12px;border-radius:4px;letter-spacing:1px;text-transform:uppercase;}
+.steps-bar{display:flex;align-items:center;padding:18px 28px;border-bottom:1px solid var(--border);gap:0;}
+.si2{display:flex;align-items:center;gap:7px;flex:1;}
+.sn{width:26px;height:26px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;color:var(--muted);flex-shrink:0;transition:all .3s;}
+.sl{font-size:.65rem;font-weight:600;color:var(--muted);transition:color .3s;}
+.sline{flex:1;height:1px;background:var(--border);margin:0 6px;}
+.si2.active .sn{background:var(--gold);border-color:var(--gold);color:#fff;}
+.si2.active .sl{color:var(--gold);}
+.si2.done .sn{background:var(--dark);border-color:var(--dark);color:#fff;}
+.si2.done .sl{color:var(--dark);}
+.ab{padding:24px 28px;}
+.slabel{font-size:.68rem;font-weight:700;color:var(--dark);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;}
+.barber-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
+.barber-btn{border:2px solid var(--border);border-radius:10px;padding:14px;cursor:pointer;background:#fff;text-align:left;display:flex;gap:10px;align-items:center;transition:all .2s;}
+.barber-btn:hover{border-color:var(--gold);}
+.barber-btn.selected{border-color:var(--gold);background:rgba(184,146,74,.06);}
+.bavatar{width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.bname{font-weight:700;font-size:.82rem;color:var(--dark);}
+.bspec{font-size:.67rem;color:var(--muted);}
+.serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.serv-opt{border:2px solid var(--border);border-radius:8px;padding:10px;cursor:pointer;background:#fff;text-align:left;transition:all .2s;}
+.serv-opt:hover{border-color:var(--gold);}
+.serv-opt.selected{border-color:var(--gold);background:rgba(184,146,74,.06);}
+.son{font-weight:700;font-size:.75rem;color:var(--dark);margin-bottom:2px;}
+.soi{font-size:.62rem;color:var(--muted);}
+.sop{font-size:.78rem;font-weight:700;color:var(--gold);margin-top:4px;}
+.cal-days{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;margin-bottom:18px;}
+.cal-days::-webkit-scrollbar{display:none;}
+.day-btn{flex:0 0 58px;border:2px solid var(--border);border-radius:8px;padding:8px 4px;cursor:pointer;background:#fff;text-align:center;transition:all .2s;}
+.day-btn:hover,.day-btn.selected{border-color:var(--gold);background:rgba(184,146,74,.06);}
+.dn{font-size:.58rem;color:var(--muted);text-transform:uppercase;font-weight:600;}
+.dd{font-size:1.1rem;font-weight:700;color:var(--dark);line-height:1.2;}
+.dm{font-size:.56rem;color:var(--muted);}
+.slots-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:12px;}
+.slot{padding:8px 4px;border:1.5px solid var(--border);border-radius:6px;text-align:center;font-size:.72rem;font-weight:600;cursor:pointer;transition:all .2s;background:#fff;}
+.slot:hover:not(.occ){border-color:var(--gold);color:var(--gold);}
+.slot.selected{background:var(--gold);border-color:var(--gold);color:#fff;}
+.slot.occ{background:#f8fafc;border-color:#e2e8f0;color:#cbd5e1;cursor:not-allowed;font-size:.62rem;}
+.res-box{background:var(--gray);border-radius:10px;padding:18px;margin-bottom:18px;}
+.res-row{display:flex;justify-content:space-between;font-size:.78rem;padding:5px 0;border-bottom:1px solid var(--border);}
+.res-row:last-child{border-bottom:none;font-weight:700;font-size:.85rem;}
+.rl{color:var(--muted);}
+.rv{color:var(--dark);font-weight:600;}
+.pago-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.pago-opt{border:2px solid var(--border);border-radius:8px;padding:14px;cursor:pointer;background:#fff;text-align:center;transition:all .2s;}
+.pago-opt:hover,.pago-opt.selected{border-color:var(--gold);background:rgba(184,146,74,.06);}
+.pot{font-weight:700;font-size:.8rem;color:var(--dark);margin-bottom:4px;}
+.poa{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold);}
+.pon{font-size:.62rem;color:var(--muted);margin-top:4px;}
+.card-sim{background:var(--gray);border-radius:8px;padding:16px;margin-bottom:12px;display:none;}
+.card-inp{width:100%;background:#fff;border:1.5px solid var(--border);border-radius:6px;padding:9px 12px;font-size:.8rem;margin-bottom:7px;font-family:'Inter',sans-serif;}
+.card-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.conf-box{text-align:center;padding:28px 16px;}
+.conf-icon{font-size:2.8rem;margin-bottom:14px;}
+.conf-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--dark);margin-bottom:8px;}
+.conf-sub{font-size:.78rem;color:var(--muted);margin-bottom:16px;line-height:1.7;}
+.conf-code{display:inline-block;background:rgba(184,146,74,.1);border:2px solid rgba(184,146,74,.3);border-radius:8px;padding:10px 22px;font-size:1rem;font-weight:700;color:var(--gold);letter-spacing:3px;margin-bottom:16px;}
+.conf-det{background:var(--gray);border-radius:8px;padding:14px;text-align:left;font-size:.75rem;line-height:2;color:var(--text);margin-bottom:16px;}
+.anav{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:18px;border-top:1px solid var(--border);}
+.btn-back{background:none;border:1.5px solid var(--border);color:var(--muted);padding:9px 18px;border-radius:6px;font-size:.74rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;}
+.btn-back:hover{border-color:var(--gold);color:var(--gold);}
+.btn-next{background:var(--dark);color:#fff;padding:9px 22px;border-radius:6px;font-size:.74rem;font-weight:700;cursor:pointer;transition:all .2s;border:none;font-family:'Inter',sans-serif;}
+.btn-next:hover{background:var(--dark2);}
+.btn-next:disabled{background:#e2e8f0;color:#94a3b8;cursor:not-allowed;}
+@media(max-width:860px){.ab{padding:18px;}.serv-grid{grid-template-columns:repeat(2,1fr);}.slots-grid{grid-template-columns:repeat(3,1fr);}.pago-grid{grid-template-columns:1fr;}}
+
+/* GALERÍA VIDEOS */
+#galeria{background:var(--dark);}
+.galeria-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.gal-item{border-radius:12px;overflow:hidden;cursor:pointer;position:relative;background:#000;}
+.gal-item.wide{grid-column:span 2;aspect-ratio:16/9;}
+.gal-item.tall{aspect-ratio:9/16;}
+.gal-item.sq{aspect-ratio:1;}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s,opacity .3s;display:block;}
+.gal-item:hover img{transform:scale(1.04);opacity:.8;}
+.gal-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transition:opacity .25s;}
+.gal-play{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s;}
+.gal-item:hover .gal-play{transform:scale(1.12);background:#fff;}
+.gal-play svg{width:22px;height:22px;fill:var(--dark);margin-left:3px;}
+.gal-duration{background:rgba(0,0,0,.7);color:#fff;font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:3px;letter-spacing:.5px;}
+.gal-title{position:absolute;bottom:0;left:0;right:0;padding:12px 14px 14px;background:linear-gradient(0deg,rgba(5,10,28,.85) 0%,transparent 100%);color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.3px;opacity:0;transition:opacity .25s;}
+.gal-item:hover .gal-title{opacity:1;}
+.gal-type{position:absolute;top:10px;left:10px;background:rgba(184,146,74,.9);color:#fff;font-size:.55rem;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:1px;text-transform:uppercase;}
+@media(max-width:860px){.galeria-grid{grid-template-columns:repeat(2,1fr);}.gal-item.wide{grid-column:span 2;}.gal-item.tall{aspect-ratio:4/5;}}
+@media(max-width:480px){.galeria-grid{grid-template-columns:1fr;}.gal-item.wide{grid-column:span 1;aspect-ratio:16/9;}}
+
+/* BLOG */
+#blog{background:var(--gray);}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.blog-card{background:#fff;border-radius:12px;overflow:hidden;border:1.5px solid var(--border);transition:all .3s;}
+.blog-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(184,146,74,.12);}
+.blog-img{width:100%;aspect-ratio:16/9;object-fit:cover;}
+.blog-body{padding:18px;}
+.blog-cat{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px;}
+.blog-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:8px;line-height:1.3;}
+.blog-excerpt{font-size:.76rem;color:var(--muted);line-height:1.7;margin-bottom:14px;}
+.blog-full{font-size:.76rem;color:var(--text);line-height:1.8;display:none;border-top:1px solid var(--border);padding-top:12px;margin-top:4px;}
+.blog-full.open{display:block;}
+.blog-btn{background:none;border:1.5px solid var(--border);padding:7px 16px;border-radius:6px;font-size:.7rem;font-weight:600;cursor:pointer;color:var(--gold);transition:all .2s;font-family:'Inter',sans-serif;}
+.blog-btn:hover{border-color:var(--gold);background:rgba(184,146,74,.06);}
+@media(max-width:860px){.blog-grid{grid-template-columns:1fr;}}
+
+/* STATS SIMULADAS */
+#estadisticas{background:var(--dark);}
+.est-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.est-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:28px 24px;transition:border-color .3s;}
+.est-card:hover{border-color:rgba(74,144,217,.4);}
+.est-num{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:700;color:var(--gold2);display:block;letter-spacing:-1px;line-height:1;}
+.est-label{font-size:.65rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:2px;margin-top:8px;display:block;font-weight:500;}
+.est-bar{height:3px;background:rgba(255,255,255,.08);border-radius:2px;margin-top:16px;overflow:hidden;}
+.est-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;width:0;transition:width 1.8s cubic-bezier(.25,.46,.45,.94);}
+@media(max-width:860px){.est-grid{grid-template-columns:repeat(2,1fr);gap:12px;}.est-card{padding:20px;}.est-num{font-size:2rem;}}
+
+/* POR QUÉ */
+#porque{background:#fff;}
+.porq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.porq-card{border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;text-align:left;transition:all .3s;background:#fff;box-shadow:var(--shadow-sm);}
+.porq-card:hover{border-color:rgba(184,146,74,.4);transform:translateY(-4px);box-shadow:var(--shadow-md);}
+.porq-icon-wrap{width:48px;height:48px;background:rgba(184,146,74,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.porq-icon{font-size:1.5rem;display:block;}
+.porq-title{font-weight:700;color:var(--dark);font-size:.92rem;margin-bottom:7px;letter-spacing:-.2px;}
+.porq-text{font-size:.78rem;color:var(--muted);line-height:1.7;}
+@media(max-width:860px){.porq-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.porq-grid{grid-template-columns:1fr;}}
+
+/* TESTIMONIOS */
+#testimonios{background:var(--gray);}
+.carousel{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:6px;}
+.carousel::-webkit-scrollbar{display:none;}
+.carousel-hint{text-align:center;font-size:.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-top:16px;}
+.test-card{flex:0 0 300px;scroll-snap-align:start;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-sm);}
+.stars{color:#f59e0b;font-size:.95rem;margin-bottom:10px;letter-spacing:1px;}
+.test-text{font-size:.82rem;color:var(--text);line-height:1.8;margin-bottom:16px;font-style:italic;color:#334155;}
+.test-author{display:flex;align-items:center;gap:11px;}
+.test-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--dark));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.75rem;flex-shrink:0;}
+.test-name{font-weight:700;font-size:.78rem;color:var(--dark);}
+.test-loc{font-size:.64rem;color:var(--muted);margin-top:1px;}
+
+/* FAQ */
+#faq{background:#fff;}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:8px;}
+.faq-item{border:1.5px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color .2s;}
+.faq-item.open{border-color:var(--gold);}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;cursor:pointer;font-weight:700;font-size:.85rem;color:#111;gap:12px;background:#fff;transition:background .2s;}
+.faq-item.open .faq-q{background:rgba(184,146,74,.04);}
+.faq-ico{font-size:1.2rem;color:var(--gold);flex-shrink:0;transition:transform .3s;font-weight:300;}
+.faq-item.open .faq-ico{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s;}
+.faq-item.open .faq-a{max-height:200px;padding:0 20px 16px;}
+.faq-a p{font-size:.8rem;color:var(--muted);line-height:1.75;}
+
+/* FOOTER */
+footer{background:var(--dark);padding:64px 56px 40px;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:#fff;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;}
+.footer-logo span{color:var(--gold);}
+.footer-desc{color:rgba(255,255,255,.35);font-size:.75rem;line-height:1.8;max-width:210px;}
+.redes{display:flex;gap:9px;margin-top:18px;flex-wrap:wrap;}
+.red-btn{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:7px;font-size:.7rem;font-weight:600;text-decoration:none;transition:all .22s;}
+.red-ig{background:#e1306c;color:#fff;}.red-ig:hover{background:#c1185c;transform:translateY(-1px);}
+.red-tk{background:#2a2a2a;color:#fff;}.red-tk:hover{background:#444;transform:translateY(-1px);}
+.fc h4{color:rgba(255,255,255,.5);font-size:.62rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;}
+.fc ul{list-style:none;}
+.fc li{margin-bottom:10px;}
+.fc a{color:rgba(255,255,255,.4);font-size:.76rem;text-decoration:none;transition:color .2s;font-weight:400;}
+.fc a:hover{color:#fff;}
+.mapa-embed iframe{width:100%;height:130px;border:none;display:block;border-radius:8px;margin-top:12px;opacity:.85;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.footer-bottom span,.footer-bottom a{color:rgba(255,255,255,.22);font-size:.67rem;text-decoration:none;}
+.footer-bottom a:hover{color:rgba(255,255,255,.6);}
+@media(max-width:860px){footer{padding:40px 20px 28px;}.footer-grid{grid-template-columns:1fr 1fr;gap:28px;}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;}}
+
+/* MODAL PRODUCTO */
+.prod-modal{position:fixed;inset:0;z-index:700;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s;}
+.prod-modal.open{opacity:1;pointer-events:all;}
+.prod-backdrop{position:absolute;inset:0;background:rgba(17,12,7,.88);backdrop-filter:blur(8px);}
+.prod-box{position:relative;background:#fff;border-radius:20px;width:100%;max-width:860px;max-height:92vh;overflow-y:auto;box-shadow:0 32px 80px rgba(17,12,7,.5);display:grid;grid-template-columns:1fr 1fr;}
+.prod-img-col{position:relative;overflow:hidden;border-radius:20px 0 0 20px;background:var(--gold3);}
+.prod-img-col img{width:100%;height:100%;object-fit:cover;display:block;min-height:420px;}
+.prod-badge-modal{position:absolute;top:16px;left:16px;background:var(--red);color:#fff;font-size:.62rem;font-weight:800;padding:5px 12px;border-radius:7px;letter-spacing:.5px;text-transform:uppercase;}
+.prod-info-col{padding:36px 32px;display:flex;flex-direction:column;gap:0;}
+.prod-close{position:absolute;top:16px;right:16px;background:rgba(17,12,7,.08);border:none;width:36px;height:36px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .2s;z-index:2;}
+.prod-close:hover{background:var(--dark);color:#fff;}
+.prod-cat-tag{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;}
+.prod-name-modal{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--dark);line-height:1.1;margin-bottom:10px;letter-spacing:-.5px;}
+.prod-stars-modal{display:flex;align-items:center;gap:6px;margin-bottom:16px;}
+.prod-stars-modal .s{color:#f59e0b;font-size:.9rem;}
+.prod-stars-modal .r{font-size:.72rem;color:var(--muted);font-weight:600;}
+.prod-divider{width:40px;height:1.5px;background:var(--gold);margin-bottom:18px;border-radius:2px;}
+.prod-desc{font-size:.82rem;color:var(--muted);line-height:1.85;margin-bottom:20px;}
+.prod-notas{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:22px;}
+.prod-nota{background:var(--gold3);border-radius:10px;padding:10px 8px;text-align:center;}
+.prod-nota-lbl{font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:4px;display:block;}
+.prod-nota-val{font-size:.76rem;font-weight:700;color:var(--dark);}
+.prod-detalles{display:flex;flex-direction:column;gap:6px;margin-bottom:22px;}
+.prod-det-row{display:flex;justify-content:space-between;font-size:.76rem;padding:6px 0;border-bottom:1px solid var(--border);}
+.prod-det-row:last-child{border-bottom:none;}
+.prod-det-lbl{color:var(--muted);}
+.prod-det-val{font-weight:700;color:var(--dark);}
+.prod-prices-modal{margin-bottom:18px;}
+.prod-old{font-size:.8rem;color:#94a3b8;text-decoration:line-through;margin-bottom:2px;}
+.prod-price-modal{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--dark);line-height:1;letter-spacing:-1px;}
+.prod-price-modal span{font-size:.9rem;color:var(--gold);font-family:'Inter',sans-serif;font-weight:600;margin-left:8px;}
+.prod-actions{display:flex;gap:10px;}
+.prod-btn-add{flex:1;background:var(--red);color:#fff;border:none;padding:13px 20px;border-radius:10px;font-size:.8rem;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;transition:all .22s;display:flex;align-items:center;justify-content:center;gap:7px;}
+.prod-btn-add:hover{background:#b91c1c;transform:translateY(-1px);box-shadow:0 8px 22px rgba(220,38,38,.35);}
+.prod-btn-add.added{background:#16a34a;}
+.prod-btn-wa{background:none;border:1.5px solid #25d366;color:#25d366;padding:13px 16px;border-radius:10px;font-size:.8rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;white-space:nowrap;}
+.prod-btn-wa:hover{background:#25d366;color:#fff;}
+.prod-envio{display:flex;align-items:center;gap:8px;font-size:.7rem;color:var(--muted);margin-top:14px;}
+.prod-envio span{color:#22c55e;font-weight:700;}
+@media(max-width:680px){.prod-box{grid-template-columns:1fr;}.prod-img-col{border-radius:20px 20px 0 0;}.prod-img-col img{min-height:260px;}.prod-info-col{padding:22px 20px;}.prod-notas{grid-template-columns:1fr 1fr 1fr;}.prod-name-modal{font-size:1.5rem;}}
+
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:22px;right:22px;z-index:500;background:#25d366;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(37,211,102,.4);text-decoration:none;transition:transform .2s;}
+.wa-float:hover{transform:scale(1.1);}
+.wa-float svg{width:26px;height:26px;fill:#fff;}
+
+/* MOBILE GLOBAL */
+@media(max-width:600px){
+  nav{padding:0 14px;height:56px;}
+  .nav-logo{font-size:1rem;}
+  .hero{padding:0 18px;min-height:520px;}
+  .hero-title{font-size:2rem;}
+  .hero-sub{font-size:.8rem;}
+  .hero-btns{flex-direction:column;gap:10px;}
+  .btn-sky,.btn-ghost{text-align:center;padding:12px 20px;font-size:.82rem;}
+  .sec{padding:40px 16px;}
+  .stitle{font-size:1.5rem;}
+  .stats{padding:18px 14px;}
+  .stats-grid{grid-template-columns:repeat(3,1fr);}
+  .stat-num{font-size:1.4rem;}
+  .filtros-bar{gap:6px;}
+  .filtro-btn{padding:6px 12px;font-size:.68rem;}
+  .search-input{width:100%;margin-left:0;margin-top:6px;}
+  .cat-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .cat-name{font-size:.8rem;}
+  .cat-price{font-size:1rem;}
+  .btn-add{font-size:.68rem;padding:9px 8px;}
+  .barber-grid{grid-template-columns:1fr;}
+  .serv-grid{grid-template-columns:1fr 1fr;}
+  .slots-grid{grid-template-columns:repeat(3,1fr);}
+  .pago-grid{grid-template-columns:1fr;}
+  .agenda-box{border-radius:10px;}
+  .ab{padding:14px;}
+  .steps-bar{padding:12px 14px;}
+  .sl{display:none;}
+  .galeria-grid{grid-template-columns:1fr 1fr;gap:8px;}
+  .gal-item.wide{grid-column:span 2;}
+  .gal-play{width:42px;height:42px;}
+  .gal-play svg{width:16px;height:16px;}
+  .blog-grid{grid-template-columns:1fr;}
+  .est-grid{grid-template-columns:1fr 1fr;gap:12px;}
+  .porq-grid{grid-template-columns:1fr 1fr;}
+  footer{padding:28px 16px;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .ck-body{padding:14px;}
+  .ck-head{padding:14px 16px;}
+  .ck-2col{grid-template-columns:1fr;}
+  .banner-wa{padding:18px 16px;}
+  .banner-wa-inner{flex-direction:column;align-items:flex-start;}
+  .porq-grid{grid-template-columns:1fr;}
 }
 
-/* ── MARQUEE ── */
-.marquee-wrap{background:#0d0d0d;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;overflow:hidden;}
-.marquee-track{display:flex;gap:0;animation:marquee 30s linear infinite;width:max-content;}
-.marquee-item{display:flex;align-items:center;gap:20px;padding:0 40px;white-space:nowrap;}
-.marquee-item span{font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);}
-.marquee-item strong{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--white);letter-spacing:2px;}
-.marquee-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0;}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s;}
+.reveal.visible{opacity:1;transform:none;}
 
-/* ── SECTION COMMONS ── */
-.sec-wrap{padding:120px 80px;}
-.sec-head{text-align:center;margin-bottom:80px;}
-.sec-tag{font-size:.62rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:12px;margin-bottom:20px;}
-.sec-tag::before,.sec-tag::after{content:'';width:30px;height:1px;background:var(--gold);}
-.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:300;line-height:1.15;letter-spacing:1px;}
-.sec-title em{font-style:italic;color:var(--gold);}
-.sec-sub{font-size:.85rem;color:var(--muted);margin-top:16px;line-height:1.7;max-width:560px;margin-left:auto;margin-right:auto;}
-@media(max-width:768px){.sec-wrap{padding:80px 20px;}.sec-head{margin-bottom:48px;}}
+/* Cursor personalizado — oculto en touch/móvil */
+@media(hover:none),(pointer:coarse){
+  .cursor,.cursor-ring{display:none!important;}
+}
 
-/* ── PERFUMES DESTACADOS ── */
-#perfumes{background:var(--dark);}
-.perfumes-carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:2px;scrollbar-width:none;}
-.perfumes-carousel::-webkit-scrollbar{display:none;}
-.perf-card{position:relative;overflow:hidden;cursor:none;flex:0 0 340px;scroll-snap-align:start;}
-@media(max-width:768px){.perf-card{flex:0 0 80vw;}}
-.perf-card-img{width:100%;height:460px;object-fit:cover;display:block;transition:transform .8s ease;}
-.perf-card:hover .perf-card-img{transform:scale(1.06);}
-.perf-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.95) 0%,rgba(8,8,8,.4) 50%,transparent 100%);transition:background .4s;}
-.perf-card:hover .perf-card-overlay{background:linear-gradient(to top,rgba(8,8,8,.98) 0%,rgba(8,8,8,.6) 60%,rgba(139,92,246,.1) 100%);}
-.perf-card-tag{position:absolute;top:20px;left:20px;background:var(--gold);color:var(--dark);font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;}
-.perf-card-content{position:absolute;bottom:0;left:0;right:0;padding:32px 28px;}
-.perf-fam{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
-.perf-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;letter-spacing:1px;margin-bottom:12px;}
-.perf-notes{font-size:.68rem;color:rgba(255,255,255,.5);line-height:1.6;margin-bottom:16px;transform:translateY(10px);opacity:0;transition:all .4s;}
-.perf-card:hover .perf-notes{transform:translateY(0);opacity:1;}
-.perf-notes strong{color:var(--gold);font-weight:500;}
-.perf-footer{display:flex;align-items:center;justify-content:space-between;}
-.perf-price{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--gold);}
-.perf-btn{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--white);border-bottom:1px solid var(--gold);padding-bottom:2px;text-decoration:none;transition:color .3s;cursor:none;}
-.perf-btn:hover{color:var(--gold);}
-
-/* ── STATS ── */
-#stats{background:linear-gradient(135deg,#0d0d0d 0%,#100a1a 50%,#0d0d0d 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
-.stat-box{padding:60px 40px;text-align:center;border-right:1px solid var(--border);position:relative;overflow:hidden;}
-.stat-box::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(201,168,76,.04) 0%,transparent 70%);opacity:0;transition:opacity .4s;}
-.stat-box:hover::before{opacity:1;}
-.stat-box:last-child{border-right:none;}
-.stat-num{font-family:'Cormorant Garamond',serif;font-size:3.8rem;font-weight:300;color:var(--gold);line-height:1;display:block;}
-.stat-suffix{font-size:1.5rem;color:var(--rose);}
-.stat-lbl{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:12px;display:block;}
-@media(max-width:768px){.stats-grid{grid-template-columns:1fr 1fr;}.stat-box{border-bottom:1px solid var(--border);padding:40px 20px;}.stat-box:nth-child(even){border-right:none;}.stat-num{font-size:2.8rem;}}
-
-/* ── POR QUÉ ELEGIRNOS ── */
-#porque{background:var(--dark);}
-.porque-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
-.porque-item{background:#0d0d0d;padding:60px 50px;position:relative;overflow:hidden;transition:background .4s;}
-.porque-item::before{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:linear-gradient(90deg,var(--gold),var(--purple));transition:width .6s;}
-.porque-item:hover{background:#111;}
-.porque-item:hover::before{width:100%;}
-.porque-num{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:rgba(201,168,76,.08);position:absolute;top:20px;right:30px;line-height:1;}
-.porque-icon{font-size:2rem;margin-bottom:20px;}
-.porque-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:14px;color:var(--white);}
-.porque-text{font-size:.82rem;color:var(--muted);line-height:1.7;}
-@media(max-width:768px){.porque-grid{grid-template-columns:1fr;}.porque-item{padding:40px 24px;}}
-
-/* ── PROCESO ── */
-#proceso{background:#070707;}
-.proceso-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:60px;}
-.proceso-steps::before{content:'';position:absolute;top:32px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--purple),var(--gold),transparent);}
-.paso{text-align:center;padding:0 20px;}
-.paso-num{width:64px;height:64px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--gold);margin:0 auto 28px;background:var(--dark);position:relative;z-index:1;}
-.paso-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;margin-bottom:12px;}
-.paso-text{font-size:.78rem;color:var(--muted);line-height:1.6;}
-@media(max-width:768px){.proceso-steps{grid-template-columns:1fr 1fr;gap:40px;}.proceso-steps::before{display:none;}}
-
-/* ── GALERÍA LIGHTBOX ── */
-#galeria{background:var(--dark);}
-.galeria-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
-.galeria-item{position:relative;overflow:hidden;cursor:none;aspect-ratio:1;}
-.galeria-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
-.galeria-item:hover img{transform:scale(1.08);}
-.galeria-item-overlay{position:absolute;inset:0;background:rgba(8,8,8,0);display:flex;align-items:center;justify-content:center;transition:background .4s;}
-.galeria-item:hover .galeria-item-overlay{background:rgba(201,168,76,.2);}
-.galeria-zoom{color:var(--white);font-size:1.5rem;opacity:0;transition:opacity .4s;}
-.galeria-item:hover .galeria-zoom{opacity:1;}
-/* Lightbox */
-.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:500;display:none;align-items:center;justify-content:center;}
-.lightbox.open{display:flex;}
-.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;}
-.lightbox-close{position:absolute;top:24px;right:32px;color:var(--white);font-size:2rem;cursor:pointer;background:none;border:none;line-height:1;}
-.lightbox-close:hover{color:var(--gold);}
-@media(max-width:768px){.galeria-grid{grid-template-columns:repeat(2,1fr);}}
-
-/* ── CATÁLOGO CON FILTROS ── */
-#catalogo{background:#070707;}
-.filtros{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:48px;}
-.filtro-btn{padding:10px 24px;border:1px solid var(--border);color:var(--muted);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;background:none;cursor:pointer;transition:all .3s;}
-.filtro-btn:hover,.filtro-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.06);}
-.catalogo-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:16px;scrollbar-width:none;padding-bottom:8px;}
-.catalogo-grid::-webkit-scrollbar{display:none;}
-.cat-card{background:#0d0d0d;border:1px solid var(--border);overflow:hidden;transition:border-color .3s,transform .3s;flex:0 0 260px;scroll-snap-align:start;}
-.cat-card:hover{border-color:rgba(201,168,76,.3);transform:translateY(-4px);}
-.cat-card.hidden{display:none;}
-.cat-img{width:100%;aspect-ratio:1;object-fit:cover;}
-.cat-body{padding:24px;}
-.cat-fam{font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--purple);margin-bottom:8px;}
-.cat-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;margin-bottom:6px;}
-.cat-ml{font-size:.72rem;color:var(--muted);margin-bottom:16px;}
-.cat-price{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);font-weight:600;}
-@media(max-width:768px){.catalogo-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:480px){.catalogo-grid{grid-template-columns:1fr;}}
-
-/* ── COTIZADOR DE SETS ── */
-#cotizador{background:var(--dark);}
-.cotizador-box{max-width:720px;margin:0 auto;background:#0d0d0d;border:1px solid var(--border);padding:60px;}
-.cotizador-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;margin-bottom:8px;text-align:center;}
-.cotizador-sub{font-size:.78rem;color:var(--muted);text-align:center;margin-bottom:40px;}
-.cot-row{display:flex;gap:16px;margin-bottom:16px;}
-.cot-select{flex:1;background:#141414;border:1px solid var(--border);color:var(--white);padding:14px 16px;font-size:.82rem;font-family:'Inter',sans-serif;cursor:pointer;appearance:none;outline:none;transition:border-color .3s;}
-.cot-select:focus{border-color:var(--gold);}
-.cot-result{margin-top:32px;padding:28px;background:#141414;border-left:2px solid var(--gold);display:none;}
-.cot-result.show{display:block;}
-.cot-result-title{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
-.cot-items{font-size:.82rem;color:var(--muted);line-height:2;margin-bottom:16px;}
-.cot-total{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--white);}
-.cot-saving{font-size:.75rem;color:var(--rose);margin-top:4px;}
-.btn-cot{width:100%;margin-top:24px;background:var(--gold);color:var(--dark);padding:16px;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s;}
-.btn-cot:hover{background:var(--gold2);}
-@media(max-width:768px){.cotizador-box{padding:32px 20px;}.cot-row{flex-direction:column;}}
-
-/* ── TESTIMONIOS ── */
-#testimonios{background:#070707;}
-.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.test-card{background:#0d0d0d;border:1px solid var(--border);padding:40px 32px;position:relative;transition:border-color .4s;}
-.test-card:hover{border-color:rgba(201,168,76,.3);}
-.test-quote{font-size:3rem;color:var(--gold);font-family:'Cormorant Garamond',serif;line-height:.8;margin-bottom:20px;opacity:.4;}
-.test-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:28px;}
-.test-author{display:flex;align-items:center;gap:16px;}
-.test-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:1px solid var(--gold);}
-.test-name{font-size:.82rem;font-weight:600;color:var(--white);}
-.test-role{font-size:.7rem;color:var(--muted);margin-top:2px;}
-.test-stars{color:var(--gold);font-size:.75rem;margin-bottom:16px;letter-spacing:2px;}
-@media(max-width:768px){.test-grid{grid-template-columns:1fr;}}
-
-/* ── BLOG ── */
-#blog{background:var(--dark);}
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
-.blog-card{position:relative;overflow:hidden;cursor:none;}
-.blog-img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;transition:transform .7s;}
-.blog-card:hover .blog-img{transform:scale(1.05);}
-.blog-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.95) 0%,transparent 60%);}
-.blog-body{position:absolute;bottom:0;left:0;right:0;padding:28px;}
-.blog-date{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
-.blog-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;line-height:1.3;margin-bottom:8px;}
-.blog-excerpt{font-size:.72rem;color:var(--muted);line-height:1.5;opacity:0;transform:translateY(8px);transition:all .4s;}
-.blog-card:hover .blog-excerpt{opacity:1;transform:translateY(0);}
-@media(max-width:768px){.blog-grid{grid-template-columns:1fr;}}
-
-/* ── CONTACTO ── */
-#contacto{background:#070707;}
-.contacto-wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start;}
-.contacto-left h3{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;line-height:1.2;margin-bottom:24px;}
-.contacto-left h3 em{font-style:italic;color:var(--gold);}
-.contacto-left p{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:40px;}
-.contacto-info{display:flex;flex-direction:column;gap:20px;}
-.contacto-info-item{display:flex;align-items:center;gap:14px;font-size:.8rem;color:var(--muted);}
-.contacto-info-icon{width:36px;height:36px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
-.form-field{margin-bottom:16px;}
-.form-field input,.form-field select,.form-field textarea{width:100%;background:#0d0d0d;border:none;border-bottom:1px solid var(--border);color:var(--white);padding:14px 0;font-size:.85rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .3s;appearance:none;}
-.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-bottom-color:var(--gold);}
-.form-field input::placeholder,.form-field textarea::placeholder{color:rgba(255,255,255,.25);}
-.form-field textarea{resize:none;height:100px;}
-.form-field select{background:#0d0d0d;cursor:pointer;}
-.form-field select option{background:#141414;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.btn-submit{width:100%;margin-top:8px;background:var(--gold);color:var(--dark);padding:18px;font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;border:none;cursor:pointer;transition:all .3s;}
-.btn-submit:hover{background:var(--gold2);transform:translateY(-1px);}
-@media(max-width:900px){.contacto-wrap{grid-template-columns:1fr;gap:48px;}.form-row{grid-template-columns:1fr;}}
-
-/* ── FOOTER ── */
-footer{background:#040404;border-top:1px solid var(--border);padding:60px 80px 40px;}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px;}
-.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;letter-spacing:4px;margin-bottom:16px;}
-.footer-logo span{color:var(--gold);}
-.footer-desc{font-size:.78rem;color:var(--muted);line-height:1.7;max-width:280px;}
-.footer-col-title{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.footer-col ul a{font-size:.78rem;color:var(--muted);text-decoration:none;transition:color .3s;}
-.footer-col ul a:hover{color:var(--white);}
-.footer-bottom{border-top:1px solid var(--border);padding-top:28px;display:flex;justify-content:space-between;align-items:center;}
-.footer-copy{font-size:.68rem;color:rgba(255,255,255,.25);letter-spacing:1px;}
-.footer-socials{display:flex;gap:16px;}
-.footer-social{width:36px;height:36px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:.8rem;transition:all .3s;cursor:none;}
-.footer-social:hover{border-color:var(--gold);color:var(--gold);}
-@media(max-width:900px){footer{padding:48px 20px 32px;}.footer-top{grid-template-columns:1fr 1fr;gap:40px;}.footer-bottom{flex-direction:column;gap:16px;text-align:center;}}
-@media(max-width:480px){.footer-top{grid-template-columns:1fr;}}
-
-/* ── WHATSAPP FLOAT ── */
-.wa-float{position:fixed;bottom:32px;right:32px;width:56px;height:56px;background:linear-gradient(135deg,var(--gold),#a07830);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;text-decoration:none;z-index:300;box-shadow:0 8px 32px rgba(201,168,76,.3);animation:waPulse 3s ease-in-out infinite;cursor:none;}
-@keyframes waPulse{0%,100%{box-shadow:0 8px 32px rgba(201,168,76,.3)}50%{box-shadow:0 8px 48px rgba(201,168,76,.5)}}
-
-/* ── REVEAL ── */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .7s ease,transform .7s ease;}
-.reveal-left.visible{opacity:1;transform:translateX(0);}
+/* ===== MOBILE 480px ===== */
+@media(max-width:480px){
+  /* Hero */
+  .hero{min-height:480px;padding:0 14px;}
+  .hero-title{font-size:1.8rem;}
+  .hero-sub{font-size:.78rem;}
+  /* Stats → 2 columnas */
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .stat-num{font-size:1.4rem;}
+  /* Agenda slots → 2 col */
+  .slots-grid{grid-template-columns:repeat(2,1fr);}
+  /* Estadísticas */
+  .est-grid{grid-template-columns:1fr;}
+  /* Modal producto notas → 1 fila */
+  .prod-notas{grid-template-columns:1fr 1fr;}
+  .prod-name-modal{font-size:1.3rem;}
+  .prod-price-modal{font-size:1.6rem;}
+  /* Checkout */
+  .ck-box{border-radius:16px 16px 0 0;margin-top:auto;}
+  /* Sec padding */
+  .sec{padding:36px 14px;}
+  /* Nav */
+  nav{padding:0 12px;height:54px;}
+  /* Mobile menu */
+  .mobile-menu a{font-size:1.7rem;}
+}
 </style>
 </head>
 <body>
 
-<!-- CURSOR -->
-<div class="cursor" id="cur"></div>
-<div class="cursor-ring" id="ring"></div>
+<!-- WA -->
+<a href="https://wa.me/56939665163?text=Hola%2C%20tengo%20una%20consulta%20sobre%20Perfumer%C3%ADa%20Alonso" target="_blank" class="wa-float"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#perfumes" onclick="closeMobile()">Perfumes</a>
-  <a href="#perfumes" onclick="closeMobile()">Catálogo</a>
-  <a href="#galeria" onclick="closeMobile()">Galería</a>
-  <a href="#blog" onclick="closeMobile()">Editorial</a>
-  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+<!-- CARRITO -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer-head"><h3>🛒 Tu cotización</h3><button class="cart-close" onclick="toggleCart()">×</button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty">Tu carrito está vacío.<br>Agrega productos del catálogo.</div></div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-total"><span>Total</span><span id="cartTotalPrice">$0</span></div>
+    <button class="btn-checkout" onclick="openCheckout()">🔒 Ir al pago →</button>
+  </div>
 </div>
 
-<!-- NAV -->
-<nav id="nav">
-  <a class="nav-logo" href="#">Maison<span>Noir</span></a>
-  <ul class="nav-links">
-    <li><a href="#perfumes">Perfumes</a></li>
-    <li><a href="#perfumes">Catálogo</a></li>
-    <li><a href="#galeria">Galería</a></li>
-    <li><a href="#blog">Editorial</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-  <a href="#contacto" class="nav-cta">Descubre tu aroma</a>
-  <div class="hamburger" id="ham" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+<!-- CHECKOUT MODAL -->
+<div class="ck-modal" id="ckModal">
+  <div class="ck-backdrop" onclick="closeCheckout()"></div>
+  <div class="ck-box">
+    <div class="ck-head">
+      <h3 id="ckTitle">Datos de entrega</h3>
+      <button class="ck-close" onclick="closeCheckout()">×</button>
+    </div>
+    <div class="ck-body">
+      <div class="ck-steps">
+        <div class="ck-step active" id="cks1">1. Entrega</div>
+        <div class="ck-step" id="cks2">2. Pago</div>
+        <div class="ck-step" id="cks3">3. Confirmación</div>
+      </div>
+
+      <!-- PANEL 1: DATOS CLIENTE -->
+      <div class="ck-panel show" id="ckp1">
+        <div class="ck-2col">
+          <div class="ck-field"><label class="ck-label">Nombre</label><input class="ck-inp" id="ck_nombre" placeholder="Ej: Alonso" type="text"></div>
+          <div class="ck-field"><label class="ck-label">Apellido</label><input class="ck-inp" id="ck_apellido" placeholder="Ej: Cifuentes" type="text"></div>
+        </div>
+        <div class="ck-field"><label class="ck-label">Correo electrónico</label><input class="ck-inp" id="ck_email" placeholder="tucorreo@gmail.com" type="email"></div>
+        <div class="ck-field"><label class="ck-label">Teléfono</label><input class="ck-inp" id="ck_tel" placeholder="+56 9 XXXX XXXX" type="tel"></div>
+        <div class="ck-field"><label class="ck-label">Dirección de entrega</label><input class="ck-inp" id="ck_dir" placeholder="Ej: Av. Pajaritos 1234, Dpto 5B" type="text"></div>
+        <div class="ck-2col">
+          <div class="ck-field"><label class="ck-label">Ciudad</label><input class="ck-inp" id="ck_ciudad" placeholder="Santiago" type="text"></div>
+          <div class="ck-field"><label class="ck-label">Región</label>
+            <select class="ck-inp" id="ck_region">
+              <option value="">Selecciona...</option>
+              <option>Metropolitana</option><option>Valparaíso</option><option>Biobío</option>
+              <option>Araucanía</option><option>Los Lagos</option><option>Maule</option>
+              <option>O'Higgins</option><option>Antofagasta</option><option>Coquimbo</option>
+            </select>
+          </div>
+        </div>
+        <div class="ck-nav"><button class="ck-btn-next" onclick="ckNext(2)">Continuar al pago →</button></div>
+      </div>
+
+      <!-- PANEL 2: PAGO -->
+      <div class="ck-panel" id="ckp2">
+        <div class="ck-summary" id="ckSummary"></div>
+        <div class="card-brand">
+          <div class="card-brand-ic">VISA</div>
+          <div class="card-brand-ic">MC</div>
+          <div class="card-brand-ic">AMEX</div>
+          <div class="card-brand-ic">Débito</div>
+        </div>
+        <div class="secure-badge">🔒 Pago 100% seguro con encriptación SSL</div>
+        <div class="ck-field"><label class="ck-label">Número de tarjeta</label><input class="ck-inp" id="ck_card" placeholder="4242 4242 4242 4242" maxlength="19" oninput="fmtCkCard(this)"></div>
+        <div class="ck-2col">
+          <div class="ck-field"><label class="ck-label">Vencimiento</label><input class="ck-inp" id="ck_exp" placeholder="MM/AA" maxlength="5" oninput="fmtExp(this)"></div>
+          <div class="ck-field"><label class="ck-label">CVV</label><input class="ck-inp" id="ck_cvv" placeholder="123" maxlength="3" type="password"></div>
+        </div>
+        <div class="ck-field"><label class="ck-label">Nombre del titular</label><input class="ck-inp" id="ck_titular" placeholder="Como aparece en la tarjeta"></div>
+        <div class="ck-nav">
+          <button class="ck-btn-back" onclick="ckNext(1)">← Volver</button>
+          <button class="ck-btn-pay" onclick="ckPagar()">Pagar <span id="ckPayAmt">$0</span> →</button>
+        </div>
+      </div>
+
+      <!-- PANEL 3: ÉXITO -->
+      <div class="ck-panel" id="ckp3">
+        <div class="ck-success">
+          <div class="ck-success-icon">🎉</div>
+          <div class="ck-success-title">¡Pago exitoso!</div>
+          <p class="ck-success-sub">Tu pedido fue confirmado. Recibirás un correo de confirmación y te avisaremos cuando tu fragancia esté en camino.</p>
+          <div class="ck-order-code" id="ckOrderCode">PA-000000</div>
+          <div class="ck-delivery-box" id="ckDelivBox"></div>
+          <button class="ck-btn-next" onclick="closeCheckout()">Volver a la tienda →</button>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+
+<!-- CURSORES PERSONALIZADOS -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <svg class="nav-logo-icon" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="9" y="1" width="8" height="4" rx="2" fill="#b8924a"/>
+      <rect x="7" y="5" width="12" height="2" rx="1" fill="#b8924a"/>
+      <path d="M5 7h16v14a4 4 0 01-4 4H9a4 4 0 01-4-4V7z" fill="#110c07" stroke="#b8924a" stroke-width="1.2"/>
+      <ellipse cx="13" cy="14" rx="3.5" ry="4.5" fill="none" stroke="#e8d5a3" stroke-width="1"/>
+      <line x1="13" y1="10" x2="13" y2="18" stroke="#e8d5a3" stroke-width=".8"/>
+    </svg>
+    <span class="nav-logo-word">Perfumería <em>Alonso</em></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#catalogo">Catálogo</a></li>
+    <li><a href="#agenda">Reservar</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#blog">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="toggleCart()">🛒<span class="cart-count" id="cartCount" style="display:none;">0</span></button>
+    <a href="#agenda" class="nav-cta">Reservar →</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#catalogo" onclick="closeMobile()">Catálogo</a>
+  <a href="#agenda" onclick="closeMobile()">Reservar</a>
+  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#blog" onclick="closeMobile()">Blog</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="inicio">
-  <div class="hero-bg"></div>
-  <div class="smoke smoke-1"></div>
-  <div class="smoke smoke-2"></div>
-  <div class="smoke smoke-3"></div>
-  <div class="smoke smoke-4"></div>
-  <div class="hero-grid-lines"></div>
-  <div class="particles" id="particles"></div>
-
+  <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-tag">Haute Parfumerie · Santiago de Chile</div>
-    <h1 class="hero-title">
-      El aroma que<br>
-      te <em>define</em><br>
-      <strong>para siempre.</strong>
-    </h1>
-    <p class="hero-sub">Fragancias únicas creadas en los ateliers más exclusivos del mundo. Cada botella es una obra de arte. Cada aroma, una memoria.</p>
+    <div class="hero-tag">✦ Pajaritos · Santiago de Chile</div>
+    <span class="hero-eyebrow">Fragancias exclusivas — Est. 2017</span>
+    <h1 class="hero-title">El aroma que<strong>te hace único.</strong></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Más de 200 fragancias para hombre, mujer y niños. Asesoría personalizada, agenda online y envío a todo Chile.</p>
     <div class="hero-btns">
-      <a href="#perfumes" class="btn-gold">Explorar fragancias</a>
-      <a href="#contacto" class="btn-outline">Consultar ahora</a>
+      <a href="#catalogo" class="btn-sky">Explorar catálogo</a>
+      <a href="#agenda" class="btn-ghost">Agendar visita</a>
     </div>
   </div>
-
-  <div class="bottle-wrap">
-    <div class="bottle-glow"></div>
-    <div class="bottle-scene">
-      <div class="bottle-group">
-        <div class="b3-cap">
-          <div class="f front"></div>
-          <div class="f back"></div>
-          <div class="f right"></div>
-          <div class="f left"></div>
-          <div class="f top"></div>
-        </div>
-        <div class="b3-neck">
-          <div class="f front"></div>
-          <div class="f back"></div>
-          <div class="f right"></div>
-          <div class="f left"></div>
-        </div>
-        <div class="b3-body">
-          <div class="f front">
-            <div class="shine1"></div>
-            <div class="shine2"></div>
-            <div class="label">
-              <span class="lbrand">MAISON</span>
-              <span class="lsub">NOIR</span>
-            </div>
-            <div class="deco"></div>
-          </div>
-          <div class="f back"></div>
-          <div class="f right"></div>
-          <div class="f left"></div>
-          <div class="f bottom"></div>
-        </div>
-        <div class="b3-base">
-          <div class="f front"></div>
-          <div class="f back"></div>
-          <div class="f right"></div>
-          <div class="f left"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-counter">
-    <span class="hero-counter-num" id="heroCount">0</span>
-    <span class="hero-counter-lbl">Fragancias exclusivas</span>
-  </div>
+  <div class="hero-scroll">Scroll</div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-track" id="mtrack">
-    <div class="marquee-item"><span>Floral</span><div class="marquee-dot"></div><strong>Rose Éternelle</strong><span>$89.900</span></div>
-    <div class="marquee-item"><span>Oriental</span><div class="marquee-dot"></div><strong>Nuit Ambrée</strong><span>$124.900</span></div>
-    <div class="marquee-item"><span>Amaderado</span><div class="marquee-dot"></div><strong>Bois Sacré</strong><span>$98.900</span></div>
-    <div class="marquee-item"><span>Cítrico</span><div class="marquee-dot"></div><strong>Lumière d'Or</strong><span>$79.900</span></div>
-    <div class="marquee-item"><span>Chypre</span><div class="marquee-dot"></div><strong>Velours Noir</strong><span>$139.900</span></div>
-    <div class="marquee-item"><span>Acuático</span><div class="marquee-dot"></div><strong>Brume Marine</strong><span>$85.900</span></div>
-    <div class="marquee-item"><span>Floral</span><div class="marquee-dot"></div><strong>Rose Éternelle</strong><span>$89.900</span></div>
-    <div class="marquee-item"><span>Oriental</span><div class="marquee-dot"></div><strong>Nuit Ambrée</strong><span>$124.900</span></div>
-    <div class="marquee-item"><span>Amaderado</span><div class="marquee-dot"></div><strong>Bois Sacré</strong><span>$98.900</span></div>
-    <div class="marquee-item"><span>Cítrico</span><div class="marquee-dot"></div><strong>Lumière d'Or</strong><span>$79.900</span></div>
-    <div class="marquee-item"><span>Chypre</span><div class="marquee-dot"></div><strong>Velours Noir</strong><span>$139.900</span></div>
-    <div class="marquee-item"><span>Acuático</span><div class="marquee-dot"></div><strong>Brume Marine</strong><span>$85.900</span></div>
+<!-- MARQUEE MARCAS -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span class="marquee-item"><span>✦</span> CHANEL</span>
+    <span class="marquee-item"><span>✦</span> DIOR</span>
+    <span class="marquee-item"><span>✦</span> TOM FORD</span>
+    <span class="marquee-item"><span>✦</span> CREED</span>
+    <span class="marquee-item"><span>✦</span> VERSACE</span>
+    <span class="marquee-item"><span>✦</span> GIVENCHY</span>
+    <span class="marquee-item"><span>✦</span> YSL</span>
+    <span class="marquee-item"><span>✦</span> AMOUAGE</span>
+    <span class="marquee-item"><span>✦</span> HERMÈS</span>
+    <span class="marquee-item"><span>✦</span> XERJOFF</span>
+    <span class="marquee-item"><span>✦</span> MAISON MARGIELA</span>
+    <span class="marquee-item"><span>✦</span> CHANEL</span>
+    <span class="marquee-item"><span>✦</span> DIOR</span>
+    <span class="marquee-item"><span>✦</span> TOM FORD</span>
+    <span class="marquee-item"><span>✦</span> CREED</span>
+    <span class="marquee-item"><span>✦</span> VERSACE</span>
+    <span class="marquee-item"><span>✦</span> GIVENCHY</span>
+    <span class="marquee-item"><span>✦</span> YSL</span>
+    <span class="marquee-item"><span>✦</span> AMOUAGE</span>
+    <span class="marquee-item"><span>✦</span> HERMÈS</span>
+    <span class="marquee-item"><span>✦</span> XERJOFF</span>
+    <span class="marquee-item"><span>✦</span> MAISON MARGIELA</span>
   </div>
 </div>
-
-<!-- PERFUMES / CATÁLOGO -->
-<section id="perfumes" class="sec-wrap" style="padding-left:0;padding-right:0;padding-top:100px;padding-bottom:0;">
-  <div class="sec-head reveal" style="padding:0 80px;">
-    <div class="sec-tag">Catálogo completo</div>
-    <h2 class="sec-title">Nuestras <em>fragancias</em></h2>
-    <p class="sec-sub">Cada aroma es seleccionado por nuestros expertos entre cientos de candidatos. Filtra por familia olfativa y encuentra la fragancia perfecta para ti.</p>
-  </div>
-  <div class="filtros" style="padding:0 80px;margin-bottom:40px;">
-    <button class="filtro-btn active" data-filter="all">Todos</button>
-    <button class="filtro-btn" data-filter="floral">Floral</button>
-    <button class="filtro-btn" data-filter="oriental">Oriental</button>
-    <button class="filtro-btn" data-filter="amaderado">Amaderado</button>
-    <button class="filtro-btn" data-filter="citrico">Cítrico</button>
-    <button class="filtro-btn" data-filter="acuatico">Acuático</button>
-    <button class="filtro-btn" data-filter="chypre">Chypre</button>
-  </div>
-  <div class="perfumes-carousel reveal" id="perfCarousel">
-    <div class="perf-card" data-familia="floral">
-      <img class="perf-card-img" src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600&q=80" alt="Rose Éternelle"/>
-      <div class="perf-card-overlay"></div>
-      <div class="perf-card-tag">Exclusivo</div>
-      <div class="perf-card-content">
-        <div class="perf-fam">Floral · Francia</div>
-        <div class="perf-name">Rose Éternelle</div>
-        <div class="perf-notes"><strong>Salida:</strong> Rosa centifolia, Bergamota<br><strong>Corazón:</strong> Jazmín, Iris<br><strong>Fondo:</strong> Sándalo, Almizcle</div>
-        <div class="perf-footer">
-          <span class="perf-price">$89.900</span>
-          <a href="#contacto" class="perf-btn">Adquirir →</a>
-        </div>
-      </div>
-    </div>
-    <div class="perf-card" data-familia="oriental">
-      <img class="perf-card-img" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="Nuit Ambrée"/>
-      <div class="perf-card-overlay"></div>
-      <div class="perf-card-tag">Más vendido</div>
-      <div class="perf-card-content">
-        <div class="perf-fam">Oriental · Medio Oriente</div>
-        <div class="perf-name">Nuit Ambrée</div>
-        <div class="perf-notes"><strong>Salida:</strong> Cardamomo, Azafrán<br><strong>Corazón:</strong> Rosa Negra, Oud<br><strong>Fondo:</strong> Ámbar, Vainilla</div>
-        <div class="perf-footer">
-          <span class="perf-price">$124.900</span>
-          <a href="#contacto" class="perf-btn">Adquirir →</a>
-        </div>
-      </div>
-    </div>
-    <div class="perf-card" data-familia="amaderado">
-      <img class="perf-card-img" src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&q=80" alt="Bois Sacré"/>
-      <div class="perf-card-overlay"></div>
-      <div class="perf-card-tag">Nuevo</div>
-      <div class="perf-card-content">
-        <div class="perf-fam">Amaderado · Italia</div>
-        <div class="perf-name">Bois Sacré</div>
-        <div class="perf-notes"><strong>Salida:</strong> Cedro, Pimienta Negra<br><strong>Corazón:</strong> Patchouli, Vetiver<br><strong>Fondo:</strong> Musgo, Cachemira</div>
-        <div class="perf-footer">
-          <span class="perf-price">$98.900</span>
-          <a href="#contacto" class="perf-btn">Adquirir →</a>
-        </div>
-      </div>
-    </div>
-    <div class="perf-card" data-familia="citrico">
-      <img class="perf-card-img" src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=600&q=80" alt="Lumière d'Or"/>
-      <div class="perf-card-overlay"></div>
-      <div class="perf-card-tag">Edición limitada</div>
-      <div class="perf-card-content">
-        <div class="perf-fam">Cítrico · España</div>
-        <div class="perf-name">Lumière d'Or</div>
-        <div class="perf-notes"><strong>Salida:</strong> Limón Siciliano, Pomelo<br><strong>Corazón:</strong> Neroli, Flor de Azahar<br><strong>Fondo:</strong> Musgo Blanco, Almizcle</div>
-        <div class="perf-footer">
-          <span class="perf-price">$79.900</span>
-          <a href="#contacto" class="perf-btn">Adquirir →</a>
-        </div>
-      </div>
-    </div>
-    <div class="perf-card" data-familia="chypre">
-      <img class="perf-card-img" src="https://images.unsplash.com/photo-1564207550709-97d6dd36b0b0?w=600&q=80" alt="Velours Noir"/>
-      <div class="perf-card-overlay"></div>
-      <div class="perf-card-tag">Premium</div>
-      <div class="perf-card-content">
-        <div class="perf-fam">Chypre · Francia</div>
-        <div class="perf-name">Velours Noir</div>
-        <div class="perf-notes"><strong>Salida:</strong> Bergamota, Mandarina<br><strong>Corazón:</strong> Rosa, Jazmín Absoluto<br><strong>Fondo:</strong> Labdanum, Musgo de Roble</div>
-        <div class="perf-footer">
-          <span class="perf-price">$139.900</span>
-          <a href="#contacto" class="perf-btn">Adquirir →</a>
-        </div>
-      </div>
-    </div>
-    <div class="perf-card" data-familia="acuatico">
-      <img class="perf-card-img" src="https://images.unsplash.com/photo-1541643600914-78b084683702?w=600&q=80" alt="Brume Marine"/>
-      <div class="perf-card-overlay"></div>
-      <div class="perf-card-tag">Bestseller</div>
-      <div class="perf-card-content">
-        <div class="perf-fam">Acuático · Portugal</div>
-        <div class="perf-name">Brume Marine</div>
-        <div class="perf-notes"><strong>Salida:</strong> Sal Marina, Cítrico<br><strong>Corazón:</strong> Jacinto, Agua de Mar<br><strong>Fondo:</strong> Cedro, Almizcle Blanco</div>
-        <div class="perf-footer">
-          <span class="perf-price">$85.900</span>
-          <a href="#contacto" class="perf-btn">Adquirir →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <p style="text-align:center;font-size:.65rem;letter-spacing:2px;color:var(--muted);padding:20px 0 0;text-transform:uppercase;">← Desliza para ver más →</p>
-</section>
 
 <!-- STATS -->
-<section id="stats" class="sec-wrap">
+<section class="stats">
   <div class="stats-grid">
-    <div class="stat-box reveal">
-      <span class="stat-num"><span class="count" data-target="48">0</span></span>
-      <span class="stat-lbl">Fragancias exclusivas</span>
+    <div class="stat-box reveal"><span class="stat-num"><span class="count" data-target="200">0</span>+</span><span class="stat-lbl">Fragancias</span></div>
+    <div class="stat-box reveal"><span class="stat-num"><span class="count" data-target="8">0</span></span><span class="stat-lbl">Años en Chile</span></div>
+    <div class="stat-box reveal"><span class="stat-num">+<span class="count" data-target="3500">0</span></span><span class="stat-lbl">Pedidos entregados</span></div>
+    <div class="stat-box reveal"><span class="stat-num">+<span class="count" data-target="2500">0</span></span><span class="stat-lbl">Reseñas positivas</span></div>
+    <div class="stat-box reveal"><span class="stat-num"><span class="count" data-target="24">0</span>/7</span><span class="stat-lbl">Agenda online</span></div>
+  </div>
+</section>
+
+<!-- CATÁLOGO -->
+<section class="sec" id="catalogo" style="background:var(--gray);">
+  <div class="si">
+    <div class="sh reveal"><span class="st">Catálogo</span><h2 class="stitle">Encuentra tu <em>fragancia perfecta</em></h2><div class="sh-line"></div></div>
+    <div class="filtros-bar reveal">
+      <button class="filtro-btn active" data-f="all">Todos</button>
+      <button class="filtro-btn" data-f="hombre">Hombre</button>
+      <button class="filtro-btn" data-f="mujer">Mujer</button>
+      <button class="filtro-btn" data-f="nino">Niño</button>
+      <button class="filtro-btn" data-f="nina">Niña</button>
+      <button class="filtro-btn" data-f="coleccion">Colección</button>
+      <input class="search-input" id="searchInput" placeholder="🔍 Buscar fragancia..." oninput="filterCat()">
     </div>
-    <div class="stat-box reveal">
-      <span class="stat-num"><span class="count" data-target="12">0</span></span>
-      <span class="stat-lbl">Países de origen</span>
-    </div>
-    <div class="stat-box reveal">
-      <span class="stat-num"><span class="count" data-target="2400">0</span><span class="stat-suffix">+</span></span>
-      <span class="stat-lbl">Clientes satisfechos</span>
-    </div>
-    <div class="stat-box reveal">
-      <span class="stat-num"><span class="count" data-target="8">0</span></span>
-      <span class="stat-lbl">Años de experiencia</span>
+    <div class="cat-grid" id="catGrid">
+      <!-- HOMBRE -->
+      <div class="cat-card" data-cat="hombre" onclick="openProd('Aqua Montana')" style="cursor:pointer;">
+        <div class="cat-badge">29% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=400&fit=crop&q=85" alt="Aqua Montana"/>
+        <div class="cat-body"><div class="cat-cat">Hombre</div><div class="cat-name">Aqua Montana</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(52 compras)</span></div>
+          <div class="cat-vol">100ml · Eau de Parfum</div>
+          <div class="cat-prices"><div class="cat-price-old">$41.990</div><div class="cat-price">$29.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Aqua Montana',29990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="hombre" onclick="openProd('Black Forest')" style="cursor:pointer;">
+        <div class="cat-badge">30% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=400&h=400&fit=crop&q=85" alt="Black Forest"/>
+        <div class="cat-body"><div class="cat-cat">Hombre</div><div class="cat-name">Black Forest</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(41 compras)</span></div>
+          <div class="cat-vol">75ml · Extrait de Parfum</div>
+          <div class="cat-prices"><div class="cat-price-old">$49.990</div><div class="cat-price">$34.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Black Forest',34990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="hombre" onclick="openProd('El Conquistador')" style="cursor:pointer;">
+        <div class="cat-badge">28% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&h=400&fit=crop&q=85" alt="El Conquistador"/>
+        <div class="cat-body"><div class="cat-cat">Hombre</div><div class="cat-name">El Conquistador</div>
+          <div class="cat-stars"><span class="cat-star">★★★★☆</span><span class="cat-reviews">(38 compras)</span></div>
+          <div class="cat-vol">100ml · Eau de Toilette</div>
+          <div class="cat-prices"><div class="cat-price-old">$34.990</div><div class="cat-price">$24.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('El Conquistador',24990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="hombre" onclick="openProd('Dark Summit')" style="cursor:pointer;">
+        <div class="cat-badge">27% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&h=400&fit=crop&q=85" alt="Dark Summit"/>
+        <div class="cat-body"><div class="cat-cat">Hombre</div><div class="cat-name">Dark Summit</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(67 compras)</span></div>
+          <div class="cat-vol">50ml · Extrait de Parfum</div>
+          <div class="cat-prices"><div class="cat-price-old">$54.990</div><div class="cat-price">$39.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Dark Summit',39990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <!-- MUJER -->
+      <div class="cat-card" data-cat="mujer" onclick="openProd('Rose Blanche')" style="cursor:pointer;">
+        <div class="cat-badge">28% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&h=400&fit=crop&q=85" alt="Rose Blanche"/>
+        <div class="cat-body"><div class="cat-cat">Mujer</div><div class="cat-name">Rose Blanche</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(89 compras)</span></div>
+          <div class="cat-vol">100ml · Eau de Parfum</div>
+          <div class="cat-prices"><div class="cat-price-old">$38.990</div><div class="cat-price">$27.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Rose Blanche',27990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="mujer" onclick="openProd('Celeste Infinita')" style="cursor:pointer;">
+        <div class="cat-badge">27% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&h=400&fit=crop&q=85" alt="Celeste Infinita"/>
+        <div class="cat-body"><div class="cat-cat">Mujer</div><div class="cat-name">Celeste Infinita</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(74 compras)</span></div>
+          <div class="cat-vol">75ml · Eau de Parfum</div>
+          <div class="cat-prices"><div class="cat-price-old">$44.990</div><div class="cat-price">$32.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Celeste Infinita',32990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="mujer" onclick="openProd('La Femme')" style="cursor:pointer;">
+        <div class="cat-badge">28% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=400&h=400&fit=crop&q=85" alt="La Femme"/>
+        <div class="cat-body"><div class="cat-cat">Mujer</div><div class="cat-name">La Femme</div>
+          <div class="cat-stars"><span class="cat-star">★★★★☆</span><span class="cat-reviews">(45 compras)</span></div>
+          <div class="cat-vol">100ml · Extrait de Parfum</div>
+          <div class="cat-prices"><div class="cat-price-old">$39.990</div><div class="cat-price">$28.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('La Femme',28990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="mujer" onclick="openProd('Aurora')" style="cursor:pointer;">
+        <div class="cat-badge">29% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=400&fit=crop&q=85" alt="Aurora"/>
+        <div class="cat-body"><div class="cat-cat">Mujer</div><div class="cat-name">Aurora</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(61 compras)</span></div>
+          <div class="cat-vol">50ml · Eau de Parfum</div>
+          <div class="cat-prices"><div class="cat-price-old">$41.990</div><div class="cat-price">$29.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Aurora',29990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <!-- NIÑO -->
+      <div class="cat-card" data-cat="nino" onclick="openProd('Little Explorer')" style="cursor:pointer;">
+        <div class="cat-badge">25% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=400&fit=crop&crop=right&q=85" alt="Little Explorer"/>
+        <div class="cat-body"><div class="cat-cat">Niño</div><div class="cat-name">Little Explorer</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(33 compras)</span></div>
+          <div class="cat-vol">50ml · Colonia</div>
+          <div class="cat-prices"><div class="cat-price-old">$19.990</div><div class="cat-price">$14.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Little Explorer',14990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="nino" onclick="openProd('Ocean Boy')" style="cursor:pointer;">
+        <div class="cat-badge">26% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&h=400&fit=crop&crop=left&q=85" alt="Ocean Boy"/>
+        <div class="cat-body"><div class="cat-cat">Niño</div><div class="cat-name">Ocean Boy</div>
+          <div class="cat-stars"><span class="cat-star">★★★★☆</span><span class="cat-reviews">(31 compras)</span></div>
+          <div class="cat-vol">50ml · Colonia</div>
+          <div class="cat-prices"><div class="cat-price-old">$18.990</div><div class="cat-price">$13.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Ocean Boy',13990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="nino" onclick="openProd('Sky Captain')" style="cursor:pointer;">
+        <div class="cat-badge">26% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&h=400&fit=crop&crop=bottom&q=85" alt="Sky Captain"/>
+        <div class="cat-body"><div class="cat-cat">Niño</div><div class="cat-name">Sky Captain</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(44 compras)</span></div>
+          <div class="cat-vol">75ml · Eau de Toilette</div>
+          <div class="cat-prices"><div class="cat-price-old">$22.990</div><div class="cat-price">$16.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Sky Captain',16990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="nino" onclick="openProd('Adventure')" style="cursor:pointer;">
+        <div class="cat-badge">28% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=400&h=400&fit=crop&crop=top&q=85" alt="Adventure"/>
+        <div class="cat-body"><div class="cat-cat">Niño</div><div class="cat-name">Adventure</div>
+          <div class="cat-stars"><span class="cat-star">★★★★☆</span><span class="cat-reviews">(36 compras)</span></div>
+          <div class="cat-vol">50ml · Colonia</div>
+          <div class="cat-prices"><div class="cat-price-old">$17.990</div><div class="cat-price">$12.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Adventure',12990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <!-- NIÑA -->
+      <div class="cat-card" data-cat="nina" onclick="openProd('Sweet Princess')" style="cursor:pointer;">
+        <div class="cat-badge">25% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&h=400&fit=crop&crop=right&q=85" alt="Sweet Princess"/>
+        <div class="cat-body"><div class="cat-cat">Niña</div><div class="cat-name">Sweet Princess</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(57 compras)</span></div>
+          <div class="cat-vol">50ml · Colonia</div>
+          <div class="cat-prices"><div class="cat-price-old">$19.990</div><div class="cat-price">$14.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Sweet Princess',14990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="nina" onclick="openProd('Little Rose')" style="cursor:pointer;">
+        <div class="cat-badge">26% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&h=400&fit=crop&crop=right&q=85" alt="Little Rose"/>
+        <div class="cat-body"><div class="cat-cat">Niña</div><div class="cat-name">Little Rose</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(42 compras)</span></div>
+          <div class="cat-vol">50ml · Colonia</div>
+          <div class="cat-prices"><div class="cat-price-old">$18.990</div><div class="cat-price">$13.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Little Rose',13990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="nina" onclick="openProd('Magic Butterfly')" style="cursor:pointer;">
+        <div class="cat-badge">26% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=400&h=400&fit=crop&crop=right&q=85" alt="Magic Butterfly"/>
+        <div class="cat-body"><div class="cat-cat">Niña</div><div class="cat-name">Magic Butterfly</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(39 compras)</span></div>
+          <div class="cat-vol">75ml · Eau de Toilette</div>
+          <div class="cat-prices"><div class="cat-price-old">$22.990</div><div class="cat-price">$16.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Magic Butterfly',16990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="nina" onclick="openProd('Dream Garden')" style="cursor:pointer;">
+        <div class="cat-badge">28% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=400&fit=crop&crop=right&q=85" alt="Dream Garden"/>
+        <div class="cat-body"><div class="cat-cat">Niña</div><div class="cat-name">Dream Garden</div>
+          <div class="cat-stars"><span class="cat-star">★★★★☆</span><span class="cat-reviews">(34 compras)</span></div>
+          <div class="cat-vol">50ml · Colonia</div>
+          <div class="cat-prices"><div class="cat-price-old">$17.990</div><div class="cat-price">$12.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Dream Garden',12990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <!-- COLECCIÓN -->
+      <div class="cat-card" data-cat="coleccion" onclick="openProd('Summit Reserve')" style="cursor:pointer;">
+        <div class="cat-badge">28% OFF</div><div class="cat-online">Ed. Limitada</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=400&h=400&fit=crop&q=85" alt="Summit Reserve"/>
+        <div class="cat-body"><div class="cat-cat">Colección</div><div class="cat-name">Summit Reserve</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(118 compras)</span></div>
+          <div class="cat-vol">100ml · Extrait · Ed. Limitada</div>
+          <div class="cat-prices"><div class="cat-price-old">$124.990</div><div class="cat-price">$89.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Summit Reserve',89990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="coleccion" onclick="openProd('Eternal Peak')" style="cursor:pointer;">
+        <div class="cat-badge">27% OFF</div><div class="cat-online">Ed. Limitada</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=400&fit=crop&crop=left&q=85" alt="Eternal Peak"/>
+        <div class="cat-body"><div class="cat-cat">Colección</div><div class="cat-name">Eternal Peak</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(93 compras)</span></div>
+          <div class="cat-vol">75ml · Extrait · Ed. Limitada</div>
+          <div class="cat-prices"><div class="cat-price-old">$109.990</div><div class="cat-price">$79.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Eternal Peak',79990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="coleccion" onclick="openProd('Cumbre Dorada')" style="cursor:pointer;">
+        <div class="cat-badge">27% OFF</div><div class="cat-online">Ed. Limitada</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&h=400&fit=crop&crop=right&q=85" alt="Cumbre Dorada"/>
+        <div class="cat-body"><div class="cat-cat">Colección</div><div class="cat-name">Cumbre Dorada</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(76 compras)</span></div>
+          <div class="cat-vol">50ml · Extrait · Numerada</div>
+          <div class="cat-prices"><div class="cat-price-old">$129.990</div><div class="cat-price">$94.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Cumbre Dorada',94990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="coleccion" onclick="openProd('Alpine Exclusive')" style="cursor:pointer;">
+        <div class="cat-badge">26% OFF</div><div class="cat-online">Ed. Limitada</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&h=400&fit=crop&crop=top&q=85" alt="Alpine Exclusive"/>
+        <div class="cat-body"><div class="cat-cat">Colección</div><div class="cat-name">Alpine Exclusive</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(84 compras)</span></div>
+          <div class="cat-vol">100ml · Extrait · Numerada</div>
+          <div class="cat-prices"><div class="cat-price-old">$94.990</div><div class="cat-price">$69.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Alpine Exclusive',69990,this)">🛒 Agregar al carrito</button></div></div>
     </div>
   </div>
 </section>
 
-<!-- POR QUÉ ELEGIRNOS -->
-<section id="porque" class="sec-wrap" style="padding-left:0;padding-right:0;">
-  <div class="sec-head reveal" style="padding:0 80px;margin-bottom:60px;">
-    <div class="sec-tag">Nuestra promesa</div>
-    <h2 class="sec-title">Por qué elegir <em>Maison Noir</em></h2>
-  </div>
-  <div class="porque-grid">
-    <div class="porque-item reveal">
-      <span class="porque-num">01</span>
-      <div class="porque-icon">✦</div>
-      <div class="porque-title">Exclusividad garantizada</div>
-      <p class="porque-text">Cada fragancia de nuestra colección es importada en lotes limitados. Cuando se acaban, se acaban. Tu aroma no lo tendrá nadie más.</p>
-    </div>
-    <div class="porque-item reveal">
-      <span class="porque-num">02</span>
-      <div class="porque-icon">🌍</div>
-      <div class="porque-title">Ingredientes de origen único</div>
-      <p class="porque-text">Trabajamos con casas perfumistas de Francia, Italia, Medio Oriente y Japón. Solo materias primas de la más alta calidad entran a Maison Noir.</p>
-    </div>
-    <div class="porque-item reveal">
-      <span class="porque-num">03</span>
-      <div class="porque-icon">🚚</div>
-      <div class="porque-title">Envío a todo Chile</div>
-      <p class="porque-text">Desde Arica hasta Punta Arenas. Cada pedido llega en caja de lujo con certificado de autenticidad. El packaging es parte de la experiencia.</p>
-    </div>
-    <div class="porque-item reveal">
-      <span class="porque-num">04</span>
-      <div class="porque-icon">🛡</div>
-      <div class="porque-title">Autenticidad certificada</div>
-      <p class="porque-text">Garantizamos la autenticidad de cada producto. Si tienes dudas, te lo cambiamos. Sin preguntas, sin burocracia. Tu confianza lo vale todo.</p>
-    </div>
-  </div>
-</section>
 
-<!-- PROCESO DE COMPRA -->
-<section id="proceso" class="sec-wrap">
-  <div class="sec-head reveal">
-    <div class="sec-tag">Cómo funciona</div>
-    <h2 class="sec-title">Tu fragancia, <em>en 4 pasos</em></h2>
-  </div>
-  <div class="proceso-steps">
-    <div class="paso reveal">
-      <div class="paso-num">1</div>
-      <div class="paso-title">Explora</div>
-      <p class="paso-text">Navega nuestra colección y descubre las notas que te definen. Usa nuestros filtros por familia olfativa.</p>
+<!-- BANNER CONSULTAS/PEDIDOS -->
+<div class="banner-wa">
+  <div class="banner-wa-inner">
+    <div class="banner-wa-txt">
+      <strong>¿Tienes una duda antes de comprar?</strong>
+      Escríbenos por WhatsApp para consultas. Para tus pedidos, usa nuestra tienda online — es más rápido y seguro.
     </div>
-    <div class="paso reveal">
-      <div class="paso-num">2</div>
-      <div class="paso-title">Consulta</div>
-      <p class="paso-text">Escríbenos por WhatsApp. Te ayudamos a encontrar tu aroma perfecto según tu personalidad y estilo.</p>
-    </div>
-    <div class="paso reveal">
-      <div class="paso-num">3</div>
-      <div class="paso-title">Paga seguro</div>
-      <p class="paso-text">Transferencia, tarjeta o efectivo. Aceptamos todos los medios de pago con total seguridad.</p>
-    </div>
-    <div class="paso reveal">
-      <div class="paso-num">4</div>
-      <div class="paso-title">Recibe</div>
-      <p class="paso-text">Tu pedido llega en caja de lujo con certificado de autenticidad. En 24–72 horas en Santiago.</p>
+    <div class="banner-wa-btns">
+      <a href="https://wa.me/56939665163?text=Hola%2C%20tengo%20una%20consulta%20sobre%20un%20perfume" target="_blank" class="bwa-link bwa-green">💬 Consultas WhatsApp</a>
+      <a href="#catalogo" class="bwa-link bwa-sky">🛍️ Comprar en la web</a>
     </div>
   </div>
-</section>
-
-<!-- GALERÍA LIGHTBOX -->
-<section id="galeria" class="sec-wrap" style="padding-left:0;padding-right:0;padding-bottom:0;">
-  <div class="sec-head reveal" style="padding:0 80px;margin-bottom:60px;">
-    <div class="sec-tag">Galería</div>
-    <h2 class="sec-title">El arte de <em>la fragancia</em></h2>
-  </div>
-  <div class="galeria-grid">
-    <div class="galeria-item" onclick="openLightbox('https://images.unsplash.com/photo-1541643600914-78b084683702?w=1200&q=90')">
-      <img src="https://images.unsplash.com/photo-1541643600914-78b084683702?w=600&q=80" alt="Perfume 1"/>
-      <div class="galeria-item-overlay"><span class="galeria-zoom">⊕</span></div>
-    </div>
-    <div class="galeria-item" onclick="openLightbox('https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=1200&q=90')">
-      <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600&q=80" alt="Perfume 2"/>
-      <div class="galeria-item-overlay"><span class="galeria-zoom">⊕</span></div>
-    </div>
-    <div class="galeria-item" onclick="openLightbox('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1200&q=90')">
-      <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="Perfume 3"/>
-      <div class="galeria-item-overlay"><span class="galeria-zoom">⊕</span></div>
-    </div>
-    <div class="galeria-item" onclick="openLightbox('https://images.unsplash.com/photo-1594035910387-fea47794261f?w=1200&q=90')">
-      <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&q=80" alt="Perfume 4"/>
-      <div class="galeria-item-overlay"><span class="galeria-zoom">⊕</span></div>
-    </div>
-    <div class="galeria-item" onclick="openLightbox('https://images.unsplash.com/photo-1564207550709-97d6dd36b0b0?w=1200&q=90')">
-      <img src="https://images.unsplash.com/photo-1564207550709-97d6dd36b0b0?w=600&q=80" alt="Perfume 5"/>
-      <div class="galeria-item-overlay"><span class="galeria-zoom">⊕</span></div>
-    </div>
-    <div class="galeria-item" onclick="openLightbox('https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=1200&q=90')">
-      <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=600&q=80" alt="Perfume 6"/>
-      <div class="galeria-item-overlay"><span class="galeria-zoom">⊕</span></div>
-    </div>
-    <div class="galeria-item" onclick="openLightbox('https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=1200&q=90')">
-      <img src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=600&q=80" alt="Perfume 7"/>
-      <div class="galeria-item-overlay"><span class="galeria-zoom">⊕</span></div>
-    </div>
-    <div class="galeria-item" onclick="openLightbox('https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=1200&q=90')">
-      <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600&q=80" alt="Perfume 8"/>
-      <div class="galeria-item-overlay"><span class="galeria-zoom">⊕</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-  <img id="lightbox-img" src="" alt=""/>
 </div>
 
-<!-- COTIZADOR DE SETS -->
-<section id="cotizador" class="sec-wrap" style="background:#070707;">
-  <div class="sec-head reveal">
-    <div class="sec-tag">Crea tu set</div>
-    <h2 class="sec-title">Arma tu <em>set personal</em></h2>
-    <p class="sec-sub">Combina 2 o 3 fragancias y obtén un descuento exclusivo en tu set personalizado.</p>
+<!-- AGENDA -->
+<section class="sec" id="agenda" style="background:var(--gray);">
+  <div class="si">
+    <div class="sh reveal"><span class="st">Reservas 24/7</span><h2 class="stitle">Agenda tu <em>visita</em></h2><div class="sh-line"></div></div>
+    <div class="agenda-box reveal">
+      <div class="agenda-head"><h3>Sistema de reservas online</h3><span class="agenda-badge">⚡ Confirmación inmediata</span></div>
+      <div class="steps-bar" id="stepsBar">
+        <div class="si2 active" id="si1"><div class="sn">1</div><span class="sl">Asesor</span></div>
+        <div class="sline"></div>
+        <div class="si2" id="si2"><div class="sn">2</div><span class="sl">Día y hora</span></div>
+        <div class="sline"></div>
+        <div class="si2" id="si3"><div class="sn">3</div><span class="sl">Pago</span></div>
+        <div class="sline"></div>
+        <div class="si2" id="si4"><div class="sn">✓</div><span class="sl">Listo</span></div>
+      </div>
+      <div class="ab" id="step1">
+        <div class="slabel">Elige tu asesor</div>
+        <div class="barber-grid">
+          <button class="barber-btn" onclick="selBarber(0,this)"><img class="bavatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" alt="Alonso"/><div><div class="bname">Alonso Cifuentes</div><div class="bspec">Perfumes hombre & colección</div></div></button>
+          <button class="barber-btn" onclick="selBarber(1,this)"><img class="bavatar" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&q=80" alt="Studio"/><div><div class="bname">Alonso Studio</div><div class="bspec">Perfumes mujer & niños</div></div></button>
+        </div>
+        <div class="slabel" style="margin-top:16px;">Tipo de atención</div>
+        <div class="serv-grid">
+          <button class="serv-opt" onclick="selServ(0,this)"><div class="son">Asesoría personal</div><div class="soi">⏱ 30 min</div><div class="sop">Gratis</div></button>
+          <button class="serv-opt" onclick="selServ(1,this)"><div class="son">Prueba de aromas</div><div class="soi">⏱ 45 min</div><div class="sop">$5.000</div></button>
+          <button class="serv-opt" onclick="selServ(2,this)"><div class="son">Set personalizado</div><div class="soi">⏱ 60 min</div><div class="sop">$8.000</div></button>
+        </div>
+        <div class="anav"><span></span><button class="btn-next" id="btn1" onclick="goStep(2)" disabled>Siguiente →</button></div>
+      </div>
+      <div class="ab" id="step2" style="display:none;">
+        <div class="slabel">Elige el día</div>
+        <div class="cal-days" id="calDays"></div>
+        <div id="slotsWrap" style="display:none;"><div class="slabel">Horarios disponibles</div><div class="slots-grid" id="slotsGrid"></div></div>
+        <div class="anav"><button class="btn-back" onclick="goStep(1)">← Volver</button><button class="btn-next" id="btn2" onclick="goStep(3)" disabled>Siguiente →</button></div>
+      </div>
+      <div class="ab" id="step3" style="display:none;">
+        <div class="slabel">Resumen</div>
+        <div class="res-box" id="resBox"></div>
+        <div class="slabel" style="margin-bottom:10px;">Forma de pago</div>
+        <div class="pago-grid">
+          <div class="pago-opt" onclick="selPago(0,this)"><div class="pot">💳 Abono 50%</div><div class="poa" id="pagoA">$0</div><div class="pon">Resto al llegar</div></div>
+          <div class="pago-opt" onclick="selPago(1,this)"><div class="pot">✅ Pago total</div><div class="poa" id="pagoT">$0</div><div class="pon">5% de descuento</div></div>
+        </div>
+        <div class="card-sim" id="cardSim">
+          <input class="card-inp" placeholder="4242 4242 4242 4242" maxlength="19" oninput="fmtCard(this)">
+          <div class="card-row"><input class="card-inp" placeholder="MM/AA" maxlength="5"><input class="card-inp" placeholder="CVV" maxlength="3"></div>
+        </div>
+        <div class="anav"><button class="btn-back" onclick="goStep(2)">← Volver</button><button class="btn-next" id="btn3" onclick="confirmar()" disabled>Confirmar y pagar →</button></div>
+      </div>
+      <div class="ab" id="step4" style="display:none;">
+        <div class="conf-box">
+          <div class="conf-icon">🎉</div>
+          <div class="conf-title">¡Reserva confirmada!</div>
+          <p class="conf-sub">Te esperamos en Perfumería Alonso. Recibirás un recordatorio automático 24 hrs antes.</p>
+          <div class="conf-code" id="confCode">PA-000000</div>
+          <div class="conf-det" id="confDet"></div>
+          <button class="btn-sky" style="border:none;cursor:pointer;font-family:'Inter',sans-serif;" onclick="resetAgenda()">Hacer otra reserva</button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="cotizador-box reveal">
-    <div class="cotizador-title">Cotizador de Sets</div>
-    <p class="cotizador-sub">Selecciona tus fragancias favoritas y calcula tu precio con descuento</p>
-    <div class="cot-row">
-      <select class="cot-select" id="cot1" onchange="calcSet()">
-        <option value="0">— Fragancia 1 —</option>
-        <option value="89900">Rose Éternelle · $89.900</option>
-        <option value="124900">Nuit Ambrée · $124.900</option>
-        <option value="98900">Bois Sacré · $98.900</option>
-        <option value="79900">Lumière d'Or · $79.900</option>
-        <option value="139900">Velours Noir · $139.900</option>
-        <option value="85900">Brume Marine · $85.900</option>
-      </select>
-      <select class="cot-select" id="cot2" onchange="calcSet()">
-        <option value="0">— Fragancia 2 —</option>
-        <option value="89900">Rose Éternelle · $89.900</option>
-        <option value="124900">Nuit Ambrée · $124.900</option>
-        <option value="98900">Bois Sacré · $98.900</option>
-        <option value="79900">Lumière d'Or · $79.900</option>
-        <option value="139900">Velours Noir · $139.900</option>
-        <option value="85900">Brume Marine · $85.900</option>
-      </select>
+</section>
+
+<!-- GALERÍA VIDEOS -->
+<section class="sec" id="galeria" style="background:var(--dark);padding:64px 48px;">
+  <div class="si">
+    <div class="sh reveal"><span class="st" style="color:rgba(232,213,163,.5);">Video galería</span><h2 class="stitle" style="color:#fff;">Conoce nuestra <em style="color:var(--gold2)">tienda</em></h2><p class="ssub" style="color:rgba(255,255,255,.4);">Recorrido virtual · Perfumes exclusivos · Detrás de escena</p></div>
+    <div class="galeria-grid reveal">
+
+      <div class="gal-item wide">
+        <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=900&h=506&fit=crop&q=85" alt="Video tienda"/>
+        <div class="gal-type">🎬 Destacado</div>
+        <div class="gal-overlay">
+          <div class="gal-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="gal-duration">2:34</div>
+        </div>
+        <div class="gal-title">Tour completo por Perfumería Alonso — Santiago</div>
+      </div>
+
+      <div class="gal-item sq">
+        <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500&h=500&fit=crop&q=85" alt="Video perfume"/>
+        <div class="gal-type">📦 Unboxing</div>
+        <div class="gal-overlay">
+          <div class="gal-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="gal-duration">1:12</div>
+        </div>
+        <div class="gal-title">Summit Reserve — Edición Limitada</div>
+      </div>
+
+      <div class="gal-item sq">
+        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500&h=500&fit=crop&q=85" alt="Video aromas"/>
+        <div class="gal-type">🌿 Proceso</div>
+        <div class="gal-overlay">
+          <div class="gal-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="gal-duration">0:58</div>
+        </div>
+        <div class="gal-title">Cómo elegir tu fragancia ideal</div>
+      </div>
+
+      <div class="gal-item sq">
+        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=500&h=500&fit=crop&q=85" alt="Colección mujer"/>
+        <div class="gal-type">👗 Mujer</div>
+        <div class="gal-overlay">
+          <div class="gal-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="gal-duration">1:47</div>
+        </div>
+        <div class="gal-title">Colección Mujer — Primavera 2025</div>
+      </div>
+
+      <div class="gal-item sq">
+        <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500&h=500&fit=crop&q=85" alt="Colección hombre"/>
+        <div class="gal-type">👔 Hombre</div>
+        <div class="gal-overlay">
+          <div class="gal-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="gal-duration">1:22</div>
+        </div>
+        <div class="gal-title">Dark Summit — El perfume más vendido</div>
+      </div>
+
+      <div class="gal-item wide">
+        <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=900&h=506&fit=crop&q=85" alt="Behind scenes"/>
+        <div class="gal-type">🎥 BTS</div>
+        <div class="gal-overlay">
+          <div class="gal-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="gal-duration">3:05</div>
+        </div>
+        <div class="gal-title">Detrás de escena — Sesión fotográfica Colección 2025</div>
+      </div>
+
     </div>
-    <div class="cot-row">
-      <select class="cot-select" id="cot3" onchange="calcSet()">
-        <option value="0">— Fragancia 3 (opcional) —</option>
-        <option value="89900">Rose Éternelle · $89.900</option>
-        <option value="124900">Nuit Ambrée · $124.900</option>
-        <option value="98900">Bois Sacré · $98.900</option>
-        <option value="79900">Lumière d'Or · $79.900</option>
-        <option value="139900">Velours Noir · $139.900</option>
-        <option value="85900">Brume Marine · $85.900</option>
-      </select>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="sec" id="blog" style="background:var(--gray);">
+  <div class="si">
+    <div class="sh reveal"><span class="st">Blog</span><h2 class="stitle">Consejos y <em>novedades</em></h2></div>
+    <div class="blog-grid">
+      <div class="blog-card reveal">
+        <img class="blog-img" src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&q=80" alt="Blog 1"/>
+        <div class="blog-body">
+          <div class="blog-cat">Guía · Hombre</div>
+          <div class="blog-title">¿Cómo elegir el perfume perfecto para el verano?</div>
+          <p class="blog-excerpt">Los aromas frescos y cítricos dominan la temporada. Te contamos cuáles son los más buscados este año.</p>
+          <div class="blog-full" id="bf0">Los perfumes de verano ideales son los que tienen notas de salida cítricas como limón, bergamota o pomelo. Para el cuerpo y el calor, los amaderados ligeros funcionan muy bien. Evita los orientales pesados en días calurosos. En Perfumería Alonso tenemos más de 30 opciones perfectas para esta temporada.</div>
+          <button class="blog-btn" onclick="toggleBlog(0,this)">Leer más →</button>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <img class="blog-img" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="Blog 2"/>
+        <div class="blog-body">
+          <div class="blog-cat">Guía · Mujer</div>
+          <div class="blog-title">Los 5 perfumes florales que toda mujer debe conocer</div>
+          <p class="blog-excerpt">Desde la rosa hasta el jazmín, los florales nunca pasan de moda. Descubre cuál es el tuyo.</p>
+          <div class="blog-full" id="bf1">Los florales son la familia olfativa más usada en perfumería femenina. La rosa centifolia, el jazmín sambac y la peonía son las notas estrella. En nuestra colección "Mujer" encontrarás desde florales delicados hasta los más intensos, perfectos para el trabajo o una salida especial.</div>
+          <button class="blog-btn" onclick="toggleBlog(1,this)">Leer más →</button>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <img class="blog-img" src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=600&q=80" alt="Blog 3"/>
+        <div class="blog-body">
+          <div class="blog-cat">Colección · Exclusiva</div>
+          <div class="blog-title">Summit Reserve: nuestra edición limitada ya está disponible</div>
+          <p class="blog-excerpt">Solo 200 unidades numeradas. La fragancia más exclusiva de Perfumería Alonso llega este mes.</p>
+          <div class="blog-full" id="bf2">Summit Reserve es nuestra propuesta más ambiciosa: una fragancia construida alrededor del cedro del Atlas, el oud del Medio Oriente y el vetiver de Haití. Solo 200 unidades numeradas disponibles. Puedes reservar la tuya en nuestra sección de Colección o visitándonos en tienda.</div>
+          <button class="blog-btn" onclick="toggleBlog(2,this)">Leer más →</button>
+        </div>
+      </div>
     </div>
-    <div class="cot-result" id="cotResult">
-      <div class="cot-result-title">Resumen de tu set</div>
-      <div class="cot-items" id="cotItems"></div>
-      <div class="cot-total" id="cotTotal"></div>
-      <div class="cot-saving" id="cotSaving"></div>
-      <button class="btn-cot" onclick="pedirSet()">Pedir este set por WhatsApp →</button>
+  </div>
+</section>
+
+<!-- ESTADÍSTICAS -->
+<section class="sec" id="estadisticas" style="background:var(--dark);padding:56px 48px;">
+  <div class="si">
+    <div class="sh reveal"><span class="st" style="color:rgba(232,213,163,.5);">Panel de actividad</span><h2 class="stitle" style="color:#fff;">Estadísticas <em style="color:var(--gold2)">del negocio</em></h2><p class="ssub" style="color:rgba(255,255,255,.4);">Datos en tiempo real de visitas, reservas y conversión de tu sitio.</p></div>
+    <div class="est-grid">
+      <div class="est-card reveal"><span class="est-num" id="ev">0</span><span class="est-label">Visitas este mes</span><div class="est-bar"><div class="est-fill" data-w="82"></div></div></div>
+      <div class="est-card reveal"><span class="est-num" id="er">0</span><span class="est-label">Reservas confirmadas</span><div class="est-bar"><div class="est-fill" data-w="65"></div></div></div>
+      <div class="est-card reveal"><span class="est-num" id="ec">0%</span><span class="est-label">Tasa de conversión</span><div class="est-bar"><div class="est-fill" data-w="74"></div></div></div>
+      <div class="est-card reveal"><span class="est-num" id="ei">0</span><span class="est-label">Productos vendidos</span><div class="est-bar"><div class="est-fill" data-w="55"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ -->
+<section class="sec" id="porque">
+  <div class="si">
+    <div class="sh reveal"><span class="st">Plan Avanzado</span><h2 class="stitle">Todo lo que <em>incluye</em></h2><div class="sh-line"></div></div>
+    <div class="porq-grid">
+      <div class="porq-card reveal"><div class="porq-icon-wrap"><span class="porq-icon">🤖</span></div><div class="porq-title">Agenda automática 24/7</div><p class="porq-text">Reservas, confirmaciones y recordatorios sin intervención manual.</p></div>
+      <div class="porq-card reveal"><div class="porq-icon-wrap"><span class="porq-icon">🔔</span></div><div class="porq-title">Recordatorios automáticos</div><p class="porq-text">Tu cliente recibe aviso 24 hrs y 1 hr antes. Cero ausencias.</p></div>
+      <div class="porq-card reveal"><div class="porq-icon-wrap"><span class="porq-icon">📧</span></div><div class="porq-title">3 correos corporativos</div><p class="porq-text">tú@perfumeriaalonso.cl para ti y todo tu equipo.</p></div>
+      <div class="porq-card reveal"><div class="porq-icon-wrap"><span class="porq-icon">💳</span></div><div class="porq-title">Pasarela de pagos</div><p class="porq-text">Abono o pago completo online. El dinero llega directo a tu cuenta.</p></div>
+      <div class="porq-card reveal"><div class="porq-icon-wrap"><span class="porq-icon">🔍</span></div><div class="porq-title">SEO optimizado</div><p class="porq-text">Tu negocio aparece en Google. Meta tags, Schema y sitemap incluidos.</p></div>
+      <div class="porq-card reveal"><div class="porq-icon-wrap"><span class="porq-icon">🛡️</span></div><div class="porq-title">Soporte técnico 60 días</div><p class="porq-text">Cambios, ajustes y soporte prioritario los primeros 60 días.</p></div>
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIOS -->
-<section id="testimonios" class="sec-wrap">
-  <div class="sec-head reveal">
-    <div class="sec-tag">Experiencias</div>
-    <h2 class="sec-title">Lo que dicen <em>nuestros clientes</em></h2>
+<section class="sec" id="testimonios" style="background:var(--gray);">
+  <div class="si">
+    <div class="sh reveal"><span class="st">Reseñas</span><h2 class="stitle">Lo que dicen <em>nuestros clientes</em></h2></div>
+    <div class="carousel">
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"El sistema de reserva online es increíble. Agendé en 2 minutos y llegué directo a la asesoría. El perfume que me recomendaron quedó perfecto."</p><div class="test-author"><div class="test-av">FM</div><div><div class="test-name">Felipe Morales</div><div class="test-loc">Maipú · Google</div></div></div></div>
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"Compré el Summit Reserve y quedé enamorada. La atención personalizada hace toda la diferencia. Volvería mil veces."</p><div class="test-author"><div class="test-av">CV</div><div><div class="test-name">Catalina Vega</div><div class="test-loc">Las Condes · Google</div></div></div></div>
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"Compré perfumes para toda la familia usando el cotizador. Llegó todo en 2 días, perfecto. La web es muy fácil de usar."</p><div class="test-author"><div class="test-av">JR</div><div><div class="test-name">Jorge Rojas</div><div class="test-loc">Providencia · Google</div></div></div></div>
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"Me enviaron un recordatorio el día antes de mi reserva. Eso es profesionalismo. La colección para niños es hermosa."</p><div class="test-author"><div class="test-av">LT</div><div><div class="test-name">Lorena Torres</div><div class="test-loc">Ñuñoa · Google</div></div></div></div>
+    </div>
+    <p class="carousel-hint">← Desliza para ver más →</p>
   </div>
-  <div class="test-grid">
-    <div class="test-card reveal">
-      <div class="test-stars">★★★★★</div>
-      <div class="test-quote">"</div>
-      <p class="test-text">Nuit Ambrée se convirtió en mi fragancia de firma desde el primer spray. Nunca había encontrado algo tan sofisticado y duradero en Chile.</p>
-      <div class="test-author">
-        <img class="test-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Valentina M."/>
-        <div>
-          <div class="test-name">Valentina M.</div>
-          <div class="test-role">Directora Creativa · Santiago</div>
-        </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="si">
+    <div class="sh reveal"><span class="st">FAQ</span><h2 class="stitle">Preguntas <em>frecuentes</em></h2><p class="ssub">Todo lo que necesitas saber antes de hacer tu pedido.</p></div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>¿Cuándo llega mi compra?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a"><p>El despacho tarda entre 2 y 3 días hábiles a la Región Metropolitana, y de 3 a 5 días hábiles a regiones. Una vez despachado recibirás un correo con el número de seguimiento de tu pedido.</p></div>
       </div>
-    </div>
-    <div class="test-card reveal">
-      <div class="test-stars">★★★★★</div>
-      <div class="test-quote">"</div>
-      <p class="test-text">Increíble servicio y productos auténticos. El packaging es de otro nivel. Regalé un set a mi pareja y quedó absolutamente enamorada.</p>
-      <div class="test-author">
-        <img class="test-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Rodrigo A."/>
-        <div>
-          <div class="test-name">Rodrigo A.</div>
-          <div class="test-role">Empresario · Providencia</div>
-        </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>¿Puedo hacer devoluciones o cambios?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a"><p>Sí. Aceptamos cambios o devoluciones dentro de los primeros 7 días desde la recepción del producto, siempre que esté sellado y en su caja original. Escríbenos por WhatsApp para coordinar el proceso.</p></div>
       </div>
-    </div>
-    <div class="test-card reveal">
-      <div class="test-stars">★★★★★</div>
-      <div class="test-quote">"</div>
-      <p class="test-text">Busqué durante años una fragancia que me representara. En Maison Noir la encontré en 10 minutos. El asesoramiento personalizado marca toda la diferencia.</p>
-      <div class="test-author">
-        <img class="test-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Camila R."/>
-        <div>
-          <div class="test-name">Camila R.</div>
-          <div class="test-role">Abogada · Las Condes</div>
-        </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>¿Cómo sé cuál fragancia me queda bien?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a"><p>Puedes agendar una asesoría personal gratuita de 30 minutos con uno de nuestros especialistas. También ofrecemos prueba de aromas en tienda para que encuentres la fragancia perfecta antes de comprar.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>¿Hacen envíos a todas las regiones de Chile?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a"><p>Sí, hacemos despacho a todo Chile a través de Starken y Chilexpress. El costo de envío a regiones puede variar; durante campañas de oferta ofrecemos envío gratis a todo el país.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>¿Qué métodos de pago aceptan?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a"><p>Aceptamos todas las tarjetas de crédito y débito (Visa, Mastercard, American Express), transferencia bancaria y pago en cuotas sin interés con tarjetas seleccionadas. El pago es 100% seguro con encriptación SSL.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>¿Los productos son originales y 100% auténticos?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a"><p>Absolutamente. Todos nuestros perfumes son 100% originales, importados directamente de nuestros proveedores certificados. Cada frasco incluye su caja original, número de lote y código de autenticidad.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BLOG EDITORIAL -->
-<section id="blog" class="sec-wrap" style="background:#070707;padding-left:0;padding-right:0;padding-bottom:0;">
-  <div class="sec-head reveal" style="padding:0 80px;margin-bottom:60px;">
-    <div class="sec-tag">Editorial</div>
-    <h2 class="sec-title">El mundo de <em>la perfumería</em></h2>
-  </div>
-  <div class="blog-grid">
-    <div class="blog-card reveal">
-      <img class="blog-img" src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=800&q=80" alt="Blog 1"/>
-      <div class="blog-overlay"></div>
-      <div class="blog-body">
-        <div class="blog-date">Junio 2025</div>
-        <div class="blog-title">Cómo elegir tu fragancia de firma sin equivocarte</div>
-        <div class="blog-excerpt">La fragancia correcta puede cambiar cómo te perciben en una sala. Te enseñamos a elegirla.</div>
-      </div>
+<!-- MODAL PRODUCTO -->
+<div class="prod-modal" id="prodModal">
+  <div class="prod-backdrop" onclick="closeProd()"></div>
+  <div class="prod-box">
+    <div class="prod-img-col">
+      <span class="prod-badge-modal" id="pmBadge">28% OFF</span>
+      <img id="pmImg" src="" alt=""/>
     </div>
-    <div class="blog-card reveal">
-      <img class="blog-img" src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=800&q=80" alt="Blog 2"/>
-      <div class="blog-overlay"></div>
-      <div class="blog-body">
-        <div class="blog-date">Mayo 2025</div>
-        <div class="blog-title">Las notas de Oud: el ingrediente más caro del mundo</div>
-        <div class="blog-excerpt">Conoce por qué el Oud vale más que el oro y cómo identificarlo en un perfume genuino.</div>
+    <div class="prod-info-col">
+      <button class="prod-close" onclick="closeProd()">×</button>
+      <div class="prod-cat-tag" id="pmCat">Hombre</div>
+      <div class="prod-name-modal" id="pmName">Nombre</div>
+      <div class="prod-stars-modal"><span class="s" id="pmStars">★★★★★</span><span class="r" id="pmReviews">(0 compras)</span></div>
+      <div class="prod-divider"></div>
+      <p class="prod-desc" id="pmDesc"></p>
+      <div class="prod-notas">
+        <div class="prod-nota"><span class="prod-nota-lbl">Salida</span><span class="prod-nota-val" id="pmN1">—</span></div>
+        <div class="prod-nota"><span class="prod-nota-lbl">Corazón</span><span class="prod-nota-val" id="pmN2">—</span></div>
+        <div class="prod-nota"><span class="prod-nota-lbl">Fondo</span><span class="prod-nota-val" id="pmN3">—</span></div>
       </div>
-    </div>
-    <div class="blog-card reveal">
-      <img class="blog-img" src="https://images.unsplash.com/photo-1541643600914-78b084683702?w=800&q=80" alt="Blog 3"/>
-      <div class="blog-overlay"></div>
-      <div class="blog-body">
-        <div class="blog-date">Abril 2025</div>
-        <div class="blog-title">Guía completa: Eau de Parfum vs Extrait de Parfum</div>
-        <div class="blog-excerpt">No es solo la concentración. La diferencia cambia completamente cómo evoluciona el aroma.</div>
+      <div class="prod-detalles">
+        <div class="prod-det-row"><span class="prod-det-lbl">Presentación</span><span class="prod-det-val" id="pmVol">—</span></div>
+        <div class="prod-det-row"><span class="prod-det-lbl">Intensidad</span><span class="prod-det-val" id="pmIntensidad">—</span></div>
+        <div class="prod-det-row"><span class="prod-det-lbl">Duración</span><span class="prod-det-val" id="pmDuracion">—</span></div>
+        <div class="prod-det-row"><span class="prod-det-lbl">Ocasión</span><span class="prod-det-val" id="pmOcasion">—</span></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACTO -->
-<section id="contacto" class="sec-wrap">
-  <div class="sec-head reveal">
-    <div class="sec-tag">Contacto</div>
-    <h2 class="sec-title">Encuentra tu <em>fragancia perfecta</em></h2>
-    <p class="sec-sub">Cuéntanos tu estilo y te recomendamos el aroma que mejor te define.</p>
-  </div>
-  <div class="contacto-wrap">
-    <div class="contacto-left reveal-left">
-      <h3>Hablemos<br>sobre tu <em>aroma</em></h3>
-      <p>Nuestros asesores de fragancia están disponibles para ayudarte a encontrar el perfume perfecto. Ya sea para ti o como regalo de lujo.</p>
-      <div class="contacto-info">
-        <div class="contacto-info-item">
-          <div class="contacto-info-icon">📍</div>
-          <span>Santiago de Chile · Envíos a todo el país</span>
-        </div>
-        <div class="contacto-info-item">
-          <div class="contacto-info-icon">💬</div>
-          <span>Respuesta en menos de 2 horas</span>
-        </div>
-        <div class="contacto-info-item">
-          <div class="contacto-info-icon">✦</div>
-          <span>Asesoría personalizada sin costo</span>
-        </div>
-        <div class="contacto-info-item">
-          <div class="contacto-info-icon">🚚</div>
-          <span>Despacho en 24–72 hrs · Santiago</span>
-        </div>
+      <div class="prod-prices-modal">
+        <div class="prod-old" id="pmOld">—</div>
+        <div class="prod-price-modal" id="pmPrice">—<span id="pmDisc"></span></div>
       </div>
-    </div>
-    <div class="reveal">
-      <div class="form-row">
-        <div class="form-field"><input type="text" id="fn" placeholder="Nombre completo"/></div>
-        <div class="form-field"><input type="tel" id="ft" placeholder="Teléfono"/></div>
+      <div class="prod-actions">
+        <button class="prod-btn-add" id="pmAddBtn" onclick="prodAddCart()">🛒 Agregar al carrito</button>
+        <a class="prod-btn-wa" href="https://wa.me/56939665163?text=Hola%2C%20me%20interesa%20un%20perfume" target="_blank">💬 Consultar</a>
       </div>
-      <div class="form-field"><input type="email" id="fe" placeholder="Correo electrónico"/></div>
-      <div class="form-field">
-        <select id="fperf">
-          <option value="">— Fragancia de interés —</option>
-          <option>Rose Éternelle · $89.900</option>
-          <option>Nuit Ambrée · $124.900</option>
-          <option>Bois Sacré · $98.900</option>
-          <option>Lumière d'Or · $79.900</option>
-          <option>Velours Noir · $139.900</option>
-          <option>Brume Marine · $85.900</option>
-          <option>Quiero asesoría personalizada</option>
-        </select>
-      </div>
-      <div class="form-field"><textarea id="fmsg" placeholder="Cuéntanos sobre ti, tu estilo o la ocasión para el perfume…"></textarea></div>
-      <button class="btn-submit" onclick="enviarWA()">Consultar por WhatsApp →</button>
+      <div class="prod-envio">🚚 <span>Envío gratis</span> a todo Chile en compras sobre $29.990</div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-top">
+  <div class="footer-grid">
     <div>
-      <div class="footer-logo">Maison<span>Noir</span></div>
-      <p class="footer-desc">Perfumes de lujo importados de los ateliers más exclusivos del mundo. Disponibles solo en Chile.</p>
+      <div class="footer-logo">Perfumería <span>Alonso</span></div>
+      <p class="footer-desc">Fragancias exclusivas para toda la familia en Av. Pajaritos, Santiago. Agenda online, catálogo completo y envío a todo Chile.</p>
+      <div class="redes">
+        <a href="https://instagram.com/perfumes_alonso" target="_blank" class="red-btn red-ig"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> @perfumes_alonso</a>
+        <a href="https://tiktok.com/@perfumes_alonso" target="_blank" class="red-btn red-tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.16 8.16 0 004.77 1.52V6.76a4.85 4.85 0 01-1-.07z"/></svg> TikTok</a>
+      </div>
     </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Colección</div>
-      <ul>
-        <li><a href="#perfumes">Florales</a></li>
-        <li><a href="#perfumes">Orientales</a></li>
-        <li><a href="#perfumes">Amaderados</a></li>
-        <li><a href="#perfumes">Cítricos</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Navegación</div>
-      <ul>
-        <li><a href="#perfumes">Catálogo</a></li>
-        <li><a href="#galeria">Galería</a></li>
-        <li><a href="#cotizador">Sets</a></li>
-        <li><a href="#blog">Editorial</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Contacto</div>
-      <ul>
-        <li><a href="#contacto">WhatsApp</a></li>
-        <li><a href="#contacto">Instagram</a></li>
-        <li><a href="#contacto">Email</a></li>
-        <li><a href="#contacto">Asesoría gratis</a></li>
-      </ul>
-    </div>
+    <div class="fc"><h4>Catálogo</h4><ul><li><a href="#catalogo">Perfumes Hombre</a></li><li><a href="#catalogo">Perfumes Mujer</a></li><li><a href="#catalogo">Perfumes Niño</a></li><li><a href="#catalogo">Perfumes Niña</a></li><li><a href="#catalogo">Colección</a></li></ul></div>
+    <div class="fc"><h4>Tienda</h4><ul><li><a href="#agenda">Reservar asesoría</a></li><li><a href="#cotizador">Cotizador</a></li><li><a href="#galeria">Galería</a></li><li><a href="#blog">Blog</a></li><li><a href="https://wa.me/56939665163">WhatsApp consultas</a></li></ul></div>
+    <div class="fc"><h4>Ubicación</h4><ul><li><a href="#">📍 Av. Pajaritos, Santiago</a></li><li><a href="#">🕐 Lun–Vie: 08:00–19:00</a></li><li><a href="#">🕐 Sáb: 09:00–15:00</a></li><li><a href="#">📞 +56 9 3966 5163</a></li></ul><div class="mapa-embed"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.0!2d-70.7283!3d-33.4566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c3f5c8dedc35%3A0x1234!2sAv.%20Pajaritos%2C%20Santiago!5e0!3m2!1ses!2scl!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">© Maison Noir 2025 · Todos los derechos reservados · Santiago de Chile</span>
-    <div class="footer-socials">
-      <a href="#" class="footer-social">ig</a>
-      <a href="#" class="footer-social">tk</a>
-      <a href="#" class="footer-social">wa</a>
-    </div>
+    <span>© 2025 Perfumería Alonso · Santiago de Chile · Todos los derechos reservados</span>
+    <a href="https://alonsostudiodigital.com" target="_blank">Diseño: Alonso Studio</a>
   </div>
 </footer>
 
-<!-- WHATSAPP FLOAT -->
-<a class="wa-float" href="https://wa.me/56939665163?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20los%20perfumes%20de%20Maison%20Noir" target="_blank">💬</a>
-
 <script>
-// CURSOR
-const cur = document.getElementById('cur');
-const ring = document.getElementById('ring');
-document.addEventListener('mousemove', e => {
-  cur.style.left = e.clientX + 'px';
-  cur.style.top = e.clientY + 'px';
-  setTimeout(() => {
-    ring.style.left = e.clientX + 'px';
-    ring.style.top = e.clientY + 'px';
-  }, 80);
+// ── NAV ──
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);});
+function toggleMenu(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobileMenu').classList.toggle('open');}
+function closeMobile(){document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileMenu').classList.remove('open');}
+
+// ── REVEAL ──
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// ── COUNTERS ──
+const co=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.querySelectorAll('.count').forEach(c=>{const t=+c.dataset.target;let n=0;const s=t/55;const i=setInterval(()=>{n=Math.min(n+s,t);c.textContent=Math.floor(n).toLocaleString('es-CL');if(n>=t)clearInterval(i);},22);});co.unobserve(x.target);}});},{threshold:.3});
+document.querySelectorAll('.stats').forEach(el=>co.observe(el));
+
+// ── CHECKOUT ──
+let ckStep=1;
+function openCheckout(){
+  if(!cart.length)return;
+  ckStep=1;showCkPanel(1);
+  document.getElementById('ckModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeCheckout(){
+  document.getElementById('ckModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function showCkPanel(n){
+  ckStep=n;
+  [1,2,3].forEach(i=>{
+    document.getElementById('ckp'+i).classList.toggle('show',i===n);
+    const s=document.getElementById('cks'+i);
+    s.classList.remove('active','done');
+    if(i===n)s.classList.add('active');
+    else if(i<n)s.classList.add('done');
+  });
+  const titles=['Datos de entrega','Datos de pago','Pedido confirmado'];
+  document.getElementById('ckTitle').textContent=titles[n-1];
+}
+function ckNext(n){
+  if(n===2){
+    const fields=['ck_nombre','ck_apellido','ck_email','ck_tel','ck_dir','ck_ciudad','ck_region'];
+    for(const f of fields){const el=document.getElementById(f);if(!el.value.trim()){el.focus();el.style.borderColor='#ef4444';setTimeout(()=>el.style.borderColor='',1800);return;}}
+    const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+    document.getElementById('ckPayAmt').textContent='$'+total.toLocaleString('es-CL');
+    const lines=cart.map(i=>`<div class="ck-sum-row"><span>${i.name} ×${i.qty}</span><span>$${(i.price*i.qty).toLocaleString('es-CL')}</span></div>`).join('');
+    const ship=`<div class="ck-sum-row"><span>Envío a domicilio</span><span style="color:#22c55e">Gratis</span></div>`;
+    const tot=`<div class="ck-sum-row"><span>Total</span><span>$${total.toLocaleString('es-CL')}</span></div>`;
+    document.getElementById('ckSummary').innerHTML=lines+ship+tot;
+  }
+  if(n===1){showCkPanel(1);return;}
+  showCkPanel(n);
+}
+function fmtCkCard(el){let v=el.value.replace(/\D/g,'').slice(0,16);el.value=v.replace(/(.{4})/g,'$1 ').trim();}
+function fmtExp(el){let v=el.value.replace(/\D/g,'').slice(0,4);if(v.length>=2)v=v.slice(0,2)+'/'+v.slice(2);el.value=v;}
+function ckPagar(){
+  const card=document.getElementById('ck_card').value.replace(/\s/g,'');
+  const exp=document.getElementById('ck_exp').value;
+  const cvv=document.getElementById('ck_cvv').value;
+  const tit=document.getElementById('ck_titular').value;
+  if(card.length<16||exp.length<5||cvv.length<3||!tit.trim()){alert('Completa todos los datos de pago.');return;}
+  const code='PA-'+Math.floor(100000+Math.random()*900000);
+  document.getElementById('ckOrderCode').textContent=code;
+  const nombre=document.getElementById('ck_nombre').value+' '+document.getElementById('ck_apellido').value;
+  const dir=document.getElementById('ck_dir').value;
+  const ciudad=document.getElementById('ck_ciudad').value;
+  const email=document.getElementById('ck_email').value;
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  document.getElementById('ckDelivBox').innerHTML=`📦 <strong>Pedido:</strong> ${code}<br>👤 <strong>Cliente:</strong> ${nombre}<br>📍 <strong>Entrega:</strong> ${dir}, ${ciudad}<br>📧 <strong>Confirmación enviada a:</strong> ${email}<br>💳 <strong>Total cobrado:</strong> $${total.toLocaleString('es-CL')}<br>🚚 <strong>Despacho:</strong> 2–3 días hábiles`;
+  cart=[];renderCart();
+  toggleCart();
+  showCkPanel(3);
+}
+
+// ── CATÁLOGO FILTROS ──
+document.querySelectorAll('.filtro-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filtro-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    filterCat();
+  });
 });
-
-// NAV
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('solid', window.scrollY > 60);
-});
-
-// HAMBURGER
-function toggleMenu() {
-  document.getElementById('ham').classList.toggle('open');
-  document.getElementById('mobileMenu').classList.toggle('open');
-}
-function closeMobile() {
-  document.getElementById('ham').classList.remove('open');
-  document.getElementById('mobileMenu').classList.remove('open');
+function filterCat(){
+  const f=document.querySelector('.filtro-btn.active').dataset.f;
+  const q=document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.cat-card').forEach(c=>{
+    const cat=c.dataset.cat;
+    const name=c.querySelector('.cat-name').textContent.toLowerCase();
+    const show=(f==='all'||cat===f)&&(!q||name.includes(q));
+    c.classList.toggle('hidden',!show);
+  });
 }
 
-// HERO COUNTER
-(function() {
-  let n = 0;
-  const target = 48;
-  const el = document.getElementById('heroCount');
-  const step = () => {
-    n = Math.min(n + 1, target);
-    el.textContent = n;
-    if (n < target) setTimeout(step, 40);
-  };
-  setTimeout(step, 800);
-})();
-
-// PARTICLES
-const pWrap = document.getElementById('particles');
-for (let i = 0; i < 30; i++) {
-  const p = document.createElement('div');
-  p.className = 'particle';
-  p.style.cssText = `left:${Math.random()*100}%;--dur:${6+Math.random()*10}s;--delay:${Math.random()*8}s;--drift:${(Math.random()-0.5)*100}px;opacity:${0.3+Math.random()*0.7};width:${1+Math.random()*3}px;height:${1+Math.random()*3}px;`;
-  pWrap.appendChild(p);
+// ── CARRITO ──
+let cart=[];
+function addCart(name,price,btn){
+  const ex=cart.find(i=>i.name===name);
+  if(ex){ex.qty++;}else{cart.push({name,price,qty:1});}
+  btn.textContent='✓ Agregado';btn.classList.add('added');
+  setTimeout(()=>{btn.innerHTML='🛒 Agregar al carrito';btn.classList.remove('added');},1500);
+  renderCart();
 }
+function renderCart(){
+  const items=document.getElementById('cartItems');
+  const footer=document.getElementById('cartFooter');
+  const count=document.getElementById('cartCount');
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const qty=cart.reduce((s,i)=>s+i.qty,0);
+  count.textContent=qty;count.style.display=qty?'flex':'none';
+  if(!cart.length){items.innerHTML='<div class="cart-empty">Tu carrito está vacío.<br>Agrega productos del catálogo.</div>';footer.style.display='none';return;}
+  items.innerHTML=cart.map((it,i)=>`<div class="cart-item"><div style="flex:1"><div class="cart-item-name">${it.name}</div><div class="cart-item-price">$${(it.price*it.qty).toLocaleString('es-CL')} (×${it.qty})</div></div><button class="cart-item-remove" onclick="removeCart(${i})">✕</button></div>`).join('');
+  document.getElementById('cartTotalPrice').textContent='$'+total.toLocaleString('es-CL');
+  footer.style.display='block';
+}
+function removeCart(i){cart.splice(i,1);renderCart();}
+function toggleCart(){document.getElementById('cartDrawer').classList.toggle('open');document.getElementById('cartOverlay').classList.toggle('open');}
 
-// REVEAL
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
+
+// ── BLOG ──
+function toggleBlog(i,btn){const el=document.getElementById('bf'+i);el.classList.toggle('open');btn.textContent=el.classList.contains('open')?'Leer menos ↑':'Leer más →';}
+
+// ── ESTADÍSTICAS ANIMADAS ──
+const eo=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      animCount('ev',1247,0);animCount('er',89,0);animConv();animCount('ei',342,0);
+      e.currentTarget.querySelectorAll('.est-fill').forEach(f=>{setTimeout(()=>{f.style.width=f.dataset.w+'%';},300);});
+      eo.unobserve(e.currentTarget);
     }
   });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal,.reveal-left').forEach(el => observer.observe(el));
-
-// COUNTERS
-const countObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    const el = e.target;
-    const target = +el.dataset.target;
-    let n = 0;
-    const duration = 1800;
-    const steps = 60;
-    const inc = target / steps;
-    const timer = setInterval(() => {
-      n = Math.min(n + inc, target);
-      el.textContent = Math.round(n).toLocaleString('es-CL');
-      if (n >= target) clearInterval(timer);
-    }, duration / steps);
-    countObs.unobserve(el);
-  });
-}, { threshold: 0.5 });
-document.querySelectorAll('.count').forEach(el => countObs.observe(el));
-
-// MARQUEE CLONE
-const track = document.getElementById('mtrack');
-track.innerHTML += track.innerHTML;
-
-// LIGHTBOX
-function openLightbox(src) {
-  document.getElementById('lightbox-img').src = src;
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow = 'hidden';
+},{threshold:.3});
+const estSec=document.getElementById('estadisticas');if(estSec)eo.observe(estSec);
+function animCount(id,target,dec){
+  const el=document.getElementById(id);if(!el)return;
+  let n=0;const s=target/60;
+  const i=setInterval(()=>{n=Math.min(n+s,target);el.textContent=Math.floor(n).toLocaleString('es-CL');if(n>=target){clearInterval(i);}},22);
 }
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow = '';
+function animConv(){
+  const el=document.getElementById('ec');if(!el)return;
+  let n=0;const i=setInterval(()=>{n=Math.min(n+.12,7.1);el.textContent=n.toFixed(1)+'%';if(n>=7.1)clearInterval(i);},22);
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-// FILTROS CATÁLOGO
-document.querySelectorAll('.filtro-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    document.querySelectorAll('.perf-card').forEach(card => {
-      const fam = card.dataset.familia;
-      card.style.display = (filter === 'all' || fam === filter) ? '' : 'none';
-    });
-  });
-});
+// ── AGENDA ──
+const ASERVS=[{name:'Asesoría personal',dur:30,price:0},{name:'Prueba de aromas',dur:45,price:5000},{name:'Set personalizado',dur:60,price:8000}];
+const ABARBERS=[{name:'Alonso Cifuentes',spec:'Perfumes hombre & colección'},{name:'Alonso Studio',spec:'Perfumes mujer & niños'}];
+const OCC={0:{0:['09:00','09:30','13:00','14:30'],1:['10:00','11:00','16:00'],2:['09:00','15:00'],3:['12:30','13:00']},1:{0:['11:00','14:00'],1:['09:30','15:30','16:00'],2:['12:00','16:30'],3:['10:00','10:30']}};
+let asel={barber:-1,service:-1,dayIdx:-1,time:'',pago:-1};
+function selBarber(i,el){asel.barber=i;document.querySelectorAll('.barber-btn').forEach(b=>b.classList.remove('selected'));el.classList.add('selected');chk1();}
+function selServ(i,el){asel.service=i;document.querySelectorAll('.serv-opt').forEach(b=>b.classList.remove('selected'));el.classList.add('selected');chk1();}
+function chk1(){document.getElementById('btn1').disabled=asel.barber<0||asel.service<0;}
+function buildCal(){
+  const c=document.getElementById('calDays');c.innerHTML='';
+  const days=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+  const months=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  const today=new Date();
+  for(let i=0;i<7;i++){const d=new Date(today);d.setDate(today.getDate()+i);const btn=document.createElement('button');btn.className='day-btn'+(i===0?' today':'');btn.innerHTML=`<div class="dn">${days[d.getDay()]}</div><div class="dd">${d.getDate()}</div><div class="dm">${months[d.getMonth()]}</div>`;btn.onclick=()=>{asel.dayIdx=i;asel.time='';document.querySelectorAll('.day-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');document.getElementById('btn2').disabled=true;buildSlots(i);};c.appendChild(btn);}
+}
+function buildSlots(d){
+  const g=document.getElementById('slotsGrid');g.innerHTML='';document.getElementById('slotsWrap').style.display='block';
+  const occ=(OCC[asel.barber]&&OCC[asel.barber][d])||[];
+  for(let h=8;h<19;h++){for(let m=0;m<60;m+=30){const label=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;const div=document.createElement('div');div.className='slot'+(occ.includes(label)?' occ':'');div.textContent=occ.includes(label)?'Ocupado':label;if(!occ.includes(label)){div.onclick=()=>{asel.time=label;document.querySelectorAll('.slot:not(.occ)').forEach(s=>s.classList.remove('selected'));div.classList.add('selected');document.getElementById('btn2').disabled=false;};}g.appendChild(div);}}
+}
+function buildRes(){
+  const s=ASERVS[asel.service];const b=ABARBERS[asel.barber];
+  const days=['Hoy','Mañana','Pasado mañana','En 3 días','En 4 días','En 5 días','En 6 días'];
+  document.getElementById('resBox').innerHTML=`<div class="res-row"><span class="rl">Asesor</span><span class="rv">${b.name}</span></div><div class="res-row"><span class="rl">Servicio</span><span class="rv">${s.name}</span></div><div class="res-row"><span class="rl">Día</span><span class="rv">${days[asel.dayIdx]}</span></div><div class="res-row"><span class="rl">Hora</span><span class="rv">${asel.time} hrs</span></div><div class="res-row"><span class="rl">Total</span><span class="rv" style="color:var(--sky)">${s.price?'$'+s.price.toLocaleString('es-CL'):'Gratis'}</span></div>`;
+  const abono=Math.round(s.price*.5);
+  document.getElementById('pagoA').textContent=abono?'$'+abono.toLocaleString('es-CL'):'$0 (gratis)';
+  document.getElementById('pagoT').textContent=s.price?'$'+Math.round(s.price*.95).toLocaleString('es-CL'):'Gratis';
+}
+function selPago(i,el){asel.pago=i;document.querySelectorAll('.pago-opt').forEach(p=>p.classList.remove('selected'));el.classList.add('selected');document.getElementById('cardSim').style.display='block';document.getElementById('btn3').disabled=false;}
+function confirmar(){
+  const code='PA-'+Math.floor(100000+Math.random()*900000);
+  const s=ASERVS[asel.service];const b=ABARBERS[asel.barber];
+  const days=['Hoy','Mañana','Pasado mañana','En 3 días','En 4 días','En 5 días','En 6 días'];
+  document.getElementById('confCode').textContent=code;
+  document.getElementById('confDet').innerHTML=`👤 <strong>Asesor:</strong> ${b.name}<br>🎯 <strong>Servicio:</strong> ${s.name}<br>📅 <strong>Día:</strong> ${days[asel.dayIdx]} a las ${asel.time} hrs<br>💳 <strong>Pago:</strong> ${asel.pago===0?'Abono 50%':'Pago total (-5%)'}<br>🔔 <strong>Recordatorio:</strong> Automático 24 hrs antes`;
+  goStep(4);
+}
+function resetAgenda(){asel={barber:-1,service:-1,dayIdx:-1,time:'',pago:-1};document.querySelectorAll('.barber-btn,.serv-opt,.pago-opt').forEach(el=>el.classList.remove('selected'));document.getElementById('cardSim').style.display='none';document.getElementById('slotsWrap').style.display='none';document.getElementById('btn1').disabled=true;document.getElementById('btn2').disabled=true;document.getElementById('btn3').disabled=true;goStep(1);}
+function goStep(n){
+  [1,2,3,4].forEach(i=>{document.getElementById('step'+i).style.display=i===n?'block':'none';const si=document.getElementById('si'+i);si.classList.remove('active','done');if(i===n)si.classList.add('active');else if(i<n)si.classList.add('done');});
+  if(n===2)buildCal();if(n===3)buildRes();
+}
+function fmtCard(el){let v=el.value.replace(/\D/g,'').slice(0,16);el.value=v.replace(/(.{4})/g,'$1 ').trim();}
+goStep(1);
 
-// COTIZADOR
-const perfumes = {
-  '89900': 'Rose Éternelle',
-  '124900': 'Nuit Ambrée',
-  '98900': 'Bois Sacré',
-  '79900': "Lumière d'Or",
-  '139900': 'Velours Noir',
-  '85900': 'Brume Marine'
+// ── FAQ ──
+function toggleFaq(btn){const item=btn.parentElement;item.classList.toggle('open');}
+
+// ── MODAL PRODUCTO ──
+const PRODUCTOS={
+  'Aqua Montana':{cat:'Hombre',img:'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=700&h=900&fit=crop&q=90',badge:'29% OFF',stars:'★★★★★',reviews:'(52 compras)',desc:'Aqua Montana es una fragancia fresca y acuática que evoca la pureza del aire de montaña después de la lluvia. Ideal para el hombre moderno que busca una presencia sutil pero memorable en el día a día.',n1:'Bergamota',n2:'Cedro',n3:'Almizcle blanco',vol:'100ml · Eau de Parfum',intensidad:'Media',duracion:'6–8 horas',ocasion:'Diario · Trabajo · Casual',old:'$41.990',price:'$29.990',disc:'29% OFF',name:'Aqua Montana',rawPrice:29990},
+  'Black Forest':{cat:'Hombre',img:'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=700&h=900&fit=crop&q=90',badge:'30% OFF',stars:'★★★★★',reviews:'(41 compras)',desc:'Black Forest captura la esencia oscura y profunda del bosque en invierno. Una fragancia amaderada e intensa para el hombre que no pasa desapercibido. Proyección excepcional.',n1:'Pimienta negra',n2:'Vetiver',n3:'Oud',vol:'75ml · Extrait de Parfum',intensidad:'Alta',duracion:'10–14 horas',ocasion:'Noche · Eventos · Citas',old:'$49.990',price:'$34.990',disc:'30% OFF',name:'Black Forest',rawPrice:34990},
+  'El Conquistador':{cat:'Hombre',img:'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=700&h=900&fit=crop&q=90',badge:'28% OFF',stars:'★★★★☆',reviews:'(38 compras)',desc:'El Conquistador es una fragancia oriental especiada con carácter. Sus notas cálidas y envolventes transmiten confianza y elegancia en cada situación.',n1:'Cardamomo',n2:'Rosa de Damasco',n3:'Ámbar',vol:'100ml · Eau de Toilette',intensidad:'Media-alta',duracion:'7–9 horas',ocasion:'Casual · Noche · Fin de semana',old:'$34.990',price:'$24.990',disc:'28% OFF',name:'El Conquistador',rawPrice:24990},
+  'Dark Summit':{cat:'Hombre',img:'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=700&h=900&fit=crop&q=90',badge:'27% OFF',stars:'★★★★★',reviews:'(67 compras)',desc:'Dark Summit es nuestra fragancia masculina más vendida. Un extrait intenso con corazón de sándalo y base de cuero que genera una estela irresistible y duradera.',n1:'Limón negro',n2:'Sándalo',n3:'Cuero',vol:'50ml · Extrait de Parfum',intensidad:'Muy alta',duracion:'12–16 horas',ocasion:'Noche · Eventos formales · Lujo',old:'$54.990',price:'$39.990',disc:'27% OFF',name:'Dark Summit',rawPrice:39990},
+  'Rose Blanche':{cat:'Mujer',img:'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=700&h=900&fit=crop&q=90',badge:'28% OFF',stars:'★★★★★',reviews:'(89 compras)',desc:'Rose Blanche es la esencia de la feminidad en su forma más pura. Una rosa centifolia envuelta en notas polveadas y musgo blanco que crea una nube de elegancia y delicadeza.',n1:'Peonía',n2:'Rosa centifolia',n3:'Musgo blanco',vol:'100ml · Eau de Parfum',intensidad:'Media',duracion:'7–9 horas',ocasion:'Diario · Trabajo · Romántica',old:'$38.990',price:'$27.990',disc:'28% OFF',name:'Rose Blanche',rawPrice:27990},
+  'Celeste Infinita':{cat:'Mujer',img:'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=700&h=900&fit=crop&q=90',badge:'27% OFF',stars:'★★★★★',reviews:'(74 compras)',desc:'Celeste Infinita es una fragancia floral acuática inspirada en un jardín al amanecer. Fresca, luminosa y con una permanencia que te acompañará durante todo el día.',n1:'Jazmín',n2:'Gardenia',n3:'Sándalo cremoso',vol:'75ml · Eau de Parfum',intensidad:'Media',duracion:'6–8 horas',ocasion:'Primavera · Verano · Brunch',old:'$44.990',price:'$32.990',disc:'27% OFF',name:'Celeste Infinita',rawPrice:32990},
+  'La Femme':{cat:'Mujer',img:'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=700&h=900&fit=crop&q=90',badge:'28% OFF',stars:'★★★★☆',reviews:'(45 compras)',desc:'La Femme es una fragancia sofisticada y sensual que celebra la mujer moderna. Sus notas orientales florales crean un misterio irresistible que permanece en la piel durante horas.',n1:'Bergamota',n2:'Iris',n3:'Pachulí',vol:'100ml · Extrait de Parfum',intensidad:'Alta',duracion:'10–12 horas',ocasion:'Noche · Cenas · Ocasiones especiales',old:'$39.990',price:'$28.990',disc:'28% OFF',name:'La Femme',rawPrice:28990},
+  'Aurora':{cat:'Mujer',img:'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=700&h=900&fit=crop&q=90',badge:'29% OFF',stars:'★★★★★',reviews:'(61 compras)',desc:'Aurora captura los primeros rayos del día en un frasco. Una fragancia luminosa y radiante con notas de mandarina y flor de azahar, perfecta para comenzar el día con energía positiva.',n1:'Mandarina',n2:'Flor de azahar',n3:'Vainilla suave',vol:'50ml · Eau de Parfum',intensidad:'Ligera-media',duracion:'5–7 horas',ocasion:'Mañana · Diario · Oficina',old:'$41.990',price:'$29.990',disc:'29% OFF',name:'Aurora',rawPrice:29990},
+  'Little Explorer':{cat:'Niño',img:'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=700&h=900&fit=crop&crop=right&q=90',badge:'25% OFF',stars:'★★★★★',reviews:'(33 compras)',desc:'Little Explorer es una colonia fresca y suave especialmente formulada para niños. Con notas cítricas y verdes que evocan la aventura y el juego al aire libre. Sin alcohol agresivo.',n1:'Limón',n2:'Manzana verde',n3:'Almizcle suave',vol:'50ml · Colonia',intensidad:'Ligera',duracion:'3–4 horas',ocasion:'Diario · Escuela · Actividades',old:'$19.990',price:'$14.990',disc:'25% OFF',name:'Little Explorer',rawPrice:14990},
+  'Ocean Boy':{cat:'Niño',img:'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=700&h=900&fit=crop&crop=left&q=90',badge:'26% OFF',stars:'★★★★☆',reviews:'(31 compras)',desc:'Ocean Boy es una colonia marina y fresca que los niños adoran. Inspirada en el mar y la aventura costera, es perfecta para niños activos que disfrutan estar al aire libre.',n1:'Marino',n2:'Melón',n3:'Sándalo blanco',vol:'50ml · Colonia',intensidad:'Ligera',duracion:'3–5 horas',ocasion:'Diario · Deportes · Playa',old:'$18.990',price:'$13.990',disc:'26% OFF',name:'Ocean Boy',rawPrice:13990},
+  'Sky Captain':{cat:'Niño',img:'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=700&h=900&fit=crop&crop=bottom&q=90',badge:'26% OFF',stars:'★★★★★',reviews:'(44 compras)',desc:'Sky Captain es una fragancia fresca y juvenil que combina notas dulces y cítricas. Formulada especialmente para niños con ingredientes suaves y seguros para la piel delicada.',n1:'Naranja',n2:'Lavanda dulce',n3:'Vainilla',vol:'75ml · Eau de Toilette',intensidad:'Ligera-media',duracion:'4–6 horas',ocasion:'Diario · Cumpleaños · Salidas',old:'$22.990',price:'$16.990',disc:'26% OFF',name:'Sky Captain',rawPrice:16990},
+  'Adventure':{cat:'Niño',img:'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=700&h=900&fit=crop&crop=top&q=90',badge:'28% OFF',stars:'★★★★☆',reviews:'(36 compras)',desc:'Adventure es la colonia ideal para el niño curioso y lleno de energía. Una fragancia fresca con un toque dulce que dura todo el día de escuela y juegos.',n1:'Pomelo',n2:'Menta',n3:'Musgo',vol:'50ml · Colonia',intensidad:'Ligera',duracion:'3–4 horas',ocasion:'Escuela · Juegos · Diario',old:'$17.990',price:'$12.990',disc:'28% OFF',name:'Adventure',rawPrice:12990},
+  'Sweet Princess':{cat:'Niña',img:'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=700&h=900&fit=crop&crop=right&q=90',badge:'25% OFF',stars:'★★★★★',reviews:'(57 compras)',desc:'Sweet Princess es un sueño hecho fragancia. Notas de frambuesa, flor de algodón y vainilla rosada crean una combinación mágica que encanta a las niñas y sus mamás.',n1:'Frambuesa',n2:'Flor de algodón',n3:'Vainilla rosada',vol:'50ml · Colonia',intensidad:'Ligera',duracion:'4–5 horas',ocasion:'Diario · Cumpleaños · Escuela',old:'$19.990',price:'$14.990',disc:'25% OFF',name:'Sweet Princess',rawPrice:14990},
+  'Little Rose':{cat:'Niña',img:'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=700&h=900&fit=crop&crop=right&q=90',badge:'26% OFF',stars:'★★★★★',reviews:'(42 compras)',desc:'Little Rose es la primera rosa de tu princesa. Una colonia floral suave y encantadora con pétalos de rosa, durazno y un fondo de musgo blanco. Delicada y perfecta para niñas.',n1:'Durazno',n2:'Rosa rosada',n3:'Musgo blanco',vol:'50ml · Colonia',intensidad:'Ligera',duracion:'3–5 horas',ocasion:'Diario · Fiestas · Escuela',old:'$18.990',price:'$13.990',disc:'26% OFF',name:'Little Rose',rawPrice:13990},
+  'Magic Butterfly':{cat:'Niña',img:'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=700&h=900&fit=crop&crop=right&q=90',badge:'26% OFF',stars:'★★★★★',reviews:'(39 compras)',desc:'Magic Butterfly es una fragancia mágica y colorida para niñas soñadoras. Sus notas frutales y florales crean una estela alegre que encantará a tu pequeña princesa.',n1:'Cereza',n2:'Jazmín tierno',n3:'Sándalo dulce',vol:'75ml · Eau de Toilette',intensidad:'Ligera-media',duracion:'4–6 horas',ocasion:'Fiestas · Diario · Ocasiones',old:'$22.990',price:'$16.990',disc:'26% OFF',name:'Magic Butterfly',rawPrice:16990},
+  'Dream Garden':{cat:'Niña',img:'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=700&h=900&fit=crop&crop=right&q=90',badge:'28% OFF',stars:'★★★★☆',reviews:'(34 compras)',desc:'Dream Garden es un jardín encantado en miniatura. Una colonia fresca y floral que combina flores silvestres con un toque de pera y almizcle suave. Para niñas que sueñan despierta.',n1:'Pera',n2:'Flores silvestres',n3:'Almizcle suave',vol:'50ml · Colonia',intensidad:'Ligera',duracion:'3–4 horas',ocasion:'Diario · Escuela · Jugar',old:'$17.990',price:'$12.990',disc:'28% OFF',name:'Dream Garden',rawPrice:12990},
+  'Summit Reserve':{cat:'Colección',img:'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=700&h=900&fit=crop&q=90',badge:'28% OFF',stars:'★★★★★',reviews:'(118 compras)',desc:'Summit Reserve es nuestra obra maestra. Construida sobre un trío de cedro del Atlas, oud de Medio Oriente y vetiver de Haití. Solo 200 unidades numeradas disponibles en todo Chile.',n1:'Cedro del Atlas',n2:'Oud',n3:'Vetiver de Haití',vol:'100ml · Extrait · Ed. Limitada',intensidad:'Muy alta',duracion:'18–24 horas',ocasion:'Lujo · Colección · Regalo premium',old:'$124.990',price:'$89.990',disc:'28% OFF',name:'Summit Reserve',rawPrice:89990},
+  'Eternal Peak':{cat:'Colección',img:'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=700&h=900&fit=crop&crop=left&q=90',badge:'27% OFF',stars:'★★★★★',reviews:'(93 compras)',desc:'Eternal Peak es una fragancia de colección que captura la eternidad en un frasco. Sus notas de incienso, rosa de Taif y madera de cachemira crean una experiencia olfativa única.',n1:'Rosa de Taif',n2:'Incienso',n3:'Madera de cachemira',vol:'75ml · Extrait · Ed. Limitada',intensidad:'Alta',duracion:'14–20 horas',ocasion:'Colección · Eventos · Regalo',old:'$109.990',price:'$79.990',disc:'27% OFF',name:'Eternal Peak',rawPrice:79990},
+  'Cumbre Dorada':{cat:'Colección',img:'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=700&h=900&fit=crop&crop=right&q=90',badge:'27% OFF',stars:'★★★★★',reviews:'(76 compras)',desc:'Cumbre Dorada es la fragancia más exclusiva de nuestra colección. Numerada y firmada, combina azafrán iraní, rosa búlgara y ámbar gris en una composición de lujo absoluto.',n1:'Azafrán iraní',n2:'Rosa búlgara',n3:'Ámbar gris',vol:'50ml · Extrait · Numerada',intensidad:'Muy alta',duracion:'20–26 horas',ocasion:'Lujo extremo · Colección · Regalo',old:'$129.990',price:'$94.990',disc:'27% OFF',name:'Cumbre Dorada',rawPrice:94990},
+  'Alpine Exclusive':{cat:'Colección',img:'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=700&h=900&fit=crop&crop=top&q=90',badge:'26% OFF',stars:'★★★★★',reviews:'(84 compras)',desc:'Alpine Exclusive nace de la inspiración en los Alpes suizos. Una fragancia limpia, mineral y majestuosa con pino negro, lavanda alpina y un fondo de ámbar amaderado.',n1:'Pino negro',n2:'Lavanda alpina',n3:'Ámbar amaderado',vol:'100ml · Extrait · Numerada',intensidad:'Alta',duracion:'12–16 horas',ocasion:'Colección · Lujo · Invierno',old:'$94.990',price:'$69.990',disc:'26% OFF',name:'Alpine Exclusive',rawPrice:69990}
 };
-function calcSet() {
-  const v1 = +document.getElementById('cot1').value;
-  const v2 = +document.getElementById('cot2').value;
-  const v3 = +document.getElementById('cot3').value;
-  if (!v1 || !v2) { document.getElementById('cotResult').classList.remove('show'); return; }
-  const count = v3 ? 3 : 2;
-  const subtotal = v1 + v2 + v3;
-  const disc = count === 3 ? 0.15 : 0.10;
-  const total = Math.round(subtotal * (1 - disc));
-  const saving = subtotal - total;
-  let items = `· ${perfumes[v1]}: $${v1.toLocaleString('es-CL')}<br>· ${perfumes[v2]}: $${v2.toLocaleString('es-CL')}`;
-  if (v3) items += `<br>· ${perfumes[v3]}: $${v3.toLocaleString('es-CL')}`;
-  document.getElementById('cotItems').innerHTML = items;
-  document.getElementById('cotTotal').textContent = `Total: $${total.toLocaleString('es-CL')}`;
-  document.getElementById('cotSaving').textContent = `Ahorras $${saving.toLocaleString('es-CL')} con el descuento de ${disc*100}%`;
-  document.getElementById('cotResult').classList.add('show');
-  window._cotSet = { items, total, saving, count };
+let currentProd=null;
+function openProd(name){
+  const p=PRODUCTOS[name];if(!p)return;
+  currentProd=p;
+  document.getElementById('pmBadge').textContent=p.badge;
+  document.getElementById('pmImg').src=p.img;
+  document.getElementById('pmImg').alt=p.name;
+  document.getElementById('pmCat').textContent=p.cat;
+  document.getElementById('pmName').textContent=p.name;
+  document.getElementById('pmStars').textContent=p.stars;
+  document.getElementById('pmReviews').textContent=p.reviews;
+  document.getElementById('pmDesc').textContent=p.desc;
+  document.getElementById('pmN1').textContent=p.n1;
+  document.getElementById('pmN2').textContent=p.n2;
+  document.getElementById('pmN3').textContent=p.n3;
+  document.getElementById('pmVol').textContent=p.vol;
+  document.getElementById('pmIntensidad').textContent=p.intensidad;
+  document.getElementById('pmDuracion').textContent=p.duracion;
+  document.getElementById('pmOcasion').textContent=p.ocasion;
+  document.getElementById('pmOld').textContent=p.old;
+  document.getElementById('pmPrice').childNodes[0].textContent=p.price;
+  document.getElementById('pmDisc').textContent=' · '+p.disc;
+  const btn=document.getElementById('pmAddBtn');
+  btn.textContent='🛒 Agregar al carrito';btn.classList.remove('added');
+  document.getElementById('prodModal').classList.add('open');
+  document.body.style.overflow='hidden';
 }
-function pedirSet() {
-  if (!window._cotSet) return;
-  const txt = `Hola Maison Noir, quiero pedir un set de ${window._cotSet.count} fragancias:\n${window._cotSet.items.replace(/<br>/g,'\n')}\nTotal con descuento: $${window._cotSet.total.toLocaleString('es-CL')}`;
-  window.open('https://wa.me/56939665163?text=' + encodeURIComponent(txt), '_blank');
+function closeProd(){document.getElementById('prodModal').classList.remove('open');document.body.style.overflow='';}
+function prodAddCart(){
+  if(!currentProd)return;
+  addCart(currentProd.name,currentProd.rawPrice,document.getElementById('pmAddBtn'));
+  const btn=document.getElementById('pmAddBtn');
+  btn.textContent='✓ Agregado';btn.classList.add('added');
+  setTimeout(()=>{btn.innerHTML='🛒 Agregar al carrito';btn.classList.remove('added');},1500);
 }
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeProd();});
 
-// CONTACTO WHATSAPP
-function enviarWA() {
-  const n = document.getElementById('fn').value.trim();
-  const t = document.getElementById('ft').value.trim();
-  const e = document.getElementById('fe').value.trim();
-  const p = document.getElementById('fperf').value;
-  const m = document.getElementById('fmsg').value.trim();
-  if (!n || !t) { alert('Por favor ingresa tu nombre y teléfono.'); return; }
-  const txt = `Hola Maison Noir, soy ${n}.\nTeléfono: ${t}\nEmail: ${e}\nFragrancia de interés: ${p||'Sin especificar'}\n\n${m}`;
-  window.open('https://wa.me/56939665163?text=' + encodeURIComponent(txt), '_blank');
-}
+// ── CURSOR PERSONALIZADO ──
+(function(){
+  const cur=document.getElementById('cursor');
+  const ring=document.getElementById('cursorRing');
+  if(!cur||!ring)return;
+  if(window.matchMedia('(hover:none),(pointer:coarse)').matches){cur.remove();ring.remove();return;}
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+  (function animRing(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+  document.querySelectorAll('a,button,[onclick]').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.2)';ring.style.transform='translate(-50%,-50%) scale(1.5)';ring.style.borderColor='rgba(184,146,74,.7)';});
+    el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.borderColor='rgba(184,146,74,.45)';});
+  });
+})();
+
 </script>
 </body>
 </html>
