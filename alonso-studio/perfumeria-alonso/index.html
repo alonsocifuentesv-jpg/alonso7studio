@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfumería Alonso | Fragancias exclusivas – Santiago de Chile</title>
+<meta name="description" content="Perfumería Alonso — Fragancias exclusivas para hombre, mujer y niños en Av. Pajaritos, Santiago. Compra online, retira en tienda o con delivery.">
+<meta name="keywords" content="perfumería Santiago, perfumes hombre, perfumes mujer, fragancias Chile, perfumería Pajaritos">
+<meta property="og:title" content="Perfumería Alonso | Santiago de Chile"/>
+<meta property="og:description" content="Fragancias exclusivas para toda la familia. Agenda, catálogo y cotizador online."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a href="https://wa.me/56939665163?text=Hola%2C%20tengo%20una%20consulta%20sobre%20Perfumer%C3%ADa%20Alonso" target="_blank" class="wa-float"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer-head"><h3>🛒 Tu cotización</h3><button class="cart-close" onclick="toggleCart()">×</button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty">Tu carrito está vacío.<br>Agrega productos del catálogo.</div></div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-total"><span>Total</span><span id="cartTotalPrice">$0</span></div>
+    <button class="btn-checkout" onclick="openCheckout()">🔒 Ir al pago →</button>
+  </div>
+</div>
+
+<div class="ck-modal" id="ckModal">
+  <div class="ck-backdrop" onclick="closeCheckout()"></div>
+  <div class="ck-box">
+    <div class="ck-head">
+      <h3 id="ckTitle">Datos de entrega</h3>
+      <button class="ck-close" onclick="closeCheckout()">×</button>
+    </div>
+    <div class="ck-body">
+      <div class="ck-steps">
+        <div class="ck-step active" id="cks1">1. Entrega</div>
+        <div class="ck-step" id="cks2">2. Pago</div>
+        <div class="ck-step" id="cks3">3. Confirmación</div>
+      </div>
+      <div class="ck-panel show" id="ckp1">
+        <div class="ck-2col">
+          <div class="ck-field"><label class="ck-label">Nombre</label><input class="ck-inp" id="ck_nombre" placeholder="Ej: Alonso" type="text"></div>
+          <div class="ck-field"><label class="ck-label">Apellido</label><input class="ck-inp" id="ck_apellido" placeholder="Ej: Cifuentes" type="text"></div>
+        </div>
+        <div class="ck-field"><label class="ck-label">Correo electrónico</label><input class="ck-inp" id="ck_email" placeholder="tucorreo@gmail.com" type="email"></div>
+        <div class="ck-field"><label class="ck-label">Teléfono</label><input class="ck-inp" id="ck_tel" placeholder="+56 9 XXXX XXXX" type="tel"></div>
+        <div class="ck-field"><label class="ck-label">Dirección de entrega</label><input class="ck-inp" id="ck_dir" placeholder="Ej: Av. Pajaritos 1234, Dpto 5B" type="text"></div>
+        <div class="ck-2col">
+          <div class="ck-field"><label class="ck-label">Ciudad</label><input class="ck-inp" id="ck_ciudad" placeholder="Santiago" type="text"></div>
+          <div class="ck-field"><label class="ck-label">Región</label>
+            <select class="ck-inp" id="ck_region">
+              <option value="">Selecciona...</option>
+              <option>Metropolitana</option><option>Valparaíso</option><option>Biobío</option>
+              <option>Araucanía</option><option>Los Lagos</option><option>Maule</option>
+              <option>O'Higgins</option><option>Antofagasta</option><option>Coquimbo</option>
+            </select>
+          </div>
+        </div>
+        <div class="ck-nav"><button class="ck-btn-next" onclick="ckNext(2)">Continuar al pago →</button></div>
+      </div>
+      <div class="ck-panel" id="ckp2">
+        <div class="ck-summary" id="ckSummary"></div>
+        <div class="card-brand">
+          <div class="card-brand-ic">VISA</div>
+          <div class="card-brand-ic">MC</div>
+          <div class="card-brand-ic">AMEX</div>
+          <div class="card-brand-ic">Débito</div>
+        </div>
+        <div class="secure-badge">🔒 Pago 100% seguro con encriptación SSL</div>
+        <div class="ck-field"><label class="ck-label">Número de tarjeta</label><input class="ck-inp" id="ck_card" placeholder="4242 4242 4242 4242" maxlength="19" oninput="fmtCkCard(this)"></div>
+        <div class="ck-2col">
+          <div class="ck-field"><label class="ck-label">Vencimiento</label><input class="ck-inp" id="ck_exp" placeholder="MM/AA" maxlength="5" oninput="fmtExp(this)"></div>
+          <div class="ck-field"><label class="ck-label">CVV</label><input class="ck-inp" id="ck_cvv" placeholder="123" maxlength="3" type="password"></div>
+        </div>
+        <div class="ck-field"><label class="ck-label">Nombre del titular</label><input class="ck-inp" id="ck_titular" placeholder="Como aparece en la tarjeta"></div>
+        <div class="ck-nav">
+          <button class="ck-btn-back" onclick="ckNext(1)">← Volver</button>
+          <button class="ck-btn-pay" onclick="ckPagar()">Pagar <span id="ckPayAmt">$0</span> →</button>
+        </div>
+      </div>
+      <div class="ck-panel" id="ckp3">
+        <div class="ck-success">
+          <div class="ck-success-icon">🎉</div>
+          <div class="ck-success-title">¡Pago exitoso!</div>
+          <p class="ck-success-sub">Tu pedido fue confirmado. Recibirás un correo de confirmación y te avisaremos cuando tu fragancia esté en camino.</p>
+          <div class="ck-order-code" id="ckOrderCode">PA-000000</div>
+          <div class="ck-delivery-box" id="ckDelivBox"></div>
+          <button class="ck-btn-next" onclick="closeCheckout()">Volver a la tienda →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <svg class="nav-logo-icon" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="9" y="1" width="8" height="4" rx="2" fill="#b8924a"/>
+      <rect x="7" y="5" width="12" height="2" rx="1" fill="#b8924a"/>
+      <path d="M5 7h16v14a4 4 0 01-4 4H9a4 4 0 01-4-4V7z" fill="#110c07" stroke="#b8924a" stroke-width="1.2"/>
+      <ellipse cx="13" cy="14" rx="3.5" ry="4.5" fill="none" stroke="#e8d5a3" stroke-width="1"/>
+      <line x1="13" y1="10" x2="13" y2="18" stroke="#e8d5a3" stroke-width=".8"/>
+    </svg>
+    <span class="nav-logo-word">Perfumería <em>Alonso</em></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#catalogo">Catálogo</a></li>
+    <li><a href="#agenda">Reservar</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#blog">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="toggleCart()">🛒<span class="cart-count" id="cartCount" style="display:none;">0</span></button>
+    <a href="#agenda" class="nav-cta">Reservar →</a>
+  </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#catalogo" onclick="closeMobile()">Catálogo</a>
+  <a href="#agenda" onclick="closeMobile()">Reservar</a>
+  <a href="#galeria" onclick="closeMobile()">Galería</a>
+  <a href="#blog" onclick="closeMobile()">Blog</a>
+</div>
+
+<section class="hero" id="inicio">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">✦ Pajaritos · Santiago de Chile</div>
+    <span class="hero-eyebrow">Fragancias exclusivas — Est. 2017</span>
+    <h1 class="hero-title">El aroma que<strong>te hace único.</strong></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Más de 200 fragancias para hombre, mujer y niños. Asesoría personalizada, agenda online y envío a todo Chile.</p>
+    <div class="hero-btns">
+      <a href="#catalogo" class="btn-sky">Explorar catálogo</a>
+      <a href="#agenda" class="btn-ghost">Agendar visita</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span class="marquee-item"><span>✦</span> CHANEL</span>
+    <span class="marquee-item"><span>✦</span> DIOR</span>
+    <span class="marquee-item"><span>✦</span> TOM FORD</span>
+    <span class="marquee-item"><span>✦</span> CREED</span>
+    <span class="marquee-item"><span>✦</span> VERSACE</span>
+    <span class="marquee-item"><span>✦</span> GIVENCHY</span>
+    <span class="marquee-item"><span>✦</span> YSL</span>
+    <span class="marquee-item"><span>✦</span> AMOUAGE</span>
+    <span class="marquee-item"><span>✦</span> HERMÈS</span>
+    <span class="marquee-item"><span>✦</span> XERJOFF</span>
+    <span class="marquee-item"><span>✦</span> MAISON MARGIELA</span>
+    <span class="marquee-item"><span>✦</span> CHANEL</span>
+    <span class="marquee-item"><span>✦</span> DIOR</span>
+    <span class="marquee-item"><span>✦</span> TOM FORD</span>
+    <span class="marquee-item"><span>✦</span> CREED</span>
+    <span class="marquee-item"><span>✦</span> VERSACE</span>
+    <span class="marquee-item"><span>✦</span> GIVENCHY</span>
+    <span class="marquee-item"><span>✦</span> YSL</span>
+    <span class="marquee-item"><span>✦</span> AMOUAGE</span>
+    <span class="marquee-item"><span>✦</span> HERMÈS</span>
+    <span class="marquee-item"><span>✦</span> XERJOFF</span>
+    <span class="marquee-item"><span>✦</span> MAISON MARGIELA</span>
+  </div>
+</div>
+
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-box reveal"><span class="stat-num"><span class="count" data-target="200">0</span>+</span><span class="stat-lbl">Fragancias</span></div>
+    <div class="stat-box reveal"><span class="stat-num"><span class="count" data-target="8">0</span></span><span class="stat-lbl">Años en Chile</span></div>
+    <div class="stat-box reveal"><span class="stat-badge">100% Originales</span><span class="stat-lbl">Autenticidad garantizada</span></div>
+    <div class="stat-box reveal"><span class="stat-badge">Todo Chile</span><span class="stat-lbl">Envíos rápidos</span></div>
+    <div class="stat-box reveal"><span class="stat-num"><span class="count" data-target="24">0</span>/7</span><span class="stat-lbl">Agenda online</span></div>
+  </div>
+</section>
+
+<section class="sec" id="catalogo" style="background:var(--gray);">
+  <div class="si">
+    <div class="sh reveal"><span class="st">Catálogo</span><h2 class="stitle">Encuentra tu <em>fragancia perfecta</em></h2><div class="sh-line"></div></div>
+    <div class="filtros-bar reveal">
+      <button class="filtro-btn active" data-f="all">Todos</button>
+      <button class="filtro-btn" data-f="hombre">Hombre</button>
+      <button class="filtro-btn" data-f="mujer">Mujer</button>
+      <button class="filtro-btn" data-f="nino">Niño</button>
+      <button class="filtro-btn" data-f="nina">Niña</button>
+      <button class="filtro-btn" data-f="coleccion">Colección</button>
+      <input class="search-input" id="searchInput" placeholder="🔍 Buscar fragancia..." oninput="filterCat()">
+    </div>
+    <div class="cat-grid" id="catGrid">
+      <div class="cat-card" data-cat="hombre" onclick="openProd('Aqua Montana')" style="cursor:pointer;">
+        <div class="cat-badge">29% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=400&fit=crop&q=85" alt="Aqua Montana"/>
+        <div class="cat-body"><div class="cat-cat">Hombre</div><div class="cat-name">Aqua Montana</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(52 compras)</span></div>
+          <div class="cat-vol">100ml · Eau de Parfum</div>
+          <div class="cat-prices"><div class="cat-price-old">$41.990</div><div class="cat-price">$29.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Aqua Montana',29990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="hombre" onclick="openProd('Black Forest')" style="cursor:pointer;">
+        <div class="cat-badge">30% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=400&h=400&fit=crop&q=85" alt="Black Forest"/>
+        <div class="cat-body"><div class="cat-cat">Hombre</div><div class="cat-name">Black Forest</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(41 compras)</span></div>
+          <div class="cat-vol">75ml · Extrait de Parfum</div>
+          <div class="cat-prices"><div class="cat-price-old">$49.990</div><div class="cat-price">$34.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Black Forest',34990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="hombre" onclick="openProd('El Conquistador')" style="cursor:pointer;">
+        <div class="cat-badge">28% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&h=400&fit=crop&q=85" alt="El Conquistador"/>
+        <div class="cat-body"><div class="cat-cat">Hombre</div><div class="cat-name">El Conquistador</div>
+          <div class="cat-stars"><span class="cat-star">★★★★☆</span><span class="cat-reviews">(38 compras)</span></div>
+          <div class="cat-vol">100ml · Eau de Toilette</div>
+          <div class="cat-prices"><div class="cat-price-old">$34.990</div><div class="cat-price">$24.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('El Conquistador',24990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="hombre" onclick="openProd('Dark Summit')" style="cursor:pointer;">
+        <div class="cat-badge">27% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&h=400&fit=crop&q=85" alt="Dark Summit"/>
+        <div class="cat-body"><div class="cat-cat">Hombre</div><div class="cat-name">Dark Summit</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(67 compras)</span></div>
+          <div class="cat-vol">50ml · Extrait de Parfum</div>
+          <div class="cat-prices"><div class="cat-price-old">$54.990</div><div class="cat-price">$39.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Dark Summit',39990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="mujer" onclick="openProd('Rose Blanche')" style="cursor:pointer;">
+        <div class="cat-badge">28% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&h=400&fit=crop&q=85" alt="Rose Blanche"/>
+        <div class="cat-body"><div class="cat-cat">Mujer</div><div class="cat-name">Rose Blanche</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(89 compras)</span></div>
+          <div class="cat-vol">100ml · Eau de Parfum</div>
+          <div class="cat-prices"><div class="cat-price-old">$38.990</div><div class="cat-price">$27.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Rose Blanche',27990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="mujer" onclick="openProd('Celeste Infinita')" style="cursor:pointer;">
+        <div class="cat-badge">27% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&h=400&fit=crop&q=85" alt="Celeste Infinita"/>
+        <div class="cat-body"><div class="cat-cat">Mujer</div><div class="cat-name">Celeste Infinita</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(74 compras)</span></div>
+          <div class="cat-vol">75ml · Eau de Parfum</div>
+          <div class="cat-prices"><div class="cat-price-old">$44.990</div><div class="cat-price">$32.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Celeste Infinita',32990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="mujer" onclick="openProd('La Femme')" style="cursor:pointer;">
+        <div class="cat-badge">28% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=400&h=400&fit=crop&q=85" alt="La Femme"/>
+        <div class="cat-body"><div class="cat-cat">Mujer</div><div class="cat-name">La Femme</div>
+          <div class="cat-stars"><span class="cat-star">★★★★☆</span><span class="cat-reviews">(45 compras)</span></div>
+          <div class="cat-vol">100ml · Extrait de Parfum</div>
+          <div class="cat-prices"><div class="cat-price-old">$39.990</div><div class="cat-price">$28.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('La Femme',28990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="mujer" onclick="openProd('Aurora')" style="cursor:pointer;">
+        <div class="cat-badge">29% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=400&fit=crop&q=85" alt="Aurora"/>
+        <div class="cat-body"><div class="cat-cat">Mujer</div><div class="cat-name">Aurora</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(61 compras)</span></div>
+          <div class="cat-vol">50ml · Eau de Parfum</div>
+          <div class="cat-prices"><div class="cat-price-old">$41.990</div><div class="cat-price">$29.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Aurora',29990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="nino" onclick="openProd('Little Explorer')" style="cursor:pointer;">
+        <div class="cat-badge">25% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=400&fit=crop&crop=right&q=85" alt="Little Explorer"/>
+        <div class="cat-body"><div class="cat-cat">Niño</div><div class="cat-name">Little Explorer</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(33 compras)</span></div>
+          <div class="cat-vol">50ml · Colonia</div>
+          <div class="cat-prices"><div class="cat-price-old">$19.990</div><div class="cat-price">$14.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Little Explorer',14990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="nino" onclick="openProd('Ocean Boy')" style="cursor:pointer;">
+        <div class="cat-badge">26% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&h=400&fit=crop&crop=left&q=85" alt="Ocean Boy"/>
+        <div class="cat-body"><div class="cat-cat">Niño</div><div class="cat-name">Ocean Boy</div>
+          <div class="cat-stars"><span class="cat-star">★★★★☆</span><span class="cat-reviews">(31 compras)</span></div>
+          <div class="cat-vol">50ml · Colonia</div>
+          <div class="cat-prices"><div class="cat-price-old">$18.990</div><div class="cat-price">$13.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Ocean Boy',13990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="nino" onclick="openProd('Sky Captain')" style="cursor:pointer;">
+        <div class="cat-badge">26% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&h=400&fit=crop&crop=bottom&q=85" alt="Sky Captain"/>
+        <div class="cat-body"><div class="cat-cat">Niño</div><div class="cat-name">Sky Captain</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(44 compras)</span></div>
+          <div class="cat-vol">75ml · Eau de Toilette</div>
+          <div class="cat-prices"><div class="cat-price-old">$22.990</div><div class="cat-price">$16.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Sky Captain',16990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="nino" onclick="openProd('Adventure')" style="cursor:pointer;">
+        <div class="cat-badge">28% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=400&h=400&fit=crop&crop=top&q=85" alt="Adventure"/>
+        <div class="cat-body"><div class="cat-cat">Niño</div><div class="cat-name">Adventure</div>
+          <div class="cat-stars"><span class="cat-star">★★★★☆</span><span class="cat-reviews">(36 compras)</span></div>
+          <div class="cat-vol">50ml · Colonia</div>
+          <div class="cat-prices"><div class="cat-price-old">$17.990</div><div class="cat-price">$12.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Adventure',12990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="nina" onclick="openProd('Sweet Princess')" style="cursor:pointer;">
+        <div class="cat-badge">25% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&h=400&fit=crop&crop=right&q=85" alt="Sweet Princess"/>
+        <div class="cat-body"><div class="cat-cat">Niña</div><div class="cat-name">Sweet Princess</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(57 compras)</span></div>
+          <div class="cat-vol">50ml · Colonia</div>
+          <div class="cat-prices"><div class="cat-price-old">$19.990</div><div class="cat-price">$14.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Sweet Princess',14990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="nina" onclick="openProd('Little Rose')" style="cursor:pointer;">
+        <div class="cat-badge">26% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&h=400&fit=crop&crop=right&q=85" alt="Little Rose"/>
+        <div class="cat-body"><div class="cat-cat">Niña</div><div class="cat-name">Little Rose</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(42 compras)</span></div>
+          <div class="cat-vol">50ml · Colonia</div>
+          <div class="cat-prices"><div class="cat-price-old">$18.990</div><div class="cat-price">$13.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Little Rose',13990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="nina" onclick="openProd('Magic Butterfly')" style="cursor:pointer;">
+        <div class="cat-badge">26% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?w=400&h=400&fit=crop&crop=right&q=85" alt="Magic Butterfly"/>
+        <div class="cat-body"><div class="cat-cat">Niña</div><div class="cat-name">Magic Butterfly</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(39 compras)</span></div>
+          <div class="cat-vol">75ml · Eau de Toilette</div>
+          <div class="cat-prices"><div class="cat-price-old">$22.990</div><div class="cat-price">$16.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Magic Butterfly',16990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="nina" onclick="openProd('Dream Garden')" style="cursor:pointer;">
+        <div class="cat-badge">28% OFF</div><div class="cat-online">Oferta online</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=400&fit=crop&crop=right&q=85" alt="Dream Garden"/>
+        <div class="cat-body"><div class="cat-cat">Niña</div><div class="cat-name">Dream Garden</div>
+          <div class="cat-stars"><span class="cat-star">★★★★☆</span><span class="cat-reviews">(34 compras)</span></div>
+          <div class="cat-vol">50ml · Colonia</div>
+          <div class="cat-prices"><div class="cat-price-old">$17.990</div><div class="cat-price">$12.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Dream Garden',12990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="coleccion" onclick="openProd('Summit Reserve')" style="cursor:pointer;">
+        <div class="cat-badge">28% OFF</div><div class="cat-online">Ed. Limitada</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=400&h=400&fit=crop&q=85" alt="Summit Reserve"/>
+        <div class="cat-body"><div class="cat-cat">Colección</div><div class="cat-name">Summit Reserve</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(118 compras)</span></div>
+          <div class="cat-vol">100ml · Extrait · Ed. Limitada</div>
+          <div class="cat-prices"><div class="cat-price-old">$124.990</div><div class="cat-price">$89.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Summit Reserve',89990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="coleccion" onclick="openProd('Eternal Peak')" style="cursor:pointer;">
+        <div class="cat-badge">27% OFF</div><div class="cat-online">Ed. Limitada</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=400&fit=crop&crop=left&q=85" alt="Eternal Peak"/>
+        <div class="cat-body"><div class="cat-cat">Colección</div><div class="cat-name">Eternal Peak</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(93 compras)</span></div>
+          <div class="cat-vol">75ml · Extrait · Ed. Limitada</div>
+          <div class="cat-prices"><div class="cat-price-old">$109.990</div><div class="cat-price">$79.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Eternal Peak',79990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="coleccion" onclick="openProd('Cumbre Dorada')" style="cursor:pointer;">
+        <div class="cat-badge">27% OFF</div><div class="cat-online">Ed. Limitada</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&h=400&fit=crop&crop=right&q=85" alt="Cumbre Dorada"/>
+        <div class="cat-body"><div class="cat-cat">Colección</div><div class="cat-name">Cumbre Dorada</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(76 compras)</span></div>
+          <div class="cat-vol">50ml · Extrait · Numerada</div>
+          <div class="cat-prices"><div class="cat-price-old">$129.990</div><div class="cat-price">$94.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Cumbre Dorada',94990,this)">🛒 Agregar al carrito</button></div></div>
+
+      <div class="cat-card" data-cat="coleccion" onclick="openProd('Alpine Exclusive')" style="cursor:pointer;">
+        <div class="cat-badge">26% OFF</div><div class="cat-online">Ed. Limitada</div>
+        <img class="cat-img" src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&h=400&fit=crop&crop=top&q=85" alt="Alpine Exclusive"/>
+        <div class="cat-body"><div class="cat-cat">Colección</div><div class="cat-name">Alpine Exclusive</div>
+          <div class="cat-stars"><span class="cat-star">★★★★★</span><span class="cat-reviews">(84 compras)</span></div>
+          <div class="cat-vol">100ml · Extrait · Numerada</div>
+          <div class="cat-prices"><div class="cat-price-old">$94.990</div><div class="cat-price">$69.990</div></div>
+          <button class="btn-add" onclick="event.stopPropagation();addCart('Alpine Exclusive',69990,this)">🛒 Agregar al carrito</button></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="banner-wa">
+  <div class="banner-wa-inner">
+    <div class="banner-wa-txt">
+      <strong>¿Tienes una duda antes de comprar?</strong>
+      Escríbenos por WhatsApp para consultas. Para tus pedidos, usa nuestra tienda online — es más rápido y seguro.
+    </div>
+    <div class="banner-wa-btns">
+      <a href="https://wa.me/56939665163?text=Hola%2C%20tengo%20una%20consulta%20sobre%20un%20perfume" target="_blank" class="bwa-link bwa-green">💬 Consultas WhatsApp</a>
+      <a href="#catalogo" class="bwa-link bwa-sky">🛍️ Comprar en la web</a>
+    </div>
+  </div>
+</div>
+
+<section class="sec" id="agenda" style="background:var(--gray);">
+  <div class="si">
+    <div class="sh reveal"><span class="st">Reservas 24/7</span><h2 class="stitle">Agenda tu <em>visita</em></h2><div class="sh-line"></div></div>
+    <div class="agenda-box reveal">
+      <div class="agenda-head"><h3>Sistema de reservas online</h3><span class="agenda-badge">⚡ Confirmación inmediata</span></div>
+      <div class="steps-bar" id="stepsBar">
+        <div class="si2 active" id="si1"><div class="sn">1</div><span class="sl">Asesor</span></div>
+        <div class="sline"></div>
+        <div class="si2" id="si2"><div class="sn">2</div><span class="sl">Día y hora</span></div>
+        <div class="sline"></div>
+        <div class="si2" id="si3"><div class="sn">3</div><span class="sl">Pago</span></div>
+        <div class="sline"></div>
+        <div class="si2" id="si4"><div class="sn">✓</div><span class="sl">Listo</span></div>
+      </div>
+      <div class="ab" id="step1">
+        <div class="slabel">Elige tu asesor</div>
+        <div class="barber-grid">
+          <button class="barber-btn" onclick="selBarber(0,this)"><img class="bavatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" alt="Alonso"/><div><div class="bname">Alonso Cifuentes</div><div class="bspec">Perfumes hombre & colección</div></div></button>
+          <button class="barber-btn" onclick="selBarber(1,this)"><img class="bavatar" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&q=80" alt="Studio"/><div><div class="bname">Alonso Studio</div><div class="bspec">Perfumes mujer & niños</div></div></button>
+        </div>
+        <div class="slabel" style="margin-top:16px;">Tipo de atención</div>
+        <div class="serv-grid">
+          <button class="serv-opt" onclick="selServ(0,this)"><div class="son">Asesoría personal</div><div class="soi">⏱ 30 min</div><div class="sop">Gratis</div></button>
+          <button class="serv-opt" onclick="selServ(1,this)"><div class="son">Prueba de aromas</div><div class="soi">⏱ 45 min</div><div class="sop">$5.000</div></button>
+          <button class="serv-opt" onclick="selServ(2,this)"><div class="son">Set personalizado</div><div class="soi">⏱ 60 min</div><div class="sop">$8.000</div></button>
+        </div>
+        <div class="anav"><span></span><button class="btn-next" id="btn1" onclick="goStep(2)" disabled>Siguiente →</button></div>
+      </div>
+      <div class="ab" id="step2" style="display:none;">
+        <div class="slabel">Elige el día</div>
+        <div class="cal-days" id="calDays"></div>
+        <div id="slotsWrap" style="display:none;"><div class="slabel">Horarios disponibles</div><div class="slots-grid" id="slotsGrid"></div></div>
+        <div class="anav"><button class="btn-back" onclick="goStep(1)">← Volver</button><button class="btn-next" id="btn2" onclick="goStep(3)" disabled>Siguiente →</button></div>
+      </div>
+      <div class="ab" id="step3" style="display:none;">
+        <div class="slabel">Resumen</div>
+        <div class="res-box" id="resBox"></div>
+        <div class="slabel" style="margin-bottom:10px;">Forma de pago</div>
+        <div class="pago-grid">
+          <div class="pago-opt" onclick="selPago(0,this)"><div class="pot">💳 Abono 50%</div><div class="poa" id="pagoA">$0</div><div class="pon">Resto al llegar</div></div>
+          <div class="pago-opt" onclick="selPago(1,this)"><div class="pot">✅ Pago total</div><div class="poa" id="pagoT">$0</div><div class="pon">5% de descuento</div></div>
+        </div>
+        <div class="card-sim" id="cardSim">
+          <input class="card-inp" placeholder="4242 4242 4242 4242" maxlength="19" oninput="fmtCard(this)">
+          <div class="card-row"><input class="card-inp" placeholder="MM/AA" maxlength="5"><input class="card-inp" placeholder="CVV" maxlength="3"></div>
+        </div>
+        <div class="anav"><button class="btn-back" onclick="goStep(2)">← Volver</button><button class="btn-next" id="btn3" onclick="confirmar()" disabled>Confirmar y pagar →</button></div>
+      </div>
+      <div class="ab" id="step4" style="display:none;">
+        <div class="conf-box">
+          <div class="conf-icon">🎉</div>
+          <div class="conf-title">¡Reserva confirmada!</div>
+          <p class="conf-sub">Te esperamos en Perfumería Alonso. Recibirás un recordatorio automático 24 hrs antes.</p>
+          <div class="conf-code" id="confCode">PA-000000</div>
+          <div class="conf-det" id="confDet"></div>
+          <button class="btn-sky" style="border:none;cursor:pointer;font-family:'Inter',sans-serif;" onclick="resetAgenda()">Hacer otra reserva</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="galeria" style="background:var(--dark);padding:64px 48px;">
+  <div class="si">
+    <div class="sh reveal"><span class="st" style="color:rgba(232,213,163,.5);">Video galería</span><h2 class="stitle" style="color:#fff;">Conoce nuestra <em style="color:var(--gold2)">tienda</em></h2><p class="ssub" style="color:rgba(255,255,255,.4);">Recorrido virtual · Perfumes exclusivos · Detrás de escena</p></div>
+    <div class="galeria-grid reveal">
+      <div class="gal-item wide">
+        <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=900&h=506&fit=crop&q=85" alt="Video tienda"/>
+        <div class="gal-type">🎬 Destacado</div>
+        <div class="gal-overlay">
+          <div class="gal-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="gal-duration">2:34</div>
+        </div>
+        <div class="gal-title">Tour completo por Perfumería Alonso — Santiago</div>
+      </div>
+      <div class="gal-item sq">
+        <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500&h=500&fit=crop&q=85" alt="Video perfume"/>
+        <div class="gal-type">📦 Unboxing</div>
+        <div class="gal-overlay">
+          <div class="gal-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="gal-duration">1:12</div>
+        </div>
+        <div class="gal-title">Summit Reserve — Edición Limitada</div>
+      </div>
+      <div class="gal-item sq">
+        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500&h=500&fit=crop&q=85" alt="Video aromas"/>
+        <div class="gal-type">🌿 Proceso</div>
+        <div class="gal-overlay">
+          <div class="gal-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="gal-duration">0:58</div>
+        </div>
+        <div class="gal-title">Cómo elegir tu fragancia ideal</div>
+      </div>
+      <div class="gal-item sq">
+        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=500&h=500&fit=crop&q=85" alt="Colección mujer"/>
+        <div class="gal-type">👗 Mujer</div>
+        <div class="gal-overlay">
+          <div class="gal-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="gal-duration">1:47</div>
+        </div>
+        <div class="gal-title">Colección Mujer — Primavera 2025</div>
+      </div>
+      <div class="gal-item sq">
+        <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500&h=500&fit=crop&q=85" alt="Colección hombre"/>
+        <div class="gal-type">👔 Hombre</div>
+        <div class="gal-overlay">
+          <div class="gal-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="gal-duration">1:22</div>
+        </div>
+        <div class="gal-title">Dark Summit — El perfume más vendido</div>
+      </div>
+      <div class="gal-item wide">
+        <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=900&h=506&fit=crop&q=85" alt="Behind scenes"/>
+        <div class="gal-type">🎥 BTS</div>
+        <div class="gal-overlay">
+          <div class="gal-play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <div class="gal-duration">3:05</div>
+        </div>
+        <div class="gal-title">Detrás de escena — Sesión fotográfica Colección 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="blog" style="background:var(--gray);">
+  <div class="si">
+    <div class="sh reveal"><span class="st">Blog</span><h2 class="stitle">Consejos y <em>novedades</em></h2></div>
+    <div class="blog-grid">
+      <div class="blog-card reveal">
+        <img class="blog-img" src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&q=80" alt="Blog 1"/>
+        <div class="blog-body">
+          <div class="blog-cat">Guía · Hombre</div>
+          <div class="blog-title">¿Cómo elegir el perfume perfecto para el verano?</div>
+          <p class="blog-excerpt">Los aromas frescos y cítricos dominan la temporada. Te contamos cuáles son los más buscados este año.</p>
+          <div class="blog-full" id="bf0">Los perfumes de verano ideales son los que tienen notas de salida cítricas como limón, bergamota o pomelo. Para el cuerpo y el calor, los amaderados ligeros funcionan muy bien. Evita los orientales pesados en días calurosos. En Perfumería Alonso tenemos más de 30 opciones perfectas para esta temporada.</div>
+          <button class="blog-btn" onclick="toggleBlog(0,this)">Leer más →</button>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <img class="blog-img" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="Blog 2"/>
+        <div class="blog-body">
+          <div class="blog-cat">Guía · Mujer</div>
+          <div class="blog-title">Los 5 perfumes florales que toda mujer debe conocer</div>
+          <p class="blog-excerpt">Desde la rosa hasta el jazmín, los florales nunca pasan de moda. Descubre cuál es el tuyo.</p>
+          <div class="blog-full" id="bf1">Los florales son la familia olfativa más usada en perfumería femenina. La rosa centifolia, el jazmín sambac y la peonía son las notas estrella. En nuestra colección "Mujer" encontrarás desde florales delicados hasta los más intensos, perfectos para el trabajo o una salida especial.</div>
+          <button class="blog-btn" onclick="toggleBlog(1,this)">Leer más →</button>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <img class="blog-img" src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=600&q=80" alt="Blog 3"/>
+        <div class="blog-body">
+          <div class="blog-cat">Colección · Exclusiva</div>
+          <div class="blog-title">Summit Reserve: nuestra edición limitada ya está disponible</div>
+          <p class="blog-excerpt">Solo 200 unidades numeradas. La fragancia más exclusiva de Perfumería Alonso llega este mes.</p>
+          <div class="blog-full" id="bf2">Summit Reserve es nuestra propuesta más ambiciosa: una fragancia construida alrededor del cedro del Atlas, el oud del Medio Oriente y el vetiver de Haití. Solo 200 unidades numeradas disponibles. Puedes reservar la tuya en nuestra sección de Colección o visitándonos en tienda.</div>
+          <button class="blog-btn" onclick="toggleBlog(2,this)">Leer más →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="valores" style="background:var(--dark);padding:56px 48px;">
+  <div class="si">
+    <div class="sh reveal"><span class="st" style="color:rgba(232,213,163,.5);">Por qué elegirnos</span><h2 class="stitle" style="color:#fff;">Lo que nos <em style="color:var(--gold2)">define</em></h2></div>
+    <div class="val-grid">
+      <div class="val-card reveal">
+        <span class="val-icon">💎</span>
+        <span class="val-title">Fragancias 100% originales</span>
+        <p class="val-text">Todos nuestros perfumes son importados directamente de nuestros proveedores certificados. Cada frasco incluye caja original, número de lote y código de autenticidad.</p>
+      </div>
+      <div class="val-card reveal">
+        <span class="val-icon">🚚</span>
+        <span class="val-title">Envíos en 2–3 días hábiles</span>
+        <p class="val-text">Despachamos a todo Chile vía Starken y Chilexpress. Recibirás tu número de seguimiento por correo en cuanto tu pedido salga de nuestra tienda.</p>
+      </div>
+      <div class="val-card reveal">
+        <span class="val-icon">🧴</span>
+        <span class="val-title">Asesoría personalizada</span>
+        <p class="val-text">No vendes un número, te ayudamos a encontrar la fragancia que va contigo. Agenda una visita gratuita de 30 minutos con uno de nuestros especialistas.</p>
+      </div>
+      <div class="val-card reveal">
+        <span class="val-icon">🔒</span>
+        <span class="val-title">Pago 100% seguro</span>
+        <p class="val-text">Tarjetas de crédito, débito y transferencia bancaria con encriptación SSL. Tienes 7 días para hacer cambios si el producto no es lo que esperabas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="porque">
+  <div class="si">
+    <div class="sh reveal"><span class="st">Plan Avanzado</span><h2 class="stitle">Todo lo que <em>incluye</em></h2><div class="sh-line"></div></div>
+    <div class="porq-grid">
+      <div class="porq-card reveal"><div class="porq-icon-wrap"><span class="porq-icon">🤖</span></div><div class="porq-title">Agenda automática 24/7</div><p class="porq-text">Reservas, confirmaciones y recordatorios sin intervención manual.</p></div>
+      <div class="porq-card reveal"><div class="porq-icon-wrap"><span class="porq-icon">🔔</span></div><div class="porq-title">Recordatorios automáticos</div><p class="porq-text">Tu cliente recibe aviso 24 hrs y 1 hr antes. Cero ausencias.</p></div>
+      <div class="porq-card reveal"><div class="porq-icon-wrap"><span class="porq-icon">📧</span></div><div class="porq-title">3 correos corporativos</div><p class="porq-text">tú@perfumeriaalonso.cl para ti y todo tu equipo.</p></div>
+      <div class="porq-card reveal"><div class="porq-icon-wrap"><span class="porq-icon">💳</span></div><div class="porq-title">Pasarela de pagos</div><p class="porq-text">Abono o pago completo online. El dinero llega directo a tu cuenta.</p></div>
+      <div class="porq-card reveal"><div class="porq-icon-wrap"><span class="porq-icon">🔍</span></div><div class="porq-title">SEO optimizado</div><p class="porq-text">Tu negocio aparece en Google. Meta tags, Schema y sitemap incluidos.</p></div>
+      <div class="porq-card reveal"><div class="porq-icon-wrap"><span class="porq-icon">🛡️</span></div><div class="porq-title">Soporte técnico 60 días</div><p class="porq-text">Cambios, ajustes y soporte prioritario los primeros 60 días.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="testimonios" style="background:var(--gray);">
+  <div class="si">
+    <div class="sh reveal"><span class="st">Reseñas</span><h2 class="stitle">Lo que dicen <em>nuestros clientes</em></h2></div>
+    <div class="carousel">
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"El sistema de reserva online es increíble. Agendé en 2 minutos y llegué directo a la asesoría. El perfume que me recomendaron quedó perfecto."</p><div class="test-author"><div class="test-av">FM</div><div><div class="test-name">Felipe Morales</div><div class="test-loc">Maipú · Google</div></div></div></div>
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"Compré el Summit Reserve y quedé enamorada. La atención personalizada hace toda la diferencia. Volvería mil veces."</p><div class="test-author"><div class="test-av">CV</div><div><div class="test-name">Catalina Vega</div><div class="test-loc">Las Condes · Google</div></div></div></div>
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"Compré perfumes para toda la familia usando el cotizador. Llegó todo en 2 días, perfecto. La web es muy fácil de usar."</p><div class="test-author"><div class="test-av">JR</div><div><div class="test-name">Jorge Rojas</div><div class="test-loc">Providencia · Google</div></div></div></div>
+      <div class="test-card reveal"><div class="stars">★★★★★</div><p class="test-text">"Me enviaron un recordatorio el día antes de mi reserva. Eso es profesionalismo. La colección para niños es hermosa."</p><div class="test-author"><div class="test-av">LT</div><div><div class="test-name">Lorena Torres</div><div class="test-loc">Ñuñoa · Google</div></div></div></div>
+    </div>
+    <p class="carousel-hint">← Desliza para ver más →</p>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="si">
+    <div class="sh reveal"><span class="st">FAQ</span><h2 class="stitle">Preguntas <em>frecuentes</em></h2><p class="ssub">Todo lo que necesitas saber antes de hacer tu pedido.</p></div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>¿Cuándo llega mi compra?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a"><p>El despacho tarda entre 2 y 3 días hábiles a la Región Metropolitana, y de 3 a 5 días hábiles a regiones. Una vez despachado recibirás un correo con el número de seguimiento de tu pedido.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>¿Puedo hacer devoluciones o cambios?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a"><p>Sí. Aceptamos cambios o devoluciones dentro de los primeros 7 días desde la recepción del producto, siempre que esté sellado y en su caja original. Escríbenos por WhatsApp para coordinar el proceso.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>¿Cómo sé cuál fragancia me queda bien?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a"><p>Puedes agendar una asesoría personal gratuita de 30 minutos con uno de nuestros especialistas. También ofrecemos prueba de aromas en tienda para que encuentres la fragancia perfecta antes de comprar.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>¿Hacen envíos a todas las regiones de Chile?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a"><p>Sí, hacemos despacho a todo Chile a través de Starken y Chilexpress. El costo de envío a regiones puede variar; durante campañas de oferta ofrecemos envío gratis a todo el país.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>¿Qué métodos de pago aceptan?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a"><p>Aceptamos todas las tarjetas de crédito y débito (Visa, Mastercard, American Express), transferencia bancaria y pago en cuotas sin interés con tarjetas seleccionadas. El pago es 100% seguro con encriptación SSL.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)"><span>¿Los productos son originales y 100% auténticos?</span><span class="faq-ico">+</span></div>
+        <div class="faq-a"><p>Absolutamente. Todos nuestros perfumes son 100% originales, importados directamente de nuestros proveedores certificados. Cada frasco incluye su caja original, número de lote y código de autenticidad.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="prod-modal" id="prodModal">
+  <div class="prod-backdrop" onclick="closeProd()"></div>
+  <div class="prod-box">
+    <div class="prod-img-col">
+      <span class="prod-badge-modal" id="pmBadge">28% OFF</span>
+      <img id="pmImg" src="" alt=""/>
+    </div>
+    <div class="prod-info-col">
+      <button class="prod-close" onclick="closeProd()">×</button>
+      <div class="prod-cat-tag" id="pmCat">Hombre</div>
+      <div class="prod-name-modal" id="pmName">Nombre</div>
+      <div class="prod-stars-modal"><span class="s" id="pmStars">★★★★★</span><span class="r" id="pmReviews">(0 compras)</span></div>
+      <div class="prod-divider"></div>
+      <p class="prod-desc" id="pmDesc"></p>
+      <div class="prod-notas">
+        <div class="prod-nota"><span class="prod-nota-lbl">Salida</span><span class="prod-nota-val" id="pmN1">—</span></div>
+        <div class="prod-nota"><span class="prod-nota-lbl">Corazón</span><span class="prod-nota-val" id="pmN2">—</span></div>
+        <div class="prod-nota"><span class="prod-nota-lbl">Fondo</span><span class="prod-nota-val" id="pmN3">—</span></div>
+      </div>
+      <div class="prod-detalles">
+        <div class="prod-det-row"><span class="prod-det-lbl">Presentación</span><span class="prod-det-val" id="pmVol">—</span></div>
+        <div class="prod-det-row"><span class="prod-det-lbl">Intensidad</span><span class="prod-det-val" id="pmIntensidad">—</span></div>
+        <div class="prod-det-row"><span class="prod-det-lbl">Duración</span><span class="prod-det-val" id="pmDuracion">—</span></div>
+        <div class="prod-det-row"><span class="prod-det-lbl">Ocasión</span><span class="prod-det-val" id="pmOcasion">—</span></div>
+      </div>
+      <div class="prod-prices-modal">
+        <div class="prod-old" id="pmOld">—</div>
+        <div class="prod-price-modal" id="pmPrice">—<span id="pmDisc"></span></div>
+      </div>
+      <div class="prod-actions">
+        <button class="prod-btn-add" id="pmAddBtn" onclick="prodAddCart()">🛒 Agregar al carrito</button>
+        <a class="prod-btn-wa" href="https://wa.me/56939665163?text=Hola%2C%20me%20interesa%20un%20perfume" target="_blank">💬 Consultar</a>
+      </div>
+      <div class="prod-envio">🚚 <span>Envío gratis</span> a todo Chile en compras sobre $29.990</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">Perfumería <span>Alonso</span></div>
+      <p class="footer-desc">Fragancias exclusivas para toda la familia en Av. Pajaritos, Santiago. Agenda online, catálogo completo y envío a todo Chile.</p>
+      <div class="redes">
+        <a href="https://instagram.com/perfumes_alonso" target="_blank" class="red-btn red-ig"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> @perfumes_alonso</a>
+        <a href="https://tiktok.com/@perfumes_alonso" target="_blank" class="red-btn red-tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.16 8.16 0 004.77 1.52V6.76a4.85 4.85 0 01-1-.07z"/></svg> TikTok</a>
+      </div>
+    </div>
+    <div class="fc"><h4>Catálogo</h4><ul><li><a href="#catalogo">Perfumes Hombre</a></li><li><a href="#catalogo">Perfumes Mujer</a></li><li><a href="#catalogo">Perfumes Niño</a></li><li><a href="#catalogo">Perfumes Niña</a></li><li><a href="#catalogo">Colección</a></li></ul></div>
+    <div class="fc"><h4>Tienda</h4><ul><li><a href="#agenda">Reservar asesoría</a></li><li><a href="#galeria">Galería</a></li><li><a href="#blog">Blog</a></li><li><a href="https://wa.me/56939665163">WhatsApp consultas</a></li></ul></div>
+    <div class="fc"><h4>Ubicación</h4><ul><li><a href="#">📍 Av. Pajaritos, Santiago</a></li><li><a href="#">🕐 Lun–Vie: 08:00–19:00</a></li><li><a href="#">🕐 Sáb: 09:00–15:00</a></li><li><a href="#">📞 +56 9 3966 5163</a></li></ul><div class="mapa-embed"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.0!2d-70.7283!3d-33.4566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c3f5c8dedc35%3A0x1234!2sAv.%20Pajaritos%2C%20Santiago!5e0!3m2!1ses!2scl!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Perfumería Alonso · Santiago de Chile · Todos los derechos reservados</span>
+    <a href="https://alonsostudiodigital.com" target="_blank">Diseño: Alonso Studio</a>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
