@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Curso — Alonso Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{--gold:#c9a84c;--dark:#0d0d0d;--white:#fff;--off:#f7f5f0;--gray:#888;--green:#22c55e;--blue:#3b82f6;--red:#ef4444;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--off);color:var(--dark);overflow-x:hidden;}
+
+header{background:var(--dark);padding:20px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;}
+.logo{font-size:1.2rem;font-weight:800;color:var(--white);letter-spacing:2px;}
+.logo span{color:var(--gold);}
+.header-tag{font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);}
+
+.hero{background:var(--dark);padding:80px 40px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.06);}
+.hero-tag{font-size:0.65rem;letter-spacing:6px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px;}
+.hero h1{font-size:clamp(2rem,5vw,4rem);font-weight:800;color:var(--white);line-height:1.1;margin-bottom:16px;}
+.hero h1 em{color:var(--gold);font-style:normal;}
+.hero p{font-size:0.95rem;color:rgba(255,255,255,0.5);max-width:560px;margin:0 auto 32px;line-height:1.7;}
+.progress-bar-wrap{max-width:500px;margin:0 auto;background:rgba(255,255,255,0.08);height:6px;border-radius:3px;}
+.progress-bar{height:6px;background:var(--gold);border-radius:3px;width:0%;transition:width 0.5s;}
+.progress-label{font-size:0.7rem;color:rgba(255,255,255,0.3);margin-top:8px;letter-spacing:2px;}
+
+.nav-curso{display:flex;gap:0;overflow-x:auto;background:var(--white);border-bottom:2px solid rgba(0,0,0,0.06);scrollbar-width:none;position:sticky;top:61px;z-index:99;}
+.nav-curso::-webkit-scrollbar{display:none;}
+.nav-tab{padding:14px 20px;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--gray);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s;text-decoration:none;}
+.nav-tab:hover{color:var(--dark);}
+.nav-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+.container{max-width:860px;margin:0 auto;padding:60px 24px;}
+
+.modulo{display:none;}
+.modulo.active{display:block;}
+
+.mod-header{margin-bottom:48px;}
+.mod-num{font-size:0.65rem;letter-spacing:6px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px;}
+.mod-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;line-height:1.1;margin-bottom:12px;}
+.mod-title em{color:var(--gold);font-style:normal;}
+.mod-desc{font-size:0.95rem;color:var(--gray);line-height:1.7;max-width:640px;}
+
+.card{background:var(--white);border:1px solid rgba(0,0,0,0.07);padding:32px;margin-bottom:24px;}
+.card-title{font-size:1rem;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.card-title .icon{width:32px;height:32px;background:var(--dark);display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;}
+.card p{font-size:0.88rem;color:#444;line-height:1.8;margin-bottom:12px;}
+.card p:last-child{margin-bottom:0;}
+
+.highlight{background:rgba(201,168,76,0.08);border-left:3px solid var(--gold);padding:16px 20px;margin:16px 0;font-size:0.85rem;color:var(--dark);line-height:1.7;}
+.highlight strong{color:var(--gold);}
+
+.code-block{background:#0d0d0d;border-radius:0;padding:20px 24px;margin:16px 0;font-family:'Courier New',monospace;font-size:0.82rem;line-height:1.8;overflow-x:auto;}
+.code-block .cm{color:#666;}
+.code-block .ct{color:#c9a84c;}
+.code-block .cv{color:#7dd3fc;}
+.code-block .cs{color:#86efac;}
+.code-block .cn{color:#f9a8d4;}
+
+.lista{list-style:none;display:flex;flex-direction:column;gap:10px;margin:16px 0;}
+.lista li{font-size:0.87rem;color:#333;line-height:1.6;padding-left:20px;position:relative;}
+.lista li::before{content:'→';position:absolute;left:0;color:var(--gold);font-weight:700;}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+.mini-card{background:var(--off);padding:20px;border:1px solid rgba(0,0,0,0.06);}
+.mini-card strong{display:block;font-size:0.85rem;font-weight:800;margin-bottom:6px;}
+.mini-card p{font-size:0.78rem;color:var(--gray);line-height:1.5;margin:0;}
+
+.badge{display:inline-block;font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;font-weight:800;padding:3px 10px;margin-left:8px;}
+.badge.verde{background:rgba(34,197,94,0.12);color:var(--green);}
+.badge.azul{background:rgba(59,130,246,0.12);color:var(--blue);}
+.badge.rojo{background:rgba(239,68,68,0.12);color:var(--red);}
+.badge.oro{background:rgba(201,168,76,0.12);color:var(--gold);}
+
+.separador{height:1px;background:rgba(0,0,0,0.07);margin:40px 0;}
+
+.check-item{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid rgba(0,0,0,0.05);}
+.check-item:last-child{border-bottom:none;}
+.check-box{width:22px;height:22px;border:2px solid rgba(0,0,0,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;transition:all 0.2s;margin-top:1px;}
+.check-box.done{background:var(--gold);border-color:var(--gold);color:var(--dark);font-size:0.7rem;font-weight:800;}
+.check-text{font-size:0.87rem;color:#333;line-height:1.5;}
+.check-text.done{text-decoration:line-through;color:var(--gray);}
+
+.nav-btns{display:flex;gap:12px;justify-content:space-between;margin-top:48px;padding-top:32px;border-top:1px solid rgba(0,0,0,0.07);}
+.btn-prev,.btn-next{padding:14px 28px;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;cursor:pointer;border:none;transition:all 0.2s;}
+.btn-prev{background:transparent;border:1.5px solid rgba(0,0,0,0.15);color:var(--gray);}
+.btn-prev:hover{border-color:var(--dark);color:var(--dark);}
+.btn-next{background:var(--dark);color:var(--white);}
+.btn-next:hover{background:var(--gold);color:var(--dark);}
+
+.ejemplo-visual{background:var(--dark);padding:24px;margin:16px 0;border:1px solid rgba(255,255,255,0.06);}
+.ejemplo-visual .label{font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;display:block;}
+
+.tabla{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.83rem;}
+.tabla th{background:var(--dark);color:var(--gold);padding:10px 14px;text-align:left;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;}
+.tabla td{padding:10px 14px;border-bottom:1px solid rgba(0,0,0,0.06);color:#333;line-height:1.5;}
+.tabla tr:last-child td{border-bottom:none;}
+.tabla tr:hover td{background:var(--off);}
+
+@media(max-width:768px){
+  header{padding:14px 20px;}
+  .hero{padding:50px 20px;}
+  .nav-tab{padding:12px 14px;font-size:0.62rem;}
+  .container{padding:36px 16px;}
+  .grid2{grid-template-columns:1fr;}
+  .nav-btns{flex-direction:column;}
+  .btn-prev,.btn-next{width:100%;text-align:center;}
+  .card{padding:22px 18px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Alonso<span>Studio</span></div>
+  <div class="header-tag">Curso privado · Solo para ti</div>
+</header>
+
+<div class="hero">
+  <span class="hero-tag">Tu academia personal</span>
+  <h1>Todo lo que necesitas<br>saber para ser <em>el mejor</em></h1>
+  <p>Diseño web, código, negocio y ventas. Lo que toma años aprender en universidades, resumido en lo que realmente importa.</p>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  <div class="progress-label" id="progressLabel">0% completado</div>
+</div>
+
+<div class="nav-curso" id="navCurso">
+  <div class="nav-tab active" onclick="irA(0)">01 · El mundo</div>
+  <div class="nav-tab" onclick="irA(1)">02 · HTML</div>
+  <div class="nav-tab" onclick="irA(2)">03 · CSS</div>
+  <div class="nav-tab" onclick="irA(3)">04 · JavaScript</div>
+  <div class="nav-tab" onclick="irA(4)">05 · Archivos</div>
+  <div class="nav-tab" onclick="irA(5)">06 · IA + tú</div>
+  <div class="nav-tab" onclick="irA(6)">07 · Clientes</div>
+  <div class="nav-tab" onclick="irA(7)">08 · Ventas</div>
+  <div class="nav-tab" onclick="irA(8)">09 · Precio</div>
+  <div class="nav-tab" onclick="irA(9)">10 · Escalar</div>
+</div>
+
+<div class="container">
+
+<!-- MÓDULO 1 -->
+<div class="modulo active" id="mod-0">
+  <div class="mod-header">
+    <span class="mod-num">Módulo 01</span>
+    <h2 class="mod-title">Cómo funciona<br>el <em>mundo del diseño web</em></h2>
+    <p class="mod-desc">Antes de tocar código, entiende el negocio. Qué se vende, quién lo compra y cómo se gana plata de verdad.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🌐</div>Qué es una página web en términos simples</div>
+    <p>Una página web es un archivo de texto con instrucciones especiales. Cuando alguien entra a tu sitio, su navegador (Chrome, Safari) lee ese archivo y lo convierte en lo visual que ves en pantalla.</p>
+    <p>No hay magia. Es texto que el navegador interpreta.</p>
+    <div class="highlight">
+      <strong>Analogía:</strong> Una página web es como una receta de cocina. El HTML es la lista de ingredientes, el CSS es cómo presentar el plato, y el JavaScript es el cocinero que hace cosas en tiempo real.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">💡</div>Qué diferencia a un buen diseñador web de uno malo</div>
+    <div class="grid2">
+      <div class="mini-card">
+        <strong>❌ El malo</strong>
+        <p>Usa templates, copia código sin entender, entrega tarde, no explica qué hizo, no puede hacer cambios solo.</p>
+      </div>
+      <div class="mini-card">
+        <strong>✅ El bueno</strong>
+        <p>Entiende qué vende el cliente, diseña con criterio, entrega rápido, puede explicar cada decisión y hacer ajustes al momento.</p>
+      </div>
+    </div>
+    <p>Los que ganan bien no son necesariamente los que saben más código. Son los que entienden el negocio del cliente mejor que nadie.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">💰</div>Cómo se estructura el mercado en Chile</div>
+    <table class="tabla">
+      <tr><th>Nivel</th><th>Qué hacen</th><th>Cuánto cobran</th></tr>
+      <tr><td>Freelancer básico</td><td>Templates, Wix, Squarespace</td><td>$50.000 – $150.000</td></tr>
+      <tr><td>Freelancer con criterio</td><td>HTML/CSS propio, diseño real</td><td>$150.000 – $400.000</td></tr>
+      <tr><td>Agencia pequeña</td><td>Equipo, proceso, marca</td><td>$400.000 – $1.500.000</td></tr>
+      <tr><td>Agencia senior</td><td>Estrategia digital completa</td><td>$1.500.000+</td></tr>
+    </table>
+    <p>Tú estás entrando en el segundo nivel. El objetivo es que en 6-12 meses cobres como agencia pequeña trabajando solo.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🎯</div>Tu lista de tareas de este módulo</div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Entiendo qué es una página web y cómo funciona</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Sé en qué nivel del mercado estoy y a dónde quiero llegar</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Tengo claro que vendo resultados, no código</div></div>
+  </div>
+
+  <div class="nav-btns">
+    <div></div>
+    <button class="btn-next" onclick="irA(1)">Siguiente módulo →</button>
+  </div>
+</div>
+
+<!-- MÓDULO 2 -->
+<div class="modulo" id="mod-1">
+  <div class="mod-header">
+    <span class="mod-num">Módulo 02</span>
+    <h2 class="mod-title"><em>HTML</em> — La estructura<br>de todo sitio web</h2>
+    <p class="mod-desc">HTML no es programar. Es como escribir un documento de Word pero con etiquetas que le dicen al navegador qué es cada cosa.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">📄</div>Qué es HTML</div>
+    <p>HTML significa HyperText Markup Language. Es el esqueleto de toda página web. Sin HTML no existe nada.</p>
+    <p>Funciona con etiquetas que abren y cierran:</p>
+    <div class="code-block">
+<span class="cm">&lt;!-- Esto es una etiqueta que abre y cierra --&gt;</span>
+<span class="ct">&lt;h1&gt;</span><span class="cs">Soy un título grande</span><span class="ct">&lt;/h1&gt;</span>
+<span class="ct">&lt;p&gt;</span><span class="cs">Soy un párrafo de texto</span><span class="ct">&lt;/p&gt;</span>
+<span class="ct">&lt;a href</span><span class="cv">="https://..."</span><span class="ct">&gt;</span><span class="cs">Soy un link</span><span class="ct">&lt;/a&gt;</span>
+<span class="ct">&lt;img src</span><span class="cv">="foto.jpg"</span><span class="ct">/&gt;</span> <span class="cm">&lt;!-- Las imágenes no necesitan cierre --&gt;</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🏗️</div>Las etiquetas que más usas</div>
+    <table class="tabla">
+      <tr><th>Etiqueta</th><th>Para qué sirve</th><th>Ejemplo</th></tr>
+      <tr><td><code>h1, h2, h3</code></td><td>Títulos (h1 = el más grande)</td><td>Título de sección</td></tr>
+      <tr><td><code>p</code></td><td>Párrafos de texto</td><td>Descripción, textos</td></tr>
+      <tr><td><code>a</code></td><td>Links y botones</td><td>"Ver demo", "Contactar"</td></tr>
+      <tr><td><code>img</code></td><td>Imágenes</td><td>Fotos del negocio</td></tr>
+      <tr><td><code>div</code></td><td>Contenedor genérico</td><td>Agrupa elementos</td></tr>
+      <tr><td><code>section</code></td><td>Sección de la página</td><td>Hero, servicios, precios</td></tr>
+      <tr><td><code>nav</code></td><td>Menú de navegación</td><td>El menú de arriba</td></tr>
+      <tr><td><code>footer</code></td><td>Pie de página</td><td>Derechos, redes sociales</td></tr>
+      <tr><td><code>button</code></td><td>Botones clickeables</td><td>Formulario, acciones</td></tr>
+      <tr><td><code>input</code></td><td>Campos de formulario</td><td>Nombre, email, teléfono</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🔍</div>Cómo leer el HTML de cualquier página</div>
+    <p>Abre Chrome, entra a cualquier página y presiona <strong>F12</strong>. Ves todo el HTML real. Esto es lo que debes hacer con las páginas que admires para entender cómo están hechas.</p>
+    <div class="highlight">
+      <strong>Ejercicio:</strong> Abre F12 en tu propia página alonsostudiodigital.com. Busca con Ctrl+F el texto "Plan Básico" y verás exactamente qué etiqueta lo contiene. Así aprendes leyendo código real.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">✅</div>Lista de tareas de este módulo</div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Entiendo qué es una etiqueta HTML y cómo abre y cierra</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Reconozco las 10 etiquetas más comunes</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Abrí F12 en mi página y encontré un texto dentro del código</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Puedo explicarle a un cliente qué es el HTML sin mencionar código</div></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn-prev" onclick="irA(0)">← Anterior</button>
+    <button class="btn-next" onclick="irA(2)">Siguiente módulo →</button>
+  </div>
+</div>
+
+<!-- MÓDULO 3 -->
+<div class="modulo" id="mod-2">
+  <div class="mod-header">
+    <span class="mod-num">Módulo 03</span>
+    <h2 class="mod-title"><em>CSS</em> — El diseño<br>y los colores</h2>
+    <p class="mod-desc">CSS es lo que hace que todo se vea bien. Sin CSS, una página es texto negro sobre fondo blanco. CSS es tu herramienta de diseño.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🎨</div>Cómo funciona CSS</div>
+    <p>CSS selecciona un elemento HTML y le aplica estilos. La lógica es siempre la misma:</p>
+    <div class="code-block">
+<span class="cm">/* Selecciono el elemento → le pongo propiedades */</span>
+
+<span class="ct">h1</span> {
+  <span class="cv">color</span>: <span class="cs">#c9a84c</span>;        <span class="cm">/* color del texto */</span>
+  <span class="cv">font-size</span>: <span class="cs">3rem</span>;      <span class="cm">/* tamaño del texto */</span>
+  <span class="cv">font-weight</span>: <span class="cs">700</span>;     <span class="cm">/* grosor (700 = negrita) */</span>
+  <span class="cv">text-align</span>: <span class="cs">center</span>;   <span class="cm">/* alineación */</span>
+}
+
+<span class="ct">.mi-boton</span> {
+  <span class="cv">background</span>: <span class="cs">#0d0d0d</span>;   <span class="cm">/* color de fondo */</span>
+  <span class="cv">color</span>: <span class="cs">white</span>;           <span class="cm">/* color del texto */</span>
+  <span class="cv">padding</span>: <span class="cs">14px 32px</span>;    <span class="cm">/* espacio interno */</span>
+  <span class="cv">border-radius</span>: <span class="cs">0px</span>;    <span class="cm">/* bordes redondeados */</span>
+}
+    </div>
+    <div class="highlight">
+      <strong>El punto (.) significa clase.</strong> En HTML pones class="mi-boton" y en CSS escribes .mi-boton para darle estilos. Así conectas HTML con CSS.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">📱</div>Cómo funciona el diseño responsivo (mobile)</div>
+    <p>Para que un sitio se vea bien en celular, usamos <strong>media queries</strong>. Es una instrucción que dice "cuando la pantalla sea pequeña, aplica estos estilos en cambio":</p>
+    <div class="code-block">
+<span class="cm">/* Estilo normal (computador) */</span>
+<span class="ct">.titulo</span> {
+  <span class="cv">font-size</span>: <span class="cs">4rem</span>;
+}
+
+<span class="cm">/* Cuando la pantalla es menor a 768px (celular) */</span>
+<span class="cn">@media</span>(<span class="cv">max-width</span>: <span class="cs">768px</span>) {
+  <span class="ct">.titulo</span> {
+    <span class="cv">font-size</span>: <span class="cs">2rem</span>; <span class="cm">/* más pequeño en celular */</span>
+  }
+}
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🗂️</div>Las propiedades CSS que más usas</div>
+    <table class="tabla">
+      <tr><th>Propiedad</th><th>Para qué sirve</th></tr>
+      <tr><td><code>color</code></td><td>Color del texto</td></tr>
+      <tr><td><code>background</code></td><td>Color o imagen de fondo</td></tr>
+      <tr><td><code>font-size</code></td><td>Tamaño del texto</td></tr>
+      <tr><td><code>font-weight</code></td><td>Grosor del texto (400 normal, 700 negrita)</td></tr>
+      <tr><td><code>padding</code></td><td>Espacio interno del elemento</td></tr>
+      <tr><td><code>margin</code></td><td>Espacio externo (separación entre elementos)</td></tr>
+      <tr><td><code>display: flex</code></td><td>Poner elementos uno al lado del otro</td></tr>
+      <tr><td><code>display: grid</code></td><td>Hacer grillas (filas y columnas)</td></tr>
+      <tr><td><code>width / height</code></td><td>Ancho y alto del elemento</td></tr>
+      <tr><td><code>border-radius</code></td><td>Bordes redondeados</td></tr>
+      <tr><td><code>transition</code></td><td>Animaciones suaves al pasar el mouse</td></tr>
+      <tr><td><code>position: fixed</code></td><td>Fija el elemento (como el menú que no se mueve)</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">✅</div>Lista de tareas de este módulo</div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Entiendo cómo CSS selecciona elementos y les aplica estilos</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Sé qué es una clase CSS y cómo conecta con el HTML</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Entiendo qué son los media queries y para qué sirven</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Reconozco las propiedades CSS más comunes</div></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn-prev" onclick="irA(1)">← Anterior</button>
+    <button class="btn-next" onclick="irA(3)">Siguiente módulo →</button>
+  </div>
+</div>
+
+<!-- MÓDULO 4 -->
+<div class="modulo" id="mod-3">
+  <div class="mod-header">
+    <span class="mod-num">Módulo 04</span>
+    <h2 class="mod-title"><em>JavaScript</em> — Lo que<br>hace que todo se mueva</h2>
+    <p class="mod-desc">JS es el único de los tres que realmente programa. Hace que los botones hagan cosas, los menús se abran, los formularios funcionen.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">⚡</div>Qué hace JavaScript que HTML y CSS no pueden</div>
+    <ul class="lista">
+      <li>Abrir y cerrar el menú hamburguesa en celular</li>
+      <li>Validar que el formulario esté completo antes de enviarlo</li>
+      <li>Animar elementos cuando el usuario hace scroll</li>
+      <li>Mostrar y ocultar secciones (FAQ, tabs, modales)</li>
+      <li>Enviar datos al WhatsApp con el texto pre-armado</li>
+      <li>El carrito de compras de la tienda</li>
+      <li>El calendario de agenda con horarios</li>
+    </ul>
+    <div class="highlight">
+      <strong>Regla simple:</strong> Si algo "hace algo" cuando el usuario interactúa, es JavaScript. Si solo se ve, es HTML y CSS.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🔧</div>Conceptos básicos que debes reconocer</div>
+    <div class="code-block">
+<span class="cm">// Variable — guardar un valor</span>
+<span class="ct">const</span> nombre = <span class="cs">"Alonso"</span>;
+
+<span class="cm">// Función — una acción que se ejecuta cuando la llamas</span>
+<span class="ct">function</span> <span class="cv">enviarFormulario</span>() {
+  <span class="cm">// aquí va la lógica</span>
+}
+
+<span class="cm">// Seleccionar un elemento HTML desde JS</span>
+<span class="ct">const</span> boton = document.<span class="cv">getElementById</span>(<span class="cs">'mi-boton'</span>);
+
+<span class="cm">// Hacer algo cuando el usuario hace clic</span>
+boton.<span class="cv">addEventListener</span>(<span class="cs">'click'</span>, <span class="ct">function</span>() {
+  <span class="cm">// esto se ejecuta al hacer clic</span>
+});
+    </div>
+    <p>No necesitas memorizar esto. Necesitas reconocerlo cuando lo ves en el código para entender qué hace.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">📋</div>El JS de tu página explicado</div>
+    <p>En tu <code>script.js</code> hay 5 funciones principales:</p>
+    <ul class="lista">
+      <li><strong>Cursor personalizado</strong> — mueve el punto dorado que sigue el mouse</li>
+      <li><strong>Reveal on scroll</strong> — hace aparecer elementos con animación al bajar</li>
+      <li><strong>seleccionarPlan()</strong> — cuando alguien hace clic en un plan, lo pre-selecciona en el formulario</li>
+      <li><strong>toggleFaq()</strong> — abre y cierra las preguntas frecuentes</li>
+      <li><strong>enviarFormulario()</strong> — toma los datos del formulario y abre WhatsApp con el mensaje armado</li>
+      <li><strong>Carousel dots</strong> — los puntos de navegación del carrusel de portafolio</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">✅</div>Lista de tareas de este módulo</div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Entiendo para qué sirve JavaScript en una página web</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Reconozco qué es una variable y una función cuando las veo</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Sé qué hace cada función del script.js de mi página</div></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn-prev" onclick="irA(2)">← Anterior</button>
+    <button class="btn-next" onclick="irA(4)">Siguiente módulo →</button>
+  </div>
+</div>
+
+<!-- MÓDULO 5 -->
+<div class="modulo" id="mod-4">
+  <div class="mod-header">
+    <span class="mod-num">Módulo 05</span>
+    <h2 class="mod-title">Estructura de archivos<br><em>como un profesional</em></h2>
+    <p class="mod-desc">Cómo organizar los archivos de un proyecto real para que ningún desarrollador pueda cuestionarte.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">📁</div>La estructura mínima profesional</div>
+    <div class="code-block">
+<span class="cs">mi-proyecto/</span>
+│
+├── <span class="ct">index.html</span>        <span class="cm"># La página principal</span>
+├── <span class="cv">styles.css</span>        <span class="cm"># Todo el CSS separado</span>
+├── <span class="cv">script.js</span>         <span class="cm"># Todo el JavaScript separado</span>
+│
+├── <span class="cs">assets/</span>
+│   ├── <span class="cs">img/</span>           <span class="cm"># Todas las imágenes</span>
+│   │   ├── logo.png
+│   │   └── hero.jpg
+│   └── <span class="cs">fonts/</span>         <span class="cm"># Tipografías locales (si las hay)</span>
+│
+└── <span class="cs">pages/</span>            <span class="cm"># Páginas adicionales</span>
+    ├── servicios.html
+    └── contacto.html
+    </div>
+    <div class="highlight">
+      <strong>Regla de oro:</strong> Un archivo hace una sola cosa. HTML = estructura. CSS = diseño. JS = comportamiento. Nunca mezclar.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🔗</div>Cómo se conectan los archivos</div>
+    <p>En el <code>&lt;head&gt;</code> del HTML enlazas el CSS:</p>
+    <div class="code-block">
+<span class="ct">&lt;link</span> <span class="cv">rel</span>=<span class="cs">"stylesheet"</span> <span class="cv">href</span>=<span class="cs">"styles.css"</span><span class="ct">/&gt;</span>
+    </div>
+    <p>Antes del <code>&lt;/body&gt;</code> enlazas el JS:</p>
+    <div class="code-block">
+<span class="ct">&lt;script</span> <span class="cv">src</span>=<span class="cs">"script.js"</span><span class="ct">&gt;&lt;/script&gt;</span>
+    </div>
+    <p>Así de simple. El HTML carga el CSS y el JS como archivos externos.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🚩</div>Lo que delata que una web fue hecha con IA (y cómo evitarlo)</div>
+    <table class="tabla">
+      <tr><th>Señal de IA</th><th>Cómo evitarlo</th></tr>
+      <tr><td>CSS y JS dentro del HTML</td><td>Siempre en archivos separados</td></tr>
+      <tr><td>Comentarios como "/* Nav Section */"</td><td>Cero comentarios en producción</td></tr>
+      <tr><td>Nombres genéricos como .hero-section</td><td>Nombres con tu criterio propio</td></tr>
+      <tr><td>Stats inventadas (98%, 500 clientes)</td><td>Solo datos reales o eliminarlos</td></tr>
+      <tr><td>Todo en un solo archivo enorme</td><td>Estructura de carpetas ordenada</td></tr>
+      <tr><td>Código en un solo commit de git</td><td>Commits pequeños y frecuentes</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">✅</div>Lista de tareas de este módulo</div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Entiendo por qué se separan HTML, CSS y JS en archivos distintos</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Sé cómo se enlazan los archivos entre sí</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Conozco las señales que delatan código hecho con IA</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Mi página ya tiene los archivos correctamente separados</div></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn-prev" onclick="irA(3)">← Anterior</button>
+    <button class="btn-next" onclick="irA(5)">Siguiente módulo →</button>
+  </div>
+</div>
+
+<!-- MÓDULO 6 -->
+<div class="modulo" id="mod-5">
+  <div class="mod-header">
+    <span class="mod-num">Módulo 06</span>
+    <h2 class="mod-title">Cómo usar la IA<br><em>sin que se note</em></h2>
+    <p class="mod-desc">La IA es una herramienta, no el diseñador. Así la usas para que el resultado sea tuyo y nadie pueda cuestionarte.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🧠</div>El cambio de mentalidad</div>
+    <p>La diferencia entre alguien que "usa IA" y alguien que "trabaja con IA" es quién tiene el criterio.</p>
+    <div class="grid2">
+      <div class="mini-card">
+        <strong>❌ Usar IA mal</strong>
+        <p>"Hazme una página web para una barbería" → copiar y pegar lo que salga</p>
+      </div>
+      <div class="mini-card">
+        <strong>✅ Usar IA bien</strong>
+        <p>Tú defines estructura, colores, secciones, textos. La IA ejecuta lo técnico. Tú revisas y corriges.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">📋</div>El flujo de trabajo correcto</div>
+    <ul class="lista">
+      <li><strong>Paso 1 — Tú diseñas en papel:</strong> Qué secciones va a tener, en qué orden, qué colores, qué estilo</li>
+      <li><strong>Paso 2 — Tú escribes los textos:</strong> Los textos reales del cliente, no inventados por IA</li>
+      <li><strong>Paso 3 — Le pides el código a la IA:</strong> Con instrucciones específicas, no genéricas</li>
+      <li><strong>Paso 4 — Tú revisas el código:</strong> Que esté separado, sin comentarios, con tu lógica</li>
+      <li><strong>Paso 5 — Tú ajustas:</strong> Cambias colores, espaciados, textos según tu criterio</li>
+      <li><strong>Paso 6 — Tú presentas:</strong> El resultado tiene tu sello, no el de la IA</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">💬</div>Cómo pedirle código a la IA correctamente</div>
+    <div class="highlight">
+      <strong>Prompt profesional:</strong> "Crea el archivo styles.css para una barbería de lujo. Paleta: negro #0d0d0d y dorado #c9a84c. Tipografía Inter. Sin comentarios. Sin estilos inline. Incluye: nav fijo, hero con grid 2 columnas, sección de servicios con 3 cards, y footer. Mobile responsive con media query a 768px."
+    </div>
+    <p>Mientras más específico seas tú, mejor y más profesional sale el resultado. La IA no tiene criterio propio — tú se lo das.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">✅</div>Lista de tareas de este módulo</div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Entiendo la diferencia entre usar IA y trabajar con IA</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Sé cómo darle instrucciones específicas para resultados profesionales</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Mi próximo proyecto va a tener mi criterio, no el de la IA</div></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn-prev" onclick="irA(4)">← Anterior</button>
+    <button class="btn-next" onclick="irA(6)">Siguiente módulo →</button>
+  </div>
+</div>
+
+<!-- MÓDULO 7 -->
+<div class="modulo" id="mod-6">
+  <div class="mod-header">
+    <span class="mod-num">Módulo 07</span>
+    <h2 class="mod-title">Cómo trabajar<br>con <em>clientes reales</em></h2>
+    <p class="mod-desc">El código es el 30% del trabajo. El 70% es saber relacionarte con el cliente para que pague, quede contento y te recomiende.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🤝</div>La primera reunión con un cliente</div>
+    <ul class="lista">
+      <li><strong>No vendas en la primera reunión.</strong> Pregunta y escucha. ¿Qué necesita? ¿Qué problema tiene? ¿Cuántos clientes quiere generar?</li>
+      <li><strong>Preguntas clave:</strong> ¿Tienes fotos del local? ¿Tienes logo? ¿Cuáles son tus servicios y precios? ¿Qué redes sociales tienes?</li>
+      <li><strong>Al final:</strong> "Déjame preparar una propuesta y te la mando hoy mismo"</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">📄</div>Qué pedirle al cliente para empezar</div>
+    <table class="tabla">
+      <tr><th>Qué pedir</th><th>Para qué</th></tr>
+      <tr><td>Logo (PNG con fondo transparente)</td><td>Ponerlo en el menú y footer</td></tr>
+      <tr><td>Fotos del local y del equipo</td><td>Sección galería y sobre nosotros</td></tr>
+      <tr><td>Lista de servicios con precios</td><td>Sección de servicios y precios</td></tr>
+      <tr><td>Horario de atención</td><td>Sección de contacto</td></tr>
+      <tr><td>Número de WhatsApp</td><td>Botón flotante y formulario</td></tr>
+      <tr><td>Dirección exacta</td><td>Google Maps embed</td></tr>
+      <tr><td>Colores o referencia visual</td><td>Definir paleta de colores</td></tr>
+    </table>
+    <div class="highlight">
+      <strong>Truco:</strong> Mándale una lista de WhatsApp con exactamente qué necesitas. El cliente que responde rápido es el que va a pagar rápido.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🔄</div>Cómo manejar los cambios</div>
+    <p>Todo cliente va a pedir cambios. Así lo manejas sin perder plata ni tiempo:</p>
+    <ul class="lista">
+      <li>Incluye 2 rondas de cambios en el precio acordado</li>
+      <li>Cambios pequeños (textos, colores) se hacen sin preguntar</li>
+      <li>Cambios grandes (nueva sección, rediseño) son precio aparte</li>
+      <li>Siempre confirma por escrito qué se cambió y cuándo</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">✅</div>Lista de tareas de este módulo</div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Sé qué preguntar en la primera reunión con un cliente</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Tengo claro qué archivos pedirle al cliente para empezar</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Sé cómo manejar los cambios sin perder plata</div></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn-prev" onclick="irA(5)">← Anterior</button>
+    <button class="btn-next" onclick="irA(7)">Siguiente módulo →</button>
+  </div>
+</div>
+
+<!-- MÓDULO 8 -->
+<div class="modulo" id="mod-7">
+  <div class="mod-header">
+    <span class="mod-num">Módulo 08</span>
+    <h2 class="mod-title">Cómo vender<br><em>sin parecer vendedor</em></h2>
+    <p class="mod-desc">El mejor vendedor es el que no parece que está vendiendo. Te muestra el valor y deja que el cliente decida solo.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">📱</div>El sistema de prospección por mensajes</div>
+    <ul class="lista">
+      <li><strong>Día 1 — Instagram DM:</strong> Mensaje corto, pregunta si puede ver tus ejemplos</li>
+      <li><strong>Día 2 — Si no responde — WhatsApp:</strong> Segundo intento más directo</li>
+      <li><strong>Día 3 — Si responde:</strong> Mandas el link del portafolio</li>
+      <li><strong>Día 4 — Si vio el demo:</strong> Preguntas qué le pareció y propones una llamada corta</li>
+      <li><strong>Llamada:</strong> Escuchas, propones el plan que más le conviene, cierras</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">💬</div>Las objeciones más comunes y cómo responderlas</div>
+    <table class="tabla">
+      <tr><th>El cliente dice</th><th>Tú respondes</th></tr>
+      <tr><td>"Es muy caro"</td><td>"¿Cuánto te cuesta perder 10 clientes por no aparecer en Google?"</td></tr>
+      <tr><td>"Lo voy a pensar"</td><td>"Perfecto. ¿Qué información necesitas para decidir?"</td></tr>
+      <tr><td>"Ya tengo página"</td><td>"¿Y te llegan clientes por ahí, o solo la tienen pero no funciona?"</td></tr>
+      <tr><td>"No tengo tiempo"</td><td>"Yo me encargo de todo, tú solo me mandas las fotos por WhatsApp"</td></tr>
+      <tr><td>"Eres muy joven"</td><td>"Mira los ejemplos. ¿El resultado te parece profesional o no?"</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🎯</div>El mensaje que más funciona</div>
+    <div class="highlight">
+      "Hola [Nombre], soy diseñador web y vi tu negocio. Creo que una página web te traería bastantes más clientes. Tengo ejemplos de trabajos similares, ¿te mando el link?"
+    </div>
+    <p>Corto. Directo. Sin inventar que tienes una agencia. Sin prometer cosas que no puedes cumplir. El link hace el trabajo de venta, no el mensaje.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">✅</div>Lista de tareas de este módulo</div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Tengo el mensaje guardado y listo para mandar</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Sé cómo responder las 5 objeciones más comunes</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Mandé al menos 10 mensajes hoy</div></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn-prev" onclick="irA(6)">← Anterior</button>
+    <button class="btn-next" onclick="irA(8)">Siguiente módulo →</button>
+  </div>
+</div>
+
+<!-- MÓDULO 9 -->
+<div class="modulo" id="mod-8">
+  <div class="mod-header">
+    <span class="mod-num">Módulo 09</span>
+    <h2 class="mod-title">Cómo cobrar<br><em>lo que realmente vales</em></h2>
+    <p class="mod-desc">El precio es una señal de valor. Cobrar muy barato te perjudica más de lo que te ayuda.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">💰</div>Por qué cobrar barato es un error</div>
+    <ul class="lista">
+      <li>Los clientes baratos son los más exigentes y los que más problemas dan</li>
+      <li>Precio bajo = percepción de baja calidad en la mente del cliente</li>
+      <li>Si cobras $50.000, necesitas 10 clientes para ganar lo mismo que con 1 a $500.000</li>
+      <li>El cliente que paga bien respeta tu trabajo y te recomienda mejor</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">📊</div>Cuándo y cómo subir tus precios</div>
+    <table class="tabla">
+      <tr><th>Cuándo</th><th>Precio sugerido</th></tr>
+      <tr><td>Hoy — 0 clientes reales</td><td>$150.000 – $250.000</td></tr>
+      <tr><td>Con 3 proyectos reales terminados</td><td>$250.000 – $400.000</td></tr>
+      <tr><td>Con 8+ proyectos y reseñas reales</td><td>$400.000 – $700.000</td></tr>
+      <tr><td>Con especialización y proceso claro</td><td>$700.000 – $1.200.000</td></tr>
+    </table>
+    <div class="highlight">
+      <strong>Regla:</strong> Cuando el 80% de los prospectos acepta tu precio sin negociar, es momento de subirlo.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🤝</div>Cómo presentar el precio para que no lo cuestionen</div>
+    <ul class="lista">
+      <li>Siempre muestra el demo antes de mencionar el precio</li>
+      <li>Compara con lo que cobra una agencia ("una agencia cobra $580.000, yo $250.000")</li>
+      <li>Separa en cuotas: "50% ahora, 50% cuando veas el resultado"</li>
+      <li>Nunca justifiques el precio ni lo bajes antes de que lo pidan</li>
+      <li>Si lo piden, pregunta primero: "¿Qué presupuesto tienes en mente?"</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">✅</div>Lista de tareas de este módulo</div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Entiendo por qué cobrar barato me perjudica</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Sé cuándo subir mis precios según la experiencia que acumule</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Sé cómo presentar el precio para que no lo cuestionen</div></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn-prev" onclick="irA(7)">← Anterior</button>
+    <button class="btn-next" onclick="irA(9)">Siguiente módulo →</button>
+  </div>
+</div>
+
+<!-- MÓDULO 10 -->
+<div class="modulo" id="mod-9">
+  <div class="mod-header">
+    <span class="mod-num">Módulo 10</span>
+    <h2 class="mod-title">Cómo escalar<br><em>a largo plazo</em></h2>
+    <p class="mod-desc">El plan para los próximos 12 meses. De cero clientes a un negocio real que funciona solo.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🗓️</div>El plan de 12 meses</div>
+    <table class="tabla">
+      <tr><th>Período</th><th>Objetivo</th><th>Ingreso estimado</th></tr>
+      <tr><td>Mes 1-2</td><td>Primer cliente. Aunque sea gratis o muy barato. Conseguir la reseña.</td><td>$0 – $200.000</td></tr>
+      <tr><td>Mes 3-4</td><td>2-3 clientes pagados. Portafolio real. Primeras reseñas.</td><td>$300.000 – $600.000</td></tr>
+      <tr><td>Mes 5-6</td><td>Especializarte en 1-2 rubros. Subir precios.</td><td>$500.000 – $900.000</td></tr>
+      <tr><td>Mes 7-9</td><td>Clientes por recomendación. Menos prospección fría.</td><td>$800.000 – $1.500.000</td></tr>
+      <tr><td>Mes 10-12</td><td>Proceso claro, entregas rápidas, precios altos. Posible empleado.</td><td>$1.500.000+</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🏆</div>Lo que te diferencia de todos en Santiago</div>
+    <ul class="lista">
+      <li><strong>Entrega en 5-7 días</strong> — La mayoría demora 1 mes</li>
+      <li><strong>Atención directa por WhatsApp</strong> — Sin intermediarios ni call centers</li>
+      <li><strong>Especializarte en un rubro</strong> — "El de las barberías" gana más que "el de todo"</li>
+      <li><strong>Resultados medibles</strong> — Cuántos clientes nuevos llegaron desde la web</li>
+      <li><strong>Precio/calidad imbatible</strong> — Resultado de agencia, precio de freelancer</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">📈</div>Cómo conseguir clientes por recomendación</div>
+    <ul class="lista">
+      <li>Al terminar cada proyecto, pide una reseña de Google con nombre y foto</li>
+      <li>Pide que te mencionen en Instagram cuando publiquen su nueva web</li>
+      <li>Ofrece $20.000 de descuento al soporte anual por cada cliente que te refieran</li>
+      <li>Manten el contacto cada 3 meses: "¿Cómo va la web? ¿Necesitas algo?"</li>
+    </ul>
+    <div class="highlight">
+      <strong>La verdad:</strong> El 80% de tu negocio va a venir de recomendaciones. El trabajo de hoy define los clientes de mañana.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon">🚀</div>Tu tarea de esta semana — sin excusas</div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Mandé 30 mensajes a negocios locales hoy</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Tengo una conversación activa con al menos 1 potencial cliente</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Leí todos los módulos de este curso</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Abrí el F12 de mi página y entendí al menos 3 cosas del código</div></div>
+    <div class="check-item"><div class="check-box" onclick="marcar(this)"></div><div class="check-text">Tengo claro mi objetivo para los próximos 30 días</div></div>
+  </div>
+
+  <div class="nav-btns">
+    <button class="btn-prev" onclick="irA(8)">← Anterior</button>
+    <button class="btn-next" onclick="irA(0)" style="background:var(--gold);color:var(--dark);">Volver al inicio ↑</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+let modActual = 0;
+const totalMods = 10;
+
+function irA(n) {
+  document.getElementById('mod-' + modActual).classList.remove('active');
+  document.querySelectorAll('.nav-tab')[modActual].classList.remove('active');
+  modActual = n;
+  document.getElementById('mod-' + modActual).classList.add('active');
+  document.querySelectorAll('.nav-tab')[modActual].classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+  actualizarProgreso();
+}
+
+function marcar(el) {
+  el.classList.toggle('done');
+  if (el.classList.contains('done')) {
+    el.textContent = '✓';
+    el.nextElementSibling.classList.add('done');
+  } else {
+    el.textContent = '';
+    el.nextElementSibling.classList.remove('done');
+  }
+  actualizarProgreso();
+}
+
+function actualizarProgreso() {
+  const total = document.querySelectorAll('.check-box').length;
+  const hechos = document.querySelectorAll('.check-box.done').length;
+  const pct = Math.round((hechos / total) * 100);
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = pct + '% completado · ' + hechos + ' de ' + total + ' tareas';
+}
+
+actualizarProgreso();
+</script>
+</body>
+</html>
