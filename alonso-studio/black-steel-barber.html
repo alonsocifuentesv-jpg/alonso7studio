@@ -1,0 +1,2470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Black Steel — Barbería & Lounge | Padre Hurtado, Santiago</title>
+  <meta name="description" content="Barbería de lujo en Padre Hurtado, Santiago. Cortes premium, perfilado de barba VIP y experiencia de lounge masculino. Reserva online 24/7." />
+
+  <!-- TIPOGRAFÍAS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       VARIABLES & RESET
+    ============================================================ */
+    :root {
+      --negro:      #080808;
+      --grafito:    #141414;
+      --grafito-2:  #1e1e1e;
+      --grafito-3:  #2a2a2a;
+      --dorado:     #c9a84c;
+      --dorado-clr: #e2c470;
+      --dorado-dim: #9a7a30;
+      --blanco:     #f4efe6;
+      --blanco-2:   #d6d0c4;
+      --gris:       #6b6560;
+
+      --font-titulo: 'Cormorant Garamond', Georgia, serif;
+      --font-cuerpo: 'DM Sans', system-ui, sans-serif;
+
+      --radius: 4px;
+      --radius-lg: 10px;
+      --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--negro);
+      color: var(--blanco);
+      font-family: var(--font-cuerpo);
+      font-weight: 300;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ============================================================
+       UTILIDADES
+    ============================================================ */
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dorado);
+      border: 1px solid var(--dorado-dim);
+      padding: 4px 14px;
+      border-radius: 999px;
+    }
+
+    .titulo-seccion {
+      font-family: var(--font-titulo);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--blanco);
+    }
+
+    .titulo-seccion em {
+      font-style: italic;
+      color: var(--dorado);
+    }
+
+    .linea-dorada {
+      width: 48px;
+      height: 1px;
+      background: var(--dorado);
+      margin: 24px 0;
+    }
+
+    .btn-primario {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--dorado);
+      color: var(--negro);
+      font-family: var(--font-cuerpo);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .btn-primario:hover {
+      background: var(--dorado-clr);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--dorado-dim);
+      color: var(--dorado);
+      font-family: var(--font-cuerpo);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--dorado);
+      background: rgba(201,168,76,0.08);
+      color: var(--dorado-clr);
+    }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(8,8,8,0.82);
+      backdrop-filter: blur(18px) saturate(1.2);
+      -webkit-backdrop-filter: blur(18px) saturate(1.2);
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+      transition: background 0.4s ease;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--dorado-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-logo-text span:first-child {
+      font-family: var(--font-titulo);
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      color: var(--blanco);
+    }
+
+    .nav-logo-text span:last-child {
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--dorado);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blanco-2);
+      transition: color var(--transition);
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--dorado);
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.activo {
+      color: var(--dorado);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.activo::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-reserva {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--negro);
+      background: var(--dorado);
+      padding: 9px 22px;
+      border-radius: var(--radius);
+      transition: background var(--transition);
+    }
+
+    .nav-reserva:hover {
+      background: var(--dorado-clr);
+    }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+      cursor: pointer;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--blanco);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .nav-hamburger.abierto span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.abierto span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.abierto span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .nav-mobile {
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      padding: 32px 24px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+      transform: translateY(-110%);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .nav-mobile.abierto {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .nav-mobile a {
+      display: block;
+      font-family: var(--font-titulo);
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--blanco);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color var(--transition);
+    }
+
+    .nav-mobile a:hover { color: var(--dorado); }
+
+    .nav-mobile-cta {
+      margin-top: 28px;
+    }
+
+    /* ============================================================
+       SECCIÓN: HERO / INICIO
+    ============================================================ */
+    #inicio {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 68px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      filter: brightness(0.28) saturate(0.6);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        rgba(8,8,8,0.92) 0%,
+        rgba(8,8,8,0.6) 55%,
+        rgba(8,8,8,0.3) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      width: 100%;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    .hero-badge .punto {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--dorado);
+      animation: pulso 2s ease-in-out infinite;
+    }
+
+    @keyframes pulso {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    .hero-titulo {
+      font-family: var(--font-titulo);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      max-width: 780px;
+      margin-bottom: 12px;
+    }
+
+    .hero-titulo em {
+      font-style: italic;
+      color: var(--dorado);
+    }
+
+    .hero-subtitulo {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 300;
+      color: var(--blanco-2);
+      max-width: 460px;
+      line-height: 1.7;
+      margin-bottom: 44px;
+    }
+
+    .hero-acciones {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+
+    .hero-horario {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(201,168,76,0.25);
+      background: rgba(201,168,76,0.06);
+      border-radius: 999px;
+      padding: 10px 20px;
+    }
+
+    .hero-horario-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #3ddc84;
+      flex-shrink: 0;
+    }
+
+    .hero-horario span {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blanco-2);
+      font-weight: 400;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-stat-item strong {
+      font-family: var(--font-titulo);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--dorado);
+      line-height: 1;
+    }
+
+    .hero-stat-item span {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gris);
+      margin-top: 4px;
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--gris);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      z-index: 1;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--dorado), transparent);
+      animation: scroll-anim 2s ease-in-out infinite;
+    }
+
+    @keyframes scroll-anim {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50% { transform: scaleY(0.5); opacity: 0.4; }
+    }
+
+    /* ============================================================
+       SECCIÓN: SERVICIOS
+    ============================================================ */
+    #servicios {
+      padding: 120px 0;
+      background: var(--grafito);
+    }
+
+    .servicios-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 60px;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .servicios-intro p {
+      font-size: 0.95rem;
+      color: var(--blanco-2);
+      max-width: 360px;
+      margin-top: 16px;
+      line-height: 1.7;
+    }
+
+    .servicios-filtros {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filtro-btn {
+      font-family: var(--font-cuerpo);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gris);
+      border: 1px solid var(--grafito-3);
+      padding: 8px 18px;
+      border-radius: 999px;
+      transition: all var(--transition);
+    }
+
+    .filtro-btn:hover,
+    .filtro-btn.activo {
+      color: var(--dorado);
+      border-color: var(--dorado-dim);
+      background: rgba(201,168,76,0.08);
+    }
+
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .servicio-card {
+      background: var(--grafito-2);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .servicio-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--dorado), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .servicio-card:hover {
+      border-color: rgba(201,168,76,0.2);
+      transform: translateY(-4px);
+    }
+
+    .servicio-card:hover::before {
+      opacity: 1;
+    }
+
+    .servicio-icono {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 24px;
+      color: var(--dorado);
+    }
+
+    .servicio-categoria {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dorado-dim);
+      margin-bottom: 8px;
+    }
+
+    .servicio-nombre {
+      font-family: var(--font-titulo);
+      font-size: 1.55rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--blanco);
+      margin-bottom: 14px;
+    }
+
+    .servicio-desc {
+      font-size: 0.85rem;
+      color: var(--blanco-2);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 28px;
+    }
+
+    .servicio-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 22px;
+      margin-top: auto;
+    }
+
+    .servicio-precio {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .servicio-precio .desde {
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gris);
+    }
+
+    .servicio-precio .valor {
+      font-family: var(--font-titulo);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--dorado);
+      line-height: 1;
+    }
+
+    .servicio-precio .moneda {
+      font-size: 0.8rem;
+      font-family: var(--font-cuerpo);
+    }
+
+    .servicio-btn {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--negro);
+      background: var(--dorado);
+      padding: 9px 18px;
+      border-radius: var(--radius);
+      transition: background var(--transition);
+    }
+
+    .servicio-btn:hover {
+      background: var(--dorado-clr);
+    }
+
+    .servicio-card.destacada {
+      background: linear-gradient(145deg, var(--grafito-2) 0%, rgba(201,168,76,0.06) 100%);
+      border-color: rgba(201,168,76,0.18);
+    }
+
+    .badge-popular {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--negro);
+      background: var(--dorado);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    /* ============================================================
+       SECCIÓN: AGENDA / RESERVA
+    ============================================================ */
+    #reserva {
+      padding: 120px 0;
+      background: var(--negro);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reserva-bg-ornament {
+      position: absolute;
+      right: -120px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.06);
+      pointer-events: none;
+    }
+
+    .reserva-bg-ornament::before {
+      content: '';
+      position: absolute;
+      inset: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.04);
+    }
+
+    .reserva-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .reserva-info {
+      position: relative;
+      z-index: 1;
+    }
+
+    .reserva-pasos {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 44px;
+    }
+
+    .paso {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .paso:last-child { border-bottom: none; }
+
+    .paso-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--dorado-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-titulo);
+      font-size: 0.9rem;
+      color: var(--dorado);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .paso-texto strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--blanco);
+      margin-bottom: 4px;
+    }
+
+    .paso-texto p {
+      font-size: 0.82rem;
+      color: var(--gris);
+      line-height: 1.6;
+    }
+
+    .reserva-embed {
+      position: relative;
+      z-index: 1;
+    }
+
+    .reserva-widget {
+      background: var(--grafito-2);
+      border: 1px solid rgba(201,168,76,0.12);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .reserva-widget-header {
+      background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.04));
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .reserva-widget-header svg {
+      color: var(--dorado);
+    }
+
+    .reserva-widget-header h3 {
+      font-family: var(--font-titulo);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--blanco);
+    }
+
+    .reserva-widget-body {
+      flex: 1;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      text-align: center;
+    }
+
+    .reserva-placeholder-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dorado);
+    }
+
+    .reserva-placeholder-text h4 {
+      font-family: var(--font-titulo);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--blanco);
+      margin-bottom: 8px;
+    }
+
+    .reserva-placeholder-text p {
+      font-size: 0.82rem;
+      color: var(--gris);
+      line-height: 1.6;
+      max-width: 280px;
+    }
+
+    .reserva-nota {
+      font-size: 0.72rem;
+      color: var(--gris);
+      letter-spacing: 0.08em;
+      margin-top: 8px;
+      padding: 0 28px 28px;
+      text-align: center;
+    }
+
+    /* ============================================================
+       SECCIÓN: GALERÍA
+    ============================================================ */
+    #galeria {
+      padding: 120px 0;
+      background: var(--grafito);
+    }
+
+    .galeria-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(2, 260px);
+      gap: 12px;
+    }
+
+    .galeria-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+
+    .galeria-item:nth-child(1) { grid-column: 1 / 6; grid-row: 1 / 3; }
+    .galeria-item:nth-child(2) { grid-column: 6 / 9; grid-row: 1 / 2; }
+    .galeria-item:nth-child(3) { grid-column: 9 / 13; grid-row: 1 / 2; }
+    .galeria-item:nth-child(4) { grid-column: 6 / 9; grid-row: 2 / 3; }
+    .galeria-item:nth-child(5) { grid-column: 9 / 13; grid-row: 2 / 3; }
+
+    .galeria-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
+      filter: brightness(0.75) saturate(0.7);
+    }
+
+    .galeria-item:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.55) saturate(0.5);
+    }
+
+    .galeria-item-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+      background: linear-gradient(to top, rgba(8,8,8,0.8) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .galeria-item:hover .galeria-item-overlay {
+      opacity: 1;
+    }
+
+    .galeria-item-overlay span {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dorado);
+      font-weight: 500;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.96);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox.abierto {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: var(--radius);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      color: var(--blanco-2);
+      font-size: 2rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: color var(--transition);
+    }
+
+    .lightbox-close:hover { color: var(--dorado); }
+
+    /* ============================================================
+       SECCIÓN: RESEÑAS
+    ============================================================ */
+    #resenas {
+      padding: 120px 0;
+      background: var(--negro);
+    }
+
+    .resenas-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 80px;
+    }
+
+    .stat-bloque {
+      background: var(--grafito);
+      padding: 44px 40px;
+      text-align: center;
+    }
+
+    .stat-bloque .num {
+      font-family: var(--font-titulo);
+      font-size: 3.2rem;
+      font-weight: 300;
+      color: var(--dorado);
+      line-height: 1;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .stat-bloque .label {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gris);
+    }
+
+    .resenas-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 44px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .slider-controles {
+      display: flex;
+      gap: 12px;
+    }
+
+    .slider-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--grafito-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blanco-2);
+      transition: all var(--transition);
+    }
+
+    .slider-btn:hover {
+      border-color: var(--dorado-dim);
+      color: var(--dorado);
+      background: rgba(201,168,76,0.08);
+    }
+
+    .resenas-slider-track {
+      overflow: hidden;
+    }
+
+    .resenas-slider {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .resena-card {
+      min-width: calc(33.333% - 14px);
+      background: var(--grafito-2);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      flex-shrink: 0;
+      position: relative;
+      transition: border-color var(--transition);
+    }
+
+    .resena-card:hover {
+      border-color: rgba(201,168,76,0.12);
+    }
+
+    .comillas {
+      font-family: var(--font-titulo);
+      font-size: 4rem;
+      line-height: 0.5;
+      color: var(--dorado-dim);
+      opacity: 0.5;
+      margin-bottom: 16px;
+    }
+
+    .resena-texto {
+      font-size: 0.88rem;
+      color: var(--blanco-2);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+
+    .resena-estrellas {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 20px;
+    }
+
+    .estrella {
+      color: var(--dorado);
+      font-size: 0.85rem;
+    }
+
+    .resena-autor {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 20px;
+    }
+
+    .resena-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--grafito-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-titulo);
+      font-size: 1rem;
+      color: var(--dorado);
+      flex-shrink: 0;
+    }
+
+    .resena-info strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--blanco);
+    }
+
+    .resena-info span {
+      font-size: 0.7rem;
+      color: var(--gris);
+      letter-spacing: 0.06em;
+    }
+
+    .google-badge {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .google-badge span {
+      font-size: 0.62rem;
+      color: var(--gris);
+      letter-spacing: 0.1em;
+    }
+
+    /* ============================================================
+       SECCIÓN: CONTACTO
+    ============================================================ */
+    #contacto {
+      padding: 120px 0;
+      background: var(--grafito);
+    }
+
+    .contacto-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contacto-info {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .contacto-dato {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contacto-dato-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dorado);
+      font-weight: 500;
+    }
+
+    .contacto-dato-valor {
+      font-family: var(--font-titulo);
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--blanco);
+      line-height: 1.4;
+    }
+
+    .contacto-redes {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .red-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--grafito-3);
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blanco-2);
+      transition: all var(--transition);
+    }
+
+    .red-social:hover {
+      border-color: var(--dorado-dim);
+      color: var(--dorado);
+      background: rgba(201,168,76,0.06);
+    }
+
+    .contacto-mapa {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .contacto-mapa iframe {
+      width: 100%;
+      height: 420px;
+      border: none;
+      display: block;
+      filter: grayscale(1) invert(1) contrast(0.85);
+    }
+
+    .horario-tabla {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .horario-fila {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.82rem;
+    }
+
+    .horario-fila:last-child { border-bottom: none; }
+
+    .horario-dia { color: var(--blanco-2); font-weight: 400; }
+
+    .horario-hora { color: var(--blanco); font-weight: 500; }
+
+    .horario-cerrado { color: var(--gris); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    #footer {
+      background: var(--negro);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 60px 0 36px;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 52px;
+    }
+
+    .footer-brand .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .footer-brand p {
+      font-size: 0.82rem;
+      color: var(--gris);
+      line-height: 1.7;
+      max-width: 260px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dorado);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul a {
+      font-size: 0.82rem;
+      color: var(--gris);
+      transition: color var(--transition);
+    }
+
+    .footer-col ul a:hover { color: var(--blanco-2); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 28px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.72rem;
+      color: var(--gris);
+    }
+
+    .footer-bottom a {
+      color: var(--dorado-dim);
+      transition: color var(--transition);
+    }
+
+    .footer-bottom a:hover { color: var(--dorado); }
+
+    /* ============================================================
+       WHATSAPP FLOTANTE
+    ============================================================ */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .whatsapp-label {
+      background: var(--grafito-2);
+      color: var(--blanco-2);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      padding: 10px 16px;
+      border-radius: 999px 0 0 999px;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-right: none;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+    }
+
+    .whatsapp-float:hover .whatsapp-label {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .whatsapp-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.35);
+      transition: transform var(--transition), box-shadow var(--transition);
+      flex-shrink: 0;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 32px rgba(37,211,102,0.5);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .reserva-inner { grid-template-columns: 1fr; gap: 60px; }
+      .contacto-inner { grid-template-columns: 1fr; gap: 48px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links,
+      .nav-cta { display: none; }
+
+      .nav-hamburger { display: flex; }
+
+      .hero-titulo { font-size: clamp(2.5rem, 10vw, 4rem); }
+
+      .hero-stats { gap: 28px; }
+
+      .servicios-header { flex-direction: column; align-items: flex-start; }
+
+      .servicios-grid { grid-template-columns: 1fr; }
+
+      .galeria-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .galeria-item:nth-child(1),
+      .galeria-item:nth-child(2),
+      .galeria-item:nth-child(3),
+      .galeria-item:nth-child(4),
+      .galeria-item:nth-child(5) {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .galeria-item:nth-child(1) { grid-column: 1 / -1; height: 260px; }
+
+      .resenas-stats { grid-template-columns: 1fr; }
+
+      .resena-card { min-width: calc(85vw); }
+
+      .resenas-header { flex-direction: column; align-items: flex-start; }
+
+      .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+      .galeria-grid { height: auto; }
+
+      .galeria-item { height: 200px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-acciones { flex-direction: column; align-items: flex-start; }
+      .hero-stats { flex-wrap: wrap; gap: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     NAVBAR
+============================================================ -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <div class="nav-logo-icon">
+      <!-- Isotipo: navaja cruzada -->
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="15" stroke="#C9A84C" stroke-width="1"/>
+        <!-- Navaja estilizada -->
+        <path d="M8 10 L24 22 M24 10 L8 22" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M16 8 L16 24" stroke="#C9A84C" stroke-width="0.8" stroke-linecap="round" opacity="0.4"/>
+      </svg>
+    </div>
+    <div class="nav-logo-text">
+      <span>Black Steel</span>
+      <span>Barbería & Lounge</span>
+    </div>
+  </div>
+
+  <ul class="nav-links" role="list">
+    <li><a href="#inicio" class="activo">Inicio</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#reserva">Reservar</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#resenas">Reseñas</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+
+  <div class="nav-cta">
+    <a href="#reserva" class="nav-reserva">Reservar ahora</a>
+  </div>
+
+  <button class="nav-hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="nav-mobile" id="nav-mobile" role="dialog" aria-modal="true">
+  <a href="#inicio" class="nav-mobile-link">Inicio</a>
+  <a href="#servicios" class="nav-mobile-link">Servicios</a>
+  <a href="#reserva" class="nav-mobile-link">Reservar</a>
+  <a href="#galeria" class="nav-mobile-link">Galería</a>
+  <a href="#resenas" class="nav-mobile-link">Reseñas</a>
+  <a href="#contacto" class="nav-mobile-link">Contacto</a>
+  <div class="nav-mobile-cta">
+    <a href="#reserva" class="btn-primario" style="width:100%;justify-content:center;">Reservar ahora</a>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     SECCIÓN: INICIO / HERO
+============================================================ -->
+<section id="inicio">
+  <div class="hero-bg">
+    <img
+      src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1800&auto=format&fit=crop&q=80"
+      alt="Interior Black Steel Barbería"
+      loading="eager"
+    />
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge reveal">
+      <div class="punto"></div>
+      <span class="tag">Padre Hurtado · Santiago</span>
+    </div>
+
+    <h1 class="hero-titulo reveal reveal-delay-1">
+      Tu imagen<br />
+      no admite<br />
+      <em>mediocridades.</em>
+    </h1>
+
+    <p class="hero-subtitulo reveal reveal-delay-2">
+      Donde el cuidado masculino se convierte en ritual. Cortes de precisión,
+      experiencia de lounge y barberos que entienden lo que no tienes que explicar.
+    </p>
+
+    <div class="hero-acciones reveal reveal-delay-3">
+      <a href="#reserva" class="btn-primario">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        Reservar ahora
+      </a>
+      <a href="#servicios" class="btn-outline">Ver servicios</a>
+    </div>
+
+    <div class="hero-horario reveal reveal-delay-3">
+      <div class="hero-horario-dot"></div>
+      <span>Lun – Sáb &nbsp;·&nbsp; 11:00 – 21:00 hrs</span>
+    </div>
+
+    <div class="hero-stats reveal reveal-delay-4" style="margin-top:52px;">
+      <div class="hero-stat-item">
+        <strong>+1.000</strong>
+        <span>Clientes atendidos</span>
+      </div>
+      <div class="hero-stat-item">
+        <strong>4,8★</strong>
+        <span>488 reseñas Google</span>
+      </div>
+      <div class="hero-stat-item">
+        <strong>4</strong>
+        <span>Barberos certificados</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECCIÓN: SERVICIOS
+============================================================ -->
+<section id="servicios">
+  <div class="container">
+    <div class="servicios-header">
+      <div class="servicios-intro">
+        <span class="tag reveal">Catálogo de servicios</span>
+        <h2 class="titulo-seccion reveal reveal-delay-1" style="margin-top:16px;">
+          Precisión en<br /><em>cada detalle</em>
+        </h2>
+        <p class="reveal reveal-delay-2">
+          Cada servicio está diseñado para que salgas diferente a como entraste.
+          No solo un corte — una transformación.
+        </p>
+      </div>
+
+      <div class="servicios-filtros reveal">
+        <button class="filtro-btn activo" data-filtro="todos">Todos</button>
+        <button class="filtro-btn" data-filtro="corte">Cortes</button>
+        <button class="filtro-btn" data-filtro="barba">Barba</button>
+        <button class="filtro-btn" data-filtro="skincare">Skincare</button>
+        <button class="filtro-btn" data-filtro="combo">Combos</button>
+      </div>
+    </div>
+
+    <div class="servicios-grid" id="servicios-grid">
+
+      <!-- CORTE BLACK STEEL -->
+      <div class="servicio-card reveal" data-categoria="corte">
+        <div class="servicio-icono">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 3 L18 21 M18 3 L6 21"/>
+            <circle cx="6" cy="6" r="2"/>
+            <circle cx="18" cy="6" r="2"/>
+          </svg>
+        </div>
+        <div class="servicio-categoria">Corte premium</div>
+        <div class="servicio-nombre">Corte Black Steel</div>
+        <p class="servicio-desc">
+          Comienza con una asesoría de visajismo personalizada según la geometría
+          de tu rostro. Seleccionamos la técnica ideal entre fade degradado, texturizado
+          o clásico para potenciar tus rasgos. Incluye lavado de cabello y finalización
+          con productos de grooming premium.
+        </p>
+        <div class="servicio-footer">
+          <div class="servicio-precio">
+            <span class="desde">Desde</span>
+            <span class="valor"><span class="moneda">$</span>14.000</span>
+          </div>
+          <a href="#reserva" class="servicio-btn">Reservar</a>
+        </div>
+      </div>
+
+      <!-- PERFILADO BARBA VIP -->
+      <div class="servicio-card reveal reveal-delay-1" data-categoria="barba">
+        <div class="servicio-icono">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6 C4 6 2 10 2 14 C2 18 6 21 12 21 C18 21 22 18 22 14 C22 10 20 6 20 6"/>
+            <path d="M8 6 C8 4 10 3 12 3 C14 3 16 4 16 6"/>
+            <path d="M10 12 C10 13.1 10.9 14 12 14 C13.1 14 14 13.1 14 12"/>
+          </svg>
+        </div>
+        <div class="servicio-categoria">Barba</div>
+        <div class="servicio-nombre">Perfilado de Barba VIP</div>
+        <p class="servicio-desc">
+          Diseño de barba con navaja profesional de filo directo. Trazado de líneas
+          con regla de precisión, hidratación con aceite de argán caliente, toalla
+          caliente y finalización con bálsamo de barba. Para el caballero que sabe
+          que los detalles marcan la diferencia.
+        </p>
+        <div class="servicio-footer">
+          <div class="servicio-precio">
+            <span class="desde">Desde</span>
+            <span class="valor"><span class="moneda">$</span>10.000</span>
+          </div>
+          <a href="#reserva" class="servicio-btn">Reservar</a>
+        </div>
+      </div>
+
+      <!-- COMBO VIP -->
+      <div class="servicio-card destacada reveal reveal-delay-2" data-categoria="combo">
+        <span class="badge-popular">Más popular</span>
+        <div class="servicio-icono">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <div class="servicio-categoria">Experiencia completa</div>
+        <div class="servicio-nombre">Combo VIP<br />Corte + Barba</div>
+        <p class="servicio-desc">
+          La experiencia Black Steel en su máxima expresión. Corte con asesoría
+          de visajismo + perfilado de barba con navaja + tratamiento de barba con
+          aceites calientes + aromaterapia + bebida de cortesía en nuestro lounge.
+          Reserva mínimo 24 hrs antes.
+        </p>
+        <div class="servicio-footer">
+          <div class="servicio-precio">
+            <span class="desde">Desde</span>
+            <span class="valor"><span class="moneda">$</span>18.000</span>
+          </div>
+          <a href="#reserva" class="servicio-btn">Reservar</a>
+        </div>
+      </div>
+
+      <!-- BLACK MASK -->
+      <div class="servicio-card reveal reveal-delay-1" data-categoria="skincare">
+        <div class="servicio-icono">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M6 20 C6 17 9 15 12 15 C15 15 18 17 18 20"/>
+            <path d="M3 12 C3 12 5 10 7 12" opacity="0.5"/>
+            <path d="M21 12 C21 12 19 10 17 12" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="servicio-categoria">Skincare masculino</div>
+        <div class="servicio-nombre">Black Mask<br />& Limpieza Facial</div>
+        <p class="servicio-desc">
+          Aplicación de máscara negra purificante de carbón activado para eliminar
+          impurezas, puntos negros y exceso de sebo. Incluye limpieza profunda,
+          vapor facial y sérum hidratante post-tratamiento. Piel renovada en 40 minutos.
+        </p>
+        <div class="servicio-footer">
+          <div class="servicio-precio">
+            <span class="desde">Desde</span>
+            <span class="valor"><span class="moneda">$</span>8.000</span>
+          </div>
+          <a href="#reserva" class="servicio-btn">Reservar</a>
+        </div>
+      </div>
+
+      <!-- AFEITADO CLÁSICO -->
+      <div class="servicio-card reveal reveal-delay-2" data-categoria="barba">
+        <div class="servicio-icono">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4 L16 16 M16 4 L4 16" />
+            <path d="M16 4 L20 8 L16 12" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="servicio-categoria">Ritual</div>
+        <div class="servicio-nombre">Afeitado Clásico<br />con Navaja</div>
+        <p class="servicio-desc">
+          Experiencia de barbería tradicional elevada al máximo. Preparación con
+          aceite pre-afeitado, espuma caliente artesanal, navaja de filo recto,
+          toalla fría de cierre y loción aftershave premium. Una tradición que
+          nunca pasa de moda.
+        </p>
+        <div class="servicio-footer">
+          <div class="servicio-precio">
+            <span class="desde">Desde</span>
+            <span class="valor"><span class="moneda">$</span>12.000</span>
+          </div>
+          <a href="#reserva" class="servicio-btn">Reservar</a>
+        </div>
+      </div>
+
+      <!-- CEJAS -->
+      <div class="servicio-card reveal reveal-delay-3" data-categoria="barba">
+        <div class="servicio-icono">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 9 C6 7 10 6 14 7 C18 8 20 10 20 10"/>
+            <path d="M4 15 C6 13 10 12 14 13 C18 14 20 16 20 16"/>
+          </svg>
+        </div>
+        <div class="servicio-categoria">Detailing</div>
+        <div class="servicio-nombre">Diseño de Cejas<br />Masculino</div>
+        <p class="servicio-desc">
+          Delineado y depilación profesional de cejas para hombres. Técnica de cera
+          fría con hilo de precisión para definir el arco natural sin feminizar.
+          El detalle que completa cualquier look. Se puede combinar con cualquier
+          servicio principal.
+        </p>
+        <div class="servicio-footer">
+          <div class="servicio-precio">
+            <span class="desde">Desde</span>
+            <span class="valor"><span class="moneda">$</span>5.000</span>
+          </div>
+          <a href="#reserva" class="servicio-btn">Reservar</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECCIÓN: AGENDA / RESERVA
+============================================================ -->
+<section id="reserva">
+  <div class="reserva-bg-ornament"></div>
+  <div class="container">
+    <div class="reserva-inner">
+
+      <div class="reserva-info">
+        <span class="tag reveal">Reserva online 24/7</span>
+        <h2 class="titulo-seccion reveal reveal-delay-1" style="margin-top:16px;">
+          Tu hora,<br /><em>a tu tiempo.</em>
+        </h2>
+        <div class="linea-dorada reveal reveal-delay-1"></div>
+        <p class="reveal reveal-delay-2" style="color: var(--blanco-2); font-size:0.95rem; line-height:1.75; max-width:420px;">
+          Sin llamadas, sin esperas. Elige tu servicio, selecciona tu barbero
+          preferido y confirma tu hora en minutos. Paga un abono o el total
+          online y llega directo a tu silla.
+        </p>
+
+        <div class="reserva-pasos reveal reveal-delay-3">
+          <div class="paso">
+            <div class="paso-num">01</div>
+            <div class="paso-texto">
+              <strong>Elige tu servicio</strong>
+              <p>Selecciona entre corte, barba, skincare o el Combo VIP completo.</p>
+            </div>
+          </div>
+          <div class="paso">
+            <div class="paso-num">02</div>
+            <div class="paso-texto">
+              <strong>Selecciona tu barbero y hora</strong>
+              <p>Ve la disponibilidad en tiempo real de nuestros 4 profesionales.</p>
+            </div>
+          </div>
+          <div class="paso">
+            <div class="paso-num">03</div>
+            <div class="paso-texto">
+              <strong>Confirma y paga</strong>
+              <p>Abono o pago total online. Tu hora queda 100% asegurada.</p>
+            </div>
+          </div>
+          <div class="paso">
+            <div class="paso-num">04</div>
+            <div class="paso-texto">
+              <strong>Llega y disfruta</strong>
+              <p>Sin fila, sin espera. Directo a tu experiencia Black Steel.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reserva-embed reveal reveal-delay-2">
+        <div class="reserva-widget">
+          <div class="reserva-widget-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            <h3>Agenda en línea — Black Steel</h3>
+          </div>
+
+          <!--
+            ╔══════════════════════════════════════════════════════╗
+            ║  EMBED DEL SISTEMA DE AGENDA                         ║
+            ║  Reemplaza el bloque de abajo con tu iframe:         ║
+            ║                                                      ║
+            ║  <iframe                                             ║
+            ║    src="https://calendly.com/TU-USUARIO"            ║
+            ║    width="100%"                                      ║
+            ║    height="460"                                      ║
+            ║    frameborder="0"                                   ║
+            ║  ></iframe>                                          ║
+            ║                                                      ║
+            ║  O bien Agendapro / cal.com / SimplyBook             ║
+            ╚══════════════════════════════════════════════════════╝
+          -->
+          <div class="reserva-widget-body">
+            <div class="reserva-placeholder-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+                <path d="M8 14 L10 16 L14 12"/>
+              </svg>
+            </div>
+            <div class="reserva-placeholder-text">
+              <h4>Sistema de agenda online</h4>
+              <p>
+                Aquí va el embed de tu plataforma de reservas (Calendly,
+                cal.com, Agendapro o SimplyBook). Conecta tu sistema en
+                minutos — reservas 24/7 desde este mismo widget.
+              </p>
+            </div>
+            <a href="#reserva" class="btn-primario" style="width:100%;justify-content:center;">
+              Ir al sistema de reservas →
+            </a>
+          </div>
+
+          <p class="reserva-nota">
+            * Las reservas quedan confirmadas solo al completar el pago del abono online.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECCIÓN: GALERÍA
+============================================================ -->
+<section id="galeria">
+  <div class="container">
+    <div class="galeria-header">
+      <div>
+        <span class="tag reveal">Nuestro trabajo</span>
+        <h2 class="titulo-seccion reveal reveal-delay-1" style="margin-top:16px;">
+          El resultado<br /><em>habla solo.</em>
+        </h2>
+      </div>
+      <div class="reveal">
+        <a href="https://instagram.com/blacksteel.barberlounge" target="_blank" rel="noopener" class="btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+          Ver Instagram
+        </a>
+      </div>
+    </div>
+
+    <div class="galeria-grid reveal">
+      <div class="galeria-item" data-src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&auto=format&fit=crop&q=80">
+        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&auto=format&fit=crop&q=80" alt="Corte fade degradado" loading="lazy" />
+        <div class="galeria-item-overlay"><span>Fade & Texturizado</span></div>
+      </div>
+      <div class="galeria-item" data-src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&auto=format&fit=crop&q=80">
+        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&auto=format&fit=crop&q=80" alt="Arreglo de barba" loading="lazy" />
+        <div class="galeria-item-overlay"><span>Barba VIP</span></div>
+      </div>
+      <div class="galeria-item" data-src="https://images.unsplash.com/photo-1622296089863-eb7fc530daa8?w=600&auto=format&fit=crop&q=80">
+        <img src="https://images.unsplash.com/photo-1622296089863-eb7fc530daa8?w=600&auto=format&fit=crop&q=80" alt="Interior barbería" loading="lazy" />
+        <div class="galeria-item-overlay"><span>El Lounge</span></div>
+      </div>
+      <div class="galeria-item" data-src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&auto=format&fit=crop&q=80">
+        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&auto=format&fit=crop&q=80" alt="Corte clásico" loading="lazy" />
+        <div class="galeria-item-overlay"><span>Corte Clásico</span></div>
+      </div>
+      <div class="galeria-item" data-src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&auto=format&fit=crop&q=80">
+        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&auto=format&fit=crop&q=80" alt="Afeitado con navaja" loading="lazy" />
+        <div class="galeria-item-overlay"><span>Afeitado Navaja</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">&times;</button>
+  <img id="lightbox-img" src="" alt="Vista ampliada" />
+</div>
+
+
+<!-- ============================================================
+     SECCIÓN: RESEÑAS
+============================================================ -->
+<section id="resenas">
+  <div class="container">
+    <div class="resenas-stats reveal">
+      <div class="stat-bloque">
+        <span class="num">+1.000</span>
+        <span class="label">Clientes atendidos</span>
+      </div>
+      <div class="stat-bloque">
+        <span class="num">4,8★</span>
+        <span class="label">488 reseñas en Google</span>
+      </div>
+      <div class="stat-bloque">
+        <span class="num">4</span>
+        <span class="label">Barberos certificados</span>
+      </div>
+    </div>
+
+    <div class="resenas-header">
+      <div>
+        <span class="tag reveal">Lo que dicen ellos</span>
+        <h2 class="titulo-seccion reveal reveal-delay-1" style="margin-top:16px;">
+          Reseñas de<br /><em>clientes reales.</em>
+        </h2>
+      </div>
+      <div class="slider-controles reveal">
+        <button class="slider-btn" id="slider-prev" aria-label="Anterior">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M15 18 L9 12 L15 6"/>
+          </svg>
+        </button>
+        <button class="slider-btn" id="slider-next" aria-label="Siguiente">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M9 18 L15 12 L9 6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="resenas-slider-track">
+      <div class="resenas-slider" id="resenas-slider">
+
+        <div class="resena-card reveal">
+          <div class="google-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span>Google</span>
+          </div>
+          <div class="comillas">"</div>
+          <p class="resena-texto">
+            Llegué sin saber muy bien qué corte quería y salí con el mejor look
+            que he tenido en años. El barbero me hizo preguntas que ningún otro me
+            había hecho antes. Ambiente increíble, se nota que es otro nivel.
+          </p>
+          <div class="resena-estrellas">
+            <span class="estrella">★</span><span class="estrella">★</span>
+            <span class="estrella">★</span><span class="estrella">★</span>
+            <span class="estrella">★</span>
+          </div>
+          <div class="resena-autor">
+            <div class="resena-avatar">M</div>
+            <div class="resena-info">
+              <strong>Matías R.</strong>
+              <span>Cliente hace 6 meses · Combo VIP</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="resena-card reveal reveal-delay-1">
+          <div class="google-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span>Google</span>
+          </div>
+          <div class="comillas">"</div>
+          <p class="resena-texto">
+            El perfilado de barba VIP es simplemente el mejor que he recibido en
+            Santiago. Navaja, toalla caliente, aceites… uno sale sintiéndose como
+            diferente persona. Precio más que justo para lo que ofrecen. Ya soy cliente fijo.
+          </p>
+          <div class="resena-estrellas">
+            <span class="estrella">★</span><span class="estrella">★</span>
+            <span class="estrella">★</span><span class="estrella">★</span>
+            <span class="estrella">★</span>
+          </div>
+          <div class="resena-autor">
+            <div class="resena-avatar">F</div>
+            <div class="resena-info">
+              <strong>Felipe C.</strong>
+              <span>Cliente hace 1 año · Barba VIP</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="resena-card reveal reveal-delay-2">
+          <div class="google-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span>Google</span>
+          </div>
+          <div class="comillas">"</div>
+          <p class="resena-texto">
+            Probé la black mask porque era algo que nunca había hecho y me
+            sorprendió completamente. El skin care masculino en Chile está
+            subvalorado. Aquí lo hacen bien, con productos premium y sin hacerte
+            sentir raro por cuidarte.
+          </p>
+          <div class="resena-estrellas">
+            <span class="estrella">★</span><span class="estrella">★</span>
+            <span class="estrella">★</span><span class="estrella">★</span>
+            <span class="estrella">★</span>
+          </div>
+          <div class="resena-autor">
+            <div class="resena-avatar">S</div>
+            <div class="resena-info">
+              <strong>Sebastián M.</strong>
+              <span>Cliente nuevo · Black Mask</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="resena-card">
+          <div class="google-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span>Google</span>
+          </div>
+          <div class="comillas">"</div>
+          <p class="resena-texto">
+            Lo que más me gustó fue que el local tiene onda propia. No es una barbería
+            genérica. La música, la iluminación, el trato… todo está pensado. El corte
+            fue excelente pero la experiencia completa te hace querer volver.
+          </p>
+          <div class="resena-estrellas">
+            <span class="estrella">★</span><span class="estrella">★</span>
+            <span class="estrella">★</span><span class="estrella">★</span>
+            <span class="estrella">★</span>
+          </div>
+          <div class="resena-autor">
+            <div class="resena-avatar">D</div>
+            <div class="resena-info">
+              <strong>Diego A.</strong>
+              <span>Cliente hace 3 meses · Corte Black Steel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="resena-card">
+          <div class="google-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span>Google</span>
+          </div>
+          <div class="comillas">"</div>
+          <p class="resena-texto">
+            Traje a mi hijo de 16 años y quedó fascinado. El barbero le explicó
+            cómo mantener el corte, qué productos usar. Esa atención al detalle y
+            la educación que dan no la encuentras en cualquier lado.
+            Definitivamente volvemos.
+          </p>
+          <div class="resena-estrellas">
+            <span class="estrella">★</span><span class="estrella">★</span>
+            <span class="estrella">★</span><span class="estrella">★</span>
+            <span class="estrella">★</span>
+          </div>
+          <div class="resena-autor">
+            <div class="resena-avatar">R</div>
+            <div class="resena-info">
+              <strong>Rodrigo V.</strong>
+              <span>Cliente hace 8 meses · Corte Black Steel</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECCIÓN: CONTACTO + UBICACIÓN
+============================================================ -->
+<section id="contacto">
+  <div class="container">
+    <span class="tag reveal">Encuéntranos</span>
+    <h2 class="titulo-seccion reveal reveal-delay-1" style="margin-top:16px; margin-bottom:60px;">
+      Visítanos en<br /><em>Padre Hurtado.</em>
+    </h2>
+
+    <div class="contacto-inner">
+
+      <div class="contacto-info reveal">
+
+        <div class="contacto-dato">
+          <span class="contacto-dato-label">Dirección</span>
+          <span class="contacto-dato-valor">
+            Av. Primera Transversal #1420, Local 3<br />
+            Padre Hurtado, Santiago, Chile
+          </span>
+        </div>
+
+        <div class="contacto-dato">
+          <span class="contacto-dato-label">Horario de atención</span>
+          <div class="horario-tabla">
+            <div class="horario-fila">
+              <span class="horario-dia">Lunes — Viernes</span>
+              <span class="horario-hora">11:00 — 21:00</span>
+            </div>
+            <div class="horario-fila">
+              <span class="horario-dia">Sábado</span>
+              <span class="horario-hora">11:00 — 21:00</span>
+            </div>
+            <div class="horario-fila">
+              <span class="horario-dia">Domingo</span>
+              <span class="horario-cerrado horario-hora">Cerrado</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contacto-dato">
+          <span class="contacto-dato-label">WhatsApp (consultas)</span>
+          <span class="contacto-dato-valor">+56 9 3966 5163</span>
+          <p style="font-size:0.72rem;color:var(--gris);margin-top:6px;letter-spacing:0.06em;">
+            Para reservas usa el sistema online. WhatsApp solo para consultas.
+          </p>
+        </div>
+
+        <div class="contacto-dato">
+          <span class="contacto-dato-label">Síguenos</span>
+          <div class="contacto-redes">
+            <a href="https://instagram.com/blacksteel.barberlounge" target="_blank" rel="noopener" class="red-social">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+              </svg>
+              Instagram
+            </a>
+            <a href="https://tiktok.com/@blacksteel.barberlounge" target="_blank" rel="noopener" class="red-social">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.77a8.18 8.18 0 0 0 4.78 1.52V6.83a4.84 4.84 0 0 1-1.01-.14z"/>
+              </svg>
+              TikTok
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="contacto-mapa reveal reveal-delay-2">
+        <!--
+          Mapa: Av. Primera Transversal #1420, Padre Hurtado, Chile
+          Si Google Maps iframe necesita API key propia, reemplaza el src con tu embed code
+        -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.0!2d-70.83!3d-33.63!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDM3JzQ4LjAiUyA3MMKwNDknNDguMCJX!5e0!3m2!1ses!2scl!4v1000000000000"
+          title="Ubicación Black Steel Barbería &amp; Lounge"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allow="fullscreen"
+        ></iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="nav-logo-icon">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="15" stroke="#C9A84C" stroke-width="1"/>
+              <path d="M8 10 L24 22 M24 10 L8 22" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M16 8 L16 24" stroke="#C9A84C" stroke-width="0.8" stroke-linecap="round" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="nav-logo-text">
+            <span>Black Steel</span>
+            <span>Barbería & Lounge</span>
+          </div>
+        </div>
+        <p>
+          Más que una barbería. Un espacio donde el hombre moderno
+          recupera el ritual del cuidado. Padre Hurtado, Santiago.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#reserva">Reservar</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#resenas">Reseñas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#reserva">Corte Black Steel</a></li>
+          <li><a href="#reserva">Perfilado de Barba VIP</a></li>
+          <li><a href="#reserva">Combo VIP Corte + Barba</a></li>
+          <li><a href="#reserva">Black Mask & Limpieza</a></li>
+          <li><a href="#reserva">Afeitado Clásico</a></li>
+          <li><a href="#reserva">Diseño de Cejas</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Black Steel Barbería & Lounge. Todos los derechos reservados.</p>
+      <p>
+        Sitio web creado por
+        <a href="https://alonsostudiodigital.com" target="_blank" rel="noopener">Alonsostudiodigital.com</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     WHATSAPP FLOTANTE
+============================================================ -->
+<div class="whatsapp-float">
+  <span class="whatsapp-label">Consultas por WhatsApp</span>
+  <a
+    href="https://wa.me/56939665163?text=Hola%20Black%20Steel%2C%20tengo%20una%20consulta%20sobre%20sus%20servicios."
+    target="_blank"
+    rel="noopener"
+    class="whatsapp-btn"
+    aria-label="Contactar por WhatsApp"
+  >
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+</div>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+  /* -------------------------------------------------------
+     NAVBAR: scroll activo + hamburger
+  ------------------------------------------------------- */
+  const navbar = document.getElementById('navbar');
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('nav-mobile');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const mobileLinks = document.querySelectorAll('.nav-mobile-link');
+
+  hamburger.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('abierto');
+    navMobile.classList.toggle('abierto', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('abierto');
+      navMobile.classList.remove('abierto');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* Actualizar link activo al hacer scroll */
+  const sections = document.querySelectorAll('section[id]');
+
+  function actualizarNavActivo() {
+    const scrollY = window.scrollY + 100;
+    sections.forEach(sec => {
+      const top = sec.offsetTop;
+      const height = sec.offsetHeight;
+      const id = sec.getAttribute('id');
+      if (scrollY >= top && scrollY < top + height) {
+        navLinks.forEach(a => {
+          a.classList.toggle('activo', a.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }
+
+  window.addEventListener('scroll', actualizarNavActivo, { passive: true });
+
+  /* -------------------------------------------------------
+     SCROLL REVEAL
+  ------------------------------------------------------- */
+  const revealObs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  /* -------------------------------------------------------
+     FILTROS DE SERVICIOS
+  ------------------------------------------------------- */
+  const filtros = document.querySelectorAll('.filtro-btn');
+  const cards = document.querySelectorAll('.servicio-card');
+
+  filtros.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filtros.forEach(b => b.classList.remove('activo'));
+      btn.classList.add('activo');
+
+      const filtro = btn.dataset.filtro;
+
+      cards.forEach(card => {
+        const cat = card.dataset.categoria;
+        const mostrar = filtro === 'todos' || cat === filtro;
+        card.style.display = mostrar ? '' : 'none';
+
+        if (mostrar) {
+          card.style.animation = 'none';
+          card.offsetHeight; // reflow
+          card.style.animation = '';
+        }
+      });
+    });
+  });
+
+  /* -------------------------------------------------------
+     LIGHTBOX GALERÍA
+  ------------------------------------------------------- */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  document.querySelectorAll('.galeria-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const src = item.dataset.src;
+      if (!src) return;
+      lightboxImg.src = src;
+      lightbox.classList.add('abierto');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function cerrarLightbox() {
+    lightbox.classList.remove('abierto');
+    document.body.style.overflow = '';
+    setTimeout(() => { lightboxImg.src = ''; }, 300);
+  }
+
+  lightboxClose.addEventListener('click', cerrarLightbox);
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) cerrarLightbox();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') cerrarLightbox();
+  });
+
+  /* -------------------------------------------------------
+     SLIDER DE RESEÑAS
+  ------------------------------------------------------- */
+  const slider = document.getElementById('resenas-slider');
+  const btnPrev = document.getElementById('slider-prev');
+  const btnNext = document.getElementById('slider-next');
+  let sliderIndex = 0;
+
+  function calcularPorPantalla() {
+    if (window.innerWidth < 768) return 1;
+    if (window.innerWidth < 1024) return 2;
+    return 3;
+  }
+
+  function moverSlider(dir) {
+    const items = slider.querySelectorAll('.resena-card');
+    const porPantalla = calcularPorPantalla();
+    const max = Math.max(0, items.length - porPantalla);
+
+    sliderIndex = Math.max(0, Math.min(sliderIndex + dir, max));
+
+    const cardWidth = items[0].offsetWidth + 20; // gap = 20px
+    slider.style.transform = `translateX(-${sliderIndex * cardWidth}px)`;
+  }
+
+  btnPrev.addEventListener('click', () => moverSlider(-1));
+  btnNext.addEventListener('click', () => moverSlider(1));
+
+  window.addEventListener('resize', () => {
+    sliderIndex = 0;
+    slider.style.transform = 'translateX(0)';
+  }, { passive: true });
+
+  /* -------------------------------------------------------
+     SMOOTH ANCHOR SCROLL (override para offset del navbar)
+  ------------------------------------------------------- */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const offset = 68; // altura navbar
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
