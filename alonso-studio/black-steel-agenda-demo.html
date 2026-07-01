@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservar Hora — Black Steel Barbería & Lounge</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --negro:     #080808;
+      --grafito:   #141414;
+      --grafito-2: #1e1e1e;
+      --grafito-3: #2a2a2a;
+      --dorado:    #c9a84c;
+      --dorado-clr:#e2c470;
+      --dorado-dim:#9a7a30;
+      --blanco:    #f4efe6;
+      --blanco-2:  #d6d0c4;
+      --gris:      #6b6560;
+      --verde:     #3ddc84;
+      --font-t:    'Cormorant Garamond', Georgia, serif;
+      --font-b:    'DM Sans', system-ui, sans-serif;
+      --ease:      cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background: var(--grafito);
+      color: var(--blanco);
+      font-family: var(--font-b);
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      background: var(--negro);
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .topbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .topbar-logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--dorado-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .topbar-logo-text { display: flex; flex-direction: column; }
+    .topbar-logo-text span:first-child {
+      font-family: var(--font-t);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+    .topbar-logo-text span:last-child {
+      font-size: 0.56rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dorado);
+    }
+
+    .demo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dorado);
+    }
+
+    .demo-badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--dorado);
+      animation: pulso 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulso {
+      0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}
+    }
+
+    .volver-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gris);
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .volver-btn:hover { color: var(--blanco-2); }
+
+    /* ── LAYOUT PRINCIPAL ── */
+    .agenda-wrap {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 40px 16px 60px;
+    }
+
+    .agenda-card {
+      background: var(--grafito-2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 840px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+    }
+
+    /* ── PROGRESO ── */
+    .progreso {
+      background: var(--negro);
+      padding: 20px 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .paso-prog {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .paso-prog:not(:last-child)::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 0 8px;
+    }
+
+    .paso-num-prog {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--grafito-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--gris);
+      transition: all .4s var(--ease);
+      flex-shrink: 0;
+    }
+
+    .paso-num-prog.activo {
+      border-color: var(--dorado);
+      background: rgba(201,168,76,0.1);
+      color: var(--dorado);
+    }
+
+    .paso-num-prog.completado {
+      border-color: var(--verde);
+      background: rgba(61,220,132,0.1);
+      color: var(--verde);
+    }
+
+    .paso-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gris);
+      transition: color .4s;
+      white-space: nowrap;
+    }
+
+    .paso-label.activo { color: var(--dorado); }
+    .paso-label.completado { color: var(--verde); }
+
+    /* ── CONTENIDO PASOS ── */
+    .paso-contenido {
+      display: none;
+      animation: fadeIn .35s var(--ease);
+    }
+
+    .paso-contenido.activo { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity:0; transform:translateY(12px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    .paso-body {
+      padding: 36px 32px;
+    }
+
+    .paso-titulo {
+      font-family: var(--font-t);
+      font-size: 1.8rem;
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--blanco);
+      margin-bottom: 6px;
+    }
+
+    .paso-titulo em { font-style: italic; color: var(--dorado); }
+
+    .paso-subtitulo {
+      font-size: 0.82rem;
+      color: var(--gris);
+      margin-bottom: 28px;
+    }
+
+    /* ── PASO 1: SERVICIOS ── */
+    .servicios-lista {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .svc-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--grafito);
+      border: 1.5px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 18px 20px;
+      cursor: pointer;
+      transition: border-color .3s, background .3s;
+      position: relative;
+    }
+
+    .svc-item:hover {
+      border-color: rgba(201,168,76,0.2);
+      background: rgba(201,168,76,0.04);
+    }
+
+    .svc-item.seleccionado {
+      border-color: var(--dorado);
+      background: rgba(201,168,76,0.08);
+    }
+
+    .svc-item.seleccionado .svc-check {
+      background: var(--dorado);
+      border-color: var(--dorado);
+    }
+
+    .svc-item.seleccionado .svc-check::after { display: block; }
+
+    .svc-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1.5px solid var(--grafito-3);
+      flex-shrink: 0;
+      position: relative;
+      transition: all .3s;
+    }
+
+    .svc-check::after {
+      content: '';
+      display: none;
+      width: 6px;
+      height: 10px;
+      border: 2px solid var(--negro);
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg) translate(-1px,-1px);
+      position: absolute;
+      top: 2px;
+      left: 5px;
+    }
+
+    .svc-info { flex: 1; }
+
+    .svc-nombre {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--blanco);
+      margin-bottom: 2px;
+    }
+
+    .svc-desc {
+      font-size: 0.75rem;
+      color: var(--gris);
+    }
+
+    .svc-precio {
+      font-family: var(--font-t);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--dorado);
+      flex-shrink: 0;
+    }
+
+    .svc-duracion {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.65rem;
+      color: var(--gris);
+      margin-top: 3px;
+    }
+
+    /* ── PASO 2: FECHA Y HORA ── */
+    .fecha-hora-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .calendario-wrap h3,
+    .horas-wrap h3 {
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--dorado);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    /* Calendario */
+    .cal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .cal-mes {
+      font-family: var(--font-t);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--blanco);
+    }
+
+    .cal-nav {
+      background: var(--grafito);
+      border: 1px solid var(--grafito-3);
+      border-radius: 6px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--blanco-2);
+      transition: border-color .3s, color .3s;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .cal-nav:hover { border-color: var(--dorado-dim); color: var(--dorado); }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      text-align: center;
+    }
+
+    .cal-dia-nombre {
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gris);
+      padding: 4px 0;
+    }
+
+    .cal-dia {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+      color: var(--blanco-2);
+      border: 1px solid transparent;
+    }
+
+    .cal-dia:hover:not(.inactivo):not(.pasado) {
+      background: rgba(201,168,76,0.1);
+      border-color: rgba(201,168,76,0.2);
+      color: var(--dorado);
+    }
+
+    .cal-dia.seleccionado {
+      background: var(--dorado) !important;
+      color: var(--negro) !important;
+      font-weight: 600;
+      border-color: var(--dorado) !important;
+    }
+
+    .cal-dia.hoy {
+      border-color: rgba(201,168,76,0.3);
+      color: var(--dorado);
+    }
+
+    .cal-dia.pasado {
+      color: var(--grafito-3);
+      cursor: default;
+    }
+
+    .cal-dia.inactivo {
+      visibility: hidden;
+    }
+
+    /* Horas */
+    .horas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .hora-item {
+      background: var(--grafito);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 10px 6px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 0.82rem;
+      color: var(--blanco-2);
+      transition: all .2s;
+    }
+
+    .hora-item:hover:not(.ocupada) {
+      border-color: rgba(201,168,76,0.3);
+      color: var(--dorado);
+      background: rgba(201,168,76,0.06);
+    }
+
+    .hora-item.seleccionada {
+      border-color: var(--dorado);
+      background: rgba(201,168,76,0.12);
+      color: var(--dorado);
+      font-weight: 500;
+    }
+
+    .hora-item.ocupada {
+      color: var(--grafito-3);
+      cursor: default;
+      text-decoration: line-through;
+    }
+
+    .barberos-wrap { margin-top: 24px; }
+
+    .barberos-wrap h3 {
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--dorado);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    .barberos-lista {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .barbero-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--grafito);
+      border: 1.5px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: all .25s;
+    }
+
+    .barbero-item:hover {
+      border-color: rgba(201,168,76,0.2);
+    }
+
+    .barbero-item.seleccionado {
+      border-color: var(--dorado);
+      background: rgba(201,168,76,0.08);
+    }
+
+    .barbero-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--grafito-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-t);
+      font-size: 1rem;
+      color: var(--dorado);
+      flex-shrink: 0;
+    }
+
+    .barbero-info strong {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--blanco);
+    }
+
+    .barbero-info span {
+      font-size: 0.68rem;
+      color: var(--gris);
+    }
+
+    /* ── PASO 3: DATOS ── */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dorado);
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--grafito);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--blanco);
+      font-family: var(--font-b);
+      font-size: 0.88rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color .25s;
+      width: 100%;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--gris);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--dorado-dim);
+    }
+
+    .form-group select {
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .form-group select option {
+      background: var(--grafito-2);
+      color: var(--blanco);
+    }
+
+    .resumen-reserva {
+      background: var(--grafito);
+      border: 1px solid rgba(201,168,76,0.12);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .resumen-titulo {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dorado);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    .resumen-fila {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.82rem;
+    }
+
+    .resumen-fila:last-child { border-bottom: none; }
+
+    .resumen-fila .rf-label { color: var(--gris); }
+    .resumen-fila .rf-valor { color: var(--blanco); font-weight: 400; }
+    .resumen-fila .rf-valor.precio { color: var(--dorado); font-family: var(--font-t); font-size: 1rem; }
+
+    .aviso-pago {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 24px;
+      font-size: 0.78rem;
+      color: var(--blanco-2);
+      line-height: 1.6;
+    }
+
+    .aviso-pago svg { flex-shrink: 0; color: var(--dorado); margin-top: 2px; }
+
+    /* ── PASO 4: CONFIRMACIÓN ── */
+    .confirmacion-wrap {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .check-anim {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(61,220,132,0.1);
+      border: 2px solid var(--verde);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      animation: scaleIn .5s var(--ease);
+    }
+
+    @keyframes scaleIn {
+      from { transform:scale(0); opacity:0; }
+      to   { transform:scale(1); opacity:1; }
+    }
+
+    .confirmacion-titulo {
+      font-family: var(--font-t);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--blanco);
+      margin-bottom: 10px;
+    }
+
+    .confirmacion-titulo em { font-style: italic; color: var(--verde); }
+
+    .confirmacion-sub {
+      font-size: 0.88rem;
+      color: var(--blanco-2);
+      margin-bottom: 36px;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .confirmacion-card {
+      background: var(--grafito);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 24px;
+      max-width: 420px;
+      margin: 0 auto 32px;
+      text-align: left;
+    }
+
+    .confirmacion-card .resumen-titulo { margin-bottom: 12px; }
+
+    .conf-acciones {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER PASOS ── */
+    .paso-footer {
+      padding: 20px 32px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-prim {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dorado);
+      color: var(--negro);
+      font-family: var(--font-b);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+      transition: background .3s, transform .3s;
+    }
+
+    .btn-prim:hover {
+      background: var(--dorado-clr);
+      transform: translateY(-1px);
+    }
+
+    .btn-prim:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-sec {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: none;
+      border: 1px solid var(--grafito-3);
+      color: var(--gris);
+      font-family: var(--font-b);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all .3s;
+    }
+
+    .btn-sec:hover {
+      border-color: var(--gris);
+      color: var(--blanco-2);
+    }
+
+    .btn-verde {
+      background: var(--verde);
+      color: var(--negro);
+    }
+
+    .btn-verde:hover {
+      background: #5af0a0;
+    }
+
+    /* ── MENSAJE DEMO ── */
+    .banner-demo {
+      background: rgba(201,168,76,0.07);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      padding: 10px 24px;
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--blanco-2);
+      letter-spacing: 0.06em;
+    }
+
+    .banner-demo strong { color: var(--dorado); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .agenda-wrap { padding: 20px 0 40px; }
+      .agenda-card { border-radius: 0; border-left: none; border-right: none; }
+      .paso-body { padding: 24px 20px; }
+      .paso-footer { padding: 16px 20px; }
+      .progreso { padding: 16px 20px; gap: 4px; }
+      .paso-label { display: none; }
+      .fecha-hora-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: auto; }
+      .horas-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Banner demo -->
+<div class="banner-demo">
+  <strong>Modo demo</strong> — Esta es una vista de ejemplo de cómo funciona el sistema de reservas. No se procesarán pagos reales.
+</div>
+
+<!-- Topbar -->
+<header class="topbar">
+  <div class="topbar-logo">
+    <div class="topbar-logo-icon">
+      <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="15" stroke="#C9A84C" stroke-width="1"/>
+        <path d="M8 10 L24 22 M24 10 L8 22" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="topbar-logo-text">
+      <span>Black Steel</span>
+      <span>Barbería & Lounge</span>
+    </div>
+  </div>
+
+  <div class="demo-badge">
+    <div class="dot"></div>
+    Demo de reserva
+  </div>
+
+  <a href="black-steel-barber.html" class="volver-btn">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M19 12 L5 12 M12 5 L5 12 L12 19"/>
+    </svg>
+    Volver al sitio
+  </a>
+</header>
+
+<!-- Contenido principal -->
+<div class="agenda-wrap">
+  <div class="agenda-card">
+
+    <!-- Barra de progreso -->
+    <div class="progreso">
+      <div class="paso-prog">
+        <div class="paso-num-prog activo" id="prog-1">1</div>
+        <span class="paso-label activo" id="label-1">Servicio</span>
+      </div>
+      <div class="paso-prog">
+        <div class="paso-num-prog" id="prog-2">2</div>
+        <span class="paso-label" id="label-2">Fecha & Hora</span>
+      </div>
+      <div class="paso-prog">
+        <div class="paso-num-prog" id="prog-3">3</div>
+        <span class="paso-label" id="label-3">Tus datos</span>
+      </div>
+      <div class="paso-prog">
+        <div class="paso-num-prog" id="prog-4">4</div>
+        <span class="paso-label" id="label-4">Confirmación</span>
+      </div>
+    </div>
+
+
+    <!-- ════ PASO 1: SERVICIO ════ -->
+    <div class="paso-contenido activo" id="paso-1">
+      <div class="paso-body">
+        <h2 class="paso-titulo">¿Qué servicio<br /><em>necesitas hoy?</em></h2>
+        <p class="paso-subtitulo">Selecciona un servicio para continuar con tu reserva</p>
+
+        <div class="servicios-lista">
+          <div class="svc-item" data-svc="Corte Black Steel" data-precio="$14.000" data-dur="45 min">
+            <div class="svc-check"></div>
+            <div class="svc-info">
+              <div class="svc-nombre">Corte Black Steel</div>
+              <div class="svc-desc">Asesoría de visajismo + corte + finalización con grooming premium</div>
+              <div class="svc-duracion">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                45 min
+              </div>
+            </div>
+            <div class="svc-precio">$14.000</div>
+          </div>
+
+          <div class="svc-item" data-svc="Perfilado de Barba VIP" data-precio="$10.000" data-dur="30 min">
+            <div class="svc-check"></div>
+            <div class="svc-info">
+              <div class="svc-nombre">Perfilado de Barba VIP</div>
+              <div class="svc-desc">Diseño con navaja, aceite caliente, toalla y bálsamo de barba</div>
+              <div class="svc-duracion">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                30 min
+              </div>
+            </div>
+            <div class="svc-precio">$10.000</div>
+          </div>
+
+          <div class="svc-item" data-svc="Combo VIP Corte + Barba" data-precio="$18.000" data-dur="75 min">
+            <div class="svc-check"></div>
+            <div class="svc-info">
+              <div class="svc-nombre">Combo VIP Corte + Barba</div>
+              <div class="svc-desc">Experiencia completa: corte + barba + aceites + bebida de cortesía</div>
+              <div class="svc-duracion">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                75 min · <span style="color:var(--dorado);margin-left:4px;">★ Más popular</span>
+              </div>
+            </div>
+            <div class="svc-precio">$18.000</div>
+          </div>
+
+          <div class="svc-item" data-svc="Black Mask & Limpieza Facial" data-precio="$8.000" data-dur="40 min">
+            <div class="svc-check"></div>
+            <div class="svc-info">
+              <div class="svc-nombre">Black Mask & Limpieza Facial</div>
+              <div class="svc-desc">Máscara de carbón activado + limpieza + sérum hidratante</div>
+              <div class="svc-duracion">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                40 min
+              </div>
+            </div>
+            <div class="svc-precio">$8.000</div>
+          </div>
+
+          <div class="svc-item" data-svc="Afeitado Clásico con Navaja" data-precio="$12.000" data-dur="35 min">
+            <div class="svc-check"></div>
+            <div class="svc-info">
+              <div class="svc-nombre">Afeitado Clásico con Navaja</div>
+              <div class="svc-desc">Espuma artesanal + navaja de filo recto + aftershave premium</div>
+              <div class="svc-duracion">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                35 min
+              </div>
+            </div>
+            <div class="svc-precio">$12.000</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="paso-footer">
+        <span style="font-size:.75rem;color:var(--gris);">Selecciona un servicio para continuar</span>
+        <button class="btn-prim" id="btn-sig-1" disabled onclick="irPaso(2)">
+          Continuar
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+
+    <!-- ════ PASO 2: FECHA & HORA ════ -->
+    <div class="paso-contenido" id="paso-2">
+      <div class="paso-body">
+        <h2 class="paso-titulo">Elige tu<br /><em>fecha y hora.</em></h2>
+        <p class="paso-subtitulo">Horario: lunes a sábado de 11:00 a 21:00 hrs</p>
+
+        <div class="fecha-hora-grid">
+          <!-- Calendario -->
+          <div class="calendario-wrap">
+            <h3>Selecciona el día</h3>
+            <div class="cal-header">
+              <button class="cal-nav" id="cal-prev">‹</button>
+              <span class="cal-mes" id="cal-titulo"></span>
+              <button class="cal-nav" id="cal-next">›</button>
+            </div>
+            <div class="cal-grid" id="cal-grid"></div>
+          </div>
+
+          <!-- Horas -->
+          <div class="horas-wrap">
+            <h3>Selecciona la hora</h3>
+            <div class="horas-grid" id="horas-grid"></div>
+          </div>
+        </div>
+
+        <!-- Barbero -->
+        <div class="barberos-wrap">
+          <h3>¿Con qué barbero prefieres?</h3>
+          <div class="barberos-lista">
+            <div class="barbero-item" data-barbero="Cualquiera disponible">
+              <div class="barbero-avatar" style="font-size:.7rem;color:var(--gris);">★</div>
+              <div class="barbero-info">
+                <strong>Sin preferencia</strong>
+                <span>El primero disponible</span>
+              </div>
+            </div>
+            <div class="barbero-item" data-barbero="Carlos M.">
+              <div class="barbero-avatar">C</div>
+              <div class="barbero-info">
+                <strong>Carlos M.</strong>
+                <span>Especialista fade</span>
+              </div>
+            </div>
+            <div class="barbero-item" data-barbero="Diego R.">
+              <div class="barbero-avatar">D</div>
+              <div class="barbero-info">
+                <strong>Diego R.</strong>
+                <span>Barba & navaja</span>
+              </div>
+            </div>
+            <div class="barbero-item" data-barbero="Nicolás F.">
+              <div class="barbero-avatar">N</div>
+              <div class="barbero-info">
+                <strong>Nicolás F.</strong>
+                <span>Clásico & texturizado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="paso-footer">
+        <button class="btn-sec" onclick="irPaso(1)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Atrás
+        </button>
+        <button class="btn-prim" id="btn-sig-2" disabled onclick="irPaso(3)">
+          Continuar
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+
+    <!-- ════ PASO 3: DATOS PERSONALES ════ -->
+    <div class="paso-contenido" id="paso-3">
+      <div class="paso-body">
+        <h2 class="paso-titulo">Tus datos<br /><em>de reserva.</em></h2>
+        <p class="paso-subtitulo">Ingresa tu información para confirmar la hora</p>
+
+        <!-- Resumen -->
+        <div class="resumen-reserva" id="resumen-reserva">
+          <div class="resumen-titulo">Resumen de tu reserva</div>
+          <div class="resumen-fila">
+            <span class="rf-label">Servicio</span>
+            <span class="rf-valor" id="res-svc">—</span>
+          </div>
+          <div class="resumen-fila">
+            <span class="rf-label">Fecha & Hora</span>
+            <span class="rf-valor" id="res-fecha">—</span>
+          </div>
+          <div class="resumen-fila">
+            <span class="rf-label">Barbero</span>
+            <span class="rf-valor" id="res-barbero">—</span>
+          </div>
+          <div class="resumen-fila">
+            <span class="rf-label">Total</span>
+            <span class="rf-valor precio" id="res-precio">—</span>
+          </div>
+        </div>
+
+        <!-- Aviso pago -->
+        <div class="aviso-pago">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+          <span>
+            Para confirmar tu hora se solicitará un <strong style="color:var(--dorado)">abono online</strong> del 30% del valor del servicio.
+            El saldo restante lo pagas al llegar al local. Tu hora queda 100% asegurada.
+          </span>
+        </div>
+
+        <!-- Formulario -->
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" id="inp-nombre" placeholder="Tu nombre" />
+          </div>
+          <div class="form-group">
+            <label>Apellido</label>
+            <input type="text" id="inp-apellido" placeholder="Tu apellido" />
+          </div>
+          <div class="form-group">
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" id="inp-tel" placeholder="+56 9 XXXX XXXX" />
+          </div>
+          <div class="form-group">
+            <label>Correo electrónico</label>
+            <input type="email" id="inp-email" placeholder="tu@email.com" />
+          </div>
+          <div class="form-group full">
+            <label>¿Alguna indicación especial?</label>
+            <textarea id="inp-nota" rows="3" placeholder="Ej: primera vez, tipo de corte que tuviste antes, alergia a algún producto…"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="paso-footer">
+        <button class="btn-sec" onclick="irPaso(2)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Atrás
+        </button>
+        <button class="btn-prim" onclick="confirmarReserva()">
+          Confirmar y pagar abono
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+
+    <!-- ════ PASO 4: CONFIRMACIÓN ════ -->
+    <div class="paso-contenido" id="paso-4">
+      <div class="paso-body">
+        <div class="confirmacion-wrap">
+          <div class="check-anim">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3ddc84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6 L9 17 L4 12"/>
+            </svg>
+          </div>
+
+          <h2 class="confirmacion-titulo">¡Hora <em>confirmada!</em></h2>
+          <p class="confirmacion-sub">
+            Tu reserva en Black Steel está asegurada. Te enviaremos un recordatorio
+            por WhatsApp y correo 24 horas antes de tu cita.
+          </p>
+
+          <div class="confirmacion-card">
+            <div class="resumen-titulo">Detalles de tu reserva</div>
+            <div class="resumen-fila">
+              <span class="rf-label">Servicio</span>
+              <span class="rf-valor" id="conf-svc">—</span>
+            </div>
+            <div class="resumen-fila">
+              <span class="rf-label">Fecha & Hora</span>
+              <span class="rf-valor" id="conf-fecha">—</span>
+            </div>
+            <div class="resumen-fila">
+              <span class="rf-label">Barbero</span>
+              <span class="rf-valor" id="conf-barbero">—</span>
+            </div>
+            <div class="resumen-fila">
+              <span class="rf-label">Local</span>
+              <span class="rf-valor">Av. Primera Transversal #1420, Local 3</span>
+            </div>
+            <div class="resumen-fila">
+              <span class="rf-label">Total pagado</span>
+              <span class="rf-valor precio" id="conf-precio">—</span>
+            </div>
+          </div>
+
+          <div class="conf-acciones">
+            <a href="black-steel-barber.html" class="btn-prim btn-verde">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+              Volver al inicio
+            </a>
+            <button class="btn-sec" onclick="reiniciar()">
+              Hacer otra reserva
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  /* ─── ESTADO ─── */
+  const estado = {
+    servicio: null,
+    precio: null,
+    fecha: null,
+    hora: null,
+    barbero: null,
+    mesOffset: 0
+  };
+
+  /* ─── PASO 1: Selección de servicio ─── */
+  document.querySelectorAll('.svc-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.svc-item').forEach(i => i.classList.remove('seleccionado'));
+      item.classList.add('seleccionado');
+      estado.servicio = item.dataset.svc;
+      estado.precio   = item.dataset.precio;
+      document.getElementById('btn-sig-1').disabled = false;
+    });
+  });
+
+  /* ─── PASO 2: Calendario ─── */
+  const diasNombres = ['Do','Lu','Ma','Mi','Ju','Vi','Sá'];
+  const mesesNombres = ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+                        'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+  // Horas bloqueadas de ejemplo (simulan ocupadas)
+  const horasOcupadas = ['12:00','14:30','16:00','18:30'];
+  const todasLasHoras = ['11:00','11:30','12:00','12:30','13:00','13:30',
+                         '14:00','14:30','15:00','15:30','16:00','16:30',
+                         '17:00','17:30','18:00','18:30','19:00','19:30',
+                         '20:00','20:30'];
+
+  function renderCalendario() {
+    const hoy = new Date();
+    const fecha = new Date(hoy.getFullYear(), hoy.getMonth() + estado.mesOffset, 1);
+    const mes = fecha.getMonth();
+    const anio = fecha.getFullYear();
+    const primerDia = new Date(anio, mes, 1).getDay();
+    const diasEnMes = new Date(anio, mes + 1, 0).getDate();
+
+    document.getElementById('cal-titulo').textContent =
+      `${mesesNombres[mes]} ${anio}`;
+
+    const grid = document.getElementById('cal-grid');
+    grid.innerHTML = '';
+
+    diasNombres.forEach(d => {
+      const el = document.createElement('div');
+      el.className = 'cal-dia-nombre';
+      el.textContent = d;
+      grid.appendChild(el);
+    });
+
+    // Spacers inicio
+    for (let i = 0; i < primerDia; i++) {
+      const sp = document.createElement('div');
+      sp.className = 'cal-dia inactivo';
+      grid.appendChild(sp);
+    }
+
+    for (let d = 1; d <= diasEnMes; d++) {
+      const celda = document.createElement('div');
+      const thisDate = new Date(anio, mes, d);
+      const esPasado = thisDate < new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
+      const esDomingo = thisDate.getDay() === 0;
+      const esHoy = thisDate.toDateString() === hoy.toDateString();
+
+      celda.className = 'cal-dia';
+      if (esPasado || esDomingo) celda.classList.add('pasado');
+      if (esHoy) celda.classList.add('hoy');
+
+      const fechaStr = `${d} de ${mesesNombres[mes]}`;
+      if (estado.fecha === fechaStr) celda.classList.add('seleccionado');
+
+      celda.textContent = d;
+
+      if (!esPasado && !esDomingo) {
+        celda.addEventListener('click', () => {
+          document.querySelectorAll('.cal-dia').forEach(c => c.classList.remove('seleccionado'));
+          celda.classList.add('seleccionado');
+          estado.fecha = fechaStr;
+          renderHoras();
+          verificarPaso2();
+        });
+      }
+
+      grid.appendChild(celda);
+    }
+  }
+
+  function renderHoras() {
+    const grid = document.getElementById('horas-grid');
+    grid.innerHTML = '';
+    todasLasHoras.forEach(h => {
+      const el = document.createElement('div');
+      el.className = 'hora-item';
+      if (horasOcupadas.includes(h)) {
+        el.classList.add('ocupada');
+        el.title = 'Hora no disponible';
+      }
+      if (estado.hora === h) el.classList.add('seleccionada');
+      el.textContent = h;
+      if (!horasOcupadas.includes(h)) {
+        el.addEventListener('click', () => {
+          document.querySelectorAll('.hora-item').forEach(i => i.classList.remove('seleccionada'));
+          el.classList.add('seleccionada');
+          estado.hora = h;
+          verificarPaso2();
+        });
+      }
+      grid.appendChild(el);
+    });
+  }
+
+  document.getElementById('cal-prev').addEventListener('click', () => {
+    if (estado.mesOffset > 0) { estado.mesOffset--; renderCalendario(); }
+  });
+  document.getElementById('cal-next').addEventListener('click', () => {
+    if (estado.mesOffset < 3) { estado.mesOffset++; renderCalendario(); }
+  });
+
+  /* ─── Barberos ─── */
+  document.querySelectorAll('.barbero-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.barbero-item').forEach(i => i.classList.remove('seleccionado'));
+      item.classList.add('seleccionado');
+      estado.barbero = item.dataset.barbero;
+      verificarPaso2();
+    });
+  });
+
+  function verificarPaso2() {
+    const ok = estado.fecha && estado.hora && estado.barbero;
+    document.getElementById('btn-sig-2').disabled = !ok;
+  }
+
+  /* ─── PASO 3: Resumen ─── */
+  function actualizarResumen() {
+    document.getElementById('res-svc').textContent     = estado.servicio || '—';
+    document.getElementById('res-fecha').textContent   = estado.fecha && estado.hora ? `${estado.fecha} a las ${estado.hora} hrs` : '—';
+    document.getElementById('res-barbero').textContent = estado.barbero || '—';
+    document.getElementById('res-precio').textContent  = estado.precio || '—';
+  }
+
+  /* ─── Navegación entre pasos ─── */
+  function irPaso(num) {
+    document.querySelectorAll('.paso-contenido').forEach((el, i) => {
+      el.classList.toggle('activo', i + 1 === num);
+    });
+
+    for (let i = 1; i <= 4; i++) {
+      const progEl  = document.getElementById(`prog-${i}`);
+      const labelEl = document.getElementById(`label-${i}`);
+      progEl.classList.remove('activo','completado');
+      labelEl.classList.remove('activo','completado');
+
+      if (i < num) {
+        progEl.classList.add('completado');
+        labelEl.classList.add('completado');
+        progEl.textContent = '✓';
+      } else if (i === num) {
+        progEl.classList.add('activo');
+        labelEl.classList.add('activo');
+        if (num !== 1) progEl.textContent = String(i);
+      } else {
+        progEl.textContent = String(i);
+      }
+    }
+
+    if (num === 3) actualizarResumen();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ─── Confirmación ─── */
+  function confirmarReserva() {
+    document.getElementById('conf-svc').textContent    = estado.servicio || '—';
+    document.getElementById('conf-fecha').textContent  = estado.fecha && estado.hora ? `${estado.fecha} a las ${estado.hora} hrs` : '—';
+    document.getElementById('conf-barbero').textContent= estado.barbero || '—';
+    document.getElementById('conf-precio').textContent = `Abono pagado: ${calcAbono(estado.precio)} (30%)`;
+    irPaso(4);
+  }
+
+  function calcAbono(precioStr) {
+    if (!precioStr) return '—';
+    const num = parseInt(precioStr.replace(/\D/g,''));
+    return `$${Math.round(num * 0.3).toLocaleString('es-CL')}`;
+  }
+
+  function reiniciar() {
+    Object.assign(estado, { servicio:null, precio:null, fecha:null, hora:null, barbero:null, mesOffset:0 });
+    document.querySelectorAll('.svc-item').forEach(i => i.classList.remove('seleccionado'));
+    document.querySelectorAll('.barbero-item').forEach(i => i.classList.remove('seleccionado'));
+    document.getElementById('btn-sig-1').disabled = true;
+    document.getElementById('btn-sig-2').disabled = true;
+    // Fix numero en prog
+    for (let i = 1; i <= 4; i++) {
+      document.getElementById(`prog-${i}`).textContent = String(i);
+    }
+    renderCalendario();
+    renderHoras();
+    irPaso(1);
+  }
+
+  /* ─── Init ─── */
+  renderCalendario();
+  renderHoras();
+</script>
+</body>
+</html>
