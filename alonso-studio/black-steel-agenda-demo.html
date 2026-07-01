@@ -872,8 +872,8 @@
     <!-- ════ PASO 1: SERVICIO ════ -->
     <div class="paso-contenido activo" id="paso-1">
       <div class="paso-body">
-        <h2 class="paso-titulo">¿Qué servicio<br /><em>necesitas hoy?</em></h2>
-        <p class="paso-subtitulo">Selecciona un servicio para continuar con tu reserva</p>
+        <h2 class="paso-titulo">¿Qué servicios<br /><em>quieres hoy?</em></h2>
+        <p class="paso-subtitulo">Puedes seleccionar uno o más servicios — se agendarán en la misma visita</p>
 
         <div class="servicios-lista">
           <div class="svc-item" data-svc="Corte Black Steel" data-precio="$14.000" data-dur="45 min">
@@ -944,7 +944,9 @@
       </div>
 
       <div class="paso-footer">
-        <span style="font-size:.75rem;color:var(--gris);">Selecciona un servicio para continuar</span>
+        <div id="resumen-mini" style="font-size:.78rem;color:var(--gris);line-height:1.5;">
+          Selecciona al menos un servicio
+        </div>
         <button class="btn-prim" id="btn-sig-1" disabled onclick="irPaso(2)">
           Continuar
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1171,14 +1173,47 @@
     mesOffset: 0
   };
 
-  /* ─── PASO 1: Selección de servicio ─── */
+  /* ─── PASO 1: Selección múltiple de servicios ─── */
+  // serviciosSeleccionados = [{svc, precio, dur}, ...]
+  estado.serviciosSeleccionados = [];
+
+  function precioNum(str) {
+    return parseInt((str || '0').replace(/\D/g, ''), 10);
+  }
+
+  function actualizarResumenMini() {
+    const sel = estado.serviciosSeleccionados;
+    const mini = document.getElementById('resumen-mini');
+    if (sel.length === 0) {
+      mini.innerHTML = '<span style="color:var(--gris)">Selecciona al menos un servicio</span>';
+      document.getElementById('btn-sig-1').disabled = true;
+      return;
+    }
+    const total = sel.reduce((acc, s) => acc + precioNum(s.precio), 0);
+    const mins  = sel.reduce((acc, s) => acc + parseInt(s.dur), 0);
+    const nombres = sel.map(s => s.svc).join(' + ');
+    mini.innerHTML =
+      `<span style="color:var(--blanco-2)">${nombres}</span>` +
+      `<br><span style="color:var(--dorado);font-weight:500">Total: $${total.toLocaleString('es-CL')}</span>` +
+      `<span style="color:var(--gris);margin-left:10px">· ${mins} min aprox.</span>`;
+    document.getElementById('btn-sig-1').disabled = false;
+  }
+
   document.querySelectorAll('.svc-item').forEach(item => {
     item.addEventListener('click', () => {
-      document.querySelectorAll('.svc-item').forEach(i => i.classList.remove('seleccionado'));
-      item.classList.add('seleccionado');
-      estado.servicio = item.dataset.svc;
-      estado.precio   = item.dataset.precio;
-      document.getElementById('btn-sig-1').disabled = false;
+      const svc    = item.dataset.svc;
+      const precio = item.dataset.precio;
+      const dur    = item.dataset.dur;
+      const idx    = estado.serviciosSeleccionados.findIndex(s => s.svc === svc);
+
+      if (idx === -1) {
+        item.classList.add('seleccionado');
+        estado.serviciosSeleccionados.push({ svc, precio, dur });
+      } else {
+        item.classList.remove('seleccionado');
+        estado.serviciosSeleccionados.splice(idx, 1);
+      }
+      actualizarResumenMini();
     });
   });
 
@@ -1300,10 +1335,12 @@
 
   /* ─── PASO 3: Resumen ─── */
   function actualizarResumen() {
-    document.getElementById('res-svc').textContent     = estado.servicio || '—';
+    const sel   = estado.serviciosSeleccionados || [];
+    const total = sel.reduce((acc, s) => acc + precioNum(s.precio), 0);
+    document.getElementById('res-svc').textContent     = sel.length ? sel.map(s => s.svc).join(' + ') : '—';
     document.getElementById('res-fecha').textContent   = estado.fecha && estado.hora ? `${estado.fecha} a las ${estado.hora} hrs` : '—';
     document.getElementById('res-barbero').textContent = estado.barbero || '—';
-    document.getElementById('res-precio').textContent  = estado.precio || '—';
+    document.getElementById('res-precio').textContent  = sel.length ? `$${total.toLocaleString('es-CL')}` : '—';
   }
 
   /* ─── Navegación entre pasos ─── */
@@ -1338,21 +1375,20 @@
 
   /* ─── Confirmación ─── */
   function confirmarReserva() {
-    document.getElementById('conf-svc').textContent    = estado.servicio || '—';
+    const sel   = estado.serviciosSeleccionados || [];
+    const total = sel.reduce((acc, s) => acc + precioNum(s.precio), 0);
+    const abono = Math.round(total * 0.3);
+    document.getElementById('conf-svc').textContent    = sel.length ? sel.map(s => s.svc).join(' + ') : '—';
     document.getElementById('conf-fecha').textContent  = estado.fecha && estado.hora ? `${estado.fecha} a las ${estado.hora} hrs` : '—';
     document.getElementById('conf-barbero').textContent= estado.barbero || '—';
-    document.getElementById('conf-precio').textContent = `Abono pagado: ${calcAbono(estado.precio)} (30%)`;
+    document.getElementById('conf-precio').textContent =
+      `Abono pagado: $${abono.toLocaleString('es-CL')} (30% de $${total.toLocaleString('es-CL')})`;
     irPaso(4);
   }
 
-  function calcAbono(precioStr) {
-    if (!precioStr) return '—';
-    const num = parseInt(precioStr.replace(/\D/g,''));
-    return `$${Math.round(num * 0.3).toLocaleString('es-CL')}`;
-  }
-
   function reiniciar() {
-    Object.assign(estado, { servicio:null, precio:null, fecha:null, hora:null, barbero:null, mesOffset:0 });
+    Object.assign(estado, { serviciosSeleccionados:[], fecha:null, hora:null, barbero:null, mesOffset:0 });
+    actualizarResumenMini();
     document.querySelectorAll('.svc-item').forEach(i => i.classList.remove('seleccionado'));
     document.querySelectorAll('.barbero-item').forEach(i => i.classList.remove('seleccionado'));
     document.getElementById('btn-sig-1').disabled = true;
