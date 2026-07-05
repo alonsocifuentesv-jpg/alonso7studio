@@ -106,6 +106,8 @@ header{
   flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:16px 22px 8px;max-width:1080px;margin:0 auto;width:100%;
 }
+.emblema{width:64px;height:64px;margin-bottom:14px;opacity:0;animation:aparecerCta .6s 1.25s cubic-bezier(.3,1.4,.4,1) forwards}
+.emblema svg{width:100%;height:100%;filter:drop-shadow(0 0 14px rgba(201,162,39,.35))}
 .hero-etiqueta{
   font-size:12px;font-weight:700;letter-spacing:.28em;color:var(--acento);
   text-transform:uppercase;display:flex;align-items:center;gap:12px;
@@ -114,8 +116,8 @@ header{
 .hero-etiqueta::before,.hero-etiqueta::after{content:"";width:34px;height:1px;background:var(--acento);opacity:.5}
 h1{
   font-family:var(--font-display);font-weight:400;
-  font-size:clamp(58px,13vw,132px);line-height:.94;letter-spacing:.02em;
-  margin:14px 0 6px;
+  font-size:clamp(30px,6vw,68px);line-height:1.08;letter-spacing:.04em;
+  margin:12px 0 8px;
 }
 h1 .linea1,h1 .linea2{display:block;opacity:0;transform:translateY(30px)}
 h1 .linea1{animation:subir .7s 1.5s cubic-bezier(.2,.8,.2,1) forwards}
@@ -203,7 +205,7 @@ footer a:hover{color:var(--acento)}
 .hoja-cabeza{padding:14px 20px 0;flex-shrink:0}
 .asa{width:42px;height:4px;border-radius:99px;background:var(--linea);margin:0 auto 12px}
 .hoja-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.hoja-titulo{font-family:var(--font-display);font-size:26px;letter-spacing:.08em}
+.hoja-titulo{font-family:var(--font-display);font-size:clamp(18px,4.5vw,24px);letter-spacing:.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hoja-titulo i{color:var(--acento);font-style:normal}
 .btn-cerrar{
   width:34px;height:34px;border-radius:10px;border:1px solid var(--linea);
@@ -235,6 +237,14 @@ footer a:hover{color:var(--acento)}
 @keyframes pasoEntra{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
 .paso.hacia-atras{animation:pasoEntraAtras .4s cubic-bezier(.2,.8,.2,1)}
 @keyframes pasoEntraAtras{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:none}}
+/* entrada escalonada de tarjetas: sensación app nativa */
+.paso.activo .servicio-card,.paso.activo .barbero-card{opacity:0;animation:cardEntra .38s cubic-bezier(.2,.8,.2,1) forwards}
+.paso.activo .servicio-card:nth-child(1),.paso.activo .barbero-card:nth-child(1){animation-delay:.05s}
+.paso.activo .servicio-card:nth-child(2),.paso.activo .barbero-card:nth-child(2){animation-delay:.11s}
+.paso.activo .servicio-card:nth-child(3),.paso.activo .barbero-card:nth-child(3){animation-delay:.17s}
+.paso.activo .servicio-card:nth-child(4){animation-delay:.23s}
+.paso.activo .servicio-card:nth-child(5){animation-delay:.29s}
+@keyframes cardEntra{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .paso h3{font-size:19px;font-weight:800;margin-bottom:3px}
 .paso .pista{font-size:13px;color:var(--tinta-2);margin-bottom:16px}
 
@@ -246,7 +256,9 @@ footer a:hover{color:var(--acento)}
   position:relative;
 }
 .servicio-card:hover{border-color:#4a3d2c;transform:translateY(-1px)}
-.servicio-card .emoji{font-size:24px;width:46px;height:46px;border-radius:12px;background:var(--panel-2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.servicio-card .emoji{font-size:24px;width:52px;height:52px;border-radius:12px;background:var(--panel-2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.servicio-card .foto{width:52px;height:52px;border-radius:12px;object-fit:cover;flex-shrink:0;border:1px solid var(--linea);filter:saturate(.9) contrast(1.05)}
+.servicio-card.sel .foto{border-color:var(--acento)}
 .servicio-card .info{flex:1}
 .servicio-card .nombre{font-weight:800;font-size:15px;display:block}
 .servicio-card .dur{font-size:12px;color:var(--tinta-2);font-weight:600;margin-top:2px;display:block}
@@ -395,8 +407,9 @@ footer a:hover{color:var(--acento)}
   .horario-chip span.txt{display:none}
   .horario-chip::after{content:attr(data-corto)}
   #confianza{justify-content:center;text-align:center}
-  .resena-rotativa{order:3;flex-basis:100%}
-  h1{font-size:clamp(64px,19vw,96px)}
+  .resena-rotativa{order:3;flex-basis:100%;height:62px}
+  .resena{font-size:12px}
+  h1{font-size:clamp(24px,7.4vw,38px)}
   .btn-agendar{width:100%;max-width:360px}
 }
 @media (min-width:900px){
@@ -437,6 +450,13 @@ footer a:hover{color:var(--acento)}
 
   <!-- ═══════════ HERO (una pantalla) ═══════════ -->
   <main id="hero">
+    <div class="emblema" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="var(--acento)" stroke-width="2" opacity=".45"/>
+        <circle cx="50" cy="50" r="40" fill="none" stroke="var(--acento)" stroke-width="1" opacity=".25"/>
+        <path fill="none" stroke="var(--acento)" stroke-width="4.5" stroke-linecap="round" d="M36 28 L53 60 M64 28 L47 60 M41 64 a6.5 6.5 0 1 0 0.1 0 M59 64 a6.5 6.5 0 1 0 0.1 0"/>
+      </svg>
+    </div>
     <div class="hero-etiqueta" id="heroEtiqueta"></div>
     <h1><span class="linea1" id="heroL1"></span><span class="linea2" id="heroL2"></span></h1>
     <p class="hero-sub" id="heroSub"></p>
@@ -575,9 +595,9 @@ const NEGOCIO = {
   nombre: "BARBERÍA ALONSO",
   nombreCorto: "ALONSO",           // parte destacada del logo
   etiquetaHero: "Est. 2019 · Santiago",
-  heroLinea1: "TU CORTE.",
-  heroLinea2: "TU HORA.",
-  heroSub: "Agenda online en menos de un minuto. Sin llamadas, sin esperas — tu silla te espera.",
+  heroLinea1: "TU PRÓXIMO CORTE",
+  heroLinea2: "AGÉNDALO EN LA WEB",
+  heroSub: "Elige servicio, barbero y hora en menos de un minuto, a cualquier hora del día.",
 
   colores: {                        // ← la "piel": 4 valores re-visten todo
     acento:   "#c9a227",
@@ -589,11 +609,11 @@ const NEGOCIO = {
   horario: { dias:"Lun a Sáb", desde:10, hasta:20, cerradoDias:[0] }, // 0 = domingo
 
   servicios: [
-    { id:"corte",    emoji:"✂️", nombre:"Corte clásico",             precio:8000,  min:30 },
-    { id:"combo",    emoji:"🧔", nombre:"Corte + barba",             precio:12000, min:45 },
-    { id:"barba",    emoji:"🪒", nombre:"Perfilado de barba",        precio:6000,  min:20 },
-    { id:"nino",     emoji:"👦", nombre:"Corte niño",                precio:6000,  min:25 },
-    { id:"premium",  emoji:"👑", nombre:"Diseño / afeitado premium", precio:15000, min:50 },
+    { id:"corte",    emoji:"✂️", nombre:"Corte clásico",             precio:8000,  min:30, foto:"https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=160&q=60" },
+    { id:"combo",    emoji:"🧔", nombre:"Corte + barba",             precio:12000, min:45, foto:"https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=160&q=60" },
+    { id:"barba",    emoji:"🪒", nombre:"Perfilado de barba",        precio:6000,  min:20, foto:"https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=160&q=60" },
+    { id:"nino",     emoji:"👦", nombre:"Corte niño",                precio:6000,  min:25, foto:"https://images.unsplash.com/photo-1560243563-062bfc001d68?auto=format&fit=crop&w=160&q=60" },
+    { id:"premium",  emoji:"👑", nombre:"Diseño / afeitado premium", precio:15000, min:50, foto:"https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=160&q=60" },
   ],
 
   equipo: [
@@ -604,9 +624,9 @@ const NEGOCIO = {
 
   rating: { nota:"4.9", detalle:"4.9 · +380 cortes al mes" },
   resenas: [
-    { texto:"“El mejor fade de Santiago, y agendar tomó 30 segundos.”", autor:"— DIEGO M. ★★★★★" },
-    { texto:"“Llegué, me atendieron a la hora exacta. Cero espera.”",   autor:"— CATA R. ★★★★★" },
-    { texto:"“Reservé a las 2 AM para el otro día. Un lujo.”",          autor:"— NICO S. ★★★★★" },
+    { texto:"“La verdad me impresionó la atención en el local. Llegué sin saber qué corte hacerme y me asesoraron al tiro.”", autor:"— Diego M. ★★★★★" },
+    { texto:"“Agendé por la web en la noche y al otro día estaba listo. Cero llamadas y me atendieron a la hora exacta.”", autor:"— Catalina R. ★★★★★" },
+    { texto:"“El local impecable y el corte mejor. Se nota que se preocupan por los detalles.”", autor:"— Nicolás S. ★★★★★" },
   ],
 
   correos: ["reservas@barberiaalonso.cl","contacto@barberiaalonso.cl","alonso@barberiaalonso.cl"],
@@ -716,10 +736,11 @@ const estado = {
   nombre: "", telefono: "",
 };
 const ETIQUETAS = ["","Paso 1 · Servicios","Paso 2 · Barbero","Paso 3 · Día y hora","Paso 4 · Tus datos","Paso 5 · Abono","¡Listo!"];
+const TITULOS = ["","ELIGE TU <i>ESTILO</i>","TU <i>BARBERO</i>","RESERVA TU <i>SILLÓN</i>","YA CASI <i>ESTAMOS</i>","ASEGURA TU <i>HORA</i>","NOS <i>VEMOS</i> ✂"];
 const totalPasos = 6;
 
 const hoja = $("#hoja"), velo = $("#velo");
-$("#hojaTitulo").innerHTML = `AGENDAR <i>· ${NEGOCIO.nombreCorto}</i>`;
+$("#hojaTitulo").innerHTML = TITULOS[1];
 $("#progreso").innerHTML = Array.from({length:totalPasos},()=>"<span></span>").join("");
 
 /* ---- abrir / cerrar ---- */
@@ -757,6 +778,7 @@ function irAPaso(n, atras=false){
   });
   $$("#progreso span").forEach((s,i)=> s.classList.toggle("lleno", i < n));
   $("#pasoEtiqueta").textContent = ETIQUETAS[n];
+  $("#hojaTitulo").innerHTML = TITULOS[n];
   $("#btnAtras").classList.toggle("oculto", n===1 || n===6);
   $("#hojaCuerpo").scrollTop = 0;
   if(n===3) pintarDias();
@@ -775,7 +797,9 @@ const totalMin     = ()=> serviciosSel().reduce((a,s)=>a+s.min,0);
 function pintarServicios(){
   $("#listaServicios").innerHTML = NEGOCIO.servicios.map(s=>`
     <button class="servicio-card ${estado.servicios.has(s.id)?"sel":""}" data-id="${s.id}">
-      <span class="emoji">${s.emoji}</span>
+      ${s.foto
+        ? `<img class="foto" src="${s.foto}" alt="${s.nombre}" loading="lazy" data-emoji="${s.emoji}">`
+        : `<span class="emoji">${s.emoji}</span>`}
       <span class="info">
         <span class="nombre">${s.nombre}</span>
         <span class="dur">⏱ ${s.min} min</span>
@@ -783,6 +807,14 @@ function pintarServicios(){
       <span class="precio">${CLP(s.precio)}</span>
       <span class="check">✓</span>
     </button>`).join("");
+  // si una foto no carga, vuelve al emoji (nunca se ve una imagen rota)
+  $$("#listaServicios .foto").forEach(img=>{
+    img.onerror = ()=>{
+      const e = document.createElement("span");
+      e.className = "emoji"; e.textContent = img.dataset.emoji;
+      img.replaceWith(e);
+    };
+  });
   $$("#listaServicios .servicio-card").forEach(b=>{
     b.onclick = ()=>{
       const id = b.dataset.id;
