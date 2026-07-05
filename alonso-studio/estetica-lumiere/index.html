@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Estética Lumière — Reserva tu momento</title>
+<meta name="description" content="Reserva online tu tratamiento de estética en segundos. Faciales, uñas, masajes y más.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='78' font-size='80'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   PIEL (SKIN) — todo el color sale de estas variables.
+   Para re-vestir el sitio, cambia NEGOCIO en el <script>.
+   Tema CLARO: blanco + rosé + negro (elegante boutique)
+   ============================================================ */
+:root{
+  --bg:#fbf3f5;
+  --bg-2:#ffffff;
+  --panel:#ffffff;
+  --panel-2:#fdf0f4;
+  --linea:#f1dee5;
+  --tinta:#1c1418;
+  --tinta-2:#9a8791;
+  --acento:#d5678f;
+  --acento-2:#f0a0c0;
+  --acento-tinta:#ffffff;
+  --negro:#1c1418;
+  --ok:#37c48a;
+  --font-display:'Playfair Display', Georgia, serif;
+  --font-ui:'Jost', system-ui, sans-serif;
+  --radio:18px;
+  --sombra:0 14px 40px -18px rgba(120,40,70,.35);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tinta);font-family:var(--font-ui);min-height:100dvh;overflow-x:hidden;font-weight:400}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input{font-family:inherit}
+::selection{background:var(--acento);color:#fff}
+
+/* textura suave rosé */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(1000px 520px at 82% -8%, rgba(240,160,192,.30), transparent 60%),
+    radial-gradient(820px 560px at -8% 108%, rgba(213,103,143,.16), transparent 60%);
+}
+
+/* ============ INTRO WOW ============ */
+#intro{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:var(--bg);flex-direction:column;gap:20px;transition:opacity .6s ease, visibility .6s}
+#intro.fuera{opacity:0;visibility:hidden}
+#intro svg{width:78px;height:78px}
+#intro .trazo{fill:none;stroke:var(--acento);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:520;stroke-dashoffset:520;animation:dibujar 1.2s .1s cubic-bezier(.6,0,.3,1) forwards}
+@keyframes dibujar{to{stroke-dashoffset:0}}
+#intro .marca-intro{font-family:var(--font-display);font-weight:700;font-size:clamp(26px,6vw,38px);letter-spacing:.18em;color:var(--tinta);opacity:0;transform:translateY(14px);animation:subir .7s .95s cubic-bezier(.2,.8,.2,1) forwards}
+#intro .sub-intro{font-size:11px;letter-spacing:.4em;color:var(--acento);text-transform:uppercase;opacity:0;animation:subir .7s 1.15s forwards}
+@keyframes subir{to{opacity:1;transform:none}}
+
+/* ============ APP SHELL ============ */
+#app{position:relative;z-index:1;min-height:100dvh;display:flex;flex-direction:column}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(16px + env(safe-area-inset-top)) 22px 14px;max-width:1080px;margin:0 auto;width:100%}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.logo .emb{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--acento);display:flex;align-items:center;justify-content:center;font-size:16px}
+.logo b{font-family:var(--font-display);font-weight:700;font-size:21px;letter-spacing:.14em}
+.logo b i{color:var(--acento);font-style:normal}
+.horario-chip{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:500;color:var(--tinta-2);border:1px solid var(--linea);border-radius:999px;padding:7px 14px;background:#fff;white-space:nowrap;box-shadow:var(--sombra)}
+.horario-chip .punto{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok);animation:latido 2.2s infinite}
+.horario-chip .punto.cerrado{background:#e0728f;box-shadow:0 0 8px #e0728f}
+@keyframes latido{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* HERO */
+#hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px 22px 6px;max-width:1080px;margin:0 auto;width:100%}
+.cinta{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--acento);background:var(--panel-2);border:1px solid var(--linea);border-radius:999px;padding:7px 16px;opacity:0;animation:subir .6s 1.35s forwards}
+h1{font-family:var(--font-display);font-weight:900;font-size:clamp(32px,6.4vw,66px);line-height:1.06;letter-spacing:0;margin:16px 0 10px}
+h1 .linea1,h1 .linea2{display:block;opacity:0;transform:translateY(26px)}
+h1 .linea1{animation:subir .7s 1.5s cubic-bezier(.2,.8,.2,1) forwards}
+h1 .linea2{font-style:italic;color:var(--acento);animation:subir .7s 1.62s cubic-bezier(.2,.8,.2,1) forwards}
+.hero-sub{color:var(--tinta-2);font-size:clamp(14px,2.4vw,17px);font-weight:400;max-width:440px;line-height:1.5;opacity:0;animation:subir .6s 1.8s forwards}
+
+.btn-agendar{margin-top:30px;position:relative;overflow:hidden;font-family:var(--font-ui);font-weight:600;font-size:clamp(15px,3vw,17px);letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--negro);padding:19px 54px;border-radius:999px;box-shadow:0 14px 38px -10px rgba(213,103,143,.7);transition:transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s;opacity:0;animation:aparecerCta .55s 2s cubic-bezier(.3,1.4,.4,1) forwards}
+@keyframes aparecerCta{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+.btn-agendar:hover{transform:scale(1.045);background:var(--acento);box-shadow:0 18px 50px -8px rgba(213,103,143,.9)}
+.btn-agendar:active{transform:scale(.97)}
+.btn-agendar .brillo{position:absolute;top:0;left:-80%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);animation:barrer 3.4s 2.6s infinite}
+@keyframes barrer{0%{left:-80%}45%,100%{left:130%}}
+.micro-pasos{margin-top:16px;font-size:12.5px;color:var(--tinta-2);font-weight:500;letter-spacing:.03em;display:flex;gap:8px;align-items:center;opacity:0;animation:subir .6s 2.25s forwards}
+.micro-pasos b{color:var(--tinta);font-weight:600}
+.micro-pasos .sep{color:var(--acento)}
+
+/* confianza */
+#confianza{max-width:1080px;margin:0 auto;width:100%;padding:12px 22px calc(16px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;opacity:0;animation:subir .7s 2.4s forwards}
+.confi-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--tinta-2);font-weight:500}
+.estrellas{color:var(--acento);letter-spacing:2px;font-size:14px}
+.resena-rotativa{flex:1;min-width:200px;max-width:430px;position:relative;height:40px;overflow:hidden}
+.resena{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;font-size:12.5px;color:var(--tinta-2);opacity:0;transform:translateY(10px);transition:opacity .5s, transform .5s;font-style:italic}
+.resena.activa{opacity:1;transform:none}
+.resena b{font-style:normal;color:var(--tinta);font-size:11.5px;letter-spacing:.05em;font-weight:600}
+.confi-acciones{display:flex;gap:8px;align-items:center}
+.icono-btn{width:38px;height:38px;border-radius:12px;border:1px solid var(--linea);display:flex;align-items:center;justify-content:center;color:var(--tinta-2);transition:all .18s;background:#fff}
+.icono-btn:hover{color:#fff;background:var(--acento);border-color:var(--acento);transform:translateY(-2px)}
+.icono-btn svg{width:17px;height:17px;fill:currentColor}
+footer{border-top:1px solid var(--linea);padding:12px 20px calc(12px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font-size:11px;color:var(--tinta-2)}
+footer a{color:inherit;text-decoration:none}
+footer a:hover{color:var(--acento)}
+
+/* botón flotante whatsapp */
+#flotante{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:35;width:54px;height:54px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px -6px rgba(37,211,102,.6);transition:transform .2s;animation:aparecerCta .5s 2.6s backwards}
+#flotante:hover{transform:scale(1.1)}
+#flotante svg{width:28px;height:28px;fill:#fff}
+#flotante.oculto{transform:scale(0);pointer-events:none}
+
+/* ============ WIZARD ============ */
+#velo{position:fixed;inset:0;background:rgba(60,20,40,.35);backdrop-filter:blur(5px);opacity:0;pointer-events:none;transition:opacity .35s;z-index:40}
+#velo.abierto{opacity:1;pointer-events:auto}
+#hoja{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--bg-2);border-radius:28px 28px 0 0;max-width:640px;margin:0 auto;height:min(93dvh,800px);transform:translateY(105%);transition:transform .48s cubic-bezier(.32,.9,.25,1);display:flex;flex-direction:column;box-shadow:0 -24px 80px rgba(120,40,70,.28)}
+#hoja.abierta{transform:translateY(0)}
+.hoja-cabeza{padding:14px 22px 0;flex-shrink:0}
+.asa{width:44px;height:4px;border-radius:99px;background:var(--linea);margin:0 auto 14px}
+.hoja-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.hoja-titulo{font-family:var(--font-display);font-weight:700;font-size:clamp(19px,4.5vw,25px);letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hoja-titulo i{color:var(--acento);font-style:italic}
+.btn-cerrar{width:34px;height:34px;border-radius:11px;border:1px solid var(--linea);display:flex;align-items:center;justify-content:center;color:var(--tinta-2);font-size:16px;transition:all .15s;flex-shrink:0}
+.btn-cerrar:hover{color:var(--tinta);border-color:var(--tinta-2)}
+.btn-atras{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--tinta-2);padding:6px 10px 6px 4px;border-radius:8px;transition:color .15s}
+.btn-atras:hover{color:var(--acento)}
+.btn-atras.oculto{visibility:hidden}
+.progreso{display:flex;gap:5px;margin-bottom:4px}
+.progreso span{flex:1;height:3px;border-radius:99px;background:var(--linea);position:relative;overflow:hidden}
+.progreso span::after{content:"";position:absolute;inset:0;background:var(--acento);border-radius:99px;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.progreso span.lleno::after{transform:scaleX(1)}
+.paso-etiqueta{font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--acento);text-transform:uppercase;margin:10px 0 2px}
+
+.hoja-cuerpo{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:6px 22px 22px}
+.paso{display:none;animation:pasoEntra .4s cubic-bezier(.2,.8,.2,1)}
+.paso.activo{display:block}
+@keyframes pasoEntra{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+.paso.hacia-atras{animation:pasoEntraAtras .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes pasoEntraAtras{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+.paso h3{font-family:var(--font-display);font-weight:700;font-size:22px;margin-bottom:3px}
+.paso .pista{font-size:13px;color:var(--tinta-2);margin-bottom:16px}
+
+/* packs destacados */
+.packs-titulo{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--acento);margin:0 0 10px}
+.packs-scroll{display:flex;gap:12px;overflow-x:auto;margin:0 -22px 20px;padding:2px 22px 12px;scrollbar-width:none}
+.packs-scroll::-webkit-scrollbar{display:none}
+.pack-card{flex-shrink:0;width:200px;text-align:left;background:linear-gradient(160deg,var(--negro),#33232b);color:#fff;border-radius:var(--radio);padding:16px;position:relative;overflow:hidden;transition:transform .18s}
+.pack-card:hover{transform:translateY(-3px)}
+.pack-card.sel{outline:2.5px solid var(--acento);outline-offset:2px}
+.pack-card .badge{position:absolute;top:12px;right:12px;background:var(--acento);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:99px;letter-spacing:.03em}
+.pack-card .pemoji{font-size:26px}
+.pack-card .pnombre{font-family:var(--font-display);font-weight:700;font-size:18px;margin-top:8px}
+.pack-card .pincluye{font-size:11.5px;color:rgba(255,255,255,.7);margin-top:4px;line-height:1.45;min-height:33px}
+.pack-card .pprecio{margin-top:10px;font-size:19px;font-weight:600}
+.pack-card .pantes{font-size:12px;color:rgba(255,255,255,.5);text-decoration:line-through;margin-left:6px;font-weight:400}
+
+.servicio-card{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--panel);border:1.5px solid var(--linea);border-radius:var(--radio);padding:14px 16px;margin-bottom:10px;transition:all .18s cubic-bezier(.2,.8,.2,1);box-shadow:var(--sombra)}
+.servicio-card:hover{border-color:var(--acento-2);transform:translateY(-1px)}
+.servicio-card .emoji{font-size:24px;width:52px;height:52px;border-radius:14px;background:var(--panel-2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.servicio-card .foto{width:52px;height:52px;border-radius:14px;object-fit:cover;flex-shrink:0;border:1px solid var(--linea)}
+.servicio-card.sel .foto{border-color:var(--acento)}
+.servicio-card .info{flex:1}
+.servicio-card .nombre{font-weight:600;font-size:15px;display:block}
+.servicio-card .dur{font-size:12px;color:var(--tinta-2);font-weight:400;margin-top:2px;display:block}
+.servicio-card .precio{font-weight:600;font-size:15px;color:var(--acento)}
+.servicio-card .check{width:24px;height:24px;border-radius:8px;border:2px solid var(--linea);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;color:transparent;font-size:13px;font-weight:900}
+.servicio-card.sel{border-color:var(--acento);background:var(--panel-2)}
+.servicio-card.sel .check{background:var(--acento);border-color:var(--acento);color:#fff}
+
+/* especialistas con rating */
+.esp-card{display:flex;align-items:center;gap:15px;width:100%;text-align:left;background:var(--panel);border:1.5px solid var(--linea);border-radius:var(--radio);padding:14px 16px;margin-bottom:10px;transition:all .18s;box-shadow:var(--sombra)}
+.esp-card:hover{border-color:var(--acento);transform:translateY(-1px)}
+.esp-card .avatar{width:56px;height:56px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:22px;color:#fff;background:linear-gradient(135deg,var(--acento-2),var(--acento));border:2px solid #fff;box-shadow:0 4px 12px -2px rgba(213,103,143,.5)}
+.esp-card .nombre{font-weight:600;font-size:16px}
+.esp-card .esp{font-size:12.5px;color:var(--tinta-2);font-weight:400;margin-top:2px}
+.esp-card .rating{font-size:12px;color:var(--acento);font-weight:600;margin-top:3px}
+.esp-card .flecha{margin-left:auto;color:var(--tinta-2);font-size:18px;transition:transform .18s}
+.esp-card:hover .flecha{transform:translateX(4px);color:var(--acento)}
+
+.dias-scroll{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin:0 -22px;padding-left:22px;padding-right:22px;scrollbar-width:none}
+.dias-scroll::-webkit-scrollbar{display:none}
+.dia-chip{flex-shrink:0;width:62px;padding:10px 0;border-radius:16px;text-align:center;background:var(--panel);border:1.5px solid var(--linea);transition:all .18s;box-shadow:var(--sombra)}
+.dia-chip .dsem{font-size:10.5px;font-weight:600;letter-spacing:.08em;color:var(--tinta-2);text-transform:uppercase}
+.dia-chip .dnum{font-family:var(--font-display);font-weight:700;font-size:23px;margin-top:2px}
+.dia-chip .dmes{font-size:10px;color:var(--tinta-2);font-weight:500;text-transform:uppercase}
+.dia-chip.sel{background:var(--acento);border-color:var(--acento)}
+.dia-chip.sel .dsem,.dia-chip.sel .dmes{color:rgba(255,255,255,.8)}
+.dia-chip.sel .dnum{color:#fff}
+.horas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px;margin-top:14px}
+.hora-chip{padding:12px 0;border-radius:13px;text-align:center;font-weight:500;font-size:14px;background:var(--panel);border:1.5px solid var(--linea);transition:all .15s;font-variant-numeric:tabular-nums;box-shadow:var(--sombra)}
+.hora-chip:hover:not(:disabled){border-color:var(--acento);transform:translateY(-2px)}
+.hora-chip:disabled{opacity:.35;text-decoration:line-through;cursor:not-allowed;box-shadow:none}
+.hora-chip.sel{background:var(--acento);color:#fff;border-color:var(--acento)}
+.sin-horas{padding:26px 0;text-align:center;color:var(--tinta-2);font-size:13.5px}
+
+.campo{margin-bottom:14px}
+.campo label{display:block;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-2);margin-bottom:7px}
+.campo input{width:100%;background:var(--panel);border:1.5px solid var(--linea);border-radius:14px;padding:15px 16px;color:var(--tinta);font-size:15px;font-weight:400;outline:none;transition:border-color .18s, box-shadow .18s}
+.campo input:focus{border-color:var(--acento);box-shadow:0 0 0 3px rgba(213,103,143,.15)}
+.campo input.error{border-color:#e0728f;animation:tiembla .3s}
+@keyframes tiembla{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.resumen-card{background:var(--panel);border:1px solid var(--linea);border-radius:var(--radio);padding:18px;margin-bottom:14px;box-shadow:var(--sombra)}
+.resumen-fila{display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:13.5px;padding:5px 0;color:var(--tinta-2);font-weight:400}
+.resumen-fila b{color:var(--tinta);font-weight:600;text-align:right}
+.resumen-fila.total{border-top:1px dashed var(--linea);margin-top:8px;padding-top:12px;font-size:15px}
+.resumen-fila.total b{color:var(--acento);font-size:19px;font-family:var(--font-display);font-weight:700}
+.abono-nota{display:flex;gap:10px;align-items:flex-start;background:var(--panel-2);border:1px solid var(--linea);border-radius:14px;padding:12px 14px;font-size:12.5px;color:var(--tinta-2);font-weight:400;line-height:1.5;margin-bottom:14px}
+.demo-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;background:var(--acento);color:#fff;border-radius:5px;padding:2px 7px;vertical-align:2px}
+.puntos-nota{display:flex;gap:8px;align-items:center;background:linear-gradient(120deg,var(--panel-2),#fff);border:1px dashed var(--acento-2);border-radius:14px;padding:12px 14px;font-size:13px;color:var(--tinta);font-weight:500;margin-bottom:14px}
+.puntos-nota b{color:var(--acento)}
+
+.confirmado{text-align:center;padding-top:16px}
+.check-anillo{width:92px;height:92px;margin:0 auto 18px;position:relative}
+.check-anillo svg{width:100%;height:100%}
+.check-anillo .anillo{fill:none;stroke:var(--ok);stroke-width:3;stroke-dasharray:290;stroke-dashoffset:290;animation:dibujar .7s .1s forwards}
+.check-anillo .tick{fill:none;stroke:var(--ok);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;animation:dibujar .4s .7s forwards}
+.confirmado h3{font-family:var(--font-display);font-weight:900;font-size:30px}
+.confirmado .sub{color:var(--tinta-2);font-size:13.5px;font-weight:400;margin:6px 0 18px}
+.acciones-conf{display:flex;gap:10px;margin-top:14px}
+.acciones-conf a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border-radius:14px;font-size:13.5px;font-weight:600;text-decoration:none;border:1.5px solid var(--linea);color:var(--tinta);transition:all .18s}
+.acciones-conf a:hover{border-color:var(--acento);color:var(--acento)}
+
+.hoja-pie{flex-shrink:0;padding:12px 22px calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--linea);background:var(--bg-2);display:flex;align-items:center;gap:14px}
+.pie-resumen{flex:1;min-width:0}
+.pie-resumen .l1{font-size:11.5px;color:var(--tinta-2);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pie-resumen .l2{font-size:16px;font-weight:600;color:var(--acento);font-variant-numeric:tabular-nums}
+.btn-principal{font-family:var(--font-ui);font-weight:600;font-size:15px;letter-spacing:.08em;text-transform:uppercase;background:var(--negro);color:#fff;padding:15px 28px;border-radius:999px;transition:all .18s;white-space:nowrap;box-shadow:0 8px 22px -8px rgba(213,103,143,.6)}
+.btn-principal:hover:not(:disabled){background:var(--acento);transform:scale(1.03)}
+.btn-principal:active:not(:disabled){transform:scale(.97)}
+.btn-principal:disabled{opacity:.3;cursor:not-allowed;box-shadow:none}
+.btn-principal .spinner{display:inline-block;width:16px;height:16px;border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:girar .7s linear infinite;vertical-align:-3px;margin-right:8px}
+@keyframes girar{to{transform:rotate(360deg)}}
+
+#modalMapa{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;background:rgba(60,20,40,.45);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .3s;padding:20px}
+#modalMapa.abierto{opacity:1;pointer-events:auto}
+.mapa-caja{width:100%;max-width:480px;background:#fff;border-radius:22px;overflow:hidden;transform:scale(.94);transition:transform .3s;box-shadow:0 30px 80px -20px rgba(120,40,70,.5)}
+#modalMapa.abierto .mapa-caja{transform:scale(1)}
+.mapa-caja iframe{width:100%;height:300px;border:0;display:block}
+.mapa-pie{padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mapa-pie .dir{font-size:13px;font-weight:600}
+.mapa-pie .dir small{display:block;color:var(--tinta-2);font-weight:400;margin-top:2px}
+
+@media (max-width:560px){
+  .horario-chip span.txt{display:none}
+  .horario-chip::after{content:attr(data-corto)}
+  #confianza{justify-content:center;text-align:center}
+  .resena-rotativa{order:3;flex-basis:100%;height:60px}
+  h1{font-size:clamp(26px,7.6vw,40px)}
+  .btn-agendar{width:100%;max-width:360px}
+}
+@media (min-width:900px){
+  #hoja{left:auto;right:max(24px,calc((100vw - 1080px)/2));bottom:24px;top:24px;height:auto;border-radius:26px;max-width:460px;transform:translateX(calc(100% + 50vw))}
+  #hoja.abierta{transform:translateX(0)}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+
+<div id="intro" aria-hidden="true">
+  <svg viewBox="0 0 100 100">
+    <path class="trazo" d="M50 20 C62 20 70 30 70 42 C70 58 50 76 50 80 C50 76 30 58 30 42 C30 30 38 20 50 20 Z M50 34 a6 6 0 1 0 0.1 0"/>
+  </svg>
+  <div class="marca-intro" id="introMarca">LUMIÈRE</div>
+  <div class="sub-intro">Estética & Belleza</div>
+</div>
+
+<div id="app">
+  <header>
+    <a class="logo" href="#">
+      <span class="emb">✨</span>
+      <b id="logoNombre"></b>
+    </a>
+    <div class="horario-chip" id="horarioChip">
+      <span class="punto" id="horarioPunto"></span>
+      <span class="txt" id="horarioTexto"></span>
+    </div>
+  </header>
+
+  <main id="hero">
+    <div class="cinta" id="cintaHero"></div>
+    <h1><span class="linea1" id="heroL1"></span><span class="linea2" id="heroL2"></span></h1>
+    <p class="hero-sub" id="heroSub"></p>
+    <button class="btn-agendar" id="btnAbrirAgenda">Reservar mi hora<span class="brillo"></span></button>
+    <div class="micro-pasos">
+      <b>Tratamiento</b><span class="sep">→</span><b>Especialista</b><span class="sep">→</span><b>Hora</b><span class="sep">→</span><span style="color:var(--acento)">Listo ✨</span>
+    </div>
+  </main>
+
+  <section id="confianza">
+    <div class="confi-item">
+      <span class="estrellas">★★★★★</span>
+      <span id="ratingTexto"></span>
+    </div>
+    <div class="resena-rotativa" id="resenas"></div>
+    <div class="confi-acciones" id="acciones">
+      <button class="icono-btn" id="btnMapa" title="Cómo llegar" aria-label="Ver mapa">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <footer id="pieCorreos"></footer>
+</div>
+
+<a id="flotante" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.1 13.7c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1a13 13 0 0 1-5.9-5.2c-.7-1.2-1.1-2.4-.9-3 .1-.5.8-1.4 1.3-1.5h.9c.3.1.4.4.6 1l.7 1.7c.1.3 0 .5-.2.7l-.6.8c-.2.2-.2.4 0 .7a9.6 9.6 0 0 0 3.8 3.3c.3.1.5.1.7-.1l1-1.1c.2-.3.5-.3.8-.2l2 1c.3.1.6.3.6.5s0 .8-.2 1.3z"/></svg>
+</a>
+
+<div id="velo"></div>
+<aside id="hoja" role="dialog" aria-modal="true" aria-label="Reservar hora">
+  <div class="hoja-cabeza">
+    <div class="asa"></div>
+    <div class="hoja-top">
+      <button class="btn-atras" id="btnAtras"><span>‹</span> Atrás</button>
+      <div class="hoja-titulo" id="hojaTitulo"></div>
+      <button class="btn-cerrar" id="btnCerrar" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="progreso" id="progreso"></div>
+    <div class="paso-etiqueta" id="pasoEtiqueta"></div>
+  </div>
+
+  <div class="hoja-cuerpo" id="hojaCuerpo">
+    <section class="paso" data-paso="1">
+      <h3>¿Qué te vas a consentir?</h3>
+      <p class="pista">Elige un pack o arma tu propia combinación.</p>
+      <div class="packs-titulo">✨ Packs destacados</div>
+      <div class="packs-scroll" id="listaPacks"></div>
+      <div class="packs-titulo">O elige tratamientos sueltos</div>
+      <div id="listaServicios"></div>
+    </section>
+
+    <section class="paso" data-paso="2">
+      <h3>Elige a tu especialista</h3>
+      <p class="pista">Toca una para continuar.</p>
+      <div id="listaEspecialistas"></div>
+    </section>
+
+    <section class="paso" data-paso="3">
+      <h3>¿Cuándo te esperamos?</h3>
+      <p class="pista" id="pistaFecha"></p>
+      <div class="dias-scroll" id="listaDias"></div>
+      <div class="horas-grid" id="listaHoras"></div>
+    </section>
+
+    <section class="paso" data-paso="4">
+      <h3>Tus datos</h3>
+      <p class="pista">Solo lo justo para confirmar tu reserva.</p>
+      <div class="campo">
+        <label for="inputNombre">Nombre</label>
+        <input id="inputNombre" type="text" placeholder="Tu nombre" autocomplete="name">
+      </div>
+      <div class="campo">
+        <label for="inputTelefono">Teléfono</label>
+        <input id="inputTelefono" type="tel" placeholder="+56 9 1234 5678" autocomplete="tel" inputmode="tel">
+      </div>
+    </section>
+
+    <section class="paso" data-paso="5">
+      <h3>Confirma con tu abono <span class="demo-tag">DEMO</span></h3>
+      <p class="pista">Tu hora queda reservada al pagar el abono.</p>
+      <div class="resumen-card" id="resumenPago"></div>
+      <div class="puntos-nota" id="puntosNota"></div>
+      <div class="abono-nota">
+        <span>🔒</span>
+        <span>Esto es una <b>demostración</b>: aquí iría el pago real con Webpay, MercadoPago o Flow. Ningún cobro se realiza.</span>
+      </div>
+    </section>
+
+    <section class="paso" data-paso="6">
+      <div class="confirmado">
+        <div class="check-anillo">
+          <svg viewBox="0 0 100 100">
+            <circle class="anillo" cx="50" cy="50" r="45"/>
+            <path class="tick" d="M32 51 L45 64 L69 38"/>
+          </svg>
+        </div>
+        <h3>¡Reserva confirmada!</h3>
+        <p class="sub" id="confSub"></p>
+        <div class="resumen-card" id="resumenFinal" style="text-align:left"></div>
+        <div class="acciones-conf">
+          <a id="btnWsp" target="_blank" rel="noopener">💬 WhatsApp</a>
+          <a id="btnCalendario" target="_blank" rel="noopener">📅 Calendario</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="hoja-pie" id="hojaPie">
+    <div class="pie-resumen">
+      <div class="l1" id="pieL1">Elige tu tratamiento</div>
+      <div class="l2" id="pieL2"></div>
+    </div>
+    <button class="btn-principal" id="btnPie" disabled>Continuar</button>
+  </div>
+</aside>
+
+<div id="modalMapa">
+  <div class="mapa-caja">
+    <iframe id="mapaFrame" loading="lazy" title="Ubicación" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="mapa-pie">
+      <div class="dir" id="mapaDir"></div>
+      <button class="btn-cerrar" id="btnCerrarMapa" aria-label="Cerrar mapa">✕</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   ♻️  CONFIGURACIÓN DEL NEGOCIO (RE-SKIN)
+   Cambia SOLO este bloque para vestir el sitio con otra marca.
+   ══════════════════════════════════════════════════════════════ */
+const NEGOCIO = {
+  nombre: "ESTÉTICA LUMIÈRE",
+  nombreCorto: "LUMIÈRE",
+  cintaHero: "✦ 15% en tu primera visita",
+  heroLinea1: "Tu momento",
+  heroLinea2: "de brillar",
+  heroSub: "Reserva tu tratamiento en segundos y regálate el descanso que mereces, a cualquier hora del día.",
+
+  colores: { acento:"#d5678f", acento2:"#f0a0c0", fondo:"#fbf3f5", fondo2:"#ffffff" },
+
+  horario: { dias:"Mar a Sáb", desde:10, hasta:20, cerradoDias:[0,1] },
+
+  packs: [
+    { id:"novia",  emoji:"👰", nombre:"Ritual Novia",  incluye:"Facial + manicure + maquillaje", precio:45000, antes:58000, min:150, servicios:["facial","manicure","cejas"] },
+    { id:"reina",  emoji:"👑", nombre:"Día de Reina",  incluye:"Masaje + facial + pedicure spa",  precio:52000, antes:66000, min:180, servicios:["masaje","facial","pedicure"] },
+    { id:"glow",   emoji:"✨", nombre:"Glow Express",  incluye:"Limpieza facial + diseño de cejas", precio:22000, antes:28000, min:70,  servicios:["facial","cejas"] },
+  ],
+
+  servicios: [
+    { id:"facial",   emoji:"💆‍♀️", nombre:"Limpieza facial profunda", precio:18000, min:60, foto:"https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=160&q=60" },
+    { id:"manicure", emoji:"💅",   nombre:"Manicure + esmalte permanente", precio:14000, min:50, foto:"https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=160&q=60" },
+    { id:"pedicure", emoji:"🦶",   nombre:"Pedicure spa",              precio:16000, min:60, foto:"https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=160&q=60" },
+    { id:"cejas",    emoji:"✏️",   nombre:"Diseño y perfilado de cejas", precio:8000, min:30, foto:"https://images.unsplash.com/photo-1583001931096-959e9a1a6223?auto=format&fit=crop&w=160&q=60" },
+    { id:"masaje",   emoji:"🌸",   nombre:"Masaje relajante",          precio:25000, min:60, foto:"https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=160&q=60" },
+    { id:"pestanas", emoji:"👁️",   nombre:"Lifting de pestañas",       precio:20000, min:75, foto:"https://images.unsplash.com/photo-1583241800698-e8ab01c85f8a?auto=format&fit=crop&w=160&q=60" },
+  ],
+
+  equipo: [
+    { id:"javiera",  nombre:"Javiera",  esp:"Facial y cuidado de la piel", rating:"5.0" },
+    { id:"fernanda", nombre:"Fernanda", esp:"Uñas y nail art",             rating:"4.9" },
+    { id:"antonia",  nombre:"Antonia",  esp:"Masajes y relajación",        rating:"5.0" },
+  ],
+
+  rating: { detalle:"4.9 · +520 clientas felices" },
+  resenas: [
+    { texto:"“Salí renovada. La atención fue delicada y muy profesional, se nota que aman lo que hacen.”", autor:"— Valentina P. ★★★★★" },
+    { texto:"“Reservé por la web en la noche y quedó todo listo al tiro. El local es un sueño, súper limpio.”", autor:"— Josefa R. ★★★★★" },
+    { texto:"“El pack Día de Reina fue el mejor regalo que me hice. Volveré sin dudarlo.”", autor:"— Camila T. ★★★★★" },
+  ],
+
+  correos: ["reservas@esteticalumiere.cl","contacto@esteticalumiere.cl","hola@esteticalumiere.cl"],
+  redes: { instagram:"https://instagram.com/esteticalumiere", tiktok:"https://tiktok.com/@esteticalumiere", whatsapp:"56912345678" },
+  ubicacion: {
+    direccion:"Av. Nueva Providencia 2200, Providencia",
+    ciudad:"Santiago, Chile",
+    mapaEmbed:"https://www.google.com/maps?q=Av.+Nueva+Providencia+2200,+Providencia,+Santiago&output=embed",
+  },
+
+  pago: { abonoPct:40, moneda:"CLP" },
+  fidelidad: { puntosPorMil:1, nombrePuntos:"Puntos Lumière" },
+};
+
+/* ══════════════════════════════════════════════════════════════
+   MOTOR DE RESERVAS — no necesitas tocar nada de aquí hacia abajo
+   ══════════════════════════════════════════════════════════════ */
+const $  = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const CLP = n => "$" + n.toLocaleString("es-CL");
+
+(function piel(){
+  const r = document.documentElement.style, c = NEGOCIO.colores;
+  r.setProperty("--acento", c.acento);
+  r.setProperty("--acento-2", c.acento2);
+  r.setProperty("--bg", c.fondo);
+  r.setProperty("--bg-2", c.fondo2);
+  document.title = `${titulo(NEGOCIO.nombre)} — Reserva tu momento`;
+})();
+function titulo(s){ return s.charAt(0)+s.slice(1).toLowerCase().replace(/(^|\s)\S/g,m=>m.toUpperCase()); }
+
+$("#introMarca").textContent = NEGOCIO.nombreCorto;
+{
+  const partes = NEGOCIO.nombre.split(NEGOCIO.nombreCorto);
+  $("#logoNombre").innerHTML = partes.length===2
+    ? `${partes[0]}<i>${NEGOCIO.nombreCorto}</i>${partes[1]}`
+    : NEGOCIO.nombre;
+}
+$("#cintaHero").textContent = NEGOCIO.cintaHero;
+$("#heroL1").textContent = NEGOCIO.heroLinea1;
+$("#heroL2").textContent = NEGOCIO.heroLinea2;
+$("#heroSub").textContent = NEGOCIO.heroSub;
+$("#ratingTexto").textContent = NEGOCIO.rating.detalle;
+$("#pieCorreos").innerHTML = NEGOCIO.correos.map(c=>`<a href="mailto:${c}">${c}</a>`).join("");
+$("#flotante").href = `https://wa.me/${NEGOCIO.redes.whatsapp}`;
+
+(function horario(){
+  const h = NEGOCIO.horario, ahora = new Date();
+  const abierto = !h.cerradoDias.includes(ahora.getDay()) && ahora.getHours()>=h.desde && ahora.getHours()<h.hasta;
+  $("#horarioTexto").textContent = `${h.dias} · ${h.desde}:00 – ${h.hasta}:00 · ${abierto?"Abierto ahora":"Agenda 24/7"}`;
+  $("#horarioChip").dataset.corto = abierto ? "Abierto" : "24/7";
+  if(!abierto) $("#horarioPunto").classList.add("cerrado");
+})();
+
+(function redes(){
+  const cont = $("#acciones");
+  const iconos = {
+    instagram:'<svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 4 4 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 3.5a6.3 6.3 0 1 0 0 12.6 6.3 6.3 0 0 0 0-12.6zm0 10.4a4.1 4.1 0 1 1 0-8.2 4.1 4.1 0 0 1 0 8.2zm6.5-10.7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg>',
+    tiktok:'<svg viewBox="0 0 24 24"><path d="M19.6 7.1a5.3 5.3 0 0 1-3.5-1.3 5.3 5.3 0 0 1-1.8-3.3h-3.4v13.2a2.9 2.9 0 1 1-2.1-2.8V9.4a6.3 6.3 0 1 0 5.5 6.3V9.9a8.6 8.6 0 0 0 5.3 1.8z"/></svg>',
+  };
+  if(NEGOCIO.redes.tiktok)    cont.insertAdjacentHTML("afterbegin",`<a class="icono-btn" href="${NEGOCIO.redes.tiktok}" target="_blank" rel="noopener" title="TikTok">${iconos.tiktok}</a>`);
+  if(NEGOCIO.redes.instagram) cont.insertAdjacentHTML("afterbegin",`<a class="icono-btn" href="${NEGOCIO.redes.instagram}" target="_blank" rel="noopener" title="Instagram">${iconos.instagram}</a>`);
+})();
+
+(function resenas(){
+  const cont = $("#resenas");
+  cont.innerHTML = NEGOCIO.resenas.map((r,i)=>`<div class="resena ${i===0?"activa":""}">${r.texto}<b>${r.autor}</b></div>`).join("");
+  let i = 0;
+  setInterval(()=>{
+    const items = cont.children;
+    items[i].classList.remove("activa");
+    i = (i+1) % items.length;
+    items[i].classList.add("activa");
+  }, 4400);
+})();
+
+window.addEventListener("load", ()=> setTimeout(()=> $("#intro").classList.add("fuera"), 1500));
+setTimeout(()=> $("#intro").classList.add("fuera"), 2800);
+
+$("#mapaDir").innerHTML = `${NEGOCIO.ubicacion.direccion}<small>${NEGOCIO.ubicacion.ciudad}</small>`;
+$("#btnMapa").onclick = ()=>{ const f=$("#mapaFrame"); if(!f.src) f.src=NEGOCIO.ubicacion.mapaEmbed; $("#modalMapa").classList.add("abierto"); };
+$("#btnCerrarMapa").onclick = ()=> $("#modalMapa").classList.remove("abierto");
+$("#modalMapa").onclick = e => { if(e.target.id==="modalMapa") e.target.classList.remove("abierto"); };
+
+/* ══════════════ ESTADO DEL WIZARD ══════════════ */
+const estado = { paso:1, servicios:new Set(), pack:null, especialista:null, fecha:null, hora:null, nombre:"", telefono:"" };
+const ETIQUETAS = ["","Paso 1 · Tratamientos","Paso 2 · Especialista","Paso 3 · Día y hora","Paso 4 · Tus datos","Paso 5 · Abono","¡Listo!"];
+const TITULOS = ["","Tu <i>ritual</i>","Tu <i>especialista</i>","Tu <i>momento</i>","Ya casi <i>estamos</i>","Asegura tu <i>hora</i>","¡Nos <i>vemos</i>! ✨"];
+const totalPasos = 6;
+
+const hoja = $("#hoja"), velo = $("#velo");
+$("#hojaTitulo").innerHTML = TITULOS[1];
+$("#progreso").innerHTML = Array.from({length:totalPasos},()=>"<span></span>").join("");
+
+function abrirAgenda(){ hoja.classList.add("abierta"); velo.classList.add("abierto"); $("#flotante").classList.add("oculto"); document.body.style.overflow="hidden"; irAPaso(1); }
+function cerrarAgenda(){ hoja.classList.remove("abierta"); velo.classList.remove("abierto"); $("#flotante").classList.remove("oculto"); document.body.style.overflow=""; if(estado.paso===6) reiniciar(); }
+$("#btnAbrirAgenda").onclick = abrirAgenda;
+$("#btnCerrar").onclick = cerrarAgenda;
+velo.onclick = cerrarAgenda;
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") cerrarAgenda(); });
+
+function reiniciar(){
+  estado.paso=1; estado.servicios.clear(); estado.pack=null; estado.especialista=null;
+  estado.fecha=null; estado.hora=null; estado.nombre=""; estado.telefono="";
+  $("#inputNombre").value=""; $("#inputTelefono").value="";
+  pintarPacks(); pintarServicios();
+}
+
+function irAPaso(n, atras=false){
+  estado.paso = n;
+  $$(".paso").forEach(p=>{
+    p.classList.remove("activo","hacia-atras");
+    if(+p.dataset.paso === n){ p.classList.add("activo"); if(atras) p.classList.add("hacia-atras"); }
+  });
+  $$("#progreso span").forEach((s,i)=> s.classList.toggle("lleno", i < n));
+  $("#pasoEtiqueta").textContent = ETIQUETAS[n];
+  $("#hojaTitulo").innerHTML = TITULOS[n];
+  $("#btnAtras").classList.toggle("oculto", n===1 || n===6);
+  $("#hojaCuerpo").scrollTop = 0;
+  if(n===3) pintarDias();
+  if(n===5) pintarPago();
+  if(n===6) pintarConfirmacion();
+  actualizarPie();
+}
+$("#btnAtras").onclick = ()=>{ if(estado.paso>1) irAPaso(estado.paso-1, true); };
+
+/* selección: pack es exclusivo con servicios sueltos */
+function seleccionActiva(){
+  if(estado.pack) return { items:[{nombre:estado.pack.nombre, precio:estado.pack.precio}], precio:estado.pack.precio, min:estado.pack.min };
+  const s = NEGOCIO.servicios.filter(x=>estado.servicios.has(x.id));
+  return { items:s, precio:s.reduce((a,x)=>a+x.precio,0), min:s.reduce((a,x)=>a+x.min,0) };
+}
+const hayAlgo = ()=> estado.pack || estado.servicios.size>0;
+
+function pintarPacks(){
+  $("#listaPacks").innerHTML = NEGOCIO.packs.map(p=>`
+    <button class="pack-card ${estado.pack&&estado.pack.id===p.id?"sel":""}" data-id="${p.id}">
+      <span class="badge">Ahorra ${CLP(p.antes-p.precio)}</span>
+      <div class="pemoji">${p.emoji}</div>
+      <div class="pnombre">${p.nombre}</div>
+      <div class="pincluye">${p.incluye}</div>
+      <div class="pprecio">${CLP(p.precio)}<span class="pantes">${CLP(p.antes)}</span></div>
+    </button>`).join("");
+  $$("#listaPacks .pack-card").forEach(b=>{
+    b.onclick = ()=>{
+      const p = NEGOCIO.packs.find(x=>x.id===b.dataset.id);
+      if(estado.pack && estado.pack.id===p.id){ estado.pack=null; }
+      else { estado.pack=p; estado.servicios.clear(); }
+      pintarPacks(); pintarServicios(); actualizarPie();
+    };
+  });
+}
+
+function pintarServicios(){
+  $("#listaServicios").innerHTML = NEGOCIO.servicios.map(s=>`
+    <button class="servicio-card ${estado.servicios.has(s.id)?"sel":""}" data-id="${s.id}">
+      ${s.foto ? `<img class="foto" src="${s.foto}" alt="${s.nombre}" loading="lazy" data-emoji="${s.emoji}">` : `<span class="emoji">${s.emoji}</span>`}
+      <span class="info"><span class="nombre">${s.nombre}</span><span class="dur">⏱ ${s.min} min</span></span>
+      <span class="precio">${CLP(s.precio)}</span>
+      <span class="check">✓</span>
+    </button>`).join("");
+  $$("#listaServicios .foto").forEach(img=>{
+    img.onerror = ()=>{ const e=document.createElement("span"); e.className="emoji"; e.textContent=img.dataset.emoji; img.replaceWith(e); };
+  });
+  $$("#listaServicios .servicio-card").forEach(b=>{
+    b.onclick = ()=>{
+      const id = b.dataset.id;
+      if(estado.pack){ estado.pack=null; pintarPacks(); }
+      estado.servicios.has(id) ? estado.servicios.delete(id) : estado.servicios.add(id);
+      b.classList.toggle("sel", estado.servicios.has(id));
+      actualizarPie();
+    };
+  });
+}
+pintarPacks(); pintarServicios();
+
+function pintarEspecialistas(){
+  $("#listaEspecialistas").innerHTML = NEGOCIO.equipo.map(b=>`
+    <button class="esp-card" data-id="${b.id}">
+      <span class="avatar">${b.nombre[0]}</span>
+      <span>
+        <span class="nombre" style="display:block">${b.nombre}</span>
+        <span class="esp">${b.esp}</span>
+        <span class="rating">★ ${b.rating}</span>
+      </span>
+      <span class="flecha">›</span>
+    </button>`).join("");
+  $$("#listaEspecialistas .esp-card").forEach(el=>{
+    el.onclick = ()=>{ estado.especialista = NEGOCIO.equipo.find(x=>x.id===el.dataset.id); irAPaso(3); };
+  });
+}
+pintarEspecialistas();
+
+const DIAS_SEM = ["dom","lun","mar","mié","jue","vie","sáb"];
+const MESES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+const mismaFecha = (a,b)=> a && b && a.toDateString()===b.toDateString();
+
+function proximosDias(n=14){
+  const dias=[], hoy=new Date();
+  for(let i=0;i<n;i++){ const d=new Date(hoy); d.setDate(hoy.getDate()+i); if(!NEGOCIO.horario.cerradoDias.includes(d.getDay())) dias.push(d); }
+  return dias;
+}
+function pintarDias(){
+  const dias = proximosDias();
+  if(!estado.fecha || !dias.some(d=>mismaFecha(d,estado.fecha))) estado.fecha = dias[0];
+  $("#pistaFecha").textContent = `Con ${estado.especialista.nombre} · ${seleccionActiva().min} min en total`;
+  $("#listaDias").innerHTML = dias.map((d,i)=>`
+    <button class="dia-chip ${mismaFecha(d,estado.fecha)?"sel":""}" data-i="${i}">
+      <div class="dsem">${mismaFecha(d,new Date())?"hoy":DIAS_SEM[d.getDay()]}</div>
+      <div class="dnum">${d.getDate()}</div>
+      <div class="dmes">${MESES[d.getMonth()]}</div>
+    </button>`).join("");
+  $$("#listaDias .dia-chip").forEach(el=>{
+    el.onclick = ()=>{ estado.fecha = dias[+el.dataset.i]; estado.hora=null; $$("#listaDias .dia-chip").forEach(x=>x.classList.remove("sel")); el.classList.add("sel"); pintarHoras(); actualizarPie(); };
+  });
+  pintarHoras();
+}
+function ocupado(fecha, hora, espId){
+  const s = fecha.toDateString()+hora+espId;
+  let h=0; for(const ch of s) h=(h*31+ch.charCodeAt(0))>>>0;
+  return (h%10)<3;
+}
+function pintarHoras(){
+  const {desde,hasta} = NEGOCIO.horario, dur = seleccionActiva().min;
+  const ahora = new Date(), esHoy = mismaFecha(estado.fecha, ahora);
+  const slots = [];
+  for(let m=desde*60; m+dur<=hasta*60; m+=30){
+    const hh=Math.floor(m/60), mm=m%60;
+    const etiqueta = `${String(hh).padStart(2,"0")}:${String(mm).padStart(2,"0")}`;
+    const pasada = esHoy && (m <= ahora.getHours()*60+ahora.getMinutes());
+    slots.push({etiqueta, deshabilitada: pasada || ocupado(estado.fecha, etiqueta, estado.especialista.id)});
+  }
+  const disp = slots.filter(s=>!s.deshabilitada).length;
+  $("#listaHoras").innerHTML = disp===0
+    ? `<div class="sin-horas" style="grid-column:1/-1">Sin horas este día 🌸 — prueba el siguiente.</div>`
+    : slots.map(s=>`<button class="hora-chip ${estado.hora===s.etiqueta?"sel":""}" ${s.deshabilitada?"disabled":""} data-h="${s.etiqueta}">${s.etiqueta}</button>`).join("");
+  $$("#listaHoras .hora-chip:not(:disabled)").forEach(el=>{
+    el.onclick = ()=>{ estado.hora=el.dataset.h; $$("#listaHoras .hora-chip").forEach(x=>x.classList.remove("sel")); el.classList.add("sel"); actualizarPie(); setTimeout(()=>irAPaso(4), 260); };
+  });
+}
+
+$("#inputNombre").addEventListener("input", e=>{ estado.nombre=e.target.value.trim(); e.target.classList.remove("error"); actualizarPie(); });
+$("#inputTelefono").addEventListener("input", e=>{ estado.telefono=e.target.value.trim(); e.target.classList.remove("error"); actualizarPie(); });
+
+function fechaBonita(){ const d=estado.fecha; return `${DIAS_SEM[d.getDay()]} ${d.getDate()} ${MESES[d.getMonth()]}`; }
+function puntosGanados(){ return Math.round(seleccionActiva().precio/1000*NEGOCIO.fidelidad.puntosPorMil); }
+
+function pintarPago(){
+  const sel = seleccionActiva();
+  const abono = Math.round(sel.precio * NEGOCIO.pago.abonoPct / 100);
+  $("#resumenPago").innerHTML = `
+    ${sel.items.map(s=>`<div class="resumen-fila"><span>${s.nombre}</span><b>${CLP(s.precio)}</b></div>`).join("")}
+    <div class="resumen-fila"><span>Especialista</span><b>${estado.especialista.nombre}</b></div>
+    <div class="resumen-fila"><span>Cuándo</span><b>${fechaBonita()} · ${estado.hora}</b></div>
+    <div class="resumen-fila total"><span>Abono ahora (${NEGOCIO.pago.abonoPct}%)</span><b>${CLP(abono)}</b></div>
+    <div class="resumen-fila"><span>Saldo en el local</span><b>${CLP(sel.precio-abono)}</b></div>`;
+  $("#puntosNota").innerHTML = `🎁 Con esta reserva ganas <b>${puntosGanados()} ${NEGOCIO.fidelidad.nombrePuntos}</b> para tu próxima visita.`;
+}
+
+function pintarConfirmacion(){
+  const sel = seleccionActiva();
+  $("#confSub").textContent = `${estado.nombre.split(" ")[0]}, te esperamos. Te llegará un recordatorio.`;
+  $("#resumenFinal").innerHTML = `
+    <div class="resumen-fila"><span>${sel.items.length>1?"Tratamientos":"Tratamiento"}</span><b>${sel.items.map(s=>s.nombre).join(" + ")}</b></div>
+    <div class="resumen-fila"><span>Especialista</span><b>${estado.especialista.nombre}</b></div>
+    <div class="resumen-fila"><span>Cuándo</span><b>${fechaBonita()} · ${estado.hora} hrs</b></div>
+    <div class="resumen-fila"><span>Dónde</span><b>${NEGOCIO.ubicacion.direccion}</b></div>
+    <div class="resumen-fila"><span>${NEGOCIO.fidelidad.nombrePuntos}</span><b>+${puntosGanados()} 🎁</b></div>
+    <div class="resumen-fila total"><span>Total</span><b>${CLP(sel.precio)}</b></div>`;
+  const msj = encodeURIComponent(`Hola! Reservé en ${titulo(NEGOCIO.nombre)}: ${sel.items.map(s=>s.nombre).join(" + ")} con ${estado.especialista.nombre}, ${fechaBonita()} a las ${estado.hora}. — ${estado.nombre}`);
+  $("#btnWsp").href = `https://wa.me/${NEGOCIO.redes.whatsapp}?text=${msj}`;
+  const ini = new Date(estado.fecha); const [hh,mm]=estado.hora.split(":"); ini.setHours(+hh,+mm,0,0);
+  const fin = new Date(ini.getTime()+sel.min*60000);
+  const fmt = d => d.toISOString().replace(/[-:]|\.\d{3}/g,"");
+  $("#btnCalendario").href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(titulo(NEGOCIO.nombre)+" — "+sel.items.map(s=>s.nombre).join(" + "))}&dates=${fmt(ini)}/${fmt(fin)}&location=${encodeURIComponent(NEGOCIO.ubicacion.direccion)}`;
+}
+
+function actualizarPie(){
+  const pie=$("#hojaPie"), btn=$("#btnPie"), l1=$("#pieL1"), l2=$("#pieL2");
+  pie.style.display = (estado.paso===2 || estado.paso===6) ? "none" : "flex";
+  btn.innerHTML = "Continuar";
+  const sel = seleccionActiva();
+  switch(estado.paso){
+    case 1:
+      l1.textContent = hayAlgo() ? sel.items.map(s=>s.nombre).join(" + ") : "Elige tu tratamiento";
+      l2.textContent = hayAlgo() ? `${CLP(sel.precio)} · ${sel.min} min` : "";
+      btn.disabled = !hayAlgo();
+      btn.onclick = ()=> irAPaso(2);
+      break;
+    case 3:
+      l1.textContent = `${estado.especialista.nombre} · ${fechaBonita()}`;
+      l2.textContent = estado.hora ? `${estado.hora} hrs · ${CLP(sel.precio)}` : "Elige una hora";
+      btn.disabled = !estado.hora;
+      btn.onclick = ()=> irAPaso(4);
+      break;
+    case 4:
+      l1.textContent = `${fechaBonita()} · ${estado.hora} hrs`;
+      l2.textContent = CLP(sel.precio);
+      btn.disabled = false;
+      btn.onclick = ()=>{
+        let ok=true;
+        if(estado.nombre.length<2){ $("#inputNombre").classList.add("error"); ok=false; }
+        if(estado.telefono.replace(/\D/g,"").length<8){ $("#inputTelefono").classList.add("error"); ok=false; }
+        if(ok) irAPaso(5);
+      };
+      break;
+    case 5:{
+      const abono = Math.round(sel.precio*NEGOCIO.pago.abonoPct/100);
+      l1.textContent = "Abono para confirmar";
+      l2.textContent = CLP(abono);
+      btn.disabled = false;
+      btn.innerHTML = `Pagar ${CLP(abono)}`;
+      btn.onclick = pagarDemo;
+      break;
+    }
+  }
+}
+function pagarDemo(){
+  const btn=$("#btnPie");
+  btn.disabled=true; btn.innerHTML=`<span class="spinner"></span>Procesando…`;
+  setTimeout(()=>{ btn.innerHTML="✓ Pagado"; setTimeout(()=>irAPaso(6), 500); }, 1300);
+}
+</script>
+</body>
+</html>
