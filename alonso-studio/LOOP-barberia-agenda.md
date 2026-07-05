@@ -14,6 +14,11 @@ Meta medible: reservar en **menos de 4 toques**, **móvil primero**, demo 24/7
 (sin pagos reales, solo simulado), y con un nivel de diseño que **no parezca
 plantilla genérica de IA**.
 
+**Contexto de negocio:** este demo es la carta de venta del creador de webs
+para venderle a dueños de negocios locales (barberías, dentales, peluquerías,
+veterinarias, etc.) que necesitan una **agenda automática**. Por eso debe ser
+**re-skineable** (ver abajo): un mismo motor, muchas marcas.
+
 ---
 
 ## 💥 Regla anti-genérico (lo que sube esto de 7 a 10)
@@ -37,6 +42,27 @@ o como una plantilla gratis?"* Si es lo segundo, no está terminado.
 
 ---
 
+## ♻️ Re-skineable (convierte el demo en un producto vendible en serie)
+Como esto se venderá a muchos rubros distintos, la web debe permitir cambiar
+la **marca completa sin tocar el motor de reservas**. Regla técnica:
+
+- **Toda la data del negocio vive en UN solo bloque de configuración** al inicio
+  del código (un objeto/const tipo `NEGOCIO = { ... }`), separado del diseño:
+  nombre, logo, colores (variables CSS), servicios, equipo/profesionales,
+  correos, horario, redes, ubicación del mapa, textos del hero.
+- Cambiar de "Barbería Alonso" a "Clínica Dental Sonríe" debe tomar **~30 min**:
+  editar ese bloque (nombre, colores, servicios, "3 barberos" → "3 dentistas")
+  y nada más. El calendario, el wizard y las animaciones quedan intactos.
+- Los colores se manejan con **variables CSS** (ej. `--color-acento`) para
+  re-vestir toda la paleta cambiando 2-3 valores.
+- Nada de textos "quemados" (hardcodeados) repartidos por el código: si es
+  contenido del negocio, sale del bloque de configuración.
+
+Meta: el mismo archivo sirve de base para barbería, dental, veterinaria, salón,
+etc., cambiando solo la "piel".
+
+---
+
 ## 🧭 Prompt del loop (esto es lo que se lanza)
 
 ```
@@ -49,7 +75,11 @@ o como una plantilla gratis?"* Si es lo segundo, no está terminado.
         microinteracciones que se sientan como app nativa. En cada iteración:
         levanta la página, recorre TODO el flujo de agendar, arregla lo que falle
         y aplica la prueba de fuego "¿se ve pagable o se ve plantilla?". Móvil
-        primero. Lo único que destaca es agendar. Sigue hasta cumplir la checklist.
+        primero. Lo único que destaca es agendar. Hazla RE-SKINEABLE: toda la
+        data del negocio (nombre, colores, servicios, equipo, correos, horario,
+        redes) en UN bloque de configuración separado del diseño y colores por
+        variables CSS, para cambiar de rubro en ~30 min sin tocar el motor.
+        Sigue hasta cumplir la checklist.
 ```
 
 ---
@@ -89,8 +119,11 @@ En piezas pequeñas, integradas, sin scroll de relleno:
 - **Horario de atención** y **3 correos corporativos**.
 - Señal de confianza: "+X cortes al mes", rating, o similar (breve).
 
-**Vuelta 6 — Pulido de nivel producto**
-Aplicar la prueba de fuego en cada pantalla. Reservar < 4 toques. Revisar
+**Vuelta 6 — Re-skineable + pulido de nivel producto**
+Mover TODA la data del negocio a un único bloque de configuración al inicio
+(nombre, colores, servicios, equipo, correos, horario, redes, mapa, textos),
+pasar la paleta a variables CSS, y verificar que cambiar de rubro tome ~30 min
+sin tocar el motor. Luego: prueba de fuego en cada pantalla, reservar < 4 toques,
 consistencia visual, estados vacíos/hover/activo, rendimiento y detalles finos.
 
 ---
@@ -112,6 +145,7 @@ consistencia visual, estados vacíos/hover/activo, rendimiento y detalles finos.
 - [ ] Redes sociales + Google Maps + 2-3 reseñas (compactos).
 - [ ] 3 correos corporativos presentes.
 - [ ] Confirmación con resumen + acción de recordatorio (calendario/WhatsApp).
+- [ ] Re-skineable: toda la data del negocio en UN bloque de config; colores por variables CSS; cambiar de rubro toma ~30 min sin tocar el motor.
 
 ---
 
