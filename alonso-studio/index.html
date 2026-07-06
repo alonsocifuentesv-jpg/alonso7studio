@@ -5,25 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Alonso Studio · Diseño web + IA para tu negocio</title>
 <meta name="description" content="Webs que llenan tu negocio: agenda automática, tiendas online, chatbots con IA y más. Ejemplos en vivo y precios claros.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%236d5efc'/%3E%3Ctext x='50' y='70' font-size='58' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23141210'/%3E%3Ctext x='50' y='70' font-size='58' font-family='Arial' font-weight='bold' fill='%23c8a24a' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0b0c10;
-  --bg-2:#111319;
-  --panel:#15171f;
-  --panel-2:#1b1e28;
-  --linea:#252935;
-  --tinta:#f4f5f8;
-  --tinta-2:#9aa0b0;
-  --acento:#6d5efc;
-  --acento-2:#8b7dff;
-  --acento-suave:rgba(109,94,252,.14);
-  --ok:#35d29a;
+  --bg:#fbf8f2;
+  --bg-2:#f4eee2;
+  --panel:#ffffff;
+  --panel-2:#faf5ea;
+  --linea:#ece2cf;
+  --tinta:#161311;
+  --tinta-2:#7c7264;
+  --acento:#b8912f;
+  --acento-2:#d4af37;
+  --acento-suave:rgba(184,145,47,.12);
+  --negro:#161311;
+  --ok:#2fae7a;
   --font:'Inter', system-ui, -apple-system, sans-serif;
+  --serif:'Playfair Display', Georgia, serif;
   --radio:18px;
+  --sombra:0 16px 44px -22px rgba(80,60,20,.4);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
@@ -33,31 +36,31 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 ::selection{background:var(--acento);color:#fff}
 
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:radial-gradient(900px 480px at 82% -8%, rgba(109,94,252,.18), transparent 60%),
-             radial-gradient(700px 500px at -6% 8%, rgba(109,94,252,.10), transparent 55%);}
+  background:radial-gradient(900px 480px at 84% -10%, rgba(212,175,55,.18), transparent 60%),
+             radial-gradient(700px 500px at -6% 6%, rgba(184,145,47,.10), transparent 55%);}
 .wrap{max-width:1080px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:30;background:rgba(11,12,16,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--linea)}
+nav{position:sticky;top:0;z-index:30;background:rgba(251,248,242,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--linea)}
 .nav-in{max-width:1080px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.02em}
-.logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--acento-2),var(--acento));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;color:#fff}
-.logo span{color:var(--acento-2)}
-.nav-cta{display:inline-flex;align-items:center;gap:7px;background:var(--acento);color:#fff;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px;transition:transform .15s, background .15s}
-.nav-cta:hover{background:var(--acento-2);transform:translateY(-1px)}
+.logo .mark{width:32px;height:32px;border-radius:9px;background:var(--negro);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;color:var(--acento-2)}
+.logo span{color:var(--acento)}
+.nav-cta{display:inline-flex;align-items:center;gap:7px;background:var(--negro);color:#fff;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px;transition:transform .15s, background .15s}
+.nav-cta:hover{background:var(--acento);transform:translateY(-1px)}
 
 /* HERO */
-#hero{padding:64px 0 42px;text-align:center}
-.tag{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;letter-spacing:.02em;color:var(--acento-2);background:var(--acento-suave);border:1px solid rgba(109,94,252,.3);padding:7px 15px;border-radius:999px}
-h1{font-size:clamp(34px,6.6vw,62px);line-height:1.04;letter-spacing:-.03em;font-weight:900;margin:20px auto 14px;max-width:16ch}
-h1 em{font-style:normal;background:linear-gradient(120deg,var(--acento-2),#c0b8ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+#hero{padding:62px 0 40px;text-align:center}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;letter-spacing:.03em;color:var(--acento);background:var(--acento-suave);border:1px solid rgba(184,145,47,.35);padding:7px 15px;border-radius:999px}
+h1{font-family:var(--serif);font-size:clamp(36px,7vw,64px);line-height:1.03;letter-spacing:-.01em;font-weight:900;margin:20px auto 14px;max-width:15ch}
+h1 em{font-style:italic;color:var(--acento)}
 .hero-sub{color:var(--tinta-2);font-size:clamp(15px,2.4vw,18px);max-width:52ch;margin:0 auto 30px}
 .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:15px;padding:15px 28px;border-radius:999px;transition:transform .15s, background .15s, border-color .15s}
-.btn-main{background:var(--acento);color:#fff;box-shadow:0 12px 34px -12px rgba(109,94,252,.8)}
-.btn-main:hover{background:var(--acento-2);transform:translateY(-2px)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:15px;padding:15px 28px;border-radius:999px;transition:transform .15s, background .15s, border-color .15s, color .15s}
+.btn-main{background:var(--negro);color:#fff;box-shadow:0 14px 34px -14px rgba(22,19,17,.7)}
+.btn-main:hover{background:var(--acento);transform:translateY(-2px)}
 .btn-ghost{border:1px solid var(--linea);color:var(--tinta);background:var(--panel)}
-.btn-ghost:hover{border-color:var(--acento);transform:translateY(-2px)}
+.btn-ghost:hover{border-color:var(--acento);color:var(--acento);transform:translateY(-2px)}
 .hero-mini{margin-top:22px;display:flex;gap:22px;justify-content:center;flex-wrap:wrap;color:var(--tinta-2);font-size:13px;font-weight:500}
 .hero-mini b{color:var(--tinta)}
 .hero-mini .dot{color:var(--acento)}
@@ -65,59 +68,82 @@ h1 em{font-style:normal;background:linear-gradient(120deg,var(--acento-2),#c0b8f
 /* SECCIONES */
 .sec{padding:44px 0}
 .sec-head{text-align:center;margin-bottom:30px}
-.sec-tag{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--acento-2)}
-.sec-title{font-size:clamp(26px,4.6vw,40px);font-weight:800;letter-spacing:-.02em;margin-top:8px}
-.sec-sub{color:var(--tinta-2);font-size:15px;margin-top:8px;max-width:48ch;margin-left:auto;margin-right:auto}
+.sec-tag{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--acento)}
+.sec-title{font-family:var(--serif);font-size:clamp(27px,4.8vw,42px);font-weight:800;letter-spacing:-.01em;margin-top:8px}
+.sec-title em{font-style:italic;color:var(--acento)}
+.sec-sub{color:var(--tinta-2);font-size:15px;margin-top:8px;max-width:50ch;margin-left:auto;margin-right:auto}
+
+/* POR QUÉ YO */
+#porque{background:var(--negro);color:#fff}
+#porque .sec-tag{color:var(--acento-2)}
+.pq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.pq{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.22);border-radius:16px;padding:20px}
+.pq .pqi{font-size:24px}
+.pq strong{display:block;font-size:15.5px;font-weight:800;margin-top:10px}
+.pq p{color:rgba(255,255,255,.62);font-size:13.5px;margin-top:5px}
 
 /* SERVICIOS */
 .serv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.serv{background:var(--panel);border:1px solid var(--linea);border-radius:var(--radio);padding:22px;display:flex;flex-direction:column;transition:transform .18s, border-color .18s;position:relative;overflow:hidden}
-.serv:hover{transform:translateY(-3px);border-color:rgba(109,94,252,.5)}
+.serv{background:var(--panel);border:1px solid var(--linea);border-radius:var(--radio);padding:22px;display:flex;flex-direction:column;transition:transform .18s, border-color .18s, box-shadow .18s;position:relative;overflow:hidden;box-shadow:var(--sombra)}
+.serv:hover{transform:translateY(-3px);border-color:var(--acento)}
 .serv.destacado{border-color:var(--acento);background:linear-gradient(180deg,var(--acento-suave),var(--panel))}
-.serv .estrella{position:absolute;top:16px;right:16px;font-size:11px;font-weight:800;letter-spacing:.05em;color:#fff;background:var(--acento);padding:4px 10px;border-radius:999px}
-.serv .ico{width:50px;height:50px;border-radius:13px;background:var(--panel-2);display:flex;align-items:center;justify-content:center;font-size:25px;margin-bottom:14px}
+.serv .estrella{position:absolute;top:16px;right:16px;font-size:11px;font-weight:800;letter-spacing:.05em;color:var(--negro);background:linear-gradient(120deg,var(--acento-2),var(--acento));padding:4px 11px;border-radius:999px}
+.serv .ico{width:52px;height:52px;border-radius:14px;background:var(--panel-2);border:1px solid var(--linea);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:14px}
 .serv .nombre{font-size:18px;font-weight:800;letter-spacing:-.01em}
 .serv .para{color:var(--tinta-2);font-size:14px;margin-top:6px;flex:1}
 .serv .precios{margin-top:16px;padding-top:14px;border-top:1px solid var(--linea)}
 .serv .desde{font-size:13px;color:var(--tinta-2);font-weight:500}
-.serv .desde b{color:var(--tinta);font-size:22px;font-weight:800;letter-spacing:-.02em}
-.serv .mensual{font-size:12.5px;color:var(--acento-2);font-weight:600;margin-top:4px}
+.serv .desde b{color:var(--tinta);font-size:23px;font-weight:800;letter-spacing:-.02em}
+.serv .mensual{font-size:12.5px;color:var(--acento);font-weight:700;margin-top:4px}
 .serv .acciones{margin-top:16px;display:flex;gap:8px}
 .serv .ver{flex:1;text-align:center;font-size:13.5px;font-weight:700;padding:11px;border-radius:11px;border:1px solid var(--linea);color:var(--tinta);transition:all .15s}
-.serv .ver:hover{border-color:var(--acento);color:var(--acento-2)}
-.serv .pedir{flex:1;text-align:center;font-size:13.5px;font-weight:700;padding:11px;border-radius:11px;background:var(--acento);color:#fff;transition:all .15s}
-.serv .pedir:hover{background:var(--acento-2)}
-.serv .ver.solo,.serv .pedir.solo{flex:1}
+.serv .ver:hover{border-color:var(--acento);color:var(--acento)}
+.serv .pedir{flex:1;text-align:center;font-size:13.5px;font-weight:700;padding:11px;border-radius:11px;background:var(--negro);color:#fff;transition:all .15s}
+.serv .pedir:hover{background:var(--acento)}
+.serv .pedir.solo{flex:1}
 
-/* EJEMPLOS EN VIVO */
+/* EJEMPLOS */
 #ejemplos{background:var(--bg-2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
 .ej-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-.ej-card{background:var(--panel);border:1px solid var(--linea);border-radius:14px;padding:18px;transition:transform .18s, border-color .18s}
+.ej-card{background:var(--panel);border:1px solid var(--linea);border-radius:14px;padding:18px;transition:transform .18s, border-color .18s;box-shadow:var(--sombra)}
 .ej-card:hover{transform:translateY(-3px);border-color:var(--acento)}
 .ej-card .ej-emoji{font-size:24px}
 .ej-card .ej-nombre{font-weight:700;font-size:15px;margin-top:8px}
 .ej-card .ej-tipo{color:var(--tinta-2);font-size:12.5px;margin-top:2px}
-.ej-card .ej-link{display:inline-flex;align-items:center;gap:6px;color:var(--acento-2);font-weight:700;font-size:13px;margin-top:12px}
+.ej-card .ej-link{display:inline-flex;align-items:center;gap:6px;color:var(--acento);font-weight:700;font-size:13px;margin-top:12px}
 
 /* PROCESO */
 .proc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.proc{background:var(--panel);border:1px solid var(--linea);border-radius:var(--radio);padding:22px}
-.proc .n{width:34px;height:34px;border-radius:10px;background:var(--acento-suave);color:var(--acento-2);font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.proc{background:var(--panel);border:1px solid var(--linea);border-radius:var(--radio);padding:22px;box-shadow:var(--sombra)}
+.proc .n{width:34px;height:34px;border-radius:10px;background:var(--acento-suave);color:var(--acento);font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
 .proc strong{font-size:16px;font-weight:800}
 .proc p{color:var(--tinta-2);font-size:14px;margin-top:6px}
 
-/* CONTACTO */
-#contacto{text-align:center}
-.cta-box{background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--linea);border-radius:26px;padding:44px 26px}
-.cta-box h2{font-size:clamp(24px,4.4vw,38px);font-weight:900;letter-spacing:-.02em}
-.cta-box p{color:var(--tinta-2);margin:10px auto 24px;max-width:44ch}
-.socials{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px}
-.soc{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:11px 18px;border-radius:999px;border:1px solid var(--linea);background:var(--panel);transition:all .15s}
-.soc:hover{border-color:var(--acento);transform:translateY(-2px)}
+/* CONTACTO + FORM */
+#contacto{background:var(--negro);color:#fff}
+#contacto .sec-tag{color:var(--acento-2)}
+#contacto .sec-title{color:#fff}
+#contacto .sec-sub{color:rgba(255,255,255,.6)}
+.form-box{max-width:640px;margin:0 auto;background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.25);border-radius:24px;padding:28px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f-group{margin-bottom:14px}
+.f-group label{display:block;font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--acento-2);margin-bottom:7px}
+.f-group input,.f-group select,.f-group textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:13px 14px;color:#fff;font-size:15px;font-weight:500;outline:none;transition:border-color .15s}
+.f-group input::placeholder,.f-group textarea::placeholder{color:rgba(255,255,255,.4)}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus{border-color:var(--acento)}
+.f-group input.err,.f-group select.err{border-color:#e06a6a}
+.f-group select option{background:#161311;color:#fff}
+.f-group textarea{resize:vertical;min-height:74px}
+.form-submit{width:100%;background:linear-gradient(120deg,var(--acento-2),var(--acento));color:var(--negro);font-weight:800;font-size:16px;padding:16px;border-radius:14px;transition:transform .15s;margin-top:4px}
+.form-submit:hover{transform:translateY(-2px)}
+.form-note{text-align:center;color:rgba(255,255,255,.55);font-size:12.5px;margin-top:12px}
+.socials{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.soc{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:11px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.16);color:#fff;transition:all .15s}
+.soc:hover{border-color:var(--acento);color:var(--acento-2);transform:translateY(-2px)}
 
-footer{border-top:1px solid var(--linea);padding:26px 0;text-align:center;color:var(--tinta-2);font-size:13px}
-footer .flogo{font-weight:800;color:var(--tinta);font-size:16px;margin-bottom:6px}
-footer .flogo span{color:var(--acento-2)}
+footer{padding:26px 0;text-align:center;color:var(--tinta-2);font-size:13px;background:var(--bg)}
+footer .flogo{font-family:var(--serif);font-weight:800;color:var(--tinta);font-size:18px;margin-bottom:6px}
+footer .flogo span{color:var(--acento)}
 
 .wa-float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:40;width:56px;height:56px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px -6px rgba(37,211,102,.6);transition:transform .2s}
 .wa-float:hover{transform:scale(1.1)}
@@ -126,7 +152,7 @@ footer .flogo span{color:var(--acento-2)}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s, transform .6s}
 .reveal.vis{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
-@media (max-width:560px){#hero{padding:44px 0 30px}.hero-btns .btn{width:100%;justify-content:center}}
+@media (max-width:560px){#hero{padding:42px 0 28px}.hero-btns .btn{width:100%;justify-content:center}.f-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -156,11 +182,21 @@ footer .flogo span{color:var(--acento-2)}
   </div>
 </header>
 
+<section class="sec" id="porque">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Por qué conmigo</div>
+      <h2 class="sec-title" style="color:#fff">Grandes resultados, <em>trato directo</em></h2>
+    </div>
+    <div class="pq-grid" id="pqGrid"></div>
+  </div>
+</section>
+
 <section class="sec" id="servicios">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="sec-tag">Servicios</div>
-      <h2 class="sec-title">Elige lo que <em style="font-style:normal;color:var(--acento-2)">tu negocio necesita</em></h2>
+      <h2 class="sec-title">Elige lo que <em>tu negocio necesita</em></h2>
       <p class="sec-sub">Sin planes confusos. Cada servicio con su precio y su ejemplo real para que lo veas funcionando.</p>
     </div>
     <div class="serv-grid" id="servGrid"></div>
@@ -171,7 +207,7 @@ footer .flogo span{color:var(--acento-2)}
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="sec-tag">Ejemplos en vivo</div>
-      <h2 class="sec-title">Míralos como si fueran <em style="font-style:normal;color:var(--acento-2)">tuyos</em></h2>
+      <h2 class="sec-title">Míralos como si fueran <em>tuyos</em></h2>
       <p class="sec-sub">Tengo varios formatos según el rubro. Ábrelos y navégalos completos.</p>
     </div>
     <div class="ej-grid" id="ejGrid"></div>
@@ -195,10 +231,49 @@ footer .flogo span{color:var(--acento-2)}
 
 <section class="sec" id="contacto">
   <div class="wrap">
-    <div class="cta-box reveal">
-      <h2>¿Listo para llenar tu negocio?</h2>
-      <p>Escríbeme y te respondo en menos de 2 horas. Te digo qué te conviene, sin compromiso.</p>
-      <a class="btn btn-main" id="ctaWsp" target="_blank" rel="noopener" style="font-size:16px">💬 Escríbeme por WhatsApp</a>
+    <div class="sec-head reveal">
+      <div class="sec-tag">Escríbeme</div>
+      <h2 class="sec-title">Cuéntame sobre <em>tu negocio</em></h2>
+      <p class="sec-sub">Completa el formulario y te respondo en menos de 2 horas. Sin compromiso.</p>
+    </div>
+    <div class="form-box reveal">
+      <div class="f-row">
+        <div class="f-group">
+          <label>Tu nombre</label>
+          <input type="text" id="f-nombre" placeholder="Ej: Juan Pérez">
+        </div>
+        <div class="f-group">
+          <label>Nombre de tu negocio</label>
+          <input type="text" id="f-negocio" placeholder="Ej: Barbería Los Andes">
+        </div>
+      </div>
+      <div class="f-row">
+        <div class="f-group">
+          <label>Tipo de negocio</label>
+          <select id="f-tipo">
+            <option value="">Selecciona...</option>
+            <option>Barbería / Peluquería</option>
+            <option>Estética / Spa / Uñas</option>
+            <option>Dental / Salud</option>
+            <option>Veterinaria</option>
+            <option>Restaurante / Café</option>
+            <option>Tienda / Retail</option>
+            <option>Inmobiliaria</option>
+            <option>Servicios profesionales</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="f-group">
+          <label>Servicio que te interesa</label>
+          <select id="f-servicio"><option value="">Selecciona...</option></select>
+        </div>
+      </div>
+      <div class="f-group">
+        <label>¿Algo más que quieras contarme? (opcional)</label>
+        <textarea id="f-mensaje" placeholder="Colores que te gustan, dudas, lo que necesitas..."></textarea>
+      </div>
+      <button class="form-submit" id="formSubmit">Enviar por WhatsApp →</button>
+      <p class="form-note">💬 Te respondo en menos de 2 horas · Sin costo ni compromiso</p>
       <div class="socials" id="socials"></div>
     </div>
   </div>
@@ -219,13 +294,12 @@ footer .flogo span{color:var(--acento-2)}
 <script>
 /* ══════════════════════════════════════════════════════════════
    ♻️  CONFIGURACIÓN DEL ESTUDIO — edita SOLO este bloque
-   (marca, contacto, servicios y precios). Cambiar un precio = 1 min.
    ══════════════════════════════════════════════════════════════ */
 const ESTUDIO = {
   marca: "Alonso",
   marcaResalte: "Studio",
   tag: "✦ Diseño web + IA · Chile",
-  heroTitulo: ["Webs que ", "llenan", " tu negocio."], // la parte del medio va con color
+  heroTitulo: ["Webs que ", "llenan", " tu negocio."],
   heroSub: "Agenda automática, tiendas online, chatbots con IA y más. Con ejemplos reales que puedes ver funcionando ahora.",
 
   contacto: {
@@ -235,74 +309,78 @@ const ESTUDIO = {
     email: "contacto@alonsostudiodigital.com",
   },
 
+  porque: [
+    { i:"🤝", t:"Hablas directo conmigo", d:"Sin intermediarios ni call centers. Trato personal de principio a fin." },
+    { i:"💰", t:"Precio de estudio, no de agencia", d:"El mismo resultado que las grandes, a una fracción del precio." },
+    { i:"⚡", t:"Rápido con IA", d:"Uso IA para entregarte tu web en días, no en meses." },
+    { i:"🔑", t:"Tu web es 100% tuya", d:"Dominio y diseño a tu nombre desde el primer día." },
+  ],
+
   // Cada servicio con su precio "desde" y su mensualidad PROPIA.
-  // desde:null = sin pago inicial · mensual:null = sin mensualidad
   servicios: [
     { icon:"📅", nombre:"Sistema de Agenda 24/7", destacado:true,
       para:"Tus clientes reservan su hora solos, sin que respondas mensajes. Ideal para barberías, estética, dentales, veterinarias.",
-      desde:190000, mensual:14900, mensualNota:"mantención opcional",
+      desde:190000, mensual:9990, mensualNota:"mantención opcional",
       ejemplo:"barberia-agenda/", ejemploLabel:"Ver demo" },
 
     { icon:"📄", nombre:"Página informativa", destacado:false,
       para:"Presencia profesional: tus servicios, fotos, horario y contacto directo a WhatsApp.",
-      desde:99000, mensual:9900, mensualNota:"mantención opcional",
+      desde:99000, mensual:9990, mensualNota:"mantención opcional",
       ejemplo:"dental-demo.html", ejemploLabel:"Ver demo" },
 
     { icon:"🛒", nombre:"Tienda online", destacado:false,
       para:"Vende tus productos con catálogo, carrito y pagos online.",
-      desde:290000, mensual:19900, mensualNota:"mantención opcional",
+      desde:290000, mensual:15000, mensualNota:"mantención opcional",
       ejemplo:"perfume-demo.html", ejemploLabel:"Ver demo" },
 
     { icon:"🤖", nombre:"Chatbot WhatsApp con IA", destacado:false,
       para:"Un asistente que responde dudas y agenda solo, 24/7, sin que muevas un dedo.",
-      desde:150000, mensual:25000, mensualNota:"incluye IA",
+      desde:150000, mensual:19990, mensualNota:"incluye IA",
       ejemplo:null, ejemploLabel:null },
 
     { icon:"🍽️", nombre:"Menú digital QR", destacado:false,
       para:"Carta digital con código QR para restaurantes y cafés. Actualizable, sin reimprimir.",
-      desde:59000, mensual:6900, mensualNota:"mantención opcional",
+      desde:59000, mensual:6990, mensualNota:"mantención opcional",
       ejemplo:"resto-alonso-demo.html", ejemploLabel:"Ver demo" },
 
     { icon:"🏢", nombre:"Sitio corporativo", destacado:false,
       para:"Web de varias secciones para empresas más formales que quieren verse grandes.",
-      desde:250000, mensual:14900, mensualNota:"mantención opcional",
+      desde:250000, mensual:12990, mensualNota:"mantención opcional",
       ejemplo:"inmobiliaria-demo.html", ejemploLabel:"Ver demo" },
 
     { icon:"🔍", nombre:"Optimización Google (SEO)", destacado:false,
       para:"Que te encuentren en Google justo cuando buscan lo que ofreces.",
-      desde:null, mensual:49000, mensualNota:"servicio mensual",
+      desde:null, mensual:39990, mensualNota:"servicio mensual",
       ejemplo:null, ejemploLabel:null },
   ],
 
-  // Ejemplos en vivo (demos navegables)
   ejemplos: [
-    { emoji:"💈", nombre:"Barbería Alonso",   tipo:"Agenda 24/7",      url:"barberia-agenda/" },
-    { emoji:"🌸", nombre:"Estética Lumière",  tipo:"Agenda + packs",   url:"estetica-lumiere/" },
+    { emoji:"💈", nombre:"Barbería Alonso",   tipo:"Agenda 24/7",       url:"barberia-agenda/" },
+    { emoji:"🌸", nombre:"Estética Lumière",  tipo:"Agenda + packs",    url:"estetica-lumiere/" },
     { emoji:"🦷", nombre:"Dental Pacífico",   tipo:"Página informativa", url:"dental-demo.html" },
-    { emoji:"🌷", nombre:"Perfumería",        tipo:"Tienda online",    url:"perfume-demo.html" },
-    { emoji:"🍽️", nombre:"Restaurante",       tipo:"Menú digital",     url:"resto-alonso-demo.html" },
+    { emoji:"🌷", nombre:"Perfumería",        tipo:"Tienda online",     url:"perfume-demo.html" },
+    { emoji:"🍽️", nombre:"Restaurante",       tipo:"Menú digital",      url:"resto-alonso-demo.html" },
     { emoji:"🐶", nombre:"Veterinaria",       tipo:"Agenda + servicios", url:"veterinaria-demo.html" },
   ],
 };
 
-/* ══════════════ MOTOR (no necesitas tocar) ══════════════ */
+/* ══════════════ MOTOR ══════════════ */
 const $ = s => document.querySelector(s);
 const CLP = n => "$" + n.toLocaleString("es-CL");
+const wa = txt => `https://wa.me/${ESTUDIO.contacto.whatsapp}?text=${encodeURIComponent(txt)}`;
 
-document.documentElement.style.setProperty("--acento", getComputedStyle(document.documentElement).getPropertyValue("--acento"));
-
-// marca + contacto
 $("#navMark").textContent = ESTUDIO.marca[0];
 $("#navNombre").innerHTML = `${ESTUDIO.marca}<span>${ESTUDIO.marcaResalte}</span>`;
 $("#footLogo").innerHTML = `${ESTUDIO.marca}<span>${ESTUDIO.marcaResalte}</span>`;
 $("#heroTag").textContent = ESTUDIO.tag;
 $("#heroTitulo").innerHTML = `${ESTUDIO.heroTitulo[0]}<em>${ESTUDIO.heroTitulo[1]}</em>${ESTUDIO.heroTitulo[2]}`;
 $("#heroSub").textContent = ESTUDIO.heroSub;
-
-const wa = txt => `https://wa.me/${ESTUDIO.contacto.whatsapp}?text=${encodeURIComponent(txt)}`;
 $("#navWsp").href = wa("Hola Alonso! Quiero cotizar una página web 🙌");
-$("#ctaWsp").href = wa("Hola Alonso! Me interesa una web para mi negocio 🙌");
 $("#waFloat").href = wa("Hola Alonso! Vengo de tu página 🙌");
+
+// por qué
+$("#pqGrid").innerHTML = ESTUDIO.porque.map(p=>`
+  <div class="pq reveal"><div class="pqi">${p.i}</div><strong>${p.t}</strong><p>${p.d}</p></div>`).join("");
 
 // servicios
 $("#servGrid").innerHTML = ESTUDIO.servicios.map(s=>{
@@ -330,6 +408,11 @@ $("#ejGrid").innerHTML = ESTUDIO.ejemplos.map(e=>`
     <div class="ej-link">Ver en vivo →</div>
   </a>`).join("");
 
+// select de servicios en el formulario
+$("#f-servicio").innerHTML = '<option value="">Selecciona...</option>' +
+  ESTUDIO.servicios.map(s=>`<option>${s.nombre}</option>`).join("") +
+  '<option>Aún no sé / Quiero que me asesores</option>';
+
 // redes
 const soc = ESTUDIO.contacto;
 $("#socials").innerHTML = `
@@ -338,7 +421,25 @@ $("#socials").innerHTML = `
   ${soc.tiktok?`<a class="soc" href="${soc.tiktok}" target="_blank" rel="noopener">🎵 TikTok</a>`:""}
   ${soc.email?`<a class="soc" href="mailto:${soc.email}">✉️ Email</a>`:""}`;
 
-// reveal on scroll
+// envío del formulario → WhatsApp
+$("#formSubmit").onclick = ()=>{
+  const nombre = $("#f-nombre"), tipo = $("#f-tipo");
+  let ok = true;
+  if(nombre.value.trim().length < 2){ nombre.classList.add("err"); ok=false; } else nombre.classList.remove("err");
+  if(!tipo.value){ tipo.classList.add("err"); ok=false; } else tipo.classList.remove("err");
+  if(!ok){ nombre.focus(); return; }
+  const negocio = $("#f-negocio").value.trim();
+  const servicio = $("#f-servicio").value;
+  const mensaje = $("#f-mensaje").value.trim();
+  let txt = `Hola Alonso! 🙌 Soy ${nombre.value.trim()}`;
+  if(negocio) txt += ` de "${negocio}"`;
+  txt += `.\nTipo de negocio: ${tipo.value}.`;
+  if(servicio) txt += `\nMe interesa: ${servicio}.`;
+  if(mensaje) txt += `\n${mensaje}`;
+  window.open(wa(txt), "_blank");
+};
+
+// reveal
 const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("vis"); io.unobserve(e.target);} }), {threshold:.12});
 document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 </script>
