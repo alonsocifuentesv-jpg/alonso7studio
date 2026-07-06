@@ -1,437 +1,346 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Alonso Studio | Diseño Web Profesional — Chile</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="styles.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Alonso Studio · Diseño web + IA para tu negocio</title>
+<meta name="description" content="Webs que llenan tu negocio: agenda automática, tiendas online, chatbots con IA y más. Ejemplos en vivo y precios claros.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%236d5efc'/%3E%3Ctext x='50' y='70' font-size='58' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0c10;
+  --bg-2:#111319;
+  --panel:#15171f;
+  --panel-2:#1b1e28;
+  --linea:#252935;
+  --tinta:#f4f5f8;
+  --tinta-2:#9aa0b0;
+  --acento:#6d5efc;
+  --acento-2:#8b7dff;
+  --acento-suave:rgba(109,94,252,.14);
+  --ok:#35d29a;
+  --font:'Inter', system-ui, -apple-system, sans-serif;
+  --radio:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tinta);font-family:var(--font);line-height:1.5;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+::selection{background:var(--acento);color:#fff}
+
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(900px 480px at 82% -8%, rgba(109,94,252,.18), transparent 60%),
+             radial-gradient(700px 500px at -6% 8%, rgba(109,94,252,.10), transparent 55%);}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:30;background:rgba(11,12,16,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--linea)}
+.nav-in{max-width:1080px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.02em}
+.logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--acento-2),var(--acento));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;color:#fff}
+.logo span{color:var(--acento-2)}
+.nav-cta{display:inline-flex;align-items:center;gap:7px;background:var(--acento);color:#fff;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px;transition:transform .15s, background .15s}
+.nav-cta:hover{background:var(--acento-2);transform:translateY(-1px)}
+
+/* HERO */
+#hero{padding:64px 0 42px;text-align:center}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;letter-spacing:.02em;color:var(--acento-2);background:var(--acento-suave);border:1px solid rgba(109,94,252,.3);padding:7px 15px;border-radius:999px}
+h1{font-size:clamp(34px,6.6vw,62px);line-height:1.04;letter-spacing:-.03em;font-weight:900;margin:20px auto 14px;max-width:16ch}
+h1 em{font-style:normal;background:linear-gradient(120deg,var(--acento-2),#c0b8ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{color:var(--tinta-2);font-size:clamp(15px,2.4vw,18px);max-width:52ch;margin:0 auto 30px}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:15px;padding:15px 28px;border-radius:999px;transition:transform .15s, background .15s, border-color .15s}
+.btn-main{background:var(--acento);color:#fff;box-shadow:0 12px 34px -12px rgba(109,94,252,.8)}
+.btn-main:hover{background:var(--acento-2);transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--linea);color:var(--tinta);background:var(--panel)}
+.btn-ghost:hover{border-color:var(--acento);transform:translateY(-2px)}
+.hero-mini{margin-top:22px;display:flex;gap:22px;justify-content:center;flex-wrap:wrap;color:var(--tinta-2);font-size:13px;font-weight:500}
+.hero-mini b{color:var(--tinta)}
+.hero-mini .dot{color:var(--acento)}
+
+/* SECCIONES */
+.sec{padding:44px 0}
+.sec-head{text-align:center;margin-bottom:30px}
+.sec-tag{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--acento-2)}
+.sec-title{font-size:clamp(26px,4.6vw,40px);font-weight:800;letter-spacing:-.02em;margin-top:8px}
+.sec-sub{color:var(--tinta-2);font-size:15px;margin-top:8px;max-width:48ch;margin-left:auto;margin-right:auto}
+
+/* SERVICIOS */
+.serv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.serv{background:var(--panel);border:1px solid var(--linea);border-radius:var(--radio);padding:22px;display:flex;flex-direction:column;transition:transform .18s, border-color .18s;position:relative;overflow:hidden}
+.serv:hover{transform:translateY(-3px);border-color:rgba(109,94,252,.5)}
+.serv.destacado{border-color:var(--acento);background:linear-gradient(180deg,var(--acento-suave),var(--panel))}
+.serv .estrella{position:absolute;top:16px;right:16px;font-size:11px;font-weight:800;letter-spacing:.05em;color:#fff;background:var(--acento);padding:4px 10px;border-radius:999px}
+.serv .ico{width:50px;height:50px;border-radius:13px;background:var(--panel-2);display:flex;align-items:center;justify-content:center;font-size:25px;margin-bottom:14px}
+.serv .nombre{font-size:18px;font-weight:800;letter-spacing:-.01em}
+.serv .para{color:var(--tinta-2);font-size:14px;margin-top:6px;flex:1}
+.serv .precios{margin-top:16px;padding-top:14px;border-top:1px solid var(--linea)}
+.serv .desde{font-size:13px;color:var(--tinta-2);font-weight:500}
+.serv .desde b{color:var(--tinta);font-size:22px;font-weight:800;letter-spacing:-.02em}
+.serv .mensual{font-size:12.5px;color:var(--acento-2);font-weight:600;margin-top:4px}
+.serv .acciones{margin-top:16px;display:flex;gap:8px}
+.serv .ver{flex:1;text-align:center;font-size:13.5px;font-weight:700;padding:11px;border-radius:11px;border:1px solid var(--linea);color:var(--tinta);transition:all .15s}
+.serv .ver:hover{border-color:var(--acento);color:var(--acento-2)}
+.serv .pedir{flex:1;text-align:center;font-size:13.5px;font-weight:700;padding:11px;border-radius:11px;background:var(--acento);color:#fff;transition:all .15s}
+.serv .pedir:hover{background:var(--acento-2)}
+.serv .ver.solo,.serv .pedir.solo{flex:1}
+
+/* EJEMPLOS EN VIVO */
+#ejemplos{background:var(--bg-2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.ej-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.ej-card{background:var(--panel);border:1px solid var(--linea);border-radius:14px;padding:18px;transition:transform .18s, border-color .18s}
+.ej-card:hover{transform:translateY(-3px);border-color:var(--acento)}
+.ej-card .ej-emoji{font-size:24px}
+.ej-card .ej-nombre{font-weight:700;font-size:15px;margin-top:8px}
+.ej-card .ej-tipo{color:var(--tinta-2);font-size:12.5px;margin-top:2px}
+.ej-card .ej-link{display:inline-flex;align-items:center;gap:6px;color:var(--acento-2);font-weight:700;font-size:13px;margin-top:12px}
+
+/* PROCESO */
+.proc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.proc{background:var(--panel);border:1px solid var(--linea);border-radius:var(--radio);padding:22px}
+.proc .n{width:34px;height:34px;border-radius:10px;background:var(--acento-suave);color:var(--acento-2);font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.proc strong{font-size:16px;font-weight:800}
+.proc p{color:var(--tinta-2);font-size:14px;margin-top:6px}
+
+/* CONTACTO */
+#contacto{text-align:center}
+.cta-box{background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--linea);border-radius:26px;padding:44px 26px}
+.cta-box h2{font-size:clamp(24px,4.4vw,38px);font-weight:900;letter-spacing:-.02em}
+.cta-box p{color:var(--tinta-2);margin:10px auto 24px;max-width:44ch}
+.socials{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.soc{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:11px 18px;border-radius:999px;border:1px solid var(--linea);background:var(--panel);transition:all .15s}
+.soc:hover{border-color:var(--acento);transform:translateY(-2px)}
+
+footer{border-top:1px solid var(--linea);padding:26px 0;text-align:center;color:var(--tinta-2);font-size:13px}
+footer .flogo{font-weight:800;color:var(--tinta);font-size:16px;margin-bottom:6px}
+footer .flogo span{color:var(--acento-2)}
+
+.wa-float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:40;width:56px;height:56px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px -6px rgba(37,211,102,.6);transition:transform .2s}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s, transform .6s}
+.reveal.vis{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+@media (max-width:560px){#hero{padding:44px 0 30px}.hero-btns .btn{width:100%;justify-content:center}}
+</style>
 </head>
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">Alonso<span>Studio</span></a>
-  <ul class="nav-links">
-    <li><a href="#portafolio">Proyectos</a></li>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#precios">Precios</a></li>
-    <li><a href="#cta">Contacto</a></li>
-  </ul>
-  <a href="#contacto" class="nav-cta">Cotizar</a>
+  <div class="nav-in">
+    <a class="logo" href="#"><span class="mark" id="navMark">A</span><span id="navNombre"></span></a>
+    <a class="nav-cta" id="navWsp" target="_blank" rel="noopener">💬 Cotizar gratis</a>
+  </div>
 </nav>
 
-<section id="hero">
-  <div class="hero-left">
-    <span class="hero-tag">Diseño Web Profesional — Chile</span>
-    <h1 class="hero-title">
-      Páginas web que<br><em>venden</em> por ti.
-    </h1>
-    <p class="hero-desc">
-      Diseño sitios web profesionales para negocios de todo Chile.
-      Resultados reales, con diseño exclusivo y a un precio accesible.
-    </p>
+<header id="hero">
+  <div class="wrap">
+    <span class="tag" id="heroTag"></span>
+    <h1 id="heroTitulo"></h1>
+    <p class="hero-sub" id="heroSub"></p>
     <div class="hero-btns">
-      <a href="#portafolio" class="btn-dark">Ver proyectos</a>
-      <a href="#precios" class="btn-ghost">Ver precios</a>
+      <a class="btn btn-main" href="#servicios">Ver servicios y precios</a>
+      <a class="btn btn-ghost" href="#ejemplos">👀 Ejemplos en vivo</a>
+    </div>
+    <div class="hero-mini">
+      <span><b>Respondo</b> en &lt; 2 hrs</span><span class="dot">·</span>
+      <span><b>Pago</b> 50% / 50%</span><span class="dot">·</span>
+      <span><b>Entrega</b> rápida</span><span class="dot">·</span>
+      <span>📍 Chile</span>
     </div>
   </div>
-  <div class="hero-right">
-    <div class="hero-card">
-      <div class="hc-icon">⚡</div>
-      <div class="hc-text">
-        <strong>Lista en 5 a 15 días hábiles</strong>
-        <span>Desde que nos envías la información de tu negocio</span>
-      </div>
+</header>
+
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Servicios</div>
+      <h2 class="sec-title">Elige lo que <em style="font-style:normal;color:var(--acento-2)">tu negocio necesita</em></h2>
+      <p class="sec-sub">Sin planes confusos. Cada servicio con su precio y su ejemplo real para que lo veas funcionando.</p>
     </div>
-    <div class="hero-card">
-      <div class="hc-icon">📱</div>
-      <div class="hc-text">
-        <strong>100% móvil</strong>
-        <span>Diseñado para verse perfecto en celular</span>
-      </div>
-    </div>
-    <div class="hero-card">
-      <div class="hc-icon">💬</div>
-      <div class="hc-text">
-        <strong>Agenda por WhatsApp</strong>
-        <span>Clientes te escriben directamente</span>
-      </div>
-    </div>
-    <div class="hero-badge">📍 Chile</div>
+    <div class="serv-grid" id="servGrid"></div>
   </div>
 </section>
 
-<div id="stats">
-  <div class="stat-item">
-    <span class="stat-num">&lt; 2 hrs</span>
-    <span class="stat-lbl">Tiempo de respuesta</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">100%</span>
-    <span class="stat-lbl">Diseño exclusivo</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">5–15</span>
-    <span class="stat-lbl">Días hábiles de entrega</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">$150.000</span>
-    <span class="stat-lbl">Desde este precio</span>
-  </div>
-</div>
-
-<section id="portafolio">
-  <div class="section-head reveal">
-    <span class="sec-tag">Portafolio</span>
-    <h2 class="sec-title">Elige el plan <em>para tu negocio</em></h2>
-    <p class="sec-sub">Haz clic en "Ver demo" → y navega el sitio completo como si fuera tuyo</p>
-  </div>
-
-  <div class="carousel-wrap">
-    <div class="carousel" id="carousel">
-
-      <div class="proj-card">
-        <span class="proj-tag">Plan Básico — $150.000</span>
-        <img class="proj-img" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80" alt="Plan Básico"/>
-        <div class="proj-info">
-          <span class="proj-cat">Dental Pacífico · Demo</span>
-          <div class="proj-name">Plan Básico</div>
-          <p class="proj-desc">Presencia profesional online. Servicios, precios, testimonios, galería y contacto directo a WhatsApp. Ideal para clínicas, talleres, restaurantes y más.</p>
-          <a href="dental-demo.html" class="proj-link" target="_blank">Ver demo →</a>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <span class="proj-tag">Plan Premium — $250.000</span>
-        <img class="proj-img" src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&q=80" alt="Plan Premium"/>
-        <div class="proj-info">
-          <span class="proj-cat">Barbería Alonso · Demo</span>
-          <div class="proj-name">Plan Premium</div>
-          <p class="proj-desc">Agenda online integrada: tus clientes reservan su hora solos, 24/7, sin que tengas que responder un solo mensaje. Incluye horarios en tiempo real, bloqueo de turnos y recordatorios automáticos. Ideal para peluquerías, centros estéticos y profesionales independientes.</p>
-          <a href="barberia-demo.html" class="proj-link" target="_blank">Ver demo →</a>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <span class="proj-tag">Plan Avanzado — $400.000</span>
-        <img class="proj-img" src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600&q=80" alt="Plan Avanzado"/>
-        <div class="proj-info">
-          <span class="proj-cat">Perfumería Alonso · Demo</span>
-          <div class="proj-name">Plan Avanzado</div>
-          <p class="proj-desc">Tienda online completa. Catálogo con 20+ productos, carrito de compras, checkout con datos bancarios, agenda de visitas y correos corporativos incluidos.</p>
-          <a href="perfume-demo.html" class="proj-link" target="_blank">Ver demo →</a>
-        </div>
-      </div>
-
+<section class="sec" id="ejemplos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Ejemplos en vivo</div>
+      <h2 class="sec-title">Míralos como si fueran <em style="font-style:normal;color:var(--acento-2)">tuyos</em></h2>
+      <p class="sec-sub">Tengo varios formatos según el rubro. Ábrelos y navégalos completos.</p>
     </div>
-    <div class="carousel-dots" id="dots"></div>
-  </div>
-  <div style="text-align:center;margin-top:36px;">
-    <a href="#contacto" class="btn-dark">¿Te gustó lo que viste? Cotiza aquí →</a>
+    <div class="ej-grid" id="ejGrid"></div>
   </div>
 </section>
 
-<section id="porque">
-  <div class="pq-img"></div>
-  <div class="pq-content">
-    <span class="sec-tag">¿Por qué elegirnos?</span>
-    <h2 class="sec-title">Tu negocio,<br><em>en buenas manos</em></h2>
-    <div class="pq-list">
-      <div class="pq-item reveal">
-        <div class="pq-icon">🎯</div>
-        <div>
-          <strong>Diseño que convierte</strong>
-          <p>No hacemos páginas bonitas que nadie ve. Hacemos páginas que generan clientes reales.</p>
-        </div>
-      </div>
-      <div class="pq-item reveal">
-        <div class="pq-icon">⚡</div>
-        <div>
-          <strong>Sin complicaciones técnicas</strong>
-          <p>Tú enfócate en tu negocio. Nosotros nos encargamos de todo lo técnico.</p>
-        </div>
-      </div>
-      <div class="pq-item reveal">
-        <div class="pq-icon">💰</div>
-        <div>
-          <strong>Precio justo y transparente</strong>
-          <p>Pago único. Sin mensualidades escondidas ni contratos amarradores.</p>
-        </div>
-      </div>
-      <div class="pq-item reveal">
-        <div class="pq-icon">📞</div>
-        <div>
-          <strong>Atención personal</strong>
-          <p>Hablas directamente conmigo. Sin intermediarios ni call centers.</p>
-        </div>
-      </div>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Cómo trabajo</div>
+      <h2 class="sec-title">Simple y sin sorpresas</h2>
     </div>
-    <blockquote class="testimonial reveal">
-      <p>"Me contacté por WhatsApp un lunes y el viernes ya tenía la página andando. El sistema de agenda les encantó a mis clientes, ya no tengo que estar respondiendo mensajes todo el día."</p>
-      <cite>— Rodrigo M., Barbería, Santiago</cite>
-    </blockquote>
-  </div>
-</section>
-
-<section id="proceso">
-  <div class="section-head reveal">
-    <span class="sec-tag">Cómo funciona</span>
-    <h2 class="sec-title">Tu web, lista y profesional</h2>
-  </div>
-  <div class="steps-row">
-    <div class="step reveal">
-      <div class="step-num">1</div>
-      <div class="step-name">Conversamos</div>
-      <p class="step-desc">Me cuentas sobre tu negocio y lo que necesitas. Por WhatsApp o en persona en tu local si lo prefieres.</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">2</div>
-      <div class="step-name">Diseñamos</div>
-      <p class="step-desc">Creo tu sitio web personalizado con fotos, textos y colores de tu negocio.</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">3</div>
-      <div class="step-name">Revisas</div>
-      <p class="step-desc">Te muestro el resultado. Si algo no te gusta, lo ajustamos sin costo extra.</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">4</div>
-      <div class="step-name">¡Publicamos!</div>
-      <p class="step-desc">Tu sitio queda online con tu dominio propio. Listo para recibir clientes.</p>
+    <div class="proc-grid">
+      <div class="proc reveal"><div class="n">1</div><strong>Conversamos</strong><p>Me cuentas de tu negocio por WhatsApp. Sin compromiso.</p></div>
+      <div class="proc reveal"><div class="n">2</div><strong>Diseño y revisas</strong><p>Creo tu web y la revisas. Si algo no te gusta, lo ajusto sin costo.</p></div>
+      <div class="proc reveal"><div class="n">3</div><strong>50% al terminar</strong><p>El resto lo pagas solo cuando ves tu web lista y te gusta.</p></div>
+      <div class="proc reveal"><div class="n">4</div><strong>¡Publicamos!</strong><p>Queda online con tu dominio propio, lista para recibir clientes.</p></div>
     </div>
   </div>
 </section>
 
-<section id="precios">
-  <div class="section-head reveal">
-    <span class="sec-tag">Inversión</span>
-    <h2 class="sec-title">Elige tu <em>plan</em></h2>
-    <p class="sec-sub">Precios transparentes, sin sorpresas. Estoy en etapa de crecimiento — estos precios no duran para siempre.</p>
-  </div>
-  <div class="plans-row">
-
-    <div class="plan-card reveal">
-      <span class="plan-agency-label">Agencia cobra</span>
-      <div class="plan-agency">$320.000</div>
-      <span class="plan-savings">Ahorras $170.000</span>
-      <div class="plan-name">Básico</div>
-      <div class="plan-price">$150.000 <span>CLP</span></div>
-      <p class="plan-sub">Pago único · Entrega 5–7 días hábiles</p>
-      <div class="plan-divider"></div>
-      <div class="plan-item">Diseño exclusivo con tus colores y logo</div>
-      <div class="plan-item">Secciones: Inicio, Servicios y Contacto</div>
-      <div class="plan-item">Catálogo con servicios y precios</div>
-      <div class="plan-item">Horario de atención visible</div>
-      <div class="plan-item">Formulario directo a tu WhatsApp</div>
-      <div class="plan-item">Mapa de Google integrado</div>
-      <div class="plan-item">Botones a tus redes sociales</div>
-      <div class="plan-item">Sección de reseñas y testimonios</div>
-      <div class="plan-item">Estadísticas de tu negocio</div>
-      <div class="plan-item">Optimizado para celular y computador</div>
-      <div class="plan-item">Web 100% tuya desde el primer día</div>
-      <div class="plan-item">Dominio + Hosting del primer año incluido</div>
-      <a href="#contacto" class="plan-btn" onclick="seleccionarPlan('Plan Básico — $150.000')">Quiero este plan</a>
-    </div>
-
-    <div class="plan-card featured reveal">
-      <div class="plan-badge">Más popular</div>
-      <span class="plan-agency-label" style="color:rgba(255,255,255,.35)">Agencia cobra</span>
-      <div class="plan-agency" style="color:rgba(255,255,255,.35)">$580.000</div>
-      <span class="plan-savings">Ahorras $330.000</span>
-      <div class="plan-name">Premium</div>
-      <div class="plan-price">$250.000 <span>CLP</span></div>
-      <p class="plan-sub" style="color:rgba(255,255,255,.4)">Pago único · Entrega 7–10 días hábiles</p>
-      <div class="plan-divider"></div>
-      <div class="plan-item">Todo lo del Plan Básico incluido</div>
-      <div class="plan-item">Tus clientes reservan su hora solos, 24/7</div>
-      <div class="plan-item">Horarios disponibles actualizados en tiempo real</div>
-      <div class="plan-item">Bloqueo de turnos y descansos desde tu celular</div>
-      <div class="plan-item">Recordatorios automáticos al cliente por WhatsApp</div>
-      <div class="plan-item">Abono o pago completo online antes de la cita</div>
-      <div class="plan-item">Hasta 3 correos corporativos para tu equipo</div>
-      <div class="plan-item">Cero mensajes manuales que responder</div>
-      <div class="plan-item">Dominio + Hosting del primer año incluido</div>
-      <a href="#contacto" class="plan-btn" onclick="seleccionarPlan('Plan Premium — $250.000')">Quiero este plan</a>
-    </div>
-
-    <div class="plan-card reveal">
-      <span class="plan-agency-label">Agencia cobra</span>
-      <div class="plan-agency">$800.000 – $1.000.000</div>
-      <span class="plan-savings">Ahorras hasta $600.000</span>
-      <div class="plan-name">Avanzado</div>
-      <div class="plan-price">$400.000 <span>CLP</span></div>
-      <p class="plan-sub">Pago único · Entrega 10–15 días hábiles</p>
-      <div class="plan-divider"></div>
-      <div class="plan-item">Todo lo del Plan Premium incluido</div>
-      <div class="plan-item">Catálogo de productos con filtros por categoría</div>
-      <div class="plan-item">Sistema de cotización online automático</div>
-      <div class="plan-item">Blog o sección de noticias actualizable</div>
-      <div class="plan-item">Galería profesional con lightbox</div>
-      <div class="plan-item">Optimización SEO para aparecer en Google</div>
-      <div class="plan-item">Panel de estadísticas y visitas</div>
-      <div class="plan-item">Dominio + Hosting primer año incluido</div>
-      <div class="plan-item">Soporte técnico prioritario 60 días</div>
-      <a href="#contacto" class="plan-btn" onclick="seleccionarPlan('Plan Avanzado — $400.000')">Quiero este plan</a>
-    </div>
-
-    <div class="plan-card anual reveal">
-      <div class="plan-name">Soporte Anual</div>
-      <div class="plan-price">$70.000 <span>/ año</span></div>
-      <p class="plan-sub">Renovación anual · Para webs ya creadas</p>
-      <div class="plan-divider"></div>
-      <div class="plan-item">Hosting y servidor activo 365 días</div>
-      <div class="plan-item">Soporte técnico directo por WhatsApp</div>
-      <div class="plan-item">Copias de seguridad de tu sitio</div>
-      <div class="plan-item">2 actualizaciones de contenido incluidas</div>
-      <div class="plan-item">5 cambios pequeños incluidos al año</div>
-      <div class="plan-item">Cambios adicionales a $15.000 c/u</div>
-      <a href="#contacto" class="plan-btn" onclick="seleccionarPlan('Plan Soporte Anual — $70.000')">Contratar soporte</a>
-    </div>
-
-  </div>
-</section>
-
-<section id="tranquilidad">
-  <div class="tran-grid">
-    <div class="tran-left reveal">
-      <span class="sec-tag">Sin sorpresas</span>
-      <h2 class="sec-title" style="color:var(--white)">Tu <em>tranquilidad</em><br>es lo primero</h2>
-      <p class="tran-desc">Antes de publicar nada en Internet, tú revisas y apruebas cada detalle. No aparece nada sin tu visto bueno.</p>
-      <div class="tran-steps">
-        <div class="tran-step">
-          <div class="tran-num">1</div>
-          <div>
-            <strong>50% para empezar</strong>
-            <p>El pago inicial confirma que arrancamos. Te muestro avances durante el proceso.</p>
-          </div>
-        </div>
-        <div class="tran-step">
-          <div class="tran-num">2</div>
-          <div>
-            <strong>Tú apruebas todo</strong>
-            <p>Revisas el resultado. Si algo no te gusta, lo ajustamos sin costo extra.</p>
-          </div>
-        </div>
-        <div class="tran-step">
-          <div class="tran-num">3</div>
-          <div>
-            <strong>50% al terminar</strong>
-            <p>El 50% restante lo pagas solo cuando ves tu web terminada y te gusta. Sin sorpresas.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="tran-right reveal">
-      <p class="tran-quote">"Estoy en etapa de crecimiento, y creo que más negocios locales deben tener acceso al mismo resultado que ofrecen las grandes agencias."</p>
-      <p class="tran-note">Por eso mis precios son distintos por ahora. Cuando el estudio crezca, los valores subirán.<br><br><strong>Si contratas hoy, te aseguras este precio para siempre en tus renovaciones.</strong></p>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="section-head reveal">
-    <span class="sec-tag">Preguntas frecuentes</span>
-    <h2 class="sec-title">Dudas <em>comunes</em></h2>
-  </div>
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">¿Tengo que pagar el dominio y el hosting aparte? <span class="faq-icon">+</span></div>
-      <div class="faq-a">No. El dominio y hosting del primer año están incluidos en todos los planes (Básico, Premium y Avanzado). A partir del segundo año, el Plan de Soporte Anual ($70.000/año) mantiene todo activo.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">¿Cómo se paga? <span class="faq-icon">+</span></div>
-      <div class="faq-a">50% al inicio para arrancar el proyecto y 50% al terminar, cuando veas tu web finalizada y te guste. Aceptamos transferencia bancaria. Sin sorpresas ni cobros ocultos.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">¿Puedo cambiar textos o precios en el futuro? <span class="faq-icon">+</span></div>
-      <div class="faq-a">Sí. Los cambios pequeños (textos, precios, horarios) cuestan $15.000 c/u. Si tienes el Plan de Soporte Anual, incluye 5 cambios pequeños y 2 actualizaciones completas de contenido al año.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">¿Cuánto tiempo tarda en estar lista mi web? <span class="faq-icon">+</span></div>
-      <div class="faq-a">Plan Básico: 5 a 7 días hábiles. Plan Premium: 7 a 10 días hábiles. Plan Avanzado: 10 a 15 días hábiles. Los plazos parten desde que me envías toda la información de tu negocio.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">¿La web es 100% mía? <span class="faq-icon">+</span></div>
-      <div class="faq-a">Sí, desde el primer día. El código, el diseño y el dominio son completamente tuyos. No dependes de mí para nada una vez entregada.</div>
-    </div>
-  </div>
-</section>
-
-<section id="contacto">
-  <div class="section-head reveal">
-    <span class="sec-tag">Escríbenos</span>
-    <h2 class="sec-title">Cuéntanos sobre <em>tu negocio</em></h2>
-    <p class="sec-sub">Completa el formulario y te respondo en menos de 2 horas. Sin compromiso.</p>
-  </div>
-  <div class="contact-grid">
-    <div class="contact-form reveal">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Tu nombre</label>
-          <input type="text" id="f-nombre" placeholder="Ej: Juan Pérez"/>
-        </div>
-        <div class="form-group">
-          <label>Nombre de tu negocio</label>
-          <input type="text" id="f-negocio" placeholder="Ej: Barbería Los Andes"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>¿Qué tipo de negocio tienes?</label>
-        <select id="f-tipo">
-          <option value="">Selecciona una opción...</option>
-          <option>Barbería / Peluquería</option>
-          <option>Restaurante / Café</option>
-          <option>Clínica / Salud</option>
-          <option>Veterinaria</option>
-          <option>Inmobiliaria</option>
-          <option>Tienda / Retail</option>
-          <option>Servicios profesionales</option>
-          <option>Otro tipo de negocio</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>¿Qué plan te interesa?</label>
-        <select id="f-plan">
-          <option value="">Selecciona un plan...</option>
-          <option>Plan Básico — $150.000</option>
-          <option>Plan Premium — $250.000</option>
-          <option>Plan Avanzado — $400.000</option>
-          <option>Quiero verlo primero / Tengo dudas</option>
-          <option>Quiero hablar antes de decidir</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>¿Algo más que quieras agregar? (opcional)</label>
-        <textarea id="f-mensaje" placeholder="Cuéntame lo que necesitas, dudas, colores que te gustan, etc."></textarea>
-      </div>
-      <button class="form-submit" onclick="enviarFormulario()">Enviar por WhatsApp →</button>
-      <p class="form-note">💬 Te respondo en menos de 2 horas · Sin costo ni compromiso</p>
-    </div>
-
-    <div class="contact-socials reveal">
-      <a href="https://instagram.com/alonsostudio_web" class="csoc-btn" target="_blank">📸 Instagram</a>
-      <a href="https://tiktok.com/@alonso_studio.cl" class="csoc-btn" target="_blank">🎵 TikTok</a>
-      <a href="https://wa.me/56939665163" class="csoc-btn" target="_blank">💬 WhatsApp</a>
-      <a href="mailto:contacto@alonsostudiodigital.com" class="csoc-btn">✉️ Email</a>
+<section class="sec" id="contacto">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <h2>¿Listo para llenar tu negocio?</h2>
+      <p>Escríbeme y te respondo en menos de 2 horas. Te digo qué te conviene, sin compromiso.</p>
+      <a class="btn btn-main" id="ctaWsp" target="_blank" rel="noopener" style="font-size:16px">💬 Escríbeme por WhatsApp</a>
+      <div class="socials" id="socials"></div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div>
-    <div class="foot-logo">Alonso<span>Studio</span></div>
-    <div class="foot-sub">Diseño Web Profesional · Chile</div>
-  </div>
-  <div class="foot-right">
-    <div class="foot-copy">© Alonso Cifuentes 2025 – 2026 · Todos los derechos reservados</div>
+  <div class="wrap">
+    <div class="flogo" id="footLogo"></div>
+    <div id="footSub">Diseño web + IA · Chile</div>
+    <div style="margin-top:8px;opacity:.7">© Alonso Cifuentes 2025–2026 · Todos los derechos reservados</div>
   </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/56939665163?text=Hola%20Alonso%2C%20me%20interesa%20una%20página%20web" target="_blank">💬</a>
+<a class="wa-float" id="waFloat" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.1 13.7c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1a13 13 0 0 1-5.9-5.2c-.7-1.2-1.1-2.4-.9-3 .1-.5.8-1.4 1.3-1.5h.9c.3.1.4.4.6 1l.7 1.7c.1.3 0 .5-.2.7l-.6.8c-.2.2-.2.4 0 .7a9.6 9.6 0 0 0 3.8 3.3c.3.1.5.1.7-.1l1-1.1c.2-.3.5-.3.8-.2l2 1c.3.1.6.3.6.5s0 .8-.2 1.3z"/></svg>
+</a>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<script>
+/* ══════════════════════════════════════════════════════════════
+   ♻️  CONFIGURACIÓN DEL ESTUDIO — edita SOLO este bloque
+   (marca, contacto, servicios y precios). Cambiar un precio = 1 min.
+   ══════════════════════════════════════════════════════════════ */
+const ESTUDIO = {
+  marca: "Alonso",
+  marcaResalte: "Studio",
+  tag: "✦ Diseño web + IA · Chile",
+  heroTitulo: ["Webs que ", "llenan", " tu negocio."], // la parte del medio va con color
+  heroSub: "Agenda automática, tiendas online, chatbots con IA y más. Con ejemplos reales que puedes ver funcionando ahora.",
 
-<script src="script.js"></script>
+  contacto: {
+    whatsapp: "56939665163",
+    instagram: "https://instagram.com/alonsostudio_web",
+    tiktok: "https://tiktok.com/@alonso_studio.cl",
+    email: "contacto@alonsostudiodigital.com",
+  },
+
+  // Cada servicio con su precio "desde" y su mensualidad PROPIA.
+  // desde:null = sin pago inicial · mensual:null = sin mensualidad
+  servicios: [
+    { icon:"📅", nombre:"Sistema de Agenda 24/7", destacado:true,
+      para:"Tus clientes reservan su hora solos, sin que respondas mensajes. Ideal para barberías, estética, dentales, veterinarias.",
+      desde:190000, mensual:14900, mensualNota:"mantención opcional",
+      ejemplo:"barberia-agenda/", ejemploLabel:"Ver demo" },
+
+    { icon:"📄", nombre:"Página informativa", destacado:false,
+      para:"Presencia profesional: tus servicios, fotos, horario y contacto directo a WhatsApp.",
+      desde:99000, mensual:9900, mensualNota:"mantención opcional",
+      ejemplo:"dental-demo.html", ejemploLabel:"Ver demo" },
+
+    { icon:"🛒", nombre:"Tienda online", destacado:false,
+      para:"Vende tus productos con catálogo, carrito y pagos online.",
+      desde:290000, mensual:19900, mensualNota:"mantención opcional",
+      ejemplo:"perfume-demo.html", ejemploLabel:"Ver demo" },
+
+    { icon:"🤖", nombre:"Chatbot WhatsApp con IA", destacado:false,
+      para:"Un asistente que responde dudas y agenda solo, 24/7, sin que muevas un dedo.",
+      desde:150000, mensual:25000, mensualNota:"incluye IA",
+      ejemplo:null, ejemploLabel:null },
+
+    { icon:"🍽️", nombre:"Menú digital QR", destacado:false,
+      para:"Carta digital con código QR para restaurantes y cafés. Actualizable, sin reimprimir.",
+      desde:59000, mensual:6900, mensualNota:"mantención opcional",
+      ejemplo:"resto-alonso-demo.html", ejemploLabel:"Ver demo" },
+
+    { icon:"🏢", nombre:"Sitio corporativo", destacado:false,
+      para:"Web de varias secciones para empresas más formales que quieren verse grandes.",
+      desde:250000, mensual:14900, mensualNota:"mantención opcional",
+      ejemplo:"inmobiliaria-demo.html", ejemploLabel:"Ver demo" },
+
+    { icon:"🔍", nombre:"Optimización Google (SEO)", destacado:false,
+      para:"Que te encuentren en Google justo cuando buscan lo que ofreces.",
+      desde:null, mensual:49000, mensualNota:"servicio mensual",
+      ejemplo:null, ejemploLabel:null },
+  ],
+
+  // Ejemplos en vivo (demos navegables)
+  ejemplos: [
+    { emoji:"💈", nombre:"Barbería Alonso",   tipo:"Agenda 24/7",      url:"barberia-agenda/" },
+    { emoji:"🌸", nombre:"Estética Lumière",  tipo:"Agenda + packs",   url:"estetica-lumiere/" },
+    { emoji:"🦷", nombre:"Dental Pacífico",   tipo:"Página informativa", url:"dental-demo.html" },
+    { emoji:"🌷", nombre:"Perfumería",        tipo:"Tienda online",    url:"perfume-demo.html" },
+    { emoji:"🍽️", nombre:"Restaurante",       tipo:"Menú digital",     url:"resto-alonso-demo.html" },
+    { emoji:"🐶", nombre:"Veterinaria",       tipo:"Agenda + servicios", url:"veterinaria-demo.html" },
+  ],
+};
+
+/* ══════════════ MOTOR (no necesitas tocar) ══════════════ */
+const $ = s => document.querySelector(s);
+const CLP = n => "$" + n.toLocaleString("es-CL");
+
+document.documentElement.style.setProperty("--acento", getComputedStyle(document.documentElement).getPropertyValue("--acento"));
+
+// marca + contacto
+$("#navMark").textContent = ESTUDIO.marca[0];
+$("#navNombre").innerHTML = `${ESTUDIO.marca}<span>${ESTUDIO.marcaResalte}</span>`;
+$("#footLogo").innerHTML = `${ESTUDIO.marca}<span>${ESTUDIO.marcaResalte}</span>`;
+$("#heroTag").textContent = ESTUDIO.tag;
+$("#heroTitulo").innerHTML = `${ESTUDIO.heroTitulo[0]}<em>${ESTUDIO.heroTitulo[1]}</em>${ESTUDIO.heroTitulo[2]}`;
+$("#heroSub").textContent = ESTUDIO.heroSub;
+
+const wa = txt => `https://wa.me/${ESTUDIO.contacto.whatsapp}?text=${encodeURIComponent(txt)}`;
+$("#navWsp").href = wa("Hola Alonso! Quiero cotizar una página web 🙌");
+$("#ctaWsp").href = wa("Hola Alonso! Me interesa una web para mi negocio 🙌");
+$("#waFloat").href = wa("Hola Alonso! Vengo de tu página 🙌");
+
+// servicios
+$("#servGrid").innerHTML = ESTUDIO.servicios.map(s=>{
+  const desde = s.desde!=null ? `<div class="desde">Desde <b>${CLP(s.desde)}</b> pago único</div>` : "";
+  const mensual = s.mensual!=null ? `<div class="mensual">+ ${CLP(s.mensual)}/mes · ${s.mensualNota}</div>` : "";
+  const pedirTxt = `Hola Alonso! Me interesa el servicio: ${s.nombre} 🙌`;
+  const ver = s.ejemplo ? `<a class="ver" href="${s.ejemplo}" target="_blank" rel="noopener">${s.ejemploLabel} →</a>` : "";
+  const pedir = `<a class="pedir ${s.ejemplo?"":"solo"}" href="${wa(pedirTxt)}" target="_blank" rel="noopener">Lo quiero</a>`;
+  return `<div class="serv ${s.destacado?"destacado":""} reveal">
+    ${s.destacado?'<span class="estrella">★ Más pedido</span>':""}
+    <div class="ico">${s.icon}</div>
+    <div class="nombre">${s.nombre}</div>
+    <div class="para">${s.para}</div>
+    <div class="precios">${desde}${mensual}${(!desde&&!mensual)?'<div class="desde">Consulta</div>':""}</div>
+    <div class="acciones">${ver}${pedir}</div>
+  </div>`;
+}).join("");
+
+// ejemplos
+$("#ejGrid").innerHTML = ESTUDIO.ejemplos.map(e=>`
+  <a class="ej-card reveal" href="${e.url}" target="_blank" rel="noopener">
+    <div class="ej-emoji">${e.emoji}</div>
+    <div class="ej-nombre">${e.nombre}</div>
+    <div class="ej-tipo">${e.tipo}</div>
+    <div class="ej-link">Ver en vivo →</div>
+  </a>`).join("");
+
+// redes
+const soc = ESTUDIO.contacto;
+$("#socials").innerHTML = `
+  <a class="soc" href="${wa("Hola Alonso! 🙌")}" target="_blank" rel="noopener">💬 WhatsApp</a>
+  ${soc.instagram?`<a class="soc" href="${soc.instagram}" target="_blank" rel="noopener">📸 Instagram</a>`:""}
+  ${soc.tiktok?`<a class="soc" href="${soc.tiktok}" target="_blank" rel="noopener">🎵 TikTok</a>`:""}
+  ${soc.email?`<a class="soc" href="mailto:${soc.email}">✉️ Email</a>`:""}`;
+
+// reveal on scroll
+const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("vis"); io.unobserve(e.target);} }), {threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
