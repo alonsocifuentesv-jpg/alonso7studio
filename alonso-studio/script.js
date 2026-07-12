@@ -10,16 +10,6 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-function seleccionarPlan(plan) {
-  setTimeout(() => {
-    const sel = document.getElementById('f-plan');
-    if (!sel) return;
-    for (let i = 0; i < sel.options.length; i++) {
-      if (sel.options[i].value === plan) { sel.selectedIndex = i; break; }
-    }
-  }, 400);
-}
-
 function toggleFaq(el) {
   const item = el.parentElement;
   const isOpen = item.classList.contains('open');
@@ -42,18 +32,3 @@ function enviarFormulario() {
   txt += `\n\nQuedo atento/a a tu respuesta 🙏`;
   window.open('https://wa.me/56939665163?text=' + encodeURIComponent(txt), '_blank');
 }
-
-const carousel = document.getElementById('carousel');
-const cards = carousel.querySelectorAll('.proj-card');
-const dotsEl = document.getElementById('dots');
-cards.forEach((_, i) => {
-  const d = document.createElement('div');
-  d.className = 'dot' + (i === 0 ? ' active' : '');
-  d.onclick = () => { cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' }); };
-  dotsEl.appendChild(d);
-});
-const dotsList = dotsEl.querySelectorAll('.dot');
-carousel.addEventListener('scroll', () => {
-  const idx = Math.round(carousel.scrollLeft / (cards[0].offsetWidth + 24));
-  dotsList.forEach((d, i) => d.classList.toggle('active', i === idx));
-});
