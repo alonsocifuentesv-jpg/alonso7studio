@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="L'ÉLITE BARBIER — Barbería premium. El arte del detalle en cada corte. Reserva tu cita 24/7." />
+  <title>L'ÉLITE BARBIER — El Arte del Detalle en Cada Corte</title>
+
+  <!-- ============================================================= -->
+  <!--  DEPENDENCIAS EXTERNAS (CDN)                                   -->
+  <!-- ============================================================= -->
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Google Fonts: Inter + Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- ============================================================= -->
+  <!--  CONFIGURACIÓN DE TAILWIND (paleta y tipografía de marca)      -->
+  <!-- ============================================================= -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-black': '#0B0B0B',   // Negro profundo (fondo)
+            'carbon':     '#161616',   // Gris carbón (tarjetas/secciones)
+            'gold':       '#D4AF37',   // Dorado premium
+            'bronze':     '#C5A059',   // Dorado bronce
+            'soft-gray':  '#A0A0A0',   // Gris claro (texto secundario)
+          },
+          fontFamily: {
+            display: ['Montserrat', 'sans-serif'],
+            body:    ['Inter', 'sans-serif'],
+          },
+          keyframes: {
+            'pulse-gold': {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(212,175,55,0.55)' },
+              '50%':      { boxShadow: '0 0 0 18px rgba(212,175,55,0)' },
+            },
+            'fade-up': {
+              '0%':   { opacity: '0', transform: 'translateY(28px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            'pop-in': {
+              '0%':   { opacity: '0', transform: 'scale(0.85)' },
+              '100%': { opacity: '1', transform: 'scale(1)' },
+            },
+            'draw-check': {
+              '0%':   { strokeDashoffset: '48' },
+              '100%': { strokeDashoffset: '0' },
+            },
+          },
+          animation: {
+            'pulse-gold': 'pulse-gold 2.2s infinite',
+            'fade-up':    'fade-up 0.8s ease forwards',
+            'pop-in':     'pop-in 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards',
+            'draw-check': 'draw-check 0.6s ease forwards 0.2s',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* ===== Base tipográfica ===== */
+    body { font-family: 'Inter', sans-serif; background-color: #0B0B0B; }
+    h1, h2, h3, .font-display { font-family: 'Montserrat', sans-serif; }
+
+    /* ===== Degradado dorado para títulos ===== */
+    .text-gradient-gold {
+      background: linear-gradient(135deg, #FFFFFF 0%, #D4AF37 55%, #C5A059 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    /* ===== Scrollbar minimalista ===== */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #0B0B0B; }
+    ::-webkit-scrollbar-thumb { background: #C5A059; border-radius: 8px; }
+    ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+
+    /* ===== Textura sutil / grano premium en el hero ===== */
+    .hero-overlay {
+      background:
+        radial-gradient(ellipse at 50% -10%, rgba(212,175,55,0.18), transparent 55%),
+        linear-gradient(to bottom, rgba(11,11,11,0.55) 0%, rgba(11,11,11,0.85) 60%, #0B0B0B 100%);
+    }
+
+    /* ===== Aparición al hacer scroll (Intersection Observer) ===== */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== Línea dorada decorativa ===== */
+    .gold-divider { height: 2px; width: 64px; background: linear-gradient(90deg, #D4AF37, transparent); }
+
+    /* ===== Check SVG animado del modal ===== */
+    .check-path { stroke-dasharray: 48; stroke-dashoffset: 48; }
+
+    /* Respeta usuarios que prefieren menos movimiento */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<!--
+  ================================================================
+   L'ÉLITE BARBIER · Landing Premium
+   Diseño por Alonso Studio Digital
+  ----------------------------------------------------------------
+   ¿CÓMO PERSONALIZAR ESTA PLANTILLA EN MINUTOS?
+   1. Nombre del negocio: busca "L'ÉLITE BARBIER" y reemplázalo.
+   2. Datos, precios, servicios, horarios y enlaces:
+      edítalos en el bloque <script> DATOS DEL CLIENTE (al final).
+   3. Fotos: reemplaza las URLs de Unsplash (buscar "unsplash.com").
+   4. Colores de marca: edita tailwind.config -> colors (arriba).
+   Sirve igual para estéticas, mecánicos, banqueteras, etc.
+  ================================================================
+-->
+
+<body class="bg-deep-black text-white antialiased selection:bg-gold selection:text-deep-black">
+
+  <!-- ============================================================= -->
+  <!--  1 · HEADER Y NAVEGACIÓN                                       -->
+  <!-- ============================================================= -->
+  <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <nav class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="#hero" class="group flex items-center gap-2.5">
+        <span class="grid place-items-center w-10 h-10 rounded-full border border-gold/60 text-gold group-hover:bg-gold group-hover:text-deep-black transition-colors duration-300">
+          <i class="fa-solid fa-scissors text-sm"></i>
+        </span>
+        <span class="font-display font-extrabold tracking-[0.2em] text-lg text-gradient-gold">L'ÉLITE<span class="text-white font-light"> BARBIER</span></span>
+      </a>
+
+      <!-- Enlaces desktop -->
+      <ul class="hidden lg:flex items-center gap-9 text-sm font-medium text-soft-gray">
+        <li><a href="#servicios"   class="relative py-1 hover:text-gold transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-gold after:transition-all hover:after:w-full">Servicios</a></li>
+        <li><a href="#agenda"      class="relative py-1 hover:text-gold transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-gold after:transition-all hover:after:w-full">Reservar</a></li>
+        <li><a href="#testimonios" class="relative py-1 hover:text-gold transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-gold after:transition-all hover:after:w-full">Opiniones</a></li>
+        <li><a href="#contacto"    class="relative py-1 hover:text-gold transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-gold after:transition-all hover:after:w-full">Contacto</a></li>
+      </ul>
+
+      <!-- CTA + botón móvil -->
+      <div class="flex items-center gap-3">
+        <a href="#agenda" class="hidden sm:inline-flex items-center gap-2 bg-gold hover:bg-bronze text-deep-black font-semibold text-sm px-5 py-2.5 rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-gold/10">
+          <i class="fa-regular fa-calendar-check"></i> Reservar Cita
+        </a>
+        <button id="menu-toggle" aria-label="Abrir menú" class="lg:hidden w-11 h-11 grid place-items-center rounded-full border border-white/15 text-gold hover:border-gold transition-colors">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Menú móvil desplegable -->
+    <div id="mobile-menu" class="lg:hidden hidden bg-carbon/95 backdrop-blur-md border-t border-white/5">
+      <ul class="flex flex-col px-6 py-4 gap-1 text-soft-gray font-medium">
+        <li><a href="#servicios"   class="mobile-link block py-3 hover:text-gold transition-colors">Servicios</a></li>
+        <li><a href="#agenda"      class="mobile-link block py-3 hover:text-gold transition-colors">Reservar</a></li>
+        <li><a href="#testimonios" class="mobile-link block py-3 hover:text-gold transition-colors">Opiniones</a></li>
+        <li><a href="#contacto"    class="mobile-link block py-3 hover:text-gold transition-colors">Contacto</a></li>
+        <li class="pt-2"><a href="#agenda" class="mobile-link inline-flex items-center gap-2 bg-gold text-deep-black font-semibold px-5 py-3 rounded-full w-full justify-center">Reservar Cita <i class="fa-regular fa-calendar-check"></i></a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ============================================================= -->
+  <!--  2 · HERO                                                      -->
+  <!-- ============================================================= -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Imagen de fondo -->
+    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1920&q=80"
+         alt="Interior de barbería premium" loading="eager"
+         class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 hero-overlay"></div>
+
+    <!-- Contenido -->
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center pt-24">
+      <p class="reveal inline-flex items-center gap-2 text-gold text-xs sm:text-sm tracking-[0.35em] uppercase mb-6 border border-gold/30 rounded-full px-5 py-2">
+        <i class="fa-solid fa-star text-[10px]"></i> Barbería de Autor · Est. 2014
+      </p>
+      <h1 class="reveal font-display font-extrabold leading-[1.05] text-4xl sm:text-6xl lg:text-7xl mb-6">
+        El Arte del <span class="text-gradient-gold">Detalle</span><br class="hidden sm:block" /> en Cada Corte
+      </h1>
+      <p class="reveal text-soft-gray text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+        Precisión, estilo y una experiencia diseñada para el hombre que exige lo mejor.
+        Reserva en segundos, atendemos tu estilo <span class="text-white font-medium">24/7</span>.
+      </p>
+
+      <!-- CTA principal con pulso -->
+      <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#agenda"
+           class="animate-pulse-gold group inline-flex items-center gap-3 bg-gold hover:bg-bronze text-deep-black font-bold text-lg px-9 py-4 rounded-full transition-all duration-300 hover:scale-105">
+          <i class="fa-solid fa-calendar-check"></i> Agendar Cita 24/7
+          <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+        </a>
+        <a href="#servicios"
+           class="inline-flex items-center gap-2 border border-white/20 hover:border-gold text-white hover:text-gold font-medium px-8 py-4 rounded-full transition-all duration-300">
+          Ver Servicios
+        </a>
+      </div>
+
+      <!-- Métricas de confianza -->
+      <div class="reveal mt-16 grid grid-cols-3 gap-4 max-w-lg mx-auto border-t border-white/10 pt-8">
+        <div><p class="font-display font-bold text-2xl sm:text-3xl text-gold">+10</p><p class="text-xs text-soft-gray tracking-wide">Años de oficio</p></div>
+        <div><p class="font-display font-bold text-2xl sm:text-3xl text-gold">+8K</p><p class="text-xs text-soft-gray tracking-wide">Clientes felices</p></div>
+        <div><p class="font-display font-bold text-2xl sm:text-3xl text-gold">4.9<span class="text-base">★</span></p><p class="text-xs text-soft-gray tracking-wide">Valoración</p></div>
+      </div>
+    </div>
+
+    <!-- Indicador de scroll -->
+    <a href="#servicios" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 hover:text-gold transition-colors animate-bounce">
+      <i class="fa-solid fa-chevron-down"></i>
+    </a>
+  </section>
+
+  <!-- ============================================================= -->
+  <!--  3 · SERVICIOS                                                 -->
+  <!-- ============================================================= -->
+  <section id="servicios" class="py-24 sm:py-32 bg-deep-black">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="text-center mb-16 reveal">
+        <span class="text-gold text-sm tracking-[0.3em] uppercase">Nuestra carta</span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-5xl mt-3 mb-4">Servicios <span class="text-gradient-gold">Premium</span></h2>
+        <div class="gold-divider mx-auto"></div>
+        <p class="text-soft-gray max-w-2xl mx-auto mt-6">Cada servicio es un ritual. Productos de alta gama, técnica impecable y el ambiente que mereces.</p>
+      </div>
+
+      <!-- Las tarjetas se renderizan dinámicamente desde el JS (DATOS DEL CLIENTE) -->
+      <div id="services-grid" class="grid gap-8 md:grid-cols-3"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!--  4 · SISTEMA DE AGENDA 24/7                                    -->
+  <!-- ============================================================= -->
+  <section id="agenda" class="py-24 sm:py-32 bg-carbon relative overflow-hidden">
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-5 sm:px-8 relative">
+      <div class="text-center mb-14 reveal">
+        <span class="text-gold text-sm tracking-[0.3em] uppercase">Agenda automática</span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-5xl mt-3 mb-4">Reserva en <span class="text-gradient-gold">3 pasos</span></h2>
+        <div class="gold-divider mx-auto"></div>
+        <p class="text-soft-gray max-w-xl mx-auto mt-6">Disponible las 24 horas. Elige tu servicio, día y hora. Sin llamadas, sin esperas.</p>
+      </div>
+
+      <div class="reveal bg-deep-black/60 border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl shadow-black/50">
+
+        <!-- Indicador de pasos -->
+        <div class="flex items-center justify-center gap-2 sm:gap-4 mb-10 text-xs sm:text-sm">
+          <div class="step-indicator flex items-center gap-2" data-step="1">
+            <span class="step-dot w-8 h-8 grid place-items-center rounded-full border border-gold bg-gold text-deep-black font-bold transition-all">1</span>
+            <span class="hidden sm:inline text-soft-gray">Servicio</span>
+          </div>
+          <span class="w-6 sm:w-12 h-px bg-white/15"></span>
+          <div class="step-indicator flex items-center gap-2" data-step="2">
+            <span class="step-dot w-8 h-8 grid place-items-center rounded-full border border-white/20 text-soft-gray font-bold transition-all">2</span>
+            <span class="hidden sm:inline text-soft-gray">Fecha y hora</span>
+          </div>
+          <span class="w-6 sm:w-12 h-px bg-white/15"></span>
+          <div class="step-indicator flex items-center gap-2" data-step="3">
+            <span class="step-dot w-8 h-8 grid place-items-center rounded-full border border-white/20 text-soft-gray font-bold transition-all">3</span>
+            <span class="hidden sm:inline text-soft-gray">Confirmar</span>
+          </div>
+        </div>
+
+        <!-- PASO 1: Servicio -->
+        <div class="booking-step" data-step="1">
+          <h3 class="font-display font-bold text-xl mb-5 text-center">¿Qué servicio deseas?</h3>
+          <div id="booking-services" class="grid sm:grid-cols-3 gap-4"></div>
+        </div>
+
+        <!-- PASO 2: Fecha y hora -->
+        <div class="booking-step hidden" data-step="2">
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Mini calendario -->
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <button id="cal-prev" aria-label="Mes anterior" class="w-9 h-9 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-gold hover:border-gold transition-colors"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                <h3 id="cal-title" class="font-display font-bold text-lg capitalize"></h3>
+                <button id="cal-next" aria-label="Mes siguiente" class="w-9 h-9 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-gold hover:border-gold transition-colors"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+              </div>
+              <div class="grid grid-cols-7 gap-1 text-center text-[11px] text-soft-gray mb-2 uppercase tracking-wide">
+                <span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sá</span><span>Do</span>
+              </div>
+              <div id="cal-days" class="grid grid-cols-7 gap-1"></div>
+              <p class="text-xs text-soft-gray mt-4 flex items-center gap-2"><i class="fa-solid fa-circle-info text-gold"></i> Atención de lunes a sábado.</p>
+            </div>
+
+            <!-- Horarios -->
+            <div>
+              <h3 class="font-display font-bold text-lg mb-4">Horarios disponibles</h3>
+              <p id="no-date-msg" class="text-soft-gray text-sm">Selecciona primero una fecha en el calendario.</p>
+              <div id="time-slots" class="flex flex-wrap gap-2.5"></div>
+            </div>
+          </div>
+
+          <div class="flex justify-between mt-8">
+            <button class="booking-back inline-flex items-center gap-2 text-soft-gray hover:text-white transition-colors"><i class="fa-solid fa-arrow-left"></i> Volver</button>
+            <button id="to-step-3" disabled class="inline-flex items-center gap-2 bg-gold disabled:opacity-30 disabled:cursor-not-allowed hover:bg-bronze text-deep-black font-semibold px-6 py-3 rounded-full transition-all">Continuar <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- PASO 3: Confirmación -->
+        <div class="booking-step hidden" data-step="3">
+          <h3 class="font-display font-bold text-xl mb-6 text-center">Confirma tu reserva</h3>
+          <div class="bg-carbon border border-gold/20 rounded-2xl p-6 space-y-4 max-w-md mx-auto">
+            <div class="flex items-start justify-between gap-4">
+              <span class="text-soft-gray text-sm">Servicio</span>
+              <span id="summary-service" class="text-white font-medium text-right">—</span>
+            </div>
+            <div class="flex items-center justify-between gap-4 border-t border-white/5 pt-4">
+              <span class="text-soft-gray text-sm">Fecha</span>
+              <span id="summary-date" class="text-white font-medium text-right">—</span>
+            </div>
+            <div class="flex items-center justify-between gap-4 border-t border-white/5 pt-4">
+              <span class="text-soft-gray text-sm">Hora</span>
+              <span id="summary-time" class="text-white font-medium">—</span>
+            </div>
+            <div class="flex items-center justify-between gap-4 border-t border-white/5 pt-4">
+              <span class="text-soft-gray text-sm">Total</span>
+              <span id="summary-price" class="text-gold font-display font-bold text-xl">—</span>
+            </div>
+          </div>
+
+          <!-- Datos de contacto opcionales -->
+          <div class="max-w-md mx-auto mt-6 grid sm:grid-cols-2 gap-3">
+            <input id="booking-name"  type="text" placeholder="Tu nombre"
+                   class="bg-carbon border border-white/10 focus:border-gold rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder:text-soft-gray/60" />
+            <input id="booking-phone" type="tel"  placeholder="WhatsApp (+56 9 ...)"
+                   class="bg-carbon border border-white/10 focus:border-gold rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder:text-soft-gray/60" />
+          </div>
+
+          <div class="flex justify-between mt-8 max-w-md mx-auto">
+            <button class="booking-back inline-flex items-center gap-2 text-soft-gray hover:text-white transition-colors"><i class="fa-solid fa-arrow-left"></i> Volver</button>
+            <button id="confirm-booking" class="inline-flex items-center gap-2 bg-gold hover:bg-bronze text-deep-black font-bold px-7 py-3 rounded-full transition-all hover:scale-105">
+              <i class="fa-solid fa-check"></i> Confirmar Reserva
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!--  5 · TESTIMONIOS                                               -->
+  <!-- ============================================================= -->
+  <section id="testimonios" class="py-24 sm:py-32 bg-deep-black">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="text-center mb-16 reveal">
+        <span class="text-gold text-sm tracking-[0.3em] uppercase">Lo que dicen</span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-5xl mt-3 mb-4">Clientes <span class="text-gradient-gold">Élite</span></h2>
+        <div class="gold-divider mx-auto"></div>
+      </div>
+      <div id="testimonials-grid" class="grid gap-8 md:grid-cols-3"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!--  6 · CONTACTO, HORARIOS Y MAPA                                 -->
+  <!-- ============================================================= -->
+  <section id="contacto" class="py-24 sm:py-32 bg-carbon">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="text-center mb-16 reveal">
+        <span class="text-gold text-sm tracking-[0.3em] uppercase">Visítanos</span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-5xl mt-3 mb-4">Estamos <span class="text-gradient-gold">para ti</span></h2>
+        <div class="gold-divider mx-auto"></div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-10">
+        <!-- Columna izquierda: info + formulario -->
+        <div class="reveal space-y-8">
+          <!-- Horarios -->
+          <div class="bg-deep-black/60 border border-white/10 rounded-2xl p-6">
+            <h3 class="font-display font-bold text-lg mb-4 flex items-center gap-3"><i class="fa-regular fa-clock text-gold"></i> Horarios de atención</h3>
+            <ul class="space-y-2 text-sm">
+              <li class="flex justify-between"><span class="text-soft-gray">Lunes a Viernes</span><span class="text-white font-medium">10:00 — 20:00</span></li>
+              <li class="flex justify-between"><span class="text-soft-gray">Sábado</span><span class="text-white font-medium">10:00 — 20:00</span></li>
+              <li class="flex justify-between"><span class="text-soft-gray">Domingo</span><span class="text-gold">Cerrado</span></li>
+            </ul>
+          </div>
+
+          <!-- Formulario -->
+          <form id="contact-form" class="bg-deep-black/60 border border-white/10 rounded-2xl p-6 space-y-4" novalidate>
+            <h3 class="font-display font-bold text-lg mb-2 flex items-center gap-3"><i class="fa-regular fa-envelope text-gold"></i> Escríbenos</h3>
+            <div>
+              <input type="text" id="cf-name" required placeholder="Nombre completo"
+                     class="w-full bg-carbon border border-white/10 focus:border-gold rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder:text-soft-gray/60" />
+            </div>
+            <div>
+              <input type="email" id="cf-email" required placeholder="Correo electrónico"
+                     class="w-full bg-carbon border border-white/10 focus:border-gold rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder:text-soft-gray/60" />
+            </div>
+            <div>
+              <textarea id="cf-message" required rows="4" placeholder="Tu mensaje"
+                        class="w-full bg-carbon border border-white/10 focus:border-gold rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder:text-soft-gray/60 resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 bg-gold hover:bg-bronze text-deep-black font-bold px-6 py-3.5 rounded-full transition-all hover:scale-[1.02]">
+              Enviar mensaje <i class="fa-solid fa-paper-plane"></i>
+            </button>
+            <p id="cf-feedback" class="text-sm text-center hidden"></p>
+          </form>
+        </div>
+
+        <!-- Columna derecha: mapa + correos -->
+        <div class="reveal space-y-8">
+          <!-- Mapa estético (placeholder premium) -->
+          <div class="relative h-64 rounded-2xl overflow-hidden border border-white/10 group">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#1d1d1d,#0B0B0B)]"></div>
+            <!-- Líneas de "calles" decorativas -->
+            <svg class="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 400 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 80 H400 M0 170 H400 M120 0 V260 M270 0 V260" stroke="#C5A059" stroke-width="1.2"/>
+              <path d="M0 40 H400 M0 220 H400 M50 0 V260 M340 0 V260" stroke="#333" stroke-width="1"/>
+            </svg>
+            <div class="absolute inset-0 grid place-items-center">
+              <div class="text-center">
+                <div class="w-14 h-14 mx-auto rounded-full bg-gold/15 grid place-items-center animate-pulse-gold">
+                  <i class="fa-solid fa-location-dot text-gold text-2xl"></i>
+                </div>
+                <p class="mt-3 font-display font-semibold text-white">Av. Vitacura 3568, Local 12</p>
+                <p class="text-soft-gray text-sm">Vitacura · Santiago, Chile</p>
+              </div>
+            </div>
+            <a href="#agenda" class="absolute bottom-4 right-4 bg-deep-black/70 backdrop-blur border border-gold/30 text-gold text-xs px-4 py-2 rounded-full hover:bg-gold hover:text-deep-black transition-colors">Cómo llegar</a>
+          </div>
+
+          <!-- Correos corporativos -->
+          <div class="bg-deep-black/60 border border-white/10 rounded-2xl p-6">
+            <h3 class="font-display font-bold text-lg mb-4 flex items-center gap-3"><i class="fa-regular fa-address-book text-gold"></i> Correos corporativos</h3>
+            <ul id="emails-list" class="space-y-2.5 text-sm"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!--  7 · FOOTER                                                    -->
+  <!-- ============================================================= -->
+  <footer class="bg-deep-black border-t border-white/5 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-white/5">
+        <a href="#hero" class="flex items-center gap-2.5">
+          <span class="grid place-items-center w-10 h-10 rounded-full border border-gold/60 text-gold"><i class="fa-solid fa-scissors text-sm"></i></span>
+          <span class="font-display font-extrabold tracking-[0.2em] text-lg text-gradient-gold">L'ÉLITE<span class="text-white font-light"> BARBIER</span></span>
+        </a>
+
+        <p class="text-soft-gray text-sm max-w-sm text-center md:text-left">El arte del detalle en cada corte. Barbería premium en el corazón de Santiago.</p>
+
+        <!-- Redes sociales -->
+        <div class="flex items-center gap-3">
+          <a href="#" aria-label="Instagram" class="w-11 h-11 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-deep-black hover:bg-gold hover:border-gold transition-all duration-300"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="WhatsApp"  class="w-11 h-11 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-deep-black hover:bg-gold hover:border-gold transition-all duration-300"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" aria-label="Facebook"  class="w-11 h-11 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-deep-black hover:bg-gold hover:border-gold transition-all duration-300"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="TikTok"    class="w-11 h-11 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-deep-black hover:bg-gold hover:border-gold transition-all duration-300"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-sm text-soft-gray">
+        <p>© <span id="year"></span> L'ÉLITE BARBIER. Todos los derechos reservados.</p>
+        <p class="tracking-wide">Diseño por <a href="#" class="text-gold hover:text-bronze transition-colors font-medium">Alonso Studio Digital</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================= -->
+  <!--  MODAL DE CONFIRMACIÓN                                         -->
+  <!-- ============================================================= -->
+  <div id="success-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+    <div id="modal-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+    <div class="relative bg-carbon border border-gold/30 rounded-3xl p-8 sm:p-10 max-w-md w-full text-center shadow-2xl shadow-gold/10 animate-pop-in">
+      <!-- Check dorado animado -->
+      <div class="w-20 h-20 mx-auto rounded-full bg-gold/10 border-2 border-gold grid place-items-center mb-6">
+        <svg width="40" height="40" viewBox="0 0 52 52" fill="none">
+          <path class="check-path animate-draw-check" d="M14 27 L22 35 L38 18" stroke="#D4AF37" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3 class="font-display font-extrabold text-2xl mb-3">¡Cita Reservada con Éxito!</h3>
+      <p class="text-soft-gray mb-2">Te enviamos los detalles de tu confirmación por <span class="text-gold font-medium">WhatsApp</span>.</p>
+      <div id="modal-details" class="text-sm text-white/80 bg-deep-black/50 rounded-xl p-4 my-6 space-y-1"></div>
+      <button id="close-modal" class="w-full inline-flex items-center justify-center gap-2 bg-gold hover:bg-bronze text-deep-black font-bold px-6 py-3.5 rounded-full transition-all hover:scale-[1.02]">
+        <i class="fa-solid fa-thumbs-up"></i> Perfecto, ¡gracias!
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast genérico -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[110] hidden">
+    <div class="bg-gold text-deep-black font-semibold px-6 py-3 rounded-full shadow-lg flex items-center gap-2">
+      <i class="fa-solid fa-circle-check"></i> <span id="toast-text"></span>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!--  JAVASCRIPT                                                    -->
+  <!-- ============================================================= -->
+  <script>
+  /* =================================================================
+     ██  DATOS DEL CLIENTE  ██
+     Edita SOLO este bloque para adaptar la plantilla a cualquier
+     negocio (barbería, estética, mecánico, banquetera, etc.).
+     ================================================================= */
+  const NEGOCIO = {
+    // Moneda usada al formatear precios
+    monedaPrefijo: '$',
+    sufijo: '',
+
+    // ---- SERVICIOS (se muestran en la sección Servicios y en la agenda) ----
+    servicios: [
+      {
+        id: 'corte',
+        nombre: 'Corte de Autor',
+        precio: 15000,
+        descripcion: 'Corte personalizado según tu rostro y estilo, con acabado a navaja y styling premium.',
+        imagen: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=800&q=80',
+      },
+      {
+        id: 'barba',
+        nombre: 'Perfilado de Barba Premium',
+        precio: 12000,
+        descripcion: 'Diseño de barba con toalla caliente, aceites esenciales y perfilado a navaja de precisión.',
+        imagen: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=800&q=80',
+      },
+      {
+        id: 'elite',
+        nombre: 'Experiencia Completa Élite',
+        precio: 24000,
+        descripcion: 'Corte + barba + exfoliación facial. El ritual completo para lucir impecable de pies a cabeza.',
+        imagen: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80',
+      },
+    ],
+
+    // ---- HORARIOS disponibles para la agenda ----
+    horarios: ['10:00', '11:00', '12:00', '13:00', '16:00', '17:00', '18:00', '19:00'],
+
+    // Días abiertos: 0=Dom, 1=Lun ... 6=Sáb  (aquí: Lun a Sáb)
+    diasAbiertos: [1, 2, 3, 4, 5, 6],
+
+    // ---- TESTIMONIOS ----
+    testimonios: [
+      { nombre: 'Matías Herrera',  cargo: 'Cliente frecuente',   estrellas: 5, texto: 'Puntualidad impecable y un corte de otro nivel. La atención al detalle se nota en cada pasada de navaja.' },
+      { nombre: 'Cristóbal Reyes', cargo: 'Ejecutivo',           estrellas: 5, texto: 'La experiencia Élite vale cada peso. Ambiente premium, café de bienvenida y un resultado espectacular.' },
+      { nombre: 'Diego Salinas',   cargo: 'Fotógrafo',           estrellas: 5, texto: 'Reservé por la web a medianoche y quedó todo listo. Profesionalismo total, no vuelvo a otro lado.' },
+    ],
+
+    // ---- CORREOS CORPORATIVOS ----
+    correos: [
+      { area: 'Agendamiento', email: 'agendamiento@elitebarbier.cl' },
+      { area: 'Gerencia',     email: 'gerencia@elitebarbier.cl' },
+      { area: 'Soporte',      email: 'soporte@elitebarbier.cl' },
+      { area: 'Reclamos',     email: 'contacto@elitebarbier.cl' },
+      { area: 'Alianzas',     email: 'marketing@elitebarbier.cl' },
+    ],
+  };
+  /* ============  FIN DATOS DEL CLIENTE  ============ */
+
+
+  /* =================================================================
+     UTILIDADES
+     ================================================================= */
+  const $  = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+
+  // Formatea un precio con separador de miles (estilo CLP)
+  const formatPrecio = (n) =>
+    `${NEGOCIO.monedaPrefijo}${n.toLocaleString('es-CL')}${NEGOCIO.sufijo}`;
+
+  const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const DIAS_SEMANA = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+
+
+  /* =================================================================
+     ESTADO DE LA RESERVA
+     ================================================================= */
+  const reserva = {
+    servicio: null,   // objeto servicio seleccionado
+    fecha:    null,   // objeto Date seleccionado
+    hora:     null,   // string "HH:MM"
+  };
+
+
+  /* =================================================================
+     RENDER: TARJETAS DE SERVICIOS
+     ================================================================= */
+  function renderServicios() {
+    const grid = $('#services-grid');
+    grid.innerHTML = NEGOCIO.servicios.map((s) => `
+      <article class="reveal group bg-carbon rounded-3xl overflow-hidden border border-white/5 hover:border-gold/40 transition-all duration-300 hover:-translate-y-2 shadow-xl shadow-black/40">
+        <div class="relative h-56 overflow-hidden">
+          <img src="${s.imagen}" alt="${s.nombre}" loading="lazy"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/40 to-transparent"></div>
+          <span class="absolute top-4 right-4 bg-gold text-deep-black font-display font-bold text-sm px-4 py-1.5 rounded-full shadow-lg">${formatPrecio(s.precio)}</span>
+        </div>
+        <div class="p-6">
+          <h3 class="font-display font-bold text-xl text-gold mb-2">${s.nombre}</h3>
+          <p class="text-soft-gray text-sm leading-relaxed mb-6">${s.descripcion}</p>
+          <button data-service="${s.id}"
+                  class="select-service w-full inline-flex items-center justify-center gap-2 border border-gold/40 hover:bg-gold hover:text-deep-black text-gold font-semibold px-5 py-3 rounded-full transition-all duration-300">
+            Seleccionar <i class="fa-solid fa-arrow-right text-xs"></i>
+          </button>
+        </div>
+      </article>
+    `).join('');
+
+    // Botón "Seleccionar" -> preselecciona servicio y salta a la agenda
+    $$('.select-service', grid).forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const svc = NEGOCIO.servicios.find((s) => s.id === btn.dataset.service);
+        seleccionarServicio(svc);
+        $('#agenda').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  }
+
+
+  /* =================================================================
+     RENDER: BOTONES DE SERVICIO EN LA AGENDA (Paso 1)
+     ================================================================= */
+  function renderBookingServices() {
+    const cont = $('#booking-services');
+    cont.innerHTML = NEGOCIO.servicios.map((s) => `
+      <button data-service="${s.id}"
+              class="booking-service-btn text-left p-5 rounded-2xl border border-white/10 hover:border-gold/60 bg-carbon transition-all duration-300 hover:-translate-y-1">
+        <span class="block font-display font-semibold text-white mb-1">${s.nombre}</span>
+        <span class="block text-gold font-bold">${formatPrecio(s.precio)}</span>
+      </button>
+    `).join('');
+
+    $$('.booking-service-btn', cont).forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const svc = NEGOCIO.servicios.find((s) => s.id === btn.dataset.service);
+        seleccionarServicio(svc);
+        irAPaso(2);
+      });
+    });
+  }
+
+  // Marca visualmente el servicio activo y guarda el estado
+  function seleccionarServicio(svc) {
+    reserva.servicio = svc;
+    $$('.booking-service-btn').forEach((b) => {
+      const activo = b.dataset.service === svc.id;
+      b.classList.toggle('border-gold', activo);
+      b.classList.toggle('bg-gold/10', activo);
+    });
+  }
+
+
+  /* =================================================================
+     RENDER: TESTIMONIOS
+     ================================================================= */
+  function renderTestimonios() {
+    const grid = $('#testimonials-grid');
+    grid.innerHTML = NEGOCIO.testimonios.map((t) => {
+      const estrellas = Array.from({ length: 5 }, (_, i) =>
+        `<i class="fa-${i < t.estrellas ? 'solid' : 'regular'} fa-star text-gold text-sm"></i>`
+      ).join('');
+      const iniciales = t.nombre.split(' ').map((p) => p[0]).slice(0, 2).join('');
+      return `
+        <article class="reveal bg-carbon rounded-3xl p-7 border border-white/5 hover:border-gold/30 transition-all duration-300 hover:-translate-y-1">
+          <div class="flex gap-1 mb-4">${estrellas}</div>
+          <p class="text-white/90 leading-relaxed mb-6">"${t.texto}"</p>
+          <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+            <span class="w-11 h-11 grid place-items-center rounded-full bg-gold/15 text-gold font-display font-bold">${iniciales}</span>
+            <div>
+              <p class="font-semibold text-white text-sm">${t.nombre}</p>
+              <p class="text-soft-gray text-xs">${t.cargo}</p>
+            </div>
+          </div>
+        </article>`;
+    }).join('');
+  }
+
+
+  /* =================================================================
+     RENDER: CORREOS CORPORATIVOS
+     ================================================================= */
+  function renderCorreos() {
+    const list = $('#emails-list');
+    list.innerHTML = NEGOCIO.correos.map((c) => `
+      <li>
+        <a href="mailto:${c.email}" class="group flex items-center justify-between gap-3 rounded-lg px-3 py-2 -mx-3 hover:bg-white/5 transition-colors">
+          <span class="flex items-center gap-3">
+            <i class="fa-solid fa-envelope text-gold/70 text-xs"></i>
+            <span class="text-soft-gray text-xs uppercase tracking-wide w-24">${c.area}</span>
+          </span>
+          <span class="text-white group-hover:text-gold transition-colors truncate">${c.email}</span>
+        </a>
+      </li>
+    `).join('');
+  }
+
+
+  /* =================================================================
+     CALENDARIO INTERACTIVO
+     ================================================================= */
+  let calMes = new Date().getMonth();
+  let calAnio = new Date().getFullYear();
+
+  function renderCalendario() {
+    $('#cal-title').textContent = `${MESES[calMes]} ${calAnio}`;
+
+    const primerDia = new Date(calAnio, calMes, 1);
+    // getDay(): 0=Dom..6=Sáb. Convertimos a semana que inicia en lunes (0=Lun..6=Dom)
+    let offset = (primerDia.getDay() + 6) % 7;
+    const diasEnMes = new Date(calAnio, calMes + 1, 0).getDate();
+
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+
+    const cont = $('#cal-days');
+    cont.innerHTML = '';
+
+    // Celdas vacías antes del primer día
+    for (let i = 0; i < offset; i++) {
+      cont.appendChild(document.createElement('span'));
+    }
+
+    for (let dia = 1; dia <= diasEnMes; dia++) {
+      const fecha = new Date(calAnio, calMes, dia);
+      fecha.setHours(0, 0, 0, 0);
+      const esPasado   = fecha < hoy;
+      const esAbierto  = NEGOCIO.diasAbiertos.includes(fecha.getDay());
+      const disponible = !esPasado && esAbierto;
+
+      const btn = document.createElement('button');
+      btn.textContent = dia;
+      btn.className = 'aspect-square rounded-lg text-sm flex items-center justify-center transition-all duration-200';
+
+      if (disponible) {
+        btn.classList.add('text-white', 'hover:bg-gold/20', 'hover:text-gold', 'cursor-pointer', 'border', 'border-transparent');
+        btn.addEventListener('click', () => seleccionarFecha(fecha, btn));
+      } else {
+        btn.classList.add('text-white/20', 'cursor-not-allowed');
+        btn.disabled = true;
+      }
+
+      // Re-marca la fecha si ya estaba seleccionada (al cambiar de mes y volver)
+      if (reserva.fecha && fecha.getTime() === reserva.fecha.getTime()) {
+        btn.classList.add('bg-gold', 'text-deep-black', 'font-bold');
+      }
+      cont.appendChild(btn);
+    }
+  }
+
+  function seleccionarFecha(fecha, btn) {
+    reserva.fecha = fecha;
+    reserva.hora  = null;
+
+    // Resalta el día activo
+    $$('#cal-days button').forEach((b) =>
+      b.classList.remove('bg-gold', 'text-deep-black', 'font-bold'));
+    btn.classList.add('bg-gold', 'text-deep-black', 'font-bold');
+
+    renderHorarios();
+    validarPaso2();
+  }
+
+  function renderHorarios() {
+    const cont = $('#time-slots');
+    $('#no-date-msg').classList.add('hidden');
+    cont.innerHTML = NEGOCIO.horarios.map((h) => `
+      <button data-time="${h}"
+              class="time-slot px-4 py-2 rounded-full text-sm border border-gold/30 text-gold hover:bg-gold hover:text-deep-black transition-all duration-200">
+        ${h}
+      </button>
+    `).join('');
+
+    $$('.time-slot', cont).forEach((btn) => {
+      btn.addEventListener('click', () => {
+        reserva.hora = btn.dataset.time;
+        $$('.time-slot', cont).forEach((b) =>
+          b.classList.remove('bg-gold', 'text-deep-black', 'font-bold'));
+        btn.classList.add('bg-gold', 'text-deep-black', 'font-bold');
+        validarPaso2();
+      });
+    });
+  }
+
+  // Habilita el botón "Continuar" solo cuando hay fecha y hora
+  function validarPaso2() {
+    $('#to-step-3').disabled = !(reserva.fecha && reserva.hora);
+  }
+
+
+  /* =================================================================
+     NAVEGACIÓN ENTRE PASOS DE LA AGENDA
+     ================================================================= */
+  function irAPaso(n) {
+    // Muestra/oculta paneles
+    $$('.booking-step').forEach((step) =>
+      step.classList.toggle('hidden', Number(step.dataset.step) !== n));
+
+    // Actualiza indicadores (dots)
+    $$('.step-indicator').forEach((ind) => {
+      const paso = Number(ind.dataset.step);
+      const dot  = $('.step-dot', ind);
+      const activo    = paso === n;
+      const completado = paso < n;
+      dot.classList.toggle('bg-gold', activo || completado);
+      dot.classList.toggle('text-deep-black', activo || completado);
+      dot.classList.toggle('border-gold', activo || completado);
+      dot.classList.toggle('text-soft-gray', !activo && !completado);
+      dot.classList.toggle('border-white/20', !activo && !completado);
+    });
+
+    if (n === 3) actualizarResumen();
+    // Lleva el foco visual al inicio del widget en móvil
+    $('#agenda').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Formatea una fecha a texto legible: "lunes 21 de julio"
+  function fechaLegible(f) {
+    return `${DIAS_SEMANA[f.getDay()]} ${f.getDate()} de ${MESES[f.getMonth()]}`;
+  }
+
+  function actualizarResumen() {
+    $('#summary-service').textContent = reserva.servicio ? reserva.servicio.nombre : '—';
+    $('#summary-date').textContent    = reserva.fecha ? fechaLegible(reserva.fecha) : '—';
+    $('#summary-time').textContent    = reserva.hora || '—';
+    $('#summary-price').textContent   = reserva.servicio ? formatPrecio(reserva.servicio.precio) : '—';
+  }
+
+
+  /* =================================================================
+     MODAL DE CONFIRMACIÓN
+     ================================================================= */
+  function abrirModal() {
+    const nombre = $('#booking-name').value.trim();
+    const detalles = `
+      ${nombre ? `<p><span class="text-soft-gray">Cliente:</span> <span class="text-gold font-medium">${nombre}</span></p>` : ''}
+      <p><span class="text-soft-gray">Servicio:</span> ${reserva.servicio.nombre}</p>
+      <p><span class="text-soft-gray">Fecha:</span> ${fechaLegible(reserva.fecha)} · ${reserva.hora} hrs</p>
+      <p><span class="text-soft-gray">Total:</span> <span class="text-gold font-bold">${formatPrecio(reserva.servicio.precio)}</span></p>
+    `;
+    $('#modal-details').innerHTML = detalles;
+
+    const modal = $('#success-modal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden'; // bloquea scroll de fondo
+  }
+
+  function cerrarModal() {
+    const modal = $('#success-modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+    reiniciarReserva();
+  }
+
+  // Reinicia el widget para una nueva reserva
+  function reiniciarReserva() {
+    reserva.servicio = null;
+    reserva.fecha = null;
+    reserva.hora = null;
+    $('#booking-name').value = '';
+    $('#booking-phone').value = '';
+    $$('.booking-service-btn').forEach((b) => b.classList.remove('border-gold', 'bg-gold/10'));
+    $('#time-slots').innerHTML = '';
+    $('#no-date-msg').classList.remove('hidden');
+    renderCalendario();
+    validarPaso2();
+    irAPaso(1);
+  }
+
+
+  /* =================================================================
+     TOAST GENÉRICO
+     ================================================================= */
+  let toastTimer;
+  function mostrarToast(texto) {
+    const toast = $('#toast');
+    $('#toast-text').textContent = texto;
+    toast.classList.remove('hidden');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.add('hidden'), 3200);
+  }
+
+
+  /* =================================================================
+     REVEAL AL HACER SCROLL (Intersection Observer)
+     ================================================================= */
+  function initReveal() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    $$('.reveal').forEach((el) => observer.observe(el));
+  }
+
+
+  /* =================================================================
+     INICIALIZACIÓN
+     ================================================================= */
+  document.addEventListener('DOMContentLoaded', () => {
+    // Render de contenido dinámico
+    renderServicios();
+    renderBookingServices();
+    renderTestimonios();
+    renderCorreos();
+    renderCalendario();
+    $('#year').textContent = new Date().getFullYear();
+
+    // El observer se inicializa tras pintar las tarjetas dinámicas
+    initReveal();
+
+    /* ---- Header: fondo sólido al hacer scroll ---- */
+    const header = $('#site-header');
+    const onScroll = () => {
+      if (window.scrollY > 40) {
+        header.classList.add('bg-deep-black/90', 'backdrop-blur-md', 'border-b', 'border-white/5', 'shadow-lg', 'shadow-black/30');
+      } else {
+        header.classList.remove('bg-deep-black/90', 'backdrop-blur-md', 'border-b', 'border-white/5', 'shadow-lg', 'shadow-black/30');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---- Menú móvil ---- */
+    const menuToggle = $('#menu-toggle');
+    const mobileMenu = $('#mobile-menu');
+    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    $$('.mobile-link').forEach((link) =>
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+    /* ---- Navegación de la agenda ---- */
+    $('#to-step-3').addEventListener('click', () => irAPaso(3));
+    $$('.booking-back').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        // Retrocede al paso visible anterior
+        const actual = Number($('.booking-step:not(.hidden)').dataset.step);
+        irAPaso(Math.max(1, actual - 1));
+      });
+    });
+
+    /* ---- Calendario: cambio de mes ---- */
+    $('#cal-prev').addEventListener('click', () => {
+      calMes--; if (calMes < 0) { calMes = 11; calAnio--; }
+      renderCalendario();
+    });
+    $('#cal-next').addEventListener('click', () => {
+      calMes++; if (calMes > 11) { calMes = 0; calAnio++; }
+      renderCalendario();
+    });
+
+    /* ---- Confirmar reserva ---- */
+    $('#confirm-booking').addEventListener('click', () => {
+      if (!reserva.servicio || !reserva.fecha || !reserva.hora) {
+        mostrarToast('Completa servicio, fecha y hora.');
+        return;
+      }
+      abrirModal();
+    });
+
+    /* ---- Cerrar modal ---- */
+    $('#close-modal').addEventListener('click', cerrarModal);
+    $('#modal-backdrop').addEventListener('click', cerrarModal);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && $('#success-modal').classList.contains('flex')) cerrarModal();
+    });
+
+    /* ---- Formulario de contacto (simulado) ---- */
+    $('#contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const feedback = $('#cf-feedback');
+      const nombre  = $('#cf-name').value.trim();
+      const email   = $('#cf-email').value.trim();
+      const mensaje = $('#cf-message').value.trim();
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      feedback.classList.remove('hidden', 'text-gold', 'text-red-400');
+      if (!nombre || !emailOk || !mensaje) {
+        feedback.textContent = 'Por favor completa todos los campos con datos válidos.';
+        feedback.classList.add('text-red-400');
+        return;
+      }
+      feedback.textContent = '¡Mensaje enviado! Te responderemos a la brevedad.';
+      feedback.classList.add('text-gold');
+      e.target.reset();
+      mostrarToast('Mensaje enviado con éxito.');
+    });
+  });
+  </script>
+</body>
+</html>
