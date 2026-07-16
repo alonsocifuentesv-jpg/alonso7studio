@@ -2,63 +2,54 @@
 <html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="L'ÉLITE BARBIER — Barbería premium. El arte del detalle en cada corte. Reserva tu cita 24/7." />
-  <title>L'ÉLITE BARBIER — El Arte del Detalle en Cada Corte</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0B0B0B" />
+  <meta name="description" content="L'ÉLITE BARBIER — Barbería premium en Santiago. Reserva tu hora online 24/7." />
+  <title>L'ÉLITE BARBIER — El Arte del Detalle</title>
 
   <!-- ============================================================= -->
   <!--  DEPENDENCIAS EXTERNAS (CDN)                                   -->
   <!-- ============================================================= -->
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <!-- Google Fonts: Inter + Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- ============================================================= -->
-  <!--  CONFIGURACIÓN DE TAILWIND (paleta y tipografía de marca)      -->
+  <!--  CONFIGURACIÓN DE TAILWIND                                     -->
   <!-- ============================================================= -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            'deep-black': '#0B0B0B',   // Negro profundo (fondo)
-            'carbon':     '#161616',   // Gris carbón (tarjetas/secciones)
-            'gold':       '#D4AF37',   // Dorado premium
-            'bronze':     '#C5A059',   // Dorado bronce
-            'soft-gray':  '#A0A0A0',   // Gris claro (texto secundario)
+            'deep-black': '#0B0B0B',
+            'carbon':     '#161616',
+            'gold':       '#D4AF37',
+            'bronze':     '#C5A059',
+            'soft-gray':  '#A0A0A0',
+            'wa':         '#25D366',
           },
           fontFamily: {
             display: ['Montserrat', 'sans-serif'],
             body:    ['Inter', 'sans-serif'],
           },
           keyframes: {
-            'pulse-gold': {
-              '0%, 100%': { boxShadow: '0 0 0 0 rgba(212,175,55,0.55)' },
-              '50%':      { boxShadow: '0 0 0 18px rgba(212,175,55,0)' },
-            },
-            'fade-up': {
-              '0%':   { opacity: '0', transform: 'translateY(28px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
-            'pop-in': {
-              '0%':   { opacity: '0', transform: 'scale(0.85)' },
-              '100%': { opacity: '1', transform: 'scale(1)' },
-            },
-            'draw-check': {
-              '0%':   { strokeDashoffset: '48' },
-              '100%': { strokeDashoffset: '0' },
-            },
+            'pulse-gold': { '0%,100%': { boxShadow: '0 0 0 0 rgba(212,175,55,.5)' }, '50%': { boxShadow: '0 0 0 16px rgba(212,175,55,0)' } },
+            'pulse-wa':   { '0%,100%': { boxShadow: '0 0 0 0 rgba(37,211,102,.5)' }, '50%': { boxShadow: '0 0 0 14px rgba(37,211,102,0)' } },
+            'pop-in':     { '0%': { opacity: '0', transform: 'scale(.9)' }, '100%': { opacity: '1', transform: 'scale(1)' } },
+            'draw-check': { '0%': { strokeDashoffset: '48' }, '100%': { strokeDashoffset: '0' } },
+            'slide-up':   { '0%': { transform: 'translateY(100%)' }, '100%': { transform: 'translateY(0)' } },
+            'kenburns':   { '0%': { transform: 'scale(1)' }, '100%': { transform: 'scale(1.12)' } },
           },
           animation: {
             'pulse-gold': 'pulse-gold 2.2s infinite',
-            'fade-up':    'fade-up 0.8s ease forwards',
-            'pop-in':     'pop-in 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards',
-            'draw-check': 'draw-check 0.6s ease forwards 0.2s',
+            'pulse-wa':   'pulse-wa 2.4s infinite',
+            'pop-in':     'pop-in .4s cubic-bezier(.34,1.56,.64,1) forwards',
+            'draw-check': 'draw-check .6s ease forwards .2s',
+            'slide-up':   'slide-up .45s cubic-bezier(.22,1,.36,1) forwards',
+            'kenburns':   'kenburns 14s ease-out alternate infinite',
           },
         },
       },
@@ -66,438 +57,354 @@
   </script>
 
   <style>
-    /* ===== Base tipográfica ===== */
-    body { font-family: 'Inter', sans-serif; background-color: #0B0B0B; }
-    h1, h2, h3, .font-display { font-family: 'Montserrat', sans-serif; }
+    body { font-family: 'Inter', sans-serif; background:#0B0B0B; }
+    h1,h2,h3,.font-display { font-family:'Montserrat', sans-serif; }
 
-    /* ===== Degradado dorado para títulos ===== */
     .text-gradient-gold {
-      background: linear-gradient(135deg, #FFFFFF 0%, #D4AF37 55%, #C5A059 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
+      background: linear-gradient(115deg,#FFF 0%,#D4AF37 55%,#C5A059 100%);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
     }
 
-    /* ===== Scrollbar minimalista ===== */
-    ::-webkit-scrollbar { width: 10px; }
-    ::-webkit-scrollbar-track { background: #0B0B0B; }
-    ::-webkit-scrollbar-thumb { background: #C5A059; border-radius: 8px; }
-    ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+    ::-webkit-scrollbar { width:9px; }
+    ::-webkit-scrollbar-track { background:#0B0B0B; }
+    ::-webkit-scrollbar-thumb { background:#C5A059; border-radius:8px; }
 
-    /* ===== Textura sutil / grano premium en el hero ===== */
     .hero-overlay {
       background:
-        radial-gradient(ellipse at 50% -10%, rgba(212,175,55,0.18), transparent 55%),
-        linear-gradient(to bottom, rgba(11,11,11,0.55) 0%, rgba(11,11,11,0.85) 60%, #0B0B0B 100%);
+        radial-gradient(ellipse at 50% 0%, rgba(212,175,55,.16), transparent 55%),
+        linear-gradient(to bottom, rgba(11,11,11,.45) 0%, rgba(11,11,11,.72) 55%, #0B0B0B 100%);
     }
 
-    /* ===== Aparición al hacer scroll (Intersection Observer) ===== */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    /* Aparición al hacer scroll */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.is-visible { opacity:1; transform:translateY(0); }
 
-    /* ===== Línea dorada decorativa ===== */
-    .gold-divider { height: 2px; width: 64px; background: linear-gradient(90deg, #D4AF37, transparent); }
+    .gold-divider { height:2px; width:56px; background:linear-gradient(90deg,#D4AF37,transparent); }
+    .check-path { stroke-dasharray:48; stroke-dashoffset:48; }
 
-    /* ===== Check SVG animado del modal ===== */
-    .check-path { stroke-dasharray: 48; stroke-dashoffset: 48; }
+    /* ===== Carrusel automático de testimonios (marquee) ===== */
+    .marquee { -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+                       mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+    .marquee-track { display:flex; width:max-content; animation:marquee-scroll 34s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state:paused; }
+    @keyframes marquee-scroll { from { transform:translateX(0);} to { transform:translateX(-50%);} }
 
-    /* Respeta usuarios que prefieren menos movimiento */
+    /* Oculta la barra de scroll interna del panel de reserva */
+    .no-scrollbar::-webkit-scrollbar { display:none; }
+    .no-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
+
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; transition: none !important; }
-      .reveal { opacity: 1; transform: none; }
-      html { scroll-behavior: auto; }
+      *,*::before,*::after { animation:none !important; transition:none !important; }
+      .reveal { opacity:1; transform:none; }
+      html { scroll-behavior:auto; }
     }
   </style>
 </head>
 
 <!--
   ================================================================
-   L'ÉLITE BARBIER · Landing Premium
+   L'ÉLITE BARBIER · Landing + Reserva tipo App
    Diseño por Alonso Studio Digital
   ----------------------------------------------------------------
-   ¿CÓMO PERSONALIZAR ESTA PLANTILLA EN MINUTOS?
-   1. Nombre del negocio: busca "L'ÉLITE BARBIER" y reemplázalo.
-   2. Datos, precios, servicios, horarios y enlaces:
-      edítalos en el bloque <script> DATOS DEL CLIENTE (al final).
-   3. Fotos: reemplaza las URLs de Unsplash (buscar "unsplash.com").
-   4. Colores de marca: edita tailwind.config -> colors (arriba).
-   Sirve igual para estéticas, mecánicos, banqueteras, etc.
+   PERSONALIZAR EN MINUTOS  →  edita el bloque "DATOS DEL CLIENTE"
+   en el <script> (nombre, servicios, precios, fotos, WhatsApp,
+   datos de transferencia, recargo web, etc.).
   ================================================================
 -->
-
 <body class="bg-deep-black text-white antialiased selection:bg-gold selection:text-deep-black">
 
   <!-- ============================================================= -->
-  <!--  1 · HEADER Y NAVEGACIÓN                                       -->
+  <!--  HEADER                                                        -->
   <!-- ============================================================= -->
-  <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
-    <nav class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-20">
-      <!-- Logo -->
-      <a href="#hero" class="group flex items-center gap-2.5">
-        <span class="grid place-items-center w-10 h-10 rounded-full border border-gold/60 text-gold group-hover:bg-gold group-hover:text-deep-black transition-colors duration-300">
-          <i class="fa-solid fa-scissors text-sm"></i>
-        </span>
-        <span class="font-display font-extrabold tracking-[0.2em] text-lg text-gradient-gold">L'ÉLITE<span class="text-white font-light"> BARBIER</span></span>
+  <header id="site-header" class="fixed top-0 inset-x-0 z-40 transition-all duration-300">
+    <nav class="max-w-6xl mx-auto px-5 flex items-center justify-between h-16 sm:h-20">
+      <a href="#top" class="flex items-center gap-2.5">
+        <span class="grid place-items-center w-9 h-9 rounded-full border border-gold/60 text-gold"><i class="fa-solid fa-scissors text-xs"></i></span>
+        <span class="font-display font-extrabold tracking-[.18em] text-base sm:text-lg text-gradient-gold">L'ÉLITE<span class="text-white font-light"> BARBIER</span></span>
       </a>
-
-      <!-- Enlaces desktop -->
-      <ul class="hidden lg:flex items-center gap-9 text-sm font-medium text-soft-gray">
-        <li><a href="#servicios"   class="relative py-1 hover:text-gold transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-gold after:transition-all hover:after:w-full">Servicios</a></li>
-        <li><a href="#agenda"      class="relative py-1 hover:text-gold transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-gold after:transition-all hover:after:w-full">Reservar</a></li>
-        <li><a href="#testimonios" class="relative py-1 hover:text-gold transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-gold after:transition-all hover:after:w-full">Opiniones</a></li>
-        <li><a href="#contacto"    class="relative py-1 hover:text-gold transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-gold after:transition-all hover:after:w-full">Contacto</a></li>
-      </ul>
-
-      <!-- CTA + botón móvil -->
-      <div class="flex items-center gap-3">
-        <a href="#agenda" class="hidden sm:inline-flex items-center gap-2 bg-gold hover:bg-bronze text-deep-black font-semibold text-sm px-5 py-2.5 rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-gold/10">
-          <i class="fa-regular fa-calendar-check"></i> Reservar Cita
-        </a>
-        <button id="menu-toggle" aria-label="Abrir menú" class="lg:hidden w-11 h-11 grid place-items-center rounded-full border border-white/15 text-gold hover:border-gold transition-colors">
-          <i class="fa-solid fa-bars"></i>
-        </button>
-      </div>
+      <button data-open-booking class="inline-flex items-center gap-2 bg-gold hover:bg-bronze text-deep-black font-semibold text-sm px-4 sm:px-5 py-2.5 rounded-full transition-all active:scale-95">
+        <i class="fa-regular fa-calendar-check"></i> <span class="hidden xs:inline">Agendar</span>
+      </button>
     </nav>
-
-    <!-- Menú móvil desplegable -->
-    <div id="mobile-menu" class="lg:hidden hidden bg-carbon/95 backdrop-blur-md border-t border-white/5">
-      <ul class="flex flex-col px-6 py-4 gap-1 text-soft-gray font-medium">
-        <li><a href="#servicios"   class="mobile-link block py-3 hover:text-gold transition-colors">Servicios</a></li>
-        <li><a href="#agenda"      class="mobile-link block py-3 hover:text-gold transition-colors">Reservar</a></li>
-        <li><a href="#testimonios" class="mobile-link block py-3 hover:text-gold transition-colors">Opiniones</a></li>
-        <li><a href="#contacto"    class="mobile-link block py-3 hover:text-gold transition-colors">Contacto</a></li>
-        <li class="pt-2"><a href="#agenda" class="mobile-link inline-flex items-center gap-2 bg-gold text-deep-black font-semibold px-5 py-3 rounded-full w-full justify-center">Reservar Cita <i class="fa-regular fa-calendar-check"></i></a></li>
-      </ul>
-    </div>
   </header>
 
   <!-- ============================================================= -->
-  <!--  2 · HERO                                                      -->
+  <!--  HERO                                                          -->
   <!-- ============================================================= -->
-  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-    <!-- Imagen de fondo -->
-    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1920&q=80"
-         alt="Interior de barbería premium" loading="eager"
-         class="absolute inset-0 w-full h-full object-cover" />
+  <section id="top" class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1600&q=80"
+         alt="Barbería premium" class="absolute inset-0 w-full h-full object-cover animate-kenburns" />
     <div class="absolute inset-0 hero-overlay"></div>
 
-    <!-- Contenido -->
-    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center pt-24">
-      <p class="reveal inline-flex items-center gap-2 text-gold text-xs sm:text-sm tracking-[0.35em] uppercase mb-6 border border-gold/30 rounded-full px-5 py-2">
-        <i class="fa-solid fa-star text-[10px]"></i> Barbería de Autor · Est. 2014
+    <div class="relative z-10 w-full max-w-2xl mx-auto px-6 text-center">
+      <p class="reveal inline-flex items-center gap-2 text-gold text-[11px] sm:text-xs tracking-[.3em] uppercase mb-6 border border-gold/30 rounded-full px-4 py-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span> Vitacura · Santiago
       </p>
-      <h1 class="reveal font-display font-extrabold leading-[1.05] text-4xl sm:text-6xl lg:text-7xl mb-6">
-        El Arte del <span class="text-gradient-gold">Detalle</span><br class="hidden sm:block" /> en Cada Corte
+      <h1 class="reveal font-display font-extrabold leading-[1.04] text-[2.6rem] xs:text-5xl sm:text-6xl lg:text-7xl mb-5">
+        El Arte del <span class="text-gradient-gold">Detalle</span><br/> en Cada Corte
       </h1>
-      <p class="reveal text-soft-gray text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-        Precisión, estilo y una experiencia diseñada para el hombre que exige lo mejor.
-        Reserva en segundos, atendemos tu estilo <span class="text-white font-medium">24/7</span>.
+      <p class="reveal text-soft-gray text-base sm:text-lg max-w-md mx-auto mb-9 leading-relaxed">
+        Reserva tu hora online en segundos. Elige tus servicios, tu día y paga como prefieras. Atención <span class="text-white font-medium">24/7</span>.
       </p>
 
-      <!-- CTA principal con pulso -->
-      <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#agenda"
-           class="animate-pulse-gold group inline-flex items-center gap-3 bg-gold hover:bg-bronze text-deep-black font-bold text-lg px-9 py-4 rounded-full transition-all duration-300 hover:scale-105">
-          <i class="fa-solid fa-calendar-check"></i> Agendar Cita 24/7
-          <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-        </a>
-        <a href="#servicios"
-           class="inline-flex items-center gap-2 border border-white/20 hover:border-gold text-white hover:text-gold font-medium px-8 py-4 rounded-full transition-all duration-300">
-          Ver Servicios
-        </a>
-      </div>
-
-      <!-- Métricas de confianza -->
-      <div class="reveal mt-16 grid grid-cols-3 gap-4 max-w-lg mx-auto border-t border-white/10 pt-8">
-        <div><p class="font-display font-bold text-2xl sm:text-3xl text-gold">+10</p><p class="text-xs text-soft-gray tracking-wide">Años de oficio</p></div>
-        <div><p class="font-display font-bold text-2xl sm:text-3xl text-gold">+8K</p><p class="text-xs text-soft-gray tracking-wide">Clientes felices</p></div>
-        <div><p class="font-display font-bold text-2xl sm:text-3xl text-gold">4.9<span class="text-base">★</span></p><p class="text-xs text-soft-gray tracking-wide">Valoración</p></div>
-      </div>
+      <button data-open-booking
+              class="reveal animate-pulse-gold group inline-flex items-center gap-3 bg-gold hover:bg-bronze text-deep-black font-bold text-lg px-8 py-4 rounded-full transition-all active:scale-95">
+        <i class="fa-solid fa-calendar-check"></i> Agendar Cita 24/7
+        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+      </button>
     </div>
 
-    <!-- Indicador de scroll -->
-    <a href="#servicios" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 hover:text-gold transition-colors animate-bounce">
-      <i class="fa-solid fa-chevron-down"></i>
-    </a>
+    <a href="#opiniones" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 hover:text-gold transition-colors animate-bounce"><i class="fa-solid fa-chevron-down"></i></a>
   </section>
 
   <!-- ============================================================= -->
-  <!--  3 · SERVICIOS                                                 -->
+  <!--  TESTIMONIOS — CARRUSEL AUTOMÁTICO HORIZONTAL                  -->
   <!-- ============================================================= -->
-  <section id="servicios" class="py-24 sm:py-32 bg-deep-black">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8">
-      <div class="text-center mb-16 reveal">
-        <span class="text-gold text-sm tracking-[0.3em] uppercase">Nuestra carta</span>
-        <h2 class="font-display font-extrabold text-3xl sm:text-5xl mt-3 mb-4">Servicios <span class="text-gradient-gold">Premium</span></h2>
-        <div class="gold-divider mx-auto"></div>
-        <p class="text-soft-gray max-w-2xl mx-auto mt-6">Cada servicio es un ritual. Productos de alta gama, técnica impecable y el ambiente que mereces.</p>
-      </div>
+  <section id="opiniones" class="py-16 sm:py-24 bg-deep-black overflow-hidden">
+    <div class="text-center mb-10 sm:mb-14 px-6 reveal">
+      <span class="text-gold text-xs tracking-[.3em] uppercase">Lo que dicen</span>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl mt-3 mb-4">Clientes reales</h2>
+      <div class="gold-divider mx-auto"></div>
+    </div>
 
-      <!-- Las tarjetas se renderizan dinámicamente desde el JS (DATOS DEL CLIENTE) -->
-      <div id="services-grid" class="grid gap-8 md:grid-cols-3"></div>
+    <!-- El track se rellena y se DUPLICA por JS para un loop infinito perfecto -->
+    <div class="marquee relative">
+      <div id="marquee-track" class="marquee-track gap-5 px-2.5"></div>
     </div>
   </section>
 
   <!-- ============================================================= -->
-  <!--  4 · SISTEMA DE AGENDA 24/7                                    -->
+  <!--  CONTACTO · HORARIOS · MAPA  (compacto)                        -->
   <!-- ============================================================= -->
-  <section id="agenda" class="py-24 sm:py-32 bg-carbon relative overflow-hidden">
-    <div class="absolute -top-24 -right-24 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="max-w-4xl mx-auto px-5 sm:px-8 relative">
-      <div class="text-center mb-14 reveal">
-        <span class="text-gold text-sm tracking-[0.3em] uppercase">Agenda automática</span>
-        <h2 class="font-display font-extrabold text-3xl sm:text-5xl mt-3 mb-4">Reserva en <span class="text-gradient-gold">3 pasos</span></h2>
+  <section id="contacto" class="py-16 sm:py-24 bg-carbon">
+    <div class="max-w-5xl mx-auto px-5">
+      <div class="text-center mb-10 reveal">
+        <span class="text-gold text-xs tracking-[.3em] uppercase">Visítanos</span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl mt-3 mb-4">Estamos para ti</h2>
         <div class="gold-divider mx-auto"></div>
-        <p class="text-soft-gray max-w-xl mx-auto mt-6">Disponible las 24 horas. Elige tu servicio, día y hora. Sin llamadas, sin esperas.</p>
       </div>
 
-      <div class="reveal bg-deep-black/60 border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl shadow-black/50">
-
-        <!-- Indicador de pasos -->
-        <div class="flex items-center justify-center gap-2 sm:gap-4 mb-10 text-xs sm:text-sm">
-          <div class="step-indicator flex items-center gap-2" data-step="1">
-            <span class="step-dot w-8 h-8 grid place-items-center rounded-full border border-gold bg-gold text-deep-black font-bold transition-all">1</span>
-            <span class="hidden sm:inline text-soft-gray">Servicio</span>
-          </div>
-          <span class="w-6 sm:w-12 h-px bg-white/15"></span>
-          <div class="step-indicator flex items-center gap-2" data-step="2">
-            <span class="step-dot w-8 h-8 grid place-items-center rounded-full border border-white/20 text-soft-gray font-bold transition-all">2</span>
-            <span class="hidden sm:inline text-soft-gray">Fecha y hora</span>
-          </div>
-          <span class="w-6 sm:w-12 h-px bg-white/15"></span>
-          <div class="step-indicator flex items-center gap-2" data-step="3">
-            <span class="step-dot w-8 h-8 grid place-items-center rounded-full border border-white/20 text-soft-gray font-bold transition-all">3</span>
-            <span class="hidden sm:inline text-soft-gray">Confirmar</span>
-          </div>
-        </div>
-
-        <!-- PASO 1: Servicio -->
-        <div class="booking-step" data-step="1">
-          <h3 class="font-display font-bold text-xl mb-5 text-center">¿Qué servicio deseas?</h3>
-          <div id="booking-services" class="grid sm:grid-cols-3 gap-4"></div>
-        </div>
-
-        <!-- PASO 2: Fecha y hora -->
-        <div class="booking-step hidden" data-step="2">
-          <div class="grid md:grid-cols-2 gap-8">
-            <!-- Mini calendario -->
+      <div class="grid md:grid-cols-2 gap-5">
+        <!-- Mapa + dirección -->
+        <div class="reveal relative h-56 md:h-full min-h-[14rem] rounded-2xl overflow-hidden border border-white/10">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#1d1d1d,#0B0B0B)]"></div>
+          <svg class="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 400 260" fill="none"><path d="M0 80 H400 M0 170 H400 M120 0 V260 M270 0 V260" stroke="#C5A059" stroke-width="1.2"/><path d="M0 40 H400 M0 220 H400 M50 0 V260 M340 0 V260" stroke="#333" stroke-width="1"/></svg>
+          <div class="absolute inset-0 grid place-items-center text-center px-4">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <button id="cal-prev" aria-label="Mes anterior" class="w-9 h-9 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-gold hover:border-gold transition-colors"><i class="fa-solid fa-chevron-left text-xs"></i></button>
-                <h3 id="cal-title" class="font-display font-bold text-lg capitalize"></h3>
-                <button id="cal-next" aria-label="Mes siguiente" class="w-9 h-9 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-gold hover:border-gold transition-colors"><i class="fa-solid fa-chevron-right text-xs"></i></button>
-              </div>
-              <div class="grid grid-cols-7 gap-1 text-center text-[11px] text-soft-gray mb-2 uppercase tracking-wide">
-                <span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sá</span><span>Do</span>
-              </div>
-              <div id="cal-days" class="grid grid-cols-7 gap-1"></div>
-              <p class="text-xs text-soft-gray mt-4 flex items-center gap-2"><i class="fa-solid fa-circle-info text-gold"></i> Atención de lunes a sábado.</p>
+              <div class="w-12 h-12 mx-auto rounded-full bg-gold/15 grid place-items-center animate-pulse-gold"><i class="fa-solid fa-location-dot text-gold text-xl"></i></div>
+              <p class="mt-3 font-display font-semibold">Av. Vitacura 3568, Local 12</p>
+              <p class="text-soft-gray text-sm">Vitacura · Santiago, Chile</p>
             </div>
-
-            <!-- Horarios -->
-            <div>
-              <h3 class="font-display font-bold text-lg mb-4">Horarios disponibles</h3>
-              <p id="no-date-msg" class="text-soft-gray text-sm">Selecciona primero una fecha en el calendario.</p>
-              <div id="time-slots" class="flex flex-wrap gap-2.5"></div>
-            </div>
-          </div>
-
-          <div class="flex justify-between mt-8">
-            <button class="booking-back inline-flex items-center gap-2 text-soft-gray hover:text-white transition-colors"><i class="fa-solid fa-arrow-left"></i> Volver</button>
-            <button id="to-step-3" disabled class="inline-flex items-center gap-2 bg-gold disabled:opacity-30 disabled:cursor-not-allowed hover:bg-bronze text-deep-black font-semibold px-6 py-3 rounded-full transition-all">Continuar <i class="fa-solid fa-arrow-right"></i></button>
           </div>
         </div>
 
-        <!-- PASO 3: Confirmación -->
-        <div class="booking-step hidden" data-step="3">
-          <h3 class="font-display font-bold text-xl mb-6 text-center">Confirma tu reserva</h3>
-          <div class="bg-carbon border border-gold/20 rounded-2xl p-6 space-y-4 max-w-md mx-auto">
-            <div class="flex items-start justify-between gap-4">
-              <span class="text-soft-gray text-sm">Servicio</span>
-              <span id="summary-service" class="text-white font-medium text-right">—</span>
-            </div>
-            <div class="flex items-center justify-between gap-4 border-t border-white/5 pt-4">
-              <span class="text-soft-gray text-sm">Fecha</span>
-              <span id="summary-date" class="text-white font-medium text-right">—</span>
-            </div>
-            <div class="flex items-center justify-between gap-4 border-t border-white/5 pt-4">
-              <span class="text-soft-gray text-sm">Hora</span>
-              <span id="summary-time" class="text-white font-medium">—</span>
-            </div>
-            <div class="flex items-center justify-between gap-4 border-t border-white/5 pt-4">
-              <span class="text-soft-gray text-sm">Total</span>
-              <span id="summary-price" class="text-gold font-display font-bold text-xl">—</span>
-            </div>
-          </div>
-
-          <!-- Datos de contacto opcionales -->
-          <div class="max-w-md mx-auto mt-6 grid sm:grid-cols-2 gap-3">
-            <input id="booking-name"  type="text" placeholder="Tu nombre"
-                   class="bg-carbon border border-white/10 focus:border-gold rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder:text-soft-gray/60" />
-            <input id="booking-phone" type="tel"  placeholder="WhatsApp (+56 9 ...)"
-                   class="bg-carbon border border-white/10 focus:border-gold rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder:text-soft-gray/60" />
-          </div>
-
-          <div class="flex justify-between mt-8 max-w-md mx-auto">
-            <button class="booking-back inline-flex items-center gap-2 text-soft-gray hover:text-white transition-colors"><i class="fa-solid fa-arrow-left"></i> Volver</button>
-            <button id="confirm-booking" class="inline-flex items-center gap-2 bg-gold hover:bg-bronze text-deep-black font-bold px-7 py-3 rounded-full transition-all hover:scale-105">
-              <i class="fa-solid fa-check"></i> Confirmar Reserva
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================= -->
-  <!--  5 · TESTIMONIOS                                               -->
-  <!-- ============================================================= -->
-  <section id="testimonios" class="py-24 sm:py-32 bg-deep-black">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8">
-      <div class="text-center mb-16 reveal">
-        <span class="text-gold text-sm tracking-[0.3em] uppercase">Lo que dicen</span>
-        <h2 class="font-display font-extrabold text-3xl sm:text-5xl mt-3 mb-4">Clientes <span class="text-gradient-gold">Élite</span></h2>
-        <div class="gold-divider mx-auto"></div>
-      </div>
-      <div id="testimonials-grid" class="grid gap-8 md:grid-cols-3"></div>
-    </div>
-  </section>
-
-  <!-- ============================================================= -->
-  <!--  6 · CONTACTO, HORARIOS Y MAPA                                 -->
-  <!-- ============================================================= -->
-  <section id="contacto" class="py-24 sm:py-32 bg-carbon">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8">
-      <div class="text-center mb-16 reveal">
-        <span class="text-gold text-sm tracking-[0.3em] uppercase">Visítanos</span>
-        <h2 class="font-display font-extrabold text-3xl sm:text-5xl mt-3 mb-4">Estamos <span class="text-gradient-gold">para ti</span></h2>
-        <div class="gold-divider mx-auto"></div>
-      </div>
-
-      <div class="grid lg:grid-cols-2 gap-10">
-        <!-- Columna izquierda: info + formulario -->
-        <div class="reveal space-y-8">
-          <!-- Horarios -->
-          <div class="bg-deep-black/60 border border-white/10 rounded-2xl p-6">
-            <h3 class="font-display font-bold text-lg mb-4 flex items-center gap-3"><i class="fa-regular fa-clock text-gold"></i> Horarios de atención</h3>
-            <ul class="space-y-2 text-sm">
-              <li class="flex justify-between"><span class="text-soft-gray">Lunes a Viernes</span><span class="text-white font-medium">10:00 — 20:00</span></li>
-              <li class="flex justify-between"><span class="text-soft-gray">Sábado</span><span class="text-white font-medium">10:00 — 20:00</span></li>
+        <!-- Horarios + WhatsApp + contacto -->
+        <div class="reveal space-y-4">
+          <div class="bg-deep-black/60 border border-white/10 rounded-2xl p-5">
+            <h3 class="font-display font-bold text-lg mb-3 flex items-center gap-2"><i class="fa-regular fa-clock text-gold"></i> Horarios</h3>
+            <ul class="space-y-1.5 text-sm">
+              <li class="flex justify-between"><span class="text-soft-gray">Lunes a Sábado</span><span class="font-medium">10:00 — 20:00</span></li>
               <li class="flex justify-between"><span class="text-soft-gray">Domingo</span><span class="text-gold">Cerrado</span></li>
             </ul>
           </div>
-
-          <!-- Formulario -->
-          <form id="contact-form" class="bg-deep-black/60 border border-white/10 rounded-2xl p-6 space-y-4" novalidate>
-            <h3 class="font-display font-bold text-lg mb-2 flex items-center gap-3"><i class="fa-regular fa-envelope text-gold"></i> Escríbenos</h3>
-            <div>
-              <input type="text" id="cf-name" required placeholder="Nombre completo"
-                     class="w-full bg-carbon border border-white/10 focus:border-gold rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder:text-soft-gray/60" />
-            </div>
-            <div>
-              <input type="email" id="cf-email" required placeholder="Correo electrónico"
-                     class="w-full bg-carbon border border-white/10 focus:border-gold rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder:text-soft-gray/60" />
-            </div>
-            <div>
-              <textarea id="cf-message" required rows="4" placeholder="Tu mensaje"
-                        class="w-full bg-carbon border border-white/10 focus:border-gold rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder:text-soft-gray/60 resize-none"></textarea>
-            </div>
-            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 bg-gold hover:bg-bronze text-deep-black font-bold px-6 py-3.5 rounded-full transition-all hover:scale-[1.02]">
-              Enviar mensaje <i class="fa-solid fa-paper-plane"></i>
-            </button>
-            <p id="cf-feedback" class="text-sm text-center hidden"></p>
-          </form>
-        </div>
-
-        <!-- Columna derecha: mapa + correos -->
-        <div class="reveal space-y-8">
-          <!-- Mapa estético (placeholder premium) -->
-          <div class="relative h-64 rounded-2xl overflow-hidden border border-white/10 group">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#1d1d1d,#0B0B0B)]"></div>
-            <!-- Líneas de "calles" decorativas -->
-            <svg class="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 400 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 80 H400 M0 170 H400 M120 0 V260 M270 0 V260" stroke="#C5A059" stroke-width="1.2"/>
-              <path d="M0 40 H400 M0 220 H400 M50 0 V260 M340 0 V260" stroke="#333" stroke-width="1"/>
-            </svg>
-            <div class="absolute inset-0 grid place-items-center">
-              <div class="text-center">
-                <div class="w-14 h-14 mx-auto rounded-full bg-gold/15 grid place-items-center animate-pulse-gold">
-                  <i class="fa-solid fa-location-dot text-gold text-2xl"></i>
-                </div>
-                <p class="mt-3 font-display font-semibold text-white">Av. Vitacura 3568, Local 12</p>
-                <p class="text-soft-gray text-sm">Vitacura · Santiago, Chile</p>
-              </div>
-            </div>
-            <a href="#agenda" class="absolute bottom-4 right-4 bg-deep-black/70 backdrop-blur border border-gold/30 text-gold text-xs px-4 py-2 rounded-full hover:bg-gold hover:text-deep-black transition-colors">Cómo llegar</a>
-          </div>
-
-          <!-- Correos corporativos -->
-          <div class="bg-deep-black/60 border border-white/10 rounded-2xl p-6">
-            <h3 class="font-display font-bold text-lg mb-4 flex items-center gap-3"><i class="fa-regular fa-address-book text-gold"></i> Correos corporativos</h3>
-            <ul id="emails-list" class="space-y-2.5 text-sm"></ul>
-          </div>
+          <a id="wa-contact" href="#" target="_blank" rel="noopener"
+             class="flex items-center justify-between gap-3 bg-wa/10 border border-wa/40 hover:bg-wa/20 rounded-2xl p-5 transition-colors group">
+            <span class="flex items-center gap-3">
+              <span class="w-11 h-11 grid place-items-center rounded-full bg-wa text-white text-xl"><i class="fa-brands fa-whatsapp"></i></span>
+              <span>
+                <span class="block font-display font-bold">Escríbenos por WhatsApp</span>
+                <span class="block text-soft-gray text-sm">Resolvemos tus dudas al instante</span>
+              </span>
+            </span>
+            <i class="fa-solid fa-arrow-right text-wa group-hover:translate-x-1 transition-transform"></i>
+          </a>
+          <button data-open-booking class="w-full inline-flex items-center justify-center gap-2 bg-gold hover:bg-bronze text-deep-black font-bold px-6 py-4 rounded-2xl transition-all active:scale-[.98]">
+            <i class="fa-solid fa-calendar-check"></i> Reservar mi hora
+          </button>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================= -->
-  <!--  7 · FOOTER                                                    -->
+  <!--  FOOTER                                                        -->
   <!-- ============================================================= -->
-  <footer class="bg-deep-black border-t border-white/5 pt-16 pb-8">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-8 pb-10 border-b border-white/5">
-        <a href="#hero" class="flex items-center gap-2.5">
-          <span class="grid place-items-center w-10 h-10 rounded-full border border-gold/60 text-gold"><i class="fa-solid fa-scissors text-sm"></i></span>
-          <span class="font-display font-extrabold tracking-[0.2em] text-lg text-gradient-gold">L'ÉLITE<span class="text-white font-light"> BARBIER</span></span>
+  <footer class="bg-deep-black border-t border-white/5 pt-12 pb-8">
+    <div class="max-w-5xl mx-auto px-5">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pb-8 border-b border-white/5 text-center sm:text-left">
+        <a href="#top" class="flex items-center gap-2.5">
+          <span class="grid place-items-center w-9 h-9 rounded-full border border-gold/60 text-gold"><i class="fa-solid fa-scissors text-xs"></i></span>
+          <span class="font-display font-extrabold tracking-[.18em] text-lg text-gradient-gold">L'ÉLITE<span class="text-white font-light"> BARBIER</span></span>
         </a>
-
-        <p class="text-soft-gray text-sm max-w-sm text-center md:text-left">El arte del detalle en cada corte. Barbería premium en el corazón de Santiago.</p>
-
-        <!-- Redes sociales -->
         <div class="flex items-center gap-3">
-          <a href="#" aria-label="Instagram" class="w-11 h-11 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-deep-black hover:bg-gold hover:border-gold transition-all duration-300"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="WhatsApp"  class="w-11 h-11 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-deep-black hover:bg-gold hover:border-gold transition-all duration-300"><i class="fa-brands fa-whatsapp"></i></a>
-          <a href="#" aria-label="Facebook"  class="w-11 h-11 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-deep-black hover:bg-gold hover:border-gold transition-all duration-300"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" aria-label="TikTok"    class="w-11 h-11 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-deep-black hover:bg-gold hover:border-gold transition-all duration-300"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" aria-label="Instagram" class="w-11 h-11 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-deep-black hover:bg-gold hover:border-gold transition-all"><i class="fa-brands fa-instagram"></i></a>
+          <a id="wa-footer" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-11 h-11 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-deep-black hover:bg-gold hover:border-gold transition-all"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" aria-label="Facebook" class="w-11 h-11 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-deep-black hover:bg-gold hover:border-gold transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="TikTok" class="w-11 h-11 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-deep-black hover:bg-gold hover:border-gold transition-all"><i class="fa-brands fa-tiktok"></i></a>
         </div>
       </div>
-
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-sm text-soft-gray">
-        <p>© <span id="year"></span> L'ÉLITE BARBIER. Todos los derechos reservados.</p>
-        <p class="tracking-wide">Diseño por <a href="#" class="text-gold hover:text-bronze transition-colors font-medium">Alonso Studio Digital</a></p>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 text-sm text-soft-gray">
+        <p>© <span id="year"></span> L'ÉLITE BARBIER</p>
+        <p>Diseño por <a href="#" class="text-gold hover:text-bronze transition-colors font-medium">Alonso Studio Digital</a></p>
       </div>
     </div>
   </footer>
 
   <!-- ============================================================= -->
-  <!--  MODAL DE CONFIRMACIÓN                                         -->
+  <!--  BOTÓN FLOTANTE DE WHATSAPP (siempre visible)                  -->
   <!-- ============================================================= -->
-  <div id="success-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
-    <div id="modal-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
-    <div class="relative bg-carbon border border-gold/30 rounded-3xl p-8 sm:p-10 max-w-md w-full text-center shadow-2xl shadow-gold/10 animate-pop-in">
-      <!-- Check dorado animado -->
-      <div class="w-20 h-20 mx-auto rounded-full bg-gold/10 border-2 border-gold grid place-items-center mb-6">
-        <svg width="40" height="40" viewBox="0 0 52 52" fill="none">
-          <path class="check-path animate-draw-check" d="M14 27 L22 35 L38 18" stroke="#D4AF37" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+  <a id="wa-float" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"
+     class="fixed bottom-5 right-5 z-30 w-14 h-14 grid place-items-center rounded-full bg-wa text-white text-2xl shadow-lg shadow-wa/30 animate-pulse-wa hover:scale-110 transition-transform">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- ============================================================= -->
+  <!--  🔥 PANEL DE RESERVA — EXPERIENCIA TIPO APP (pantalla aparte)  -->
+  <!-- ============================================================= -->
+  <div id="booking" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-deep-black/90 backdrop-blur-sm" data-close-booking></div>
+
+    <div id="booking-panel" class="absolute inset-0 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:max-w-lg sm:w-full sm:h-[92vh] sm:rounded-3xl bg-deep-black sm:border sm:border-white/10 overflow-hidden flex flex-col animate-slide-up shadow-2xl">
+
+      <!-- Barra superior fija -->
+      <div class="flex items-center justify-between gap-3 px-4 py-3.5 border-b border-white/10 bg-carbon/80 backdrop-blur">
+        <button id="booking-back-top" class="w-10 h-10 grid place-items-center rounded-full hover:bg-white/5 text-soft-gray transition-colors"><i class="fa-solid fa-arrow-left"></i></button>
+        <div class="text-center">
+          <p id="booking-step-title" class="font-display font-bold text-sm">Elige tus servicios</p>
+          <div class="flex items-center justify-center gap-1.5 mt-1.5">
+            <span class="prog-dot w-6 h-1 rounded-full bg-gold transition-all" data-p="1"></span>
+            <span class="prog-dot w-6 h-1 rounded-full bg-white/15 transition-all" data-p="2"></span>
+            <span class="prog-dot w-6 h-1 rounded-full bg-white/15 transition-all" data-p="3"></span>
+            <span class="prog-dot w-6 h-1 rounded-full bg-white/15 transition-all" data-p="4"></span>
+          </div>
+        </div>
+        <div class="flex items-center gap-1">
+          <a id="wa-booking" href="#" target="_blank" rel="noopener" aria-label="Ayuda por WhatsApp" class="w-10 h-10 grid place-items-center rounded-full text-wa hover:bg-wa/10 transition-colors"><i class="fa-brands fa-whatsapp text-xl"></i></a>
+          <button data-close-booking class="w-10 h-10 grid place-items-center rounded-full hover:bg-white/5 text-soft-gray transition-colors"><i class="fa-solid fa-xmark text-lg"></i></button>
+        </div>
       </div>
-      <h3 class="font-display font-extrabold text-2xl mb-3">¡Cita Reservada con Éxito!</h3>
-      <p class="text-soft-gray mb-2">Te enviamos los detalles de tu confirmación por <span class="text-gold font-medium">WhatsApp</span>.</p>
-      <div id="modal-details" class="text-sm text-white/80 bg-deep-black/50 rounded-xl p-4 my-6 space-y-1"></div>
-      <button id="close-modal" class="w-full inline-flex items-center justify-center gap-2 bg-gold hover:bg-bronze text-deep-black font-bold px-6 py-3.5 rounded-full transition-all hover:scale-[1.02]">
-        <i class="fa-solid fa-thumbs-up"></i> Perfecto, ¡gracias!
-      </button>
+
+      <!-- Contenido scrolleable -->
+      <div class="flex-1 overflow-y-auto no-scrollbar px-4 py-5">
+
+        <!-- ---- PASO 1 · SERVICIOS (multi-selección) ---- -->
+        <div class="bk-step" data-step="1">
+          <p class="text-soft-gray text-sm mb-4">Puedes elegir <span class="text-gold font-medium">más de uno</span>. Toca para agregar o quitar.</p>
+          <div id="bk-services" class="space-y-3.5"></div>
+        </div>
+
+        <!-- ---- PASO 2 · FECHA Y HORA ---- -->
+        <div class="bk-step hidden" data-step="2">
+          <div class="flex items-center justify-between mb-4">
+            <button id="cal-prev" class="w-9 h-9 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-gold hover:border-gold transition-colors"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+            <h3 id="cal-title" class="font-display font-bold capitalize"></h3>
+            <button id="cal-next" class="w-9 h-9 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-gold hover:border-gold transition-colors"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+          </div>
+          <div class="grid grid-cols-7 gap-1 text-center text-[11px] text-soft-gray mb-2 uppercase"><span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sá</span><span>Do</span></div>
+          <div id="cal-days" class="grid grid-cols-7 gap-1"></div>
+
+          <div class="mt-6">
+            <h3 class="font-display font-bold mb-3">Horarios disponibles</h3>
+            <p id="no-date-msg" class="text-soft-gray text-sm">Selecciona primero un día.</p>
+            <div id="time-slots" class="flex flex-wrap gap-2.5"></div>
+          </div>
+        </div>
+
+        <!-- ---- PASO 3 · MÉTODO DE PAGO ---- -->
+        <div class="bk-step hidden" data-step="3">
+          <p class="text-soft-gray text-sm mb-4">Elige cómo prefieres pagar. Tú decides 👇</p>
+          <div class="space-y-3.5">
+            <!-- Transferencia -->
+            <button data-pay="transfer" class="pay-option w-full text-left p-4 rounded-2xl border-2 border-white/10 bg-carbon transition-all">
+              <div class="flex items-start gap-3">
+                <span class="w-11 h-11 shrink-0 grid place-items-center rounded-xl bg-wa/15 text-wa text-xl"><i class="fa-solid fa-building-columns"></i></span>
+                <div class="flex-1">
+                  <div class="flex items-center gap-2">
+                    <span class="font-display font-bold">Transferencia</span>
+                    <span class="text-[10px] uppercase tracking-wide bg-gold text-deep-black font-bold px-2 py-0.5 rounded-full">Sin recargo</span>
+                  </div>
+                  <p class="text-soft-gray text-sm mt-1">Transfieres y envías el comprobante por WhatsApp. Confirmamos tu hora al toque.</p>
+                </div>
+                <span class="pay-check w-5 h-5 shrink-0 rounded-full border-2 border-white/25 grid place-items-center transition-all"><i class="fa-solid fa-check text-[10px] text-deep-black opacity-0"></i></span>
+              </div>
+            </button>
+            <!-- Pago web -->
+            <button data-pay="web" class="pay-option w-full text-left p-4 rounded-2xl border-2 border-white/10 bg-carbon transition-all">
+              <div class="flex items-start gap-3">
+                <span class="w-11 h-11 shrink-0 grid place-items-center rounded-xl bg-gold/15 text-gold text-xl"><i class="fa-solid fa-credit-card"></i></span>
+                <div class="flex-1">
+                  <div class="flex items-center gap-2">
+                    <span class="font-display font-bold">Pagar en la web</span>
+                    <span id="web-fee-badge" class="text-[10px] uppercase tracking-wide bg-white/10 text-soft-gray font-bold px-2 py-0.5 rounded-full">+ recargo</span>
+                  </div>
+                  <p class="text-soft-gray text-sm mt-1">Pago inmediato con tarjeta. Incluye un pequeño recargo por comisión de la pasarela.</p>
+                </div>
+                <span class="pay-check w-5 h-5 shrink-0 rounded-full border-2 border-white/25 grid place-items-center transition-all"><i class="fa-solid fa-check text-[10px] text-deep-black opacity-0"></i></span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- ---- PASO 4 · RESUMEN ---- -->
+        <div class="bk-step hidden" data-step="4">
+          <div class="bg-carbon border border-gold/20 rounded-2xl p-5 space-y-3.5">
+            <div>
+              <p class="text-soft-gray text-xs uppercase tracking-wide mb-2">Servicios</p>
+              <div id="sum-services" class="space-y-1.5"></div>
+            </div>
+            <div class="flex justify-between border-t border-white/5 pt-3.5"><span class="text-soft-gray text-sm">Fecha</span><span id="sum-date" class="font-medium text-sm text-right">—</span></div>
+            <div class="flex justify-between border-t border-white/5 pt-3.5"><span class="text-soft-gray text-sm">Hora</span><span id="sum-time" class="font-medium text-sm">—</span></div>
+            <div class="flex justify-between border-t border-white/5 pt-3.5"><span class="text-soft-gray text-sm">Pago</span><span id="sum-pay" class="font-medium text-sm text-right">—</span></div>
+            <div id="sum-fee-row" class="hidden flex justify-between"><span class="text-soft-gray text-sm">Recargo web</span><span id="sum-fee" class="font-medium text-sm">—</span></div>
+            <div class="flex justify-between items-center border-t border-white/10 pt-3.5"><span class="font-display font-bold">Total</span><span id="sum-total" class="font-display font-bold text-2xl text-gold">—</span></div>
+          </div>
+          <div class="grid grid-cols-2 gap-3 mt-4">
+            <input id="bk-name"  type="text" placeholder="Tu nombre" class="bg-carbon border border-white/10 focus:border-gold rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder:text-soft-gray/60" />
+            <input id="bk-phone" type="tel"  placeholder="WhatsApp" class="bg-carbon border border-white/10 focus:border-gold rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder:text-soft-gray/60" />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Barra inferior fija (total + acción) -->
+      <div class="border-t border-white/10 bg-carbon/80 backdrop-blur px-4 py-3.5 pb-[calc(.875rem+env(safe-area-inset-bottom))]">
+        <div class="flex items-center gap-3">
+          <div class="flex-1">
+            <p class="text-soft-gray text-[11px] uppercase tracking-wide">Total</p>
+            <p id="bar-total" class="font-display font-bold text-xl text-gold leading-none">$0</p>
+          </div>
+          <button id="bk-next" disabled class="flex-[1.4] inline-flex items-center justify-center gap-2 bg-gold disabled:opacity-30 disabled:cursor-not-allowed hover:bg-bronze text-deep-black font-bold px-6 py-3.5 rounded-full transition-all active:scale-95">
+            <span id="bk-next-label">Continuar</span> <i class="fa-solid fa-arrow-right text-sm"></i>
+          </button>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- Toast genérico -->
-  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[110] hidden">
-    <div class="bg-gold text-deep-black font-semibold px-6 py-3 rounded-full shadow-lg flex items-center gap-2">
-      <i class="fa-solid fa-circle-check"></i> <span id="toast-text"></span>
+  <!-- ============================================================= -->
+  <!--  MODAL DE ÉXITO                                                -->
+  <!-- ============================================================= -->
+  <div id="success-modal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/85 backdrop-blur-sm" data-close-modal></div>
+    <div class="relative bg-carbon border border-gold/30 rounded-3xl p-7 sm:p-9 max-w-sm w-full text-center shadow-2xl animate-pop-in">
+      <div class="w-20 h-20 mx-auto rounded-full bg-gold/10 border-2 border-gold grid place-items-center mb-5">
+        <svg width="40" height="40" viewBox="0 0 52 52" fill="none"><path class="check-path animate-draw-check" d="M14 27 L22 35 L38 18" stroke="#D4AF37" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 class="font-display font-extrabold text-2xl mb-2">¡Cita Reservada!</h3>
+      <p id="modal-msg" class="text-soft-gray mb-4 text-sm"></p>
+      <div id="modal-details" class="text-sm text-white/80 bg-deep-black/50 rounded-xl p-4 mb-5 space-y-1 text-left"></div>
+      <a id="modal-wa-btn" href="#" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 bg-wa hover:brightness-110 text-white font-bold px-6 py-3.5 rounded-full transition-all mb-2.5">
+        <i class="fa-brands fa-whatsapp text-lg"></i> <span id="modal-wa-label">Enviar comprobante por WhatsApp</span>
+      </a>
+      <button data-close-modal class="w-full text-soft-gray hover:text-white text-sm py-2 transition-colors">Cerrar</button>
     </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-[70] hidden">
+    <div class="bg-gold text-deep-black font-semibold px-5 py-3 rounded-full shadow-lg flex items-center gap-2 text-sm"><i class="fa-solid fa-circle-check"></i> <span id="toast-text"></span></div>
   </div>
 
   <!-- ============================================================= -->
@@ -505,494 +412,374 @@
   <!-- ============================================================= -->
   <script>
   /* =================================================================
-     ██  DATOS DEL CLIENTE  ██
-     Edita SOLO este bloque para adaptar la plantilla a cualquier
-     negocio (barbería, estética, mecánico, banquetera, etc.).
+     ██  DATOS DEL CLIENTE  ██   (edita SOLO este bloque)
      ================================================================= */
   const NEGOCIO = {
-    // Moneda usada al formatear precios
     monedaPrefijo: '$',
-    sufijo: '',
 
-    // ---- SERVICIOS (se muestran en la sección Servicios y en la agenda) ----
+    // --- Contacto / WhatsApp (número en formato internacional, SIN + ni espacios) ---
+    whatsapp: '56912345678',
+
+    // --- Recargo si el cliente paga por la web (comisión de la pasarela) ---
+    recargoWeb: 200,
+
+    // --- Datos para la transferencia (se muestran al confirmar) ---
+    transferencia: {
+      banco:   'Banco Estado',
+      tipo:    'Cuenta Vista',
+      numero:  '12345678',
+      rut:     '12.345.678-9',
+      titular: "L'ÉLITE BARBIER SpA",
+      correo:  'pagos@elitebarbier.cl',
+    },
+
+    // --- SERVICIOS (se muestran dentro del panel de reserva) ---
     servicios: [
-      {
-        id: 'corte',
-        nombre: 'Corte de Autor',
-        precio: 15000,
-        descripcion: 'Corte personalizado según tu rostro y estilo, con acabado a navaja y styling premium.',
-        imagen: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=800&q=80',
-      },
-      {
-        id: 'barba',
-        nombre: 'Perfilado de Barba Premium',
-        precio: 12000,
-        descripcion: 'Diseño de barba con toalla caliente, aceites esenciales y perfilado a navaja de precisión.',
-        imagen: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=800&q=80',
-      },
-      {
-        id: 'elite',
-        nombre: 'Experiencia Completa Élite',
-        precio: 24000,
-        descripcion: 'Corte + barba + exfoliación facial. El ritual completo para lucir impecable de pies a cabeza.',
-        imagen: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80',
-      },
+      { id:'corte', nombre:'Corte de Autor', precio:15000,
+        descripcion:'Corte personalizado, acabado a navaja y styling premium.',
+        imagen:'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=500&q=80' },
+      { id:'barba', nombre:'Perfilado de Barba', precio:12000,
+        descripcion:'Toalla caliente, aceites y perfilado a navaja de precisión.',
+        imagen:'https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=500&q=80' },
+      { id:'elite', nombre:'Experiencia Élite', precio:24000,
+        descripcion:'Corte + barba + exfoliación facial. El ritual completo.',
+        imagen:'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=500&q=80' },
+      { id:'color', nombre:'Color / Camuflado', precio:10000,
+        descripcion:'Cobertura de canas o color, resultado natural.',
+        imagen:'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=500&q=80' },
     ],
 
-    // ---- HORARIOS disponibles para la agenda ----
-    horarios: ['10:00', '11:00', '12:00', '13:00', '16:00', '17:00', '18:00', '19:00'],
+    horarios: ['10:00','11:00','12:00','13:00','16:00','17:00','18:00','19:00'],
+    diasAbiertos: [1,2,3,4,5,6], // 0=Dom ... 6=Sáb  → Lun a Sáb
 
-    // Días abiertos: 0=Dom, 1=Lun ... 6=Sáb  (aquí: Lun a Sáb)
-    diasAbiertos: [1, 2, 3, 4, 5, 6],
-
-    // ---- TESTIMONIOS ----
     testimonios: [
-      { nombre: 'Matías Herrera',  cargo: 'Cliente frecuente',   estrellas: 5, texto: 'Puntualidad impecable y un corte de otro nivel. La atención al detalle se nota en cada pasada de navaja.' },
-      { nombre: 'Cristóbal Reyes', cargo: 'Ejecutivo',           estrellas: 5, texto: 'La experiencia Élite vale cada peso. Ambiente premium, café de bienvenida y un resultado espectacular.' },
-      { nombre: 'Diego Salinas',   cargo: 'Fotógrafo',           estrellas: 5, texto: 'Reservé por la web a medianoche y quedó todo listo. Profesionalismo total, no vuelvo a otro lado.' },
-    ],
-
-    // ---- CORREOS CORPORATIVOS ----
-    correos: [
-      { area: 'Agendamiento', email: 'agendamiento@elitebarbier.cl' },
-      { area: 'Gerencia',     email: 'gerencia@elitebarbier.cl' },
-      { area: 'Soporte',      email: 'soporte@elitebarbier.cl' },
-      { area: 'Reclamos',     email: 'contacto@elitebarbier.cl' },
-      { area: 'Alianzas',     email: 'marketing@elitebarbier.cl' },
+      { nombre:'Matías H.',   texto:'Llegué justo a mi hora y salí impecable. La barba quedó perfecta.', estrellas:5 },
+      { nombre:'Cristóbal R.',texto:'Reservé de noche por el celular y quedó todo listo. Un lujo.', estrellas:5 },
+      { nombre:'Diego S.',    texto:'El mejor fade que me han hecho en Santiago, sin exagerar.', estrellas:5 },
+      { nombre:'Ignacio V.',  texto:'Buen café, buena música y un corte de otro nivel. Vuelvo fijo.', estrellas:5 },
+      { nombre:'Tomás A.',    texto:'Pagué por transferencia y me confirmaron al toque por WhatsApp.', estrellas:5 },
     ],
   };
   /* ============  FIN DATOS DEL CLIENTE  ============ */
 
 
-  /* =================================================================
-     UTILIDADES
-     ================================================================= */
-  const $  = (sel, ctx = document) => ctx.querySelector(sel);
-  const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+  /* ===== Utilidades ===== */
+  const $  = (s,c=document)=>c.querySelector(s);
+  const $$ = (s,c=document)=>[...c.querySelectorAll(s)];
+  const fmt = (n)=>`${NEGOCIO.monedaPrefijo}${n.toLocaleString('es-CL')}`;
+  const MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const DIAS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+  const waLink=(txt='')=>`https://wa.me/${NEGOCIO.whatsapp}${txt?`?text=${encodeURIComponent(txt)}`:''}`;
 
-  // Formatea un precio con separador de miles (estilo CLP)
-  const formatPrecio = (n) =>
-    `${NEGOCIO.monedaPrefijo}${n.toLocaleString('es-CL')}${NEGOCIO.sufijo}`;
+  /* ===== Estado de la reserva ===== */
+  const reserva = { servicios:[], fecha:null, hora:null, pago:null };
+  let pasoActual = 1;
 
-  const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-  const DIAS_SEMANA = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
-
-
-  /* =================================================================
-     ESTADO DE LA RESERVA
-     ================================================================= */
-  const reserva = {
-    servicio: null,   // objeto servicio seleccionado
-    fecha:    null,   // objeto Date seleccionado
-    hora:     null,   // string "HH:MM"
-  };
+  const totalServicios = ()=>reserva.servicios.reduce((a,s)=>a+s.precio,0);
+  const recargo = ()=> reserva.pago==='web' ? NEGOCIO.recargoWeb : 0;
+  const totalFinal = ()=> totalServicios() + recargo();
 
 
-  /* =================================================================
-     RENDER: TARJETAS DE SERVICIOS
-     ================================================================= */
-  function renderServicios() {
-    const grid = $('#services-grid');
-    grid.innerHTML = NEGOCIO.servicios.map((s) => `
-      <article class="reveal group bg-carbon rounded-3xl overflow-hidden border border-white/5 hover:border-gold/40 transition-all duration-300 hover:-translate-y-2 shadow-xl shadow-black/40">
-        <div class="relative h-56 overflow-hidden">
-          <img src="${s.imagen}" alt="${s.nombre}" loading="lazy"
-               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/40 to-transparent"></div>
-          <span class="absolute top-4 right-4 bg-gold text-deep-black font-display font-bold text-sm px-4 py-1.5 rounded-full shadow-lg">${formatPrecio(s.precio)}</span>
-        </div>
-        <div class="p-6">
-          <h3 class="font-display font-bold text-xl text-gold mb-2">${s.nombre}</h3>
-          <p class="text-soft-gray text-sm leading-relaxed mb-6">${s.descripcion}</p>
-          <button data-service="${s.id}"
-                  class="select-service w-full inline-flex items-center justify-center gap-2 border border-gold/40 hover:bg-gold hover:text-deep-black text-gold font-semibold px-5 py-3 rounded-full transition-all duration-300">
-            Seleccionar <i class="fa-solid fa-arrow-right text-xs"></i>
-          </button>
-        </div>
-      </article>
-    `).join('');
-
-    // Botón "Seleccionar" -> preselecciona servicio y salta a la agenda
-    $$('.select-service', grid).forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const svc = NEGOCIO.servicios.find((s) => s.id === btn.dataset.service);
-        seleccionarServicio(svc);
-        $('#agenda').scrollIntoView({ behavior: 'smooth' });
-      });
-    });
+  /* ===== Enlaces de WhatsApp globales ===== */
+  function initWhatsapp(){
+    const base = waLink('Hola L\'ÉLITE BARBIER 👋, tengo una consulta.');
+    ['#wa-float','#wa-contact','#wa-footer','#wa-booking'].forEach(sel=>{ const el=$(sel); if(el) el.href=base; });
   }
 
 
-  /* =================================================================
-     RENDER: BOTONES DE SERVICIO EN LA AGENDA (Paso 1)
-     ================================================================= */
-  function renderBookingServices() {
-    const cont = $('#booking-services');
-    cont.innerHTML = NEGOCIO.servicios.map((s) => `
-      <button data-service="${s.id}"
-              class="booking-service-btn text-left p-5 rounded-2xl border border-white/10 hover:border-gold/60 bg-carbon transition-all duration-300 hover:-translate-y-1">
-        <span class="block font-display font-semibold text-white mb-1">${s.nombre}</span>
-        <span class="block text-gold font-bold">${formatPrecio(s.precio)}</span>
-      </button>
-    `).join('');
-
-    $$('.booking-service-btn', cont).forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const svc = NEGOCIO.servicios.find((s) => s.id === btn.dataset.service);
-        seleccionarServicio(svc);
-        irAPaso(2);
-      });
-    });
-  }
-
-  // Marca visualmente el servicio activo y guarda el estado
-  function seleccionarServicio(svc) {
-    reserva.servicio = svc;
-    $$('.booking-service-btn').forEach((b) => {
-      const activo = b.dataset.service === svc.id;
-      b.classList.toggle('border-gold', activo);
-      b.classList.toggle('bg-gold/10', activo);
-    });
-  }
-
-
-  /* =================================================================
-     RENDER: TESTIMONIOS
-     ================================================================= */
-  function renderTestimonios() {
-    const grid = $('#testimonials-grid');
-    grid.innerHTML = NEGOCIO.testimonios.map((t) => {
-      const estrellas = Array.from({ length: 5 }, (_, i) =>
-        `<i class="fa-${i < t.estrellas ? 'solid' : 'regular'} fa-star text-gold text-sm"></i>`
-      ).join('');
-      const iniciales = t.nombre.split(' ').map((p) => p[0]).slice(0, 2).join('');
+  /* ===== Carrusel de testimonios (marquee infinito) ===== */
+  function renderTestimonios(){
+    const card = (t)=>{
+      const estrellas = Array.from({length:5},(_,i)=>`<i class="fa-${i<t.estrellas?'solid':'regular'} fa-star text-gold text-xs"></i>`).join('');
+      const ini = t.nombre.split(' ').map(p=>p[0]).slice(0,2).join('');
       return `
-        <article class="reveal bg-carbon rounded-3xl p-7 border border-white/5 hover:border-gold/30 transition-all duration-300 hover:-translate-y-1">
-          <div class="flex gap-1 mb-4">${estrellas}</div>
-          <p class="text-white/90 leading-relaxed mb-6">"${t.texto}"</p>
-          <div class="flex items-center gap-3 pt-4 border-t border-white/5">
-            <span class="w-11 h-11 grid place-items-center rounded-full bg-gold/15 text-gold font-display font-bold">${iniciales}</span>
-            <div>
-              <p class="font-semibold text-white text-sm">${t.nombre}</p>
-              <p class="text-soft-gray text-xs">${t.cargo}</p>
-            </div>
+        <article class="w-[280px] shrink-0 bg-carbon rounded-2xl p-6 border border-white/5">
+          <div class="flex gap-1 mb-3">${estrellas}</div>
+          <p class="text-white/90 text-sm leading-relaxed mb-5">"${t.texto}"</p>
+          <div class="flex items-center gap-3 pt-3 border-t border-white/5">
+            <span class="w-10 h-10 grid place-items-center rounded-full bg-gold/15 text-gold font-display font-bold text-sm">${ini}</span>
+            <div><p class="font-semibold text-sm">${t.nombre}</p><p class="text-soft-gray text-xs">Cliente verificado</p></div>
           </div>
         </article>`;
-    }).join('');
-  }
-
-
-  /* =================================================================
-     RENDER: CORREOS CORPORATIVOS
-     ================================================================= */
-  function renderCorreos() {
-    const list = $('#emails-list');
-    list.innerHTML = NEGOCIO.correos.map((c) => `
-      <li>
-        <a href="mailto:${c.email}" class="group flex items-center justify-between gap-3 rounded-lg px-3 py-2 -mx-3 hover:bg-white/5 transition-colors">
-          <span class="flex items-center gap-3">
-            <i class="fa-solid fa-envelope text-gold/70 text-xs"></i>
-            <span class="text-soft-gray text-xs uppercase tracking-wide w-24">${c.area}</span>
-          </span>
-          <span class="text-white group-hover:text-gold transition-colors truncate">${c.email}</span>
-        </a>
-      </li>
-    `).join('');
-  }
-
-
-  /* =================================================================
-     CALENDARIO INTERACTIVO
-     ================================================================= */
-  let calMes = new Date().getMonth();
-  let calAnio = new Date().getFullYear();
-
-  function renderCalendario() {
-    $('#cal-title').textContent = `${MESES[calMes]} ${calAnio}`;
-
-    const primerDia = new Date(calAnio, calMes, 1);
-    // getDay(): 0=Dom..6=Sáb. Convertimos a semana que inicia en lunes (0=Lun..6=Dom)
-    let offset = (primerDia.getDay() + 6) % 7;
-    const diasEnMes = new Date(calAnio, calMes + 1, 0).getDate();
-
-    const hoy = new Date();
-    hoy.setHours(0, 0, 0, 0);
-
-    const cont = $('#cal-days');
-    cont.innerHTML = '';
-
-    // Celdas vacías antes del primer día
-    for (let i = 0; i < offset; i++) {
-      cont.appendChild(document.createElement('span'));
-    }
-
-    for (let dia = 1; dia <= diasEnMes; dia++) {
-      const fecha = new Date(calAnio, calMes, dia);
-      fecha.setHours(0, 0, 0, 0);
-      const esPasado   = fecha < hoy;
-      const esAbierto  = NEGOCIO.diasAbiertos.includes(fecha.getDay());
-      const disponible = !esPasado && esAbierto;
-
-      const btn = document.createElement('button');
-      btn.textContent = dia;
-      btn.className = 'aspect-square rounded-lg text-sm flex items-center justify-center transition-all duration-200';
-
-      if (disponible) {
-        btn.classList.add('text-white', 'hover:bg-gold/20', 'hover:text-gold', 'cursor-pointer', 'border', 'border-transparent');
-        btn.addEventListener('click', () => seleccionarFecha(fecha, btn));
-      } else {
-        btn.classList.add('text-white/20', 'cursor-not-allowed');
-        btn.disabled = true;
-      }
-
-      // Re-marca la fecha si ya estaba seleccionada (al cambiar de mes y volver)
-      if (reserva.fecha && fecha.getTime() === reserva.fecha.getTime()) {
-        btn.classList.add('bg-gold', 'text-deep-black', 'font-bold');
-      }
-      cont.appendChild(btn);
-    }
-  }
-
-  function seleccionarFecha(fecha, btn) {
-    reserva.fecha = fecha;
-    reserva.hora  = null;
-
-    // Resalta el día activo
-    $$('#cal-days button').forEach((b) =>
-      b.classList.remove('bg-gold', 'text-deep-black', 'font-bold'));
-    btn.classList.add('bg-gold', 'text-deep-black', 'font-bold');
-
-    renderHorarios();
-    validarPaso2();
-  }
-
-  function renderHorarios() {
-    const cont = $('#time-slots');
-    $('#no-date-msg').classList.add('hidden');
-    cont.innerHTML = NEGOCIO.horarios.map((h) => `
-      <button data-time="${h}"
-              class="time-slot px-4 py-2 rounded-full text-sm border border-gold/30 text-gold hover:bg-gold hover:text-deep-black transition-all duration-200">
-        ${h}
-      </button>
-    `).join('');
-
-    $$('.time-slot', cont).forEach((btn) => {
-      btn.addEventListener('click', () => {
-        reserva.hora = btn.dataset.time;
-        $$('.time-slot', cont).forEach((b) =>
-          b.classList.remove('bg-gold', 'text-deep-black', 'font-bold'));
-        btn.classList.add('bg-gold', 'text-deep-black', 'font-bold');
-        validarPaso2();
-      });
-    });
-  }
-
-  // Habilita el botón "Continuar" solo cuando hay fecha y hora
-  function validarPaso2() {
-    $('#to-step-3').disabled = !(reserva.fecha && reserva.hora);
-  }
-
-
-  /* =================================================================
-     NAVEGACIÓN ENTRE PASOS DE LA AGENDA
-     ================================================================= */
-  function irAPaso(n) {
-    // Muestra/oculta paneles
-    $$('.booking-step').forEach((step) =>
-      step.classList.toggle('hidden', Number(step.dataset.step) !== n));
-
-    // Actualiza indicadores (dots)
-    $$('.step-indicator').forEach((ind) => {
-      const paso = Number(ind.dataset.step);
-      const dot  = $('.step-dot', ind);
-      const activo    = paso === n;
-      const completado = paso < n;
-      dot.classList.toggle('bg-gold', activo || completado);
-      dot.classList.toggle('text-deep-black', activo || completado);
-      dot.classList.toggle('border-gold', activo || completado);
-      dot.classList.toggle('text-soft-gray', !activo && !completado);
-      dot.classList.toggle('border-white/20', !activo && !completado);
-    });
-
-    if (n === 3) actualizarResumen();
-    // Lleva el foco visual al inicio del widget en móvil
-    $('#agenda').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  // Formatea una fecha a texto legible: "lunes 21 de julio"
-  function fechaLegible(f) {
-    return `${DIAS_SEMANA[f.getDay()]} ${f.getDate()} de ${MESES[f.getMonth()]}`;
-  }
-
-  function actualizarResumen() {
-    $('#summary-service').textContent = reserva.servicio ? reserva.servicio.nombre : '—';
-    $('#summary-date').textContent    = reserva.fecha ? fechaLegible(reserva.fecha) : '—';
-    $('#summary-time').textContent    = reserva.hora || '—';
-    $('#summary-price').textContent   = reserva.servicio ? formatPrecio(reserva.servicio.precio) : '—';
-  }
-
-
-  /* =================================================================
-     MODAL DE CONFIRMACIÓN
-     ================================================================= */
-  function abrirModal() {
-    const nombre = $('#booking-name').value.trim();
-    const detalles = `
-      ${nombre ? `<p><span class="text-soft-gray">Cliente:</span> <span class="text-gold font-medium">${nombre}</span></p>` : ''}
-      <p><span class="text-soft-gray">Servicio:</span> ${reserva.servicio.nombre}</p>
-      <p><span class="text-soft-gray">Fecha:</span> ${fechaLegible(reserva.fecha)} · ${reserva.hora} hrs</p>
-      <p><span class="text-soft-gray">Total:</span> <span class="text-gold font-bold">${formatPrecio(reserva.servicio.precio)}</span></p>
-    `;
-    $('#modal-details').innerHTML = detalles;
-
-    const modal = $('#success-modal');
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    document.body.style.overflow = 'hidden'; // bloquea scroll de fondo
-  }
-
-  function cerrarModal() {
-    const modal = $('#success-modal');
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-    document.body.style.overflow = '';
-    reiniciarReserva();
-  }
-
-  // Reinicia el widget para una nueva reserva
-  function reiniciarReserva() {
-    reserva.servicio = null;
-    reserva.fecha = null;
-    reserva.hora = null;
-    $('#booking-name').value = '';
-    $('#booking-phone').value = '';
-    $$('.booking-service-btn').forEach((b) => b.classList.remove('border-gold', 'bg-gold/10'));
-    $('#time-slots').innerHTML = '';
-    $('#no-date-msg').classList.remove('hidden');
-    renderCalendario();
-    validarPaso2();
-    irAPaso(1);
-  }
-
-
-  /* =================================================================
-     TOAST GENÉRICO
-     ================================================================= */
-  let toastTimer;
-  function mostrarToast(texto) {
-    const toast = $('#toast');
-    $('#toast-text').textContent = texto;
-    toast.classList.remove('hidden');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.add('hidden'), 3200);
-  }
-
-
-  /* =================================================================
-     REVEAL AL HACER SCROLL (Intersection Observer)
-     ================================================================= */
-  function initReveal() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    $$('.reveal').forEach((el) => observer.observe(el));
-  }
-
-
-  /* =================================================================
-     INICIALIZACIÓN
-     ================================================================= */
-  document.addEventListener('DOMContentLoaded', () => {
-    // Render de contenido dinámico
-    renderServicios();
-    renderBookingServices();
-    renderTestimonios();
-    renderCorreos();
-    renderCalendario();
-    $('#year').textContent = new Date().getFullYear();
-
-    // El observer se inicializa tras pintar las tarjetas dinámicas
-    initReveal();
-
-    /* ---- Header: fondo sólido al hacer scroll ---- */
-    const header = $('#site-header');
-    const onScroll = () => {
-      if (window.scrollY > 40) {
-        header.classList.add('bg-deep-black/90', 'backdrop-blur-md', 'border-b', 'border-white/5', 'shadow-lg', 'shadow-black/30');
-      } else {
-        header.classList.remove('bg-deep-black/90', 'backdrop-blur-md', 'border-b', 'border-white/5', 'shadow-lg', 'shadow-black/30');
-      }
     };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    // Se duplica el set para que el loop sea continuo (translateX -50%)
+    const items = NEGOCIO.testimonios.map(card).join('');
+    $('#marquee-track').innerHTML = items + items;
+  }
 
-    /* ---- Menú móvil ---- */
-    const menuToggle = $('#menu-toggle');
-    const mobileMenu = $('#mobile-menu');
-    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-    $$('.mobile-link').forEach((link) =>
-      link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-    /* ---- Navegación de la agenda ---- */
-    $('#to-step-3').addEventListener('click', () => irAPaso(3));
-    $$('.booking-back').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        // Retrocede al paso visible anterior
-        const actual = Number($('.booking-step:not(.hidden)').dataset.step);
-        irAPaso(Math.max(1, actual - 1));
+  /* ===== PASO 1 · Servicios multi-selección ===== */
+  function renderBookingServices(){
+    const cont = $('#bk-services');
+    cont.innerHTML = NEGOCIO.servicios.map(s=>`
+      <button data-service="${s.id}" class="svc-card w-full text-left flex gap-3.5 p-3 rounded-2xl border-2 border-white/10 bg-carbon transition-all active:scale-[.99]">
+        <img src="${s.imagen}" alt="${s.nombre}" loading="lazy" class="w-20 h-20 rounded-xl object-cover shrink-0" />
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="font-display font-bold text-white leading-tight">${s.nombre}</h3>
+            <span class="svc-check w-6 h-6 shrink-0 rounded-full border-2 border-white/25 grid place-items-center transition-all"><i class="fa-solid fa-check text-[11px] text-deep-black opacity-0"></i></span>
+          </div>
+          <p class="text-soft-gray text-xs mt-1 leading-snug">${s.descripcion}</p>
+          <p class="text-gold font-bold mt-1.5">${fmt(s.precio)}</p>
+        </div>
+      </button>`).join('');
+
+    $$('.svc-card',cont).forEach(btn=>{
+      btn.addEventListener('click',()=>toggleServicio(btn.dataset.service,btn));
+    });
+  }
+
+  function toggleServicio(id,btn){
+    const svc = NEGOCIO.servicios.find(s=>s.id===id);
+    const idx = reserva.servicios.findIndex(s=>s.id===id);
+    const check = $('.svc-check',btn);
+    const icon  = $('i',check);
+    if(idx>=0){
+      reserva.servicios.splice(idx,1);
+      btn.classList.remove('border-gold','bg-gold/5');
+      check.classList.remove('bg-gold','border-gold'); icon.classList.add('opacity-0');
+    } else {
+      reserva.servicios.push(svc);
+      btn.classList.add('border-gold','bg-gold/5');
+      check.classList.add('bg-gold','border-gold'); icon.classList.remove('opacity-0');
+    }
+    actualizarBarra();
+  }
+
+
+  /* ===== PASO 2 · Calendario ===== */
+  let calMes=new Date().getMonth(), calAnio=new Date().getFullYear();
+
+  function renderCalendario(){
+    $('#cal-title').textContent = `${MESES[calMes]} ${calAnio}`;
+    const primer = new Date(calAnio,calMes,1);
+    const offset = (primer.getDay()+6)%7;              // semana inicia en lunes
+    const dias   = new Date(calAnio,calMes+1,0).getDate();
+    const hoy = new Date(); hoy.setHours(0,0,0,0);
+    const cont = $('#cal-days'); cont.innerHTML='';
+    for(let i=0;i<offset;i++) cont.appendChild(document.createElement('span'));
+    for(let d=1;d<=dias;d++){
+      const f=new Date(calAnio,calMes,d); f.setHours(0,0,0,0);
+      const disp = f>=hoy && NEGOCIO.diasAbiertos.includes(f.getDay());
+      const b=document.createElement('button');
+      b.textContent=d;
+      b.className='aspect-square rounded-lg text-sm grid place-items-center transition-all';
+      if(disp){
+        b.classList.add('text-white','hover:bg-gold/20','hover:text-gold','border','border-transparent');
+        b.addEventListener('click',()=>seleccionarFecha(f,b));
+      } else { b.classList.add('text-white/20','cursor-not-allowed'); b.disabled=true; }
+      if(reserva.fecha && f.getTime()===reserva.fecha.getTime()) b.classList.add('bg-gold','text-deep-black','font-bold');
+      cont.appendChild(b);
+    }
+  }
+  function seleccionarFecha(f,b){
+    reserva.fecha=f; reserva.hora=null;
+    $$('#cal-days button').forEach(x=>x.classList.remove('bg-gold','text-deep-black','font-bold'));
+    b.classList.add('bg-gold','text-deep-black','font-bold');
+    renderHorarios(); actualizarBarra();
+  }
+  function renderHorarios(){
+    const cont=$('#time-slots'); $('#no-date-msg').classList.add('hidden');
+    cont.innerHTML=NEGOCIO.horarios.map(h=>`<button data-time="${h}" class="time-slot px-4 py-2 rounded-full text-sm border border-gold/30 text-gold hover:bg-gold hover:text-deep-black transition-all">${h}</button>`).join('');
+    $$('.time-slot',cont).forEach(btn=>btn.addEventListener('click',()=>{
+      reserva.hora=btn.dataset.time;
+      $$('.time-slot',cont).forEach(x=>x.classList.remove('bg-gold','text-deep-black','font-bold'));
+      btn.classList.add('bg-gold','text-deep-black','font-bold');
+      actualizarBarra();
+    }));
+  }
+
+
+  /* ===== PASO 3 · Pago ===== */
+  function initPago(){
+    $('#web-fee-badge').textContent = `+ ${fmt(NEGOCIO.recargoWeb)}`;
+    $$('.pay-option').forEach(btn=>btn.addEventListener('click',()=>{
+      reserva.pago=btn.dataset.pay;
+      $$('.pay-option').forEach(x=>{
+        const on=x===btn, chk=$('.pay-check',x), ic=$('i',chk);
+        x.classList.toggle('border-gold',on); x.classList.toggle('bg-gold/5',on);
+        chk.classList.toggle('bg-gold',on); chk.classList.toggle('border-gold',on);
+        ic.classList.toggle('opacity-0',!on);
       });
-    });
+      actualizarBarra();
+    }));
+  }
 
-    /* ---- Calendario: cambio de mes ---- */
-    $('#cal-prev').addEventListener('click', () => {
-      calMes--; if (calMes < 0) { calMes = 11; calAnio--; }
-      renderCalendario();
-    });
-    $('#cal-next').addEventListener('click', () => {
-      calMes++; if (calMes > 11) { calMes = 0; calAnio++; }
-      renderCalendario();
-    });
 
-    /* ---- Confirmar reserva ---- */
-    $('#confirm-booking').addEventListener('click', () => {
-      if (!reserva.servicio || !reserva.fecha || !reserva.hora) {
-        mostrarToast('Completa servicio, fecha y hora.');
-        return;
-      }
-      abrirModal();
+  /* ===== PASO 4 · Resumen ===== */
+  function renderResumen(){
+    $('#sum-services').innerHTML = reserva.servicios.map(s=>
+      `<div class="flex justify-between text-sm"><span>${s.nombre}</span><span class="text-white/70">${fmt(s.precio)}</span></div>`).join('');
+    $('#sum-date').textContent = reserva.fecha ? `${DIAS[reserva.fecha.getDay()]} ${reserva.fecha.getDate()} ${MESES[reserva.fecha.getMonth()]}` : '—';
+    $('#sum-time').textContent = reserva.hora || '—';
+    $('#sum-pay').textContent  = reserva.pago==='web' ? 'Pago en la web' : 'Transferencia + WhatsApp';
+    const feeRow=$('#sum-fee-row');
+    if(reserva.pago==='web'){ feeRow.classList.remove('hidden'); feeRow.classList.add('flex'); $('#sum-fee').textContent=`+ ${fmt(NEGOCIO.recargoWeb)}`; }
+    else { feeRow.classList.add('hidden'); feeRow.classList.remove('flex'); }
+    $('#sum-total').textContent = fmt(totalFinal());
+  }
+
+
+  /* ===== Barra inferior: total + estado del botón ===== */
+  function actualizarBarra(){
+    $('#bar-total').textContent = fmt(totalFinal());
+    const next=$('#bk-next'), label=$('#bk-next-label');
+    let ok=false, txt='Continuar';
+    if(pasoActual===1){ ok=reserva.servicios.length>0; txt='Continuar'; }
+    if(pasoActual===2){ ok=!!(reserva.fecha&&reserva.hora); txt='Continuar'; }
+    if(pasoActual===3){ ok=!!reserva.pago; txt='Continuar'; }
+    if(pasoActual===4){ ok=true; txt='Confirmar Reserva'; }
+    next.disabled=!ok; label.textContent=txt;
+  }
+
+
+  /* ===== Navegación entre pasos ===== */
+  const TITULOS = {1:'Elige tus servicios',2:'Fecha y hora',3:'Método de pago',4:'Confirma tu reserva'};
+  function irAPaso(n){
+    pasoActual=n;
+    $$('.bk-step').forEach(s=>s.classList.toggle('hidden',Number(s.dataset.step)!==n));
+    $('#booking-step-title').textContent = TITULOS[n];
+    $$('.prog-dot').forEach(d=>{
+      const p=Number(d.dataset.p);
+      d.classList.toggle('bg-gold',p<=n); d.classList.toggle('bg-white/15',p>n);
     });
+    $('#booking-back-top').classList.toggle('invisible', n===1);
+    if(n===4) renderResumen();
+    $('.flex-1.overflow-y-auto',$('#booking')).scrollTop=0;
+    actualizarBarra();
+  }
 
-    /* ---- Cerrar modal ---- */
-    $('#close-modal').addEventListener('click', cerrarModal);
-    $('#modal-backdrop').addEventListener('click', cerrarModal);
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && $('#success-modal').classList.contains('flex')) cerrarModal();
+
+  /* ===== Abrir / cerrar panel de reserva ===== */
+  function abrirBooking(preId){
+    // Si viene desde un botón con servicio preseleccionado (opcional)
+    if(preId){ const svc=NEGOCIO.servicios.find(s=>s.id===preId); if(svc && !reserva.servicios.some(s=>s.id===preId)) reserva.servicios.push(svc); }
+    $('#booking').classList.remove('hidden');
+    document.body.style.overflow='hidden';
+    irAPaso(1);
+    // Re-sincroniza el check visual de servicios ya elegidos
+    $$('.svc-card').forEach(btn=>{
+      const on=reserva.servicios.some(s=>s.id===btn.dataset.service);
+      const chk=$('.svc-check',btn), ic=$('i',chk);
+      btn.classList.toggle('border-gold',on); btn.classList.toggle('bg-gold/5',on);
+      chk.classList.toggle('bg-gold',on); chk.classList.toggle('border-gold',on); ic.classList.toggle('opacity-0',!on);
     });
+    actualizarBarra();
+  }
+  function cerrarBooking(){ $('#booking').classList.add('hidden'); document.body.style.overflow=''; }
 
-    /* ---- Formulario de contacto (simulado) ---- */
-    $('#contact-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const feedback = $('#cf-feedback');
-      const nombre  = $('#cf-name').value.trim();
-      const email   = $('#cf-email').value.trim();
-      const mensaje = $('#cf-message').value.trim();
-      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-      feedback.classList.remove('hidden', 'text-gold', 'text-red-400');
-      if (!nombre || !emailOk || !mensaje) {
-        feedback.textContent = 'Por favor completa todos los campos con datos válidos.';
-        feedback.classList.add('text-red-400');
-        return;
-      }
-      feedback.textContent = '¡Mensaje enviado! Te responderemos a la brevedad.';
-      feedback.classList.add('text-gold');
-      e.target.reset();
-      mostrarToast('Mensaje enviado con éxito.');
+  /* ===== Confirmar → modal de éxito ===== */
+  function confirmar(){
+    const nombre=$('#bk-name').value.trim();
+    const servTxt = reserva.servicios.map(s=>s.nombre).join(', ');
+    const fechaTxt = `${DIAS[reserva.fecha.getDay()]} ${reserva.fecha.getDate()} de ${MESES[reserva.fecha.getMonth()]}`;
+    const esTransfer = reserva.pago!=='web';
+
+    // Detalle dentro del modal
+    let det = `
+      ${nombre?`<p><span class="text-soft-gray">Cliente:</span> <span class="text-gold">${nombre}</span></p>`:''}
+      <p><span class="text-soft-gray">Servicios:</span> ${servTxt}</p>
+      <p><span class="text-soft-gray">Cuándo:</span> ${fechaTxt} · ${reserva.hora} hrs</p>
+      <p><span class="text-soft-gray">Total:</span> <span class="text-gold font-bold">${fmt(totalFinal())}</span> ${esTransfer?'':'(pago web)'}</p>`;
+
+    if(esTransfer){
+      const t=NEGOCIO.transferencia;
+      det += `<div class="mt-2 pt-2 border-t border-white/10 text-xs leading-relaxed">
+        <p class="text-gold font-semibold mb-1">Datos para transferir:</p>
+        <p>${t.titular} · ${t.rut}</p>
+        <p>${t.banco} · ${t.tipo} N° ${t.numero}</p>
+        <p>${t.correo}</p></div>`;
+      $('#modal-msg').textContent = 'Transfiere el total y envíanos el comprobante por WhatsApp para confirmar tu hora.';
+      $('#modal-wa-label').textContent = 'Enviar comprobante por WhatsApp';
+    } else {
+      $('#modal-msg').textContent = 'Te enviamos el link de pago y la confirmación por WhatsApp.';
+      $('#modal-wa-label').textContent = 'Continuar por WhatsApp';
+    }
+    $('#modal-details').innerHTML = det;
+
+    // Mensaje prellenado de WhatsApp con el resumen de la reserva
+    const msg = `¡Hola! Reservé una hora en L'ÉLITE BARBIER 💈%0A`+
+      `👤 ${nombre||'(nombre)'}%0A`+
+      `✂️ ${servTxt}%0A`+
+      `📅 ${fechaTxt} - ${reserva.hora} hrs%0A`+
+      `💰 Total: ${fmt(totalFinal())}%0A`+
+      `💳 Pago: ${esTransfer?'Transferencia (adjunto comprobante)':'Pago web'}`;
+    $('#modal-wa-btn').href = `https://wa.me/${NEGOCIO.whatsapp}?text=${msg}`;
+
+    $('#booking').classList.add('hidden');
+    const m=$('#success-modal'); m.classList.remove('hidden'); m.classList.add('flex');
+  }
+
+  function cerrarModal(){
+    const m=$('#success-modal'); m.classList.add('hidden'); m.classList.remove('flex');
+    document.body.style.overflow='';
+    // Reinicia para una nueva reserva
+    reserva.servicios=[]; reserva.fecha=null; reserva.hora=null; reserva.pago=null;
+    $('#bk-name').value=''; $('#bk-phone').value='';
+    $$('.pay-option').forEach(x=>{ x.classList.remove('border-gold','bg-gold/5'); const c=$('.pay-check',x); c.classList.remove('bg-gold','border-gold'); $('i',c).classList.add('opacity-0'); });
+    $('#time-slots').innerHTML=''; $('#no-date-msg').classList.remove('hidden');
+    renderBookingServices(); renderCalendario();
+  }
+
+
+  /* ===== Toast ===== */
+  let toastT;
+  function toast(txt){ const t=$('#toast'); $('#toast-text').textContent=txt; t.classList.remove('hidden'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.add('hidden'),3000); }
+
+
+  /* ===== Reveal on scroll ===== */
+  function initReveal(){
+    const io=new IntersectionObserver((es)=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } }),{threshold:.12});
+    $$('.reveal').forEach(el=>io.observe(el));
+  }
+
+
+  /* ===== INIT ===== */
+  document.addEventListener('DOMContentLoaded',()=>{
+    initWhatsapp();
+    renderTestimonios();
+    renderBookingServices();
+    renderCalendario();
+    initPago();
+    initReveal();
+    $('#year').textContent=new Date().getFullYear();
+
+    // Header sólido al hacer scroll
+    const header=$('#site-header');
+    const onScroll=()=>header.classList.toggle('bg-deep-black/90',window.scrollY>30) &&
+                       header.classList.toggle('backdrop-blur-md',window.scrollY>30);
+    window.addEventListener('scroll',()=>{
+      const on=window.scrollY>30;
+      header.classList.toggle('bg-deep-black/90',on);
+      header.classList.toggle('backdrop-blur-md',on);
+      header.classList.toggle('border-b',on);
+      header.classList.toggle('border-white/5',on);
+    },{passive:true});
+
+    // Abrir reserva desde cualquier botón [data-open-booking]
+    $$('[data-open-booking]').forEach(b=>b.addEventListener('click',()=>abrirBooking()));
+    // Cerrar
+    $$('[data-close-booking]').forEach(b=>b.addEventListener('click',cerrarBooking));
+
+    // Botón principal del panel (avanza / confirma)
+    $('#bk-next').addEventListener('click',()=>{
+      if(pasoActual<4) irAPaso(pasoActual+1);
+      else confirmar();
+    });
+    // Volver
+    $('#booking-back-top').addEventListener('click',()=>{ if(pasoActual>1) irAPaso(pasoActual-1); });
+
+    // Calendario meses
+    $('#cal-prev').addEventListener('click',()=>{ calMes--; if(calMes<0){calMes=11;calAnio--;} renderCalendario(); });
+    $('#cal-next').addEventListener('click',()=>{ calMes++; if(calMes>11){calMes=0;calAnio++;} renderCalendario(); });
+
+    // Modal
+    $$('[data-close-modal]').forEach(b=>b.addEventListener('click',cerrarModal));
+    document.addEventListener('keydown',(e)=>{
+      if(e.key!=='Escape') return;
+      if($('#success-modal').classList.contains('flex')) cerrarModal();
+      else if(!$('#booking').classList.contains('hidden')) cerrarBooking();
     });
   });
   </script>
