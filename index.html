@@ -133,8 +133,13 @@
   <!--  HERO                                                          -->
   <!-- ============================================================= -->
   <section id="top" class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+    <!-- Imagen de respaldo (siempre visible; si el video carga, se pone encima) -->
     <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1600&q=80"
          alt="Barbería premium" class="absolute inset-0 w-full h-full object-cover animate-kenburns" />
+    <!-- Video de fondo (la URL se define en NEGOCIO.heroVideo). muted+playsinline = autoplay en móvil.
+         Si el video falla, se oculta y queda la imagen de arriba. -->
+    <video id="hero-video" autoplay muted loop playsinline preload="auto"
+           class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"></video>
     <div class="absolute inset-0 hero-overlay"></div>
 
     <div class="relative z-10 w-full max-w-2xl mx-auto px-6 text-center">
@@ -244,7 +249,10 @@
           <a href="#" aria-label="TikTok" class="w-11 h-11 grid place-items-center rounded-full border border-white/15 text-soft-gray hover:text-deep-black hover:bg-gold hover:border-gold transition-all"><i class="fa-brands fa-tiktok"></i></a>
         </div>
       </div>
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 text-sm text-soft-gray">
+      <!-- Correos corporativos (compactos) -->
+      <ul id="footer-emails" class="flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 pt-6 text-xs text-soft-gray"></ul>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-5 text-sm text-soft-gray">
         <p>© <span id="year"></span> L'ÉLITE BARBIER</p>
         <p>Diseño por <a href="#" class="text-gold hover:text-bronze transition-colors font-medium">Alonso Studio Digital</a></p>
       </div>
@@ -417,6 +425,12 @@
   const NEGOCIO = {
     monedaPrefijo: '$',
 
+    // --- VIDEO DE FONDO DE LA PORTADA ---
+    // Pega aquí la URL de un .mp4 (o deja '' para usar solo la imagen).
+    // Puedes usar un clip gratis de coverr.co / mixkit.co / pexels.com,
+    // o subir tu propio video al repo y poner una ruta local, ej: 'assets/portada.mp4'.
+    heroVideo: 'https://cdn.coverr.co/videos/coverr-a-barber-shaving-a-client-1573/1080p.mp4',
+
     // --- Contacto / WhatsApp (número en formato internacional, SIN + ni espacios) ---
     whatsapp: '56912345678',
 
@@ -459,6 +473,15 @@
       { nombre:'Ignacio V.',  texto:'Buen café, buena música y un corte de otro nivel. Vuelvo fijo.', estrellas:5 },
       { nombre:'Tomás A.',    texto:'Pagué por transferencia y me confirmaron al toque por WhatsApp.', estrellas:5 },
     ],
+
+    // --- CORREOS CORPORATIVOS (se muestran pequeños en el footer) ---
+    correos: [
+      'agendamiento@elitebarbier.cl',
+      'gerencia@elitebarbier.cl',
+      'soporte@elitebarbier.cl',
+      'contacto@elitebarbier.cl',
+      'marketing@elitebarbier.cl',
+    ],
   };
   /* ============  FIN DATOS DEL CLIENTE  ============ */
 
@@ -484,6 +507,29 @@
   function initWhatsapp(){
     const base = waLink('Hola L\'ÉLITE BARBIER 👋, tengo una consulta.');
     ['#wa-float','#wa-contact','#wa-footer','#wa-booking'].forEach(sel=>{ const el=$(sel); if(el) el.href=base; });
+  }
+
+
+  /* ===== Video de fondo de la portada (con respaldo a imagen) ===== */
+  function initHeroVideo(){
+    const v = $('#hero-video');
+    if(!v) return;
+    if(!NEGOCIO.heroVideo){ v.remove(); return; }   // sin video → solo imagen
+    v.src = NEGOCIO.heroVideo;
+    // Cuando hay imagen que mostrar, la fundimos por encima de la foto
+    const mostrar = ()=>v.classList.replace('opacity-0','opacity-100');
+    v.addEventListener('loadeddata', mostrar);
+    v.addEventListener('playing', mostrar);
+    // Si el video falla (URL caída, formato no soportado), se queda la imagen
+    v.addEventListener('error', ()=>{ v.classList.add('opacity-0'); v.remove(); });
+  }
+
+
+  /* ===== Correos corporativos en el footer ===== */
+  function renderCorreos(){
+    const ul = $('#footer-emails'); if(!ul) return;
+    ul.innerHTML = NEGOCIO.correos.map(e=>
+      `<li><a href="mailto:${e}" class="hover:text-gold transition-colors">${e}</a></li>`).join('');
   }
 
 
@@ -738,6 +784,8 @@
   /* ===== INIT ===== */
   document.addEventListener('DOMContentLoaded',()=>{
     initWhatsapp();
+    initHeroVideo();
+    renderCorreos();
     renderTestimonios();
     renderBookingServices();
     renderCalendario();
